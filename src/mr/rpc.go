@@ -13,6 +13,38 @@ import "strconv"
 // example to show how to declare the arguments
 // and reply for an RPC.
 //
+type CoordinatorStatus int32
+type RequestType int32
+type ReplyType int32
+const (
+	InitStatus CoordinatorStatus = 0
+	MapStatus CoordinatorStatus = 1
+	ReduceStatus CoordinatorStatus = 2
+	ShutDowned CoordinatorStatus = 3
+
+	MapRequest RequestType = 1
+	ReduceRequest RequestType = 2
+	MapFinishRequest RequestType = 3
+	ReduceFinishRequest RequestType = 4
+
+	NoTask ReplyType = 0
+	NewTask ReplyType = 1
+)
+type Args struct {
+	ReqType RequestType
+	MapFinishedFileName string
+	ReduceFinishedTaskId int
+}
+
+type Reply struct {
+	NFile int
+	NReduce int
+	MasterStatus CoordinatorStatus
+	MapTaskId int
+	MapFileName string
+	ReduceTaskId int
+	ReplyCode ReplyType
+}
 
 type ExampleArgs struct {
 	X int
