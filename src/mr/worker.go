@@ -79,13 +79,7 @@ func MapTaskWoker(mapf func(string, string) []KeyValue, wg *sync.WaitGroup) {
 				kvlists[ihash(kv.Key) % reply.NReduce] = append(kvlists[ihash(kv.Key) % reply.NReduce], kv)
 			}
 			for index, kvlist := range kvlists {
-				// ofile, _ := os.Create(onname)
-				// enc := json.NewEncoder(ofile)
-				// for _, kv := range kvlist {
-				// 	enc.Encode(&kv)
-				// }
-				// ofile.Close()
-				tmpfile, _ := ioutil.TempFile("", "mr-x-y-tmp")
+				tmpfile, _ := os.CreateTemp("", "mr-x-y-tmp")
 				enc := json.NewEncoder(tmpfile)
 				for _, kv := range kvlist {
 					enc.Encode(&kv)
@@ -134,22 +128,12 @@ func ReduceTaskWorker(reducef func(string, []string) string, wg *sync.WaitGroup)
 						if err := dec.Decode(&kv); err != nil {
 							break
 						}
-						// value, err := strconv.Atoi(kv.Value)
-						// if err != nil {
-						// 	log.Fatal("Invalid KeyValue")
-						// }
-						// result[kv.Key] += value
 						result[kv.Key] = append(result[kv.Key], kv.Value)
 					}
 					ofile.Close()
 				}
 				resultFileName := "mr-out-" + strconv.Itoa(Y)
-				// rfile, _ := os.Create(resultFileName)
-				// for k, v := range result {
-				// 	fmt.Fprintf(rfile, "%v %v\n", k, v)
-				// }
-				// rfile.Close()
-				tmpfile, _ := ioutil.TempFile("", "mr-out-tmp")
+				tmpfile, _ := os.CreateTemp("", "mr-out-tmp")
 				for k, v := range result {
 					fmt.Fprintf(tmpfile, "%v %v\n", k, reducef(k, v))
 				}
@@ -168,111 +152,6 @@ func ReduceTaskWorker(reducef func(string, []string) string, wg *sync.WaitGroup)
 	}
 }
 
-// func MapWorker(mapf func(string, string) []KeyValue, wg *sync.WaitGroup) {
-// 	defer wg.Done()
-// 	for {
-// 		args := MapArgs{}
-// 		reply := MapReply{}
-// 		args.Type = 0
-// 		ok := call("Coordinator.MapRpc", &args, &reply)
-// 		if !ok {
-// 			log.Fatal("MapRpc failed")
-// 			continue
-// 		}
-// 		if reply.Type == 0 {
-
-// 			file, err := os.Open(reply.FileName)
-// 			if err != nil {
-// 				log.Fatalf("cannot open %v", reply.FileName)
-// 			}
-// 			content, err := ioutil.ReadAll(file)
-// 			if err != nil {
-// 				log.Fatalf("cannot read %v", reply.FileName)
-// 			}
-// 			file.Close()
-// 			intermediate := mapf(reply.FileName, string(content))
-// 			// write to intermediate file
-// 			oname := "intermediate-" + strconv.Itoa(reply.Index)
-// 			ofile, _ := os.Create(oname)
-// 			enc := json.NewEncoder(file)
-// 			for _, kv := range intermediate {
-// 				enc.Encode(&kv)
-// 			}
-// 			ofile.Close()
-// 			finish_map_args := MapArgs{}
-// 			finish_map_reply := MapReply{}
-// 			finish_map_args.Type = 1
-// 			finish_map_args.FileName = oname
-// 			call("Coordinator.MapRpc", &finish_map_args, &finish_map_reply)
-// 		} else if reply.Type == 1 {
-// 			// busy
-// 			time.Sleep(time.Second)
-// 		} else {
-// 			break
-// 		}
-// 	}
-// }
-
-// func ReduceWorker(reducef func(string, []string) string, wg *sync.WaitGroup) {
-// 	defer wg.Done()
-// 	for {
-// 		args := ReduceArgs{}
-// 		reply := ReduceReply{}
-// 		args.Type = 0
-// 		ok := call("Coordinator.ReduceRpc", &args, &reply)
-// 		if !ok {
-// 			log.Fatal("ReduceRpc failed")
-// 			continue
-// 		}
-// 		if reply.Type == 0 {
-// 			file, err := os.Open(reply.FileName)
-// 			if err != nil {
-// 				log.Fatalf("cannot open %v", reply.FileName)
-// 			}
-// 			dec := json.NewDecoder(file)
-// 			var kva []KeyValue
-// 			for {
-// 				var kv KeyValue
-// 				if err := dec.Decode(&kv); err != nil {
-// 					break
-// 				}
-// 				kva = append(kva, kv)
-// 			}
-// 			file.Close()
-// 			// reduce part
-// 			sort.Sort(ByKey(kva))
-// 			oname := "mr-out-" + strconv.Itoa(reply.Index)
-// 			ofile, _ := os.Create(oname)
-// 			i := 0
-// 			for i < len(kva) {
-// 				j := i + 1
-// 				for j < len(kva) && kva[j].Key == kva[i].Key {
-// 					j++
-// 				}
-// 				values := []string{}
-// 				for k := i; k < j; k++ {
-// 					values = append(values, kva[k].Value)
-// 				}
-// 				output := reducef(kva[i].Key, values)
-// 				fmt.Fprintf(ofile, "%v %v\n", kva[i].Key, output)
-// 				i = j
-// 			}
-// 			ofile.Close()
-// 			finish_reduce_args := ReduceArgs{}
-// 			finish_reduce_reply := ReduceReply{}
-// 			finish_reduce_args.Type = 1
-// 			finish_reduce_args.FileName = oname
-// 			call("Coordinator.ReduceRpc", &finish_reduce_args, &finish_reduce_reply)
-// 		} else if reply.Type == 1 {
-// 			// busy
-// 			time.Sleep(time.Second)
-// 		} else {
-// 			break
-// 		}
-// 	}
-
-// }
-
 //
 // main/mrworker.go calls this function.
 //
@@ -280,11 +159,6 @@ func Worker(mapf func(string, string) []KeyValue,
 	reducef func(string, []string) string) {
 
 	// Your worker implementation here.
-	// var wg sync.WaitGroup
-	// wg.Add(2)
-	// go MapWorker(mapf, &wg)
-	// go ReduceWorker(reducef, &wg)
-	// wg.Wait()
 	var wg sync.WaitGroup
 	wg.Add(2)
 	go MapTaskWoker(mapf, &wg)
