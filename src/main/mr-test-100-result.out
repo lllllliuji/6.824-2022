@@ -1,0 +1,1523 @@
+nohup: ignoring input
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+2022/11/20 06:22:48 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+2022/11/20 06:41:45 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+2022/11/20 06:41:45 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+2022/11/20 06:41:45 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+2022/11/20 06:44:58 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+2022/11/20 06:44:58 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+2022/11/20 06:47:52 dialing:dial-http unix /var/tmp/824-mr-1000: read unix @->/var/tmp/824-mr-1000: read: connection reset by peer
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+2022/11/20 06:54:27 dialing:dial-http unix /var/tmp/824-mr-1000: read unix @->/var/tmp/824-mr-1000: read: connection reset by peer
+2022/11/20 06:54:27 dialing:dial-http unix /var/tmp/824-mr-1000: read unix @->/var/tmp/824-mr-1000: read: connection reset by peer
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+2022/11/20 07:22:19 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+2022/11/20 07:22:19 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+2022/11/20 07:26:11 dialing:dial-http unix /var/tmp/824-mr-1000: read unix @->/var/tmp/824-mr-1000: read: connection reset by peer
+2022/11/20 07:26:11 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+2022/11/20 07:26:11 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+2022/11/20 08:01:31 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+2022/11/20 08:01:31 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+2022/11/20 08:28:13 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+unexpected EOF
+read unix @->/var/tmp/824-mr-1000: read: connection reset by peer
+2022/11/20 08:42:19 MapTaskWorker Failed
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+2022/11/20 08:56:23 dialing:dial unix /var/tmp/824-mr-1000: connect: connection refused
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** Starting wc test.
+--- wc test: PASS
+*** Starting indexer test.
+--- indexer test: PASS
+*** Starting map parallelism test.
+--- map parallelism test: PASS
+*** Starting reduce parallelism test.
+--- reduce parallelism test: PASS
+*** Starting job count test.
+--- job count test: PASS
+*** Starting early exit test.
+--- early exit test: PASS
+*** Starting crash test.
+--- crash test: PASS
+*** PASSED ALL TESTS
+*** PASSED ALL 100 TESTING TRIALS
