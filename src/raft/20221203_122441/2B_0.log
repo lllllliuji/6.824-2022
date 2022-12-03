@@ -1,0 +1,342 @@
+Test (2B): basic agreement ...
+004527 VOTE S2 in term 1 issued a election
+004530 VOTE S1 term 1 received RequestVote from S2 term 1
+004530 VOTE S1 term 1 voted for S2 in term 1
+004530 VOTE S0 term 1 received RequestVote from S2 term 1
+004530 VOTE S0 term 1 voted for S2 in term 1
+004531 VOTE S2 get enough votes(2), became leader with term 1
+005045 LOG1 S0 received log [1, 1] from S2, commitId 0 leaderCommitId 0
+005045 LOG1 S1 received log [1, 1] from S2, commitId 0 leaderCommitId 0
+005046 LOG1 Leader S2 successfully replicated log [1, 1] to S0
+005046 LOG1 Leader S2 successfully replicated log [1, 1] to S1
+005145 INFO S2 apply Log 1
+006036 INFO S0 apply Log 1
+006036 INFO S1 apply Log 1
+006080 LOG1 S1 received log [2, 2] from S2, commitId 1 leaderCommitId 1
+006080 LOG1 S0 received log [2, 2] from S2, commitId 1 leaderCommitId 1
+006081 LOG1 Leader S2 successfully replicated log [2, 2] to S1
+006081 LOG1 Leader S2 successfully replicated log [2, 2] to S0
+006182 INFO S2 apply Log 2
+007538 INFO S1 apply Log 2
+007538 INFO S0 apply Log 2
+007745 LOG1 S0 received log [3, 3] from S2, commitId 2 leaderCommitId 2
+007746 LOG1 Leader S2 successfully replicated log [3, 3] to S0
+007746 LOG1 S1 received log [3, 3] from S2, commitId 2 leaderCommitId 2
+007748 LOG1 Leader S2 successfully replicated log [3, 3] to S1
+007845 INFO S2 apply Log 3
+009046 INFO S1 apply Log 3
+009047 INFO S0 apply Log 3
+  ... Passed --   0.9  3   16    4892    3
+Test (2B): RPC byte count ...
+015202 VOTE S1 in term 1 issued a election
+015202 VOTE S0 in term 1 issued a election
+015205 VOTE S2 term 1 received RequestVote from S0 term 1
+015205 VOTE S1 term 1 received RequestVote from S0 term 1
+015205 VOTE S2 term 1 voted for S0 in term 1
+015205 VOTE S0 term 1 received RequestVote from S1 term 1
+015207 VOTE S2 term 1 received RequestVote from S1 term 1
+015207 VOTE S0 get enough votes(2), became leader with term 1
+015320 LOG1 S1 received log [1, 1] from S0, commitId 0 leaderCommitId 0
+015320 LOG1 S2 received log [1, 1] from S0, commitId 0 leaderCommitId 0
+015321 LOG1 Leader S0 successfully replicated log [1, 1] to S2
+015321 LOG1 Leader S0 successfully replicated log [1, 1] to S1
+015420 INFO S0 apply Log 1
+016709 INFO S2 apply Log 1
+016709 INFO S1 apply Log 1
+016897 LOG1 S2 received log [2, 2] from S0, commitId 1 leaderCommitId 1
+016897 LOG1 S1 received log [2, 2] from S0, commitId 1 leaderCommitId 1
+016898 LOG1 Leader S0 successfully replicated log [2, 2] to S2
+016898 LOG1 Leader S0 successfully replicated log [2, 2] to S1
+016986 INFO S0 apply Log 2
+018213 INFO S2 apply Log 2
+018214 INFO S1 apply Log 2
+018363 LOG1 S2 received log [3, 3] from S0, commitId 2 leaderCommitId 2
+018363 LOG1 S1 received log [3, 3] from S0, commitId 2 leaderCommitId 2
+018364 LOG1 Leader S0 successfully replicated log [3, 3] to S1
+018364 LOG1 Leader S0 successfully replicated log [3, 3] to S2
+018454 INFO S0 apply Log 3
+019720 INFO S2 apply Log 3
+019720 INFO S1 apply Log 3
+019838 LOG1 S2 received log [4, 4] from S0, commitId 3 leaderCommitId 3
+019839 LOG1 Leader S0 successfully replicated log [4, 4] to S2
+019839 LOG1 S1 received log [4, 4] from S0, commitId 3 leaderCommitId 3
+019839 LOG1 Leader S0 successfully replicated log [4, 4] to S1
+019929 INFO S0 apply Log 4
+021230 INFO S2 apply Log 4
+021230 INFO S1 apply Log 4
+021315 LOG1 S2 received log [5, 5] from S0, commitId 4 leaderCommitId 4
+021316 LOG1 S1 received log [5, 5] from S0, commitId 4 leaderCommitId 4
+021316 LOG1 Leader S0 successfully replicated log [5, 5] to S2
+021317 LOG1 Leader S0 successfully replicated log [5, 5] to S1
+021416 INFO S0 apply Log 5
+022740 INFO S2 apply Log 5
+022740 INFO S1 apply Log 5
+022981 LOG1 S2 received log [6, 6] from S0, commitId 5 leaderCommitId 5
+022981 LOG1 S1 received log [6, 6] from S0, commitId 5 leaderCommitId 5
+022982 LOG1 Leader S0 successfully replicated log [6, 6] to S2
+022982 LOG1 Leader S0 successfully replicated log [6, 6] to S1
+023081 INFO S0 apply Log 6
+024243 INFO S2 apply Log 6
+024243 INFO S1 apply Log 6
+024441 LOG1 S2 received log [7, 7] from S0, commitId 6 leaderCommitId 6
+024441 LOG1 S1 received log [7, 7] from S0, commitId 6 leaderCommitId 6
+024442 LOG1 Leader S0 successfully replicated log [7, 7] to S1
+024442 LOG1 Leader S0 successfully replicated log [7, 7] to S2
+024539 INFO S0 apply Log 7
+025748 INFO S1 apply Log 7
+025748 INFO S2 apply Log 7
+025820 LOG1 S2 received log [8, 8] from S0, commitId 7 leaderCommitId 7
+025820 LOG1 S1 received log [8, 8] from S0, commitId 7 leaderCommitId 7
+025821 LOG1 Leader S0 successfully replicated log [8, 8] to S2
+025821 LOG1 Leader S0 successfully replicated log [8, 8] to S1
+025910 INFO S0 apply Log 8
+027249 INFO S2 apply Log 8
+027250 INFO S1 apply Log 8
+027284 LOG1 S1 received log [9, 9] from S0, commitId 8 leaderCommitId 8
+027284 LOG1 S2 received log [9, 9] from S0, commitId 8 leaderCommitId 8
+027285 LOG1 Leader S0 successfully replicated log [9, 9] to S2
+027285 LOG1 Leader S0 successfully replicated log [9, 9] to S1
+027374 INFO S0 apply Log 9
+028755 INFO S2 apply Log 9
+028755 INFO S1 apply Log 9
+028964 LOG1 S2 received log [10, 10] from S0, commitId 9 leaderCommitId 9
+028965 LOG1 Leader S0 successfully replicated log [10, 10] to S2
+028975 LOG1 S1 received log [10, 10] from S0, commitId 9 leaderCommitId 9
+028976 LOG1 Leader S0 successfully replicated log [10, 10] to S1
+029065 INFO S0 apply Log 10
+030258 INFO S1 apply Log 10
+030258 INFO S2 apply Log 10
+030435 LOG1 S2 received log [11, 11] from S0, commitId 10 leaderCommitId 10
+030436 LOG1 Leader S0 successfully replicated log [11, 11] to S2
+030447 LOG1 S1 received log [11, 11] from S0, commitId 10 leaderCommitId 10
+030448 LOG1 Leader S0 successfully replicated log [11, 11] to S1
+030539 INFO S0 apply Log 11
+031766 INFO S2 apply Log 11
+031766 INFO S1 apply Log 11
+  ... Passed --   2.3  3   50  115812   11
+Test (2B): agreement after follower reconnects ...
+036329 VOTE S2 in term 1 issued a election
+036331 VOTE S0 term 1 received RequestVote from S2 term 1
+036331 VOTE S0 term 1 voted for S2 in term 1
+036332 VOTE S2 get enough votes(2), became leader with term 1
+036331 VOTE S1 term 1 received RequestVote from S2 term 1
+036332 VOTE S1 term 1 voted for S2 in term 1
+036445 LOG1 S1 received log [1, 1] from S2, commitId 0 leaderCommitId 0
+036445 LOG1 S0 received log [1, 1] from S2, commitId 0 leaderCommitId 0
+036445 LOG1 Leader S2 successfully replicated log [1, 1] to S0
+036446 LOG1 Leader S2 successfully replicated log [1, 1] to S1
+036545 INFO S2 apply Log 1
+037835 INFO S0 apply Log 1
+037835 INFO S1 apply Log 1
+042692 LOG1 S1 received log [2, 2] from S2, commitId 1 leaderCommitId 1
+042693 LOG1 Leader S2 successfully replicated log [2, 2] to S1
+042792 INFO S2 apply Log 2
+043856 INFO S1 apply Log 2
+043961 LOG1 S1 received log [3, 3] from S2, commitId 2 leaderCommitId 2
+043962 LOG1 Leader S2 successfully replicated log [3, 3] to S1
+044052 INFO S2 apply Log 3
+045359 INFO S1 apply Log 3
+048365 VOTE S0 in term 2 issued a election
+055428 LOG1 S1 received log [4, 4] from S2, commitId 3 leaderCommitId 3
+055429 LOG1 Leader S2 successfully replicated log [4, 4] to S1
+055519 INFO S2 apply Log 4
+055900 INFO S1 apply Log 4
+056059 LOG1 S1 received log [5, 5] from S2, commitId 4 leaderCommitId 4
+056060 LOG1 Leader S2 successfully replicated log [5, 5] to S1
+056151 INFO S2 apply Log 5
+057406 VOTE S0 in term 3 issued a election
+057410 INFO S1 apply Log 5
+057537 LOG1 S1 received log [6, 6] from S2, commitId 5 leaderCommitId 5
+057538 LOG1 Leader S2 successfully replicated log [6, 6] to S1
+057627 INFO S2 apply Log 6
+058912 ERRO S0 Term 3 receive from Leader S2 Term 1, refused
+058913 INFO S1 apply Log 6
+058993 LOG1 Leader changed, Leader S2 stop update commitIndex
+059004 LOG1 Leader changed, S2 stop replicate log to follower S1
+060412 VOTE S2 in term 4 issued a election
+060413 VOTE S1 term 4 received RequestVote from S2 term 4
+060414 VOTE S1 term 4 voted for S2 in term 4
+060414 VOTE S0 term 4 received RequestVote from S2 term 4
+060414 VOTE S0 term 4 voted for S2 in term 4
+060415 VOTE S2 get enough votes(2), became leader with term 4
+060417 LOG1 S0 conflicted with Leader S2 conflictIndex 1
+060519 LOG1 S0 received log [1, 1] from S2, commitId 1 leaderCommitId 6
+060521 LOG1 Leader S2 successfully replicated log [1, 1] to S0
+060634 LOG1 S0 received log [2, 2] from S2, commitId 1 leaderCommitId 6
+060635 LOG1 Leader S2 successfully replicated log [2, 2] to S0
+060635 INFO S0 apply Log 2
+060748 LOG1 S0 received log [3, 3] from S2, commitId 2 leaderCommitId 6
+060749 INFO S0 apply Log 3
+060749 LOG1 Leader S2 successfully replicated log [3, 3] to S0
+060854 LOG1 S0 received log [4, 4] from S2, commitId 3 leaderCommitId 6
+060855 LOG1 Leader S2 successfully replicated log [4, 4] to S0
+060855 INFO S0 apply Log 4
+060958 LOG1 S0 received log [5, 5] from S2, commitId 4 leaderCommitId 6
+060959 LOG1 Leader S2 successfully replicated log [5, 5] to S0
+060959 INFO S0 apply Log 5
+061064 LOG1 S0 received log [6, 6] from S2, commitId 5 leaderCommitId 6
+061065 LOG1 Leader S2 successfully replicated log [6, 6] to S0
+061065 INFO S0 apply Log 6
+071181 LOG1 S0 received log [7, 7] from S2, commitId 6 leaderCommitId 6
+071182 LOG1 Leader S2 successfully replicated log [7, 7] to S0
+071262 INFO S2 apply Log 7
+071263 LOG1 S1 received log [7, 7] from S2, commitId 6 leaderCommitId 6
+071264 LOG1 Leader S2 successfully replicated log [7, 7] to S1
+072470 INFO S1 apply Log 7
+072470 INFO S0 apply Log 7
+  ... Passed --   4.1  3   74   21397    7
+Test (2B): no agreement if too many followers disconnect ...
+077121 VOTE S1 in term 1 issued a election
+077121 VOTE S3 in term 1 issued a election
+077121 VOTE S0 in term 1 issued a election
+077122 VOTE S4 term 1 received RequestVote from S3 term 1
+077122 VOTE S4 term 1 voted for S3 in term 1
+077123 VOTE S0 term 1 received RequestVote from S1 term 1
+077123 VOTE S2 term 1 received RequestVote from S0 term 1
+077123 VOTE S2 term 1 voted for S0 in term 1
+077123 VOTE S3 term 1 received RequestVote from S1 term 1
+077123 VOTE S1 term 1 received RequestVote from S0 term 1
+077123 VOTE S0 term 1 received RequestVote from S3 term 1
+077124 VOTE S4 term 1 received RequestVote from S1 term 1
+077124 VOTE S3 term 1 received RequestVote from S0 term 1
+077124 VOTE S2 term 1 received RequestVote from S1 term 1
+077124 VOTE S4 term 1 received RequestVote from S0 term 1
+077124 VOTE S2 term 1 received RequestVote from S3 term 1
+077124 VOTE S1 term 1 received RequestVote from S3 term 1
+081647 VOTE S0 in term 2 issued a election
+081649 VOTE S4 term 2 received RequestVote from S0 term 2
+081649 VOTE S4 term 2 voted for S0 in term 2
+081649 VOTE S1 term 2 received RequestVote from S0 term 2
+081649 VOTE S1 term 2 voted for S0 in term 2
+081649 VOTE S2 term 2 received RequestVote from S0 term 2
+081649 VOTE S2 term 2 voted for S0 in term 2
+081650 VOTE S0 get enough votes(3), became leader with term 2
+081649 VOTE S3 term 2 received RequestVote from S0 term 2
+081650 VOTE S3 term 2 voted for S0 in term 2
+081762 LOG1 S1 received log [1, 1] from S0, commitId 0 leaderCommitId 0
+081763 LOG1 S3 received log [1, 1] from S0, commitId 0 leaderCommitId 0
+081763 LOG1 Leader S0 successfully replicated log [1, 1] to S1
+081763 LOG1 S2 received log [1, 1] from S0, commitId 0 leaderCommitId 0
+081763 LOG1 Leader S0 successfully replicated log [1, 1] to S3
+081763 LOG1 Leader S0 successfully replicated log [1, 1] to S2
+081764 LOG1 S4 received log [1, 1] from S0, commitId 0 leaderCommitId 0
+081765 LOG1 Leader S0 successfully replicated log [1, 1] to S4
+081865 INFO S0 apply Log 1
+083159 INFO S2 apply Log 1
+083160 INFO S3 apply Log 1
+083160 INFO S4 apply Log 1
+083160 INFO S1 apply Log 1
+088537 LOG1 S4 received log [2, 2] from S0, commitId 1 leaderCommitId 1
+088538 LOG1 Leader S0 successfully replicated log [2, 2] to S4
+092184 VOTE S3 in term 3 issued a election
+092185 VOTE S1 in term 3 issued a election
+092185 VOTE S2 in term 3 issued a election
+099722 VOTE S1 in term 4 issued a election
+099723 VOTE S2 in term 4 issued a election
+101230 VOTE S3 in term 4 issued a election
+105736 VOTE S3 in term 5 issued a election
+107238 VOTE S1 in term 5 issued a election
+108749 VOTE S2 in term 5 issued a election
+108751 VOTE S4 term 5 received RequestVote from S2 term 5
+108751 VOTE S0 term 5 received RequestVote from S2 term 5
+108751 VOTE S3 term 5 received RequestVote from S2 term 5
+108751 VOTE S1 term 5 received RequestVote from S2 term 5
+108751 ERRO S2 Term 5 receive from Leader S0 Term 2, refused
+108752 ERRO S1 Term 5 receive from Leader S0 Term 2, refused
+108751 ERRO S4 Term 5 receive from Leader S0 Term 2, refused
+108752 ERRO S3 Term 5 receive from Leader S0 Term 2, refused
+108774 LOG1 Leader changed, Leader S0 stop update commitIndex
+108785 LOG1 Leader changed, S0 stop replicate log to follower S4
+110254 VOTE S3 in term 6 issued a election
+110255 VOTE S0 in term 6 issued a election
+110256 VOTE S1 term 6 received RequestVote from S3 term 6
+110256 VOTE S0 term 6 received RequestVote from S3 term 6
+110256 VOTE S3 term 6 received RequestVote from S0 term 6
+110257 VOTE S4 term 6 received RequestVote from S0 term 6
+110257 VOTE S4 term 6 voted for S0 in term 6
+110256 VOTE S1 term 6 voted for S3 in term 6
+110257 VOTE S1 term 6 received RequestVote from S0 term 6
+110257 VOTE S2 term 6 received RequestVote from S0 term 6
+110257 VOTE S2 term 6 voted for S0 in term 6
+110258 VOTE S2 term 6 received RequestVote from S3 term 6
+110258 VOTE S0 get enough votes(3), became leader with term 6
+110259 LOG1 S2 conflicted with Leader S0 conflictIndex 1
+110259 LOG1 S1 conflicted with Leader S0 conflictIndex 1
+110259 LOG1 S3 conflicted with Leader S0 conflictIndex 1
+110262 VOTE S4 term 6 received RequestVote from S3 term 6
+110363 LOG1 S3 received log [1, 1] from S0, commitId 1 leaderCommitId 1
+110363 LOG1 S1 received log [1, 1] from S0, commitId 1 leaderCommitId 1
+110364 LOG1 S2 received log [1, 1] from S0, commitId 1 leaderCommitId 1
+110364 LOG1 Leader S0 successfully replicated log [1, 1] to S1
+110364 LOG1 Leader S0 successfully replicated log [1, 1] to S3
+110365 LOG1 Leader S0 successfully replicated log [1, 1] to S2
+110466 LOG1 S3 received log [2, 2] from S0, commitId 1 leaderCommitId 1
+110466 LOG1 S1 received log [2, 2] from S0, commitId 1 leaderCommitId 1
+110467 LOG1 Leader S0 successfully replicated log [2, 2] to S3
+110467 LOG1 S2 received log [2, 2] from S0, commitId 1 leaderCommitId 1
+110467 LOG1 Leader S0 successfully replicated log [2, 2] to S1
+110467 LOG1 Leader S0 successfully replicated log [2, 2] to S2
+113551 LOG1 S4 received log [3, 3] from S0, commitId 1 leaderCommitId 1
+113552 LOG1 S1 received log [3, 3] from S0, commitId 1 leaderCommitId 1
+113552 LOG1 S3 received log [3, 3] from S0, commitId 1 leaderCommitId 1
+113552 LOG1 Leader S0 successfully replicated log [3, 3] to S1
+113552 LOG1 Leader S0 successfully replicated log [3, 3] to S4
+113552 LOG1 S2 received log [3, 3] from S0, commitId 1 leaderCommitId 1
+113553 LOG1 Leader S0 successfully replicated log [3, 3] to S3
+113553 LOG1 Leader S0 successfully replicated log [3, 3] to S2
+113655 LOG1 S2 received log [4, 4] from S0, commitId 1 leaderCommitId 1
+113655 INFO S0 apply Log 2
+113656 LOG1 S3 received log [4, 4] from S0, commitId 1 leaderCommitId 1
+113656 LOG1 S1 received log [4, 4] from S0, commitId 1 leaderCommitId 1
+113656 LOG1 Leader S0 successfully replicated log [4, 4] to S3
+113656 INFO S0 apply Log 3
+113656 LOG1 S4 received log [4, 4] from S0, commitId 1 leaderCommitId 1
+113659 LOG1 Leader S0 successfully replicated log [4, 4] to S2
+113660 LOG1 Leader S0 successfully replicated log [4, 4] to S4
+113660 LOG1 Leader S0 successfully replicated log [4, 4] to S1
+113757 INFO S0 apply Log 4
+114773 INFO S3 apply Log 2
+114773 INFO S1 apply Log 2
+114773 INFO S1 apply Log 3
+114773 INFO S2 apply Log 2
+114773 INFO S1 apply Log 4
+114773 INFO S2 apply Log 3
+114773 INFO S2 apply Log 4
+114774 INFO S3 apply Log 3
+114774 INFO S4 apply Log 2
+114774 INFO S4 apply Log 3
+114774 INFO S4 apply Log 4
+114774 INFO S3 apply Log 4
+  ... Passed --   4.2  5  174   40246    4
+Test (2B): concurrent Start()s ...
+120914 VOTE S1 in term 1 issued a election
+120916 VOTE S0 term 1 received RequestVote from S1 term 1
+120916 VOTE S0 term 1 voted for S1 in term 1
+120916 VOTE S2 term 1 received RequestVote from S1 term 1
+120916 VOTE S2 term 1 voted for S1 in term 1
+120916 VOTE S1 get enough votes(2), became leader with term 1
+125126 LOG1 S2 received log [1, 1] from S1, commitId 0 leaderCommitId 0
+125126 LOG1 S0 received log [1, 1] from S1, commitId 0 leaderCommitId 0
+125127 LOG1 Leader S1 successfully replicated log [1, 1] to S2
+125127 LOG1 Leader S1 successfully replicated log [1, 1] to S0
+125228 INFO S1 apply Log 1
+125230 LOG1 S0 received log [2, 2] from S1, commitId 0 leaderCommitId 0
+125230 LOG1 Leader S1 successfully replicated log [2, 2] to S0
+125230 LOG1 S2 received log [2, 2] from S1, commitId 0 leaderCommitId 1
+125231 LOG1 Leader S1 successfully replicated log [2, 2] to S2
+125231 INFO S2 apply Log 1
+125332 INFO S1 apply Log 2
+125332 LOG1 S2 received log [3, 3] from S1, commitId 1 leaderCommitId 1
+125333 LOG1 Leader S1 successfully replicated log [3, 3] to S2
+125333 LOG1 S0 received log [3, 3] from S1, commitId 0 leaderCommitId 1
+125333 INFO S0 apply Log 1
+125334 LOG1 Leader S1 successfully replicated log [3, 3] to S0
+125436 INFO S1 apply Log 3
+125437 LOG1 S0 received log [4, 4] from S1, commitId 1 leaderCommitId 2
+125437 LOG1 S2 received log [4, 4] from S1, commitId 1 leaderCommitId 3
+125438 INFO S0 apply Log 3
+apply error: server 0 apply out of order 3
+125438 INFO S2 apply Log 2
+125438 INFO S2 apply Log 3
+exit status 1
+FAIL	6.824/raft	12.547s
