@@ -1,5 +1,6 @@
 ### lab 2A
 * rand electiontimeout
+* votedFor = -1, if reply's term greater than currentTerm
 
 
 ### lab 2B
@@ -10,4 +11,18 @@
 * accelebrate log backtracking, border case
 * log {1, 2, 3}, log{1, 2, 3, 4, 5} reply order, update nextIndex wrong
 * turn to follower, votedfor = -1
-* replicate log unit = 100 
+* replicate log unit = throught up to leader's newest log entry
+
+### lab 2D
+* deadlock, caused by snapshot, 
+* If commitIndex > lastApplied: increment lastApplied, applylog[lastApplied] to state machine
+* test code snapshot in for operation of channel, if apply log in a for loop. cause deadlock
+* start a backgroud goroute apply logs (lastApplied, commitIndex]
+* doesn't need to wait sendAppendEntries, just send and carefully treat reply, detect this bug because after reconnect, time costs very high
+* persist Snapshot attributes only when snapshot
+* snapshot doesn't work with applylog together
+
+### others
+* applychan in critcial zone, cause deadlock 
+* infinite loop result in deadlock
+* 每个方法的开头和结束打上 ping pong日志，如果不配对说明有死锁
