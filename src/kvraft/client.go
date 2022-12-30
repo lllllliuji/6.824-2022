@@ -1,13 +1,20 @@
 package kvraft
 
-import "6.824/labrpc"
-import "crypto/rand"
-import "math/big"
+import (
+	"crypto/rand"
+	"math/big"
+	"sync"
+	"sync/atomic"
 
+	"6.824/labrpc"
+)
 
 type Clerk struct {
 	servers []*labrpc.ClientEnd
 	// You will have to modify this struct.
+	mu           sync.Mutex
+	me           int32
+	recentLeader int
 }
 
 func nrand() int64 {
@@ -17,10 +24,14 @@ func nrand() int64 {
 	return x
 }
 
+var seq int32 = -1
+
 func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
 	// You'll have to add code here.
+	ck.recentLeader = 0
+	ck.me = atomic.AddInt32(&seq, 1)
 	return ck
 }
 
@@ -39,7 +50,30 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 func (ck *Clerk) Get(key string) string {
 
 	// You will have to modify this function.
-	return ""
+	ck.mu.Lock()
+	defer ck.mu.Unlock()
+	args := GetArgs{
+		Key:      key,
+		ClientId: ck.me,
+	}
+	reply := GetReply{}
+	// keep trying forever, like comments say
+	// debug(dInfo, "C%v GetRequest %v", ck.me, key)
+	for {
+		ok := ck.servers[ck.recentLeader].Call("KVServer.Get", &args, &reply)
+		if ok && reply.Success {
+			debug(dInfo, "C%v successfully Get Key: %v, Value: %v", ck.me, key, reply.Value)
+			return reply.Value
+		}
+		for i := 0; i < len(ck.servers); i++ {
+			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
+			if ok && reply.Success {
+				ck.recentLeader = i
+				debug(dInfo, "C%v successfully Get Key: %v, Value: %v", ck.me, key, reply.Value)
+				return reply.Value
+			}
+		}
+	}
 }
 
 //
@@ -54,6 +88,30 @@ func (ck *Clerk) Get(key string) string {
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	// You will have to modify this function.
+	ck.mu.Lock()
+	defer ck.mu.Unlock()
+	args := PutAppendArgs{
+		Key:      key,
+		Value:    value,
+		Op:       op,
+		ClientId: ck.me,
+	}
+	reply := PutAppendReply{}
+	// debug(dInfo, "C%v %vRequest, Key: %v, Value: %v", ck.me, op, key, value)
+	for {
+		ok := ck.servers[ck.recentLeader].Call("KVServer.PutAppend", &args, &reply)
+		if ok && reply.Err == "" {
+			return
+		}
+		for i := 0; i < len(ck.servers); i++ {
+			ok := ck.servers[i].Call("KVServer.PutAppend", &args, &reply)
+			if ok && reply.Err == "" {
+				ck.recentLeader = i
+				return
+			}
+		}
+	}
+
 }
 
 func (ck *Clerk) Put(key string, value string) {

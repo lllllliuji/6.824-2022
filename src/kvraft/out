@@ -1,0 +1,1866 @@
+Test: one client (3A) ...
+005010 VOTE S1 in term 1 issued a election
+005015 LOG1 S0 receive request vote from S1
+005016 VOTE S0 term 1 voted for S1 in term 1
+005016 LOG1 S3 receive request vote from S1
+005016 VOTE S3 term 1 voted for S1 in term 1
+005016 LOG1 S2 receive request vote from S1
+005017 VOTE S2 term 1 voted for S1 in term 1
+005017 LOG1 S4 receive request vote from S1
+005018 VOTE S4 term 1 voted for S1 in term 1
+005017 VOTE S1 got enough votes(3), became leader of term 1
+005019 INFO Leader S1 receive Get Request Get 0, from C1
+005019 INFO Leader S1 replicated log 1 {true {0 1} {   0} 762736886063595850}
+005022 LOG1 S4 received log [1, 1] from S1, commitId 0 leaderCommitId 0
+005022 LOG1 S2 received log [1, 1] from S1, commitId 0 leaderCommitId 0
+005023 LOG1 S0 received log [1, 1] from S1, commitId 0 leaderCommitId 0
+005022 LOG1 S3 received log [1, 1] from S1, commitId 0 leaderCommitId 0
+005121 INFO S1 applied log[1, 1], lastApplied 1
+005122 INFO S1 Complete GetRequest 0
+005123 INFO C1 successfully Get Key: 0, Value: 
+005124 INFO S1 receive AppendRequest [0, x 0 0 y], from C1
+005125 INFO Leader S1 replicated log 2 {false { 0} {0 x 0 0 y Append 1} 790870382688246844}
+006019 INFO S4 applied log[1, 1], lastApplied 1
+006020 INFO S2 applied log[1, 1], lastApplied 1
+006020 INFO S0 applied log[1, 1], lastApplied 1
+006020 INFO S3 applied log[1, 1], lastApplied 1
+006030 LOG1 S4 received log [2, 2] from S1, commitId 1 leaderCommitId 1
+006030 LOG1 S3 received log [2, 2] from S1, commitId 1 leaderCommitId 1
+006031 LOG1 S2 received log [2, 2] from S1, commitId 1 leaderCommitId 1
+006032 LOG1 S0 received log [2, 2] from S1, commitId 1 leaderCommitId 1
+006092 INFO S1 applied log[2, 2], lastApplied 2
+006093 INFO SAppend Complete 0Request [x 0 0 y, %!v(MISSING)]
+006095 INFO S1 receive AppendRequest [0, x 0 1 y], from C1
+006095 INFO Leader S1 replicated log 3 {false { 0} {0 x 0 1 y Append 1} 3854086102017534424}
+007023 INFO S4 applied log[2, 2], lastApplied 2
+007024 INFO S0 applied log[2, 2], lastApplied 2
+007024 INFO S2 applied log[2, 2], lastApplied 2
+007026 INFO S3 applied log[2, 2], lastApplied 2
+007037 LOG1 S4 received log [3, 3] from S1, commitId 2 leaderCommitId 2
+007038 LOG1 S0 received log [3, 3] from S1, commitId 2 leaderCommitId 2
+007038 LOG1 S3 received log [3, 3] from S1, commitId 2 leaderCommitId 2
+007038 LOG1 S2 received log [3, 3] from S1, commitId 2 leaderCommitId 2
+007123 INFO S1 applied log[3, 3], lastApplied 3
+007124 INFO SAppend Complete 0Request [x 0 1 y, %!v(MISSING)]
+007127 INFO S1 receive AppendRequest [0, x 0 2 y], from C1
+007127 INFO Leader S1 replicated log 4 {false { 0} {0 x 0 2 y Append 1} 3119341284733790515}
+008035 INFO S2 applied log[3, 3], lastApplied 3
+008035 INFO S4 applied log[3, 3], lastApplied 3
+008035 INFO S3 applied log[3, 3], lastApplied 3
+008035 INFO S0 applied log[3, 3], lastApplied 3
+008037 LOG1 S0 received log [4, 4] from S1, commitId 3 leaderCommitId 3
+008039 LOG1 S4 received log [4, 4] from S1, commitId 3 leaderCommitId 3
+008040 LOG1 S2 received log [4, 4] from S1, commitId 3 leaderCommitId 3
+008040 LOG1 S3 received log [4, 4] from S1, commitId 3 leaderCommitId 3
+008056 INFO S1 applied log[4, 4], lastApplied 4
+008057 INFO SAppend Complete 0Request [x 0 2 y, %!v(MISSING)]
+008058 INFO Leader S1 receive Get Request Get 0, from C1
+008058 INFO Leader S1 replicated log 5 {true {0 1} {   0} 2938728007052456107}
+009043 LOG1 S2 received log [5, 5] from S1, commitId 3 leaderCommitId 4
+009044 LOG1 S3 received log [5, 5] from S1, commitId 3 leaderCommitId 4
+009044 LOG1 S4 received log [5, 5] from S1, commitId 3 leaderCommitId 4
+009045 INFO S3 applied log[4, 4], lastApplied 4
+009045 INFO S4 applied log[4, 4], lastApplied 4
+009046 LOG1 S0 received log [5, 5] from S1, commitId 4 leaderCommitId 4
+009046 INFO S2 applied log[4, 4], lastApplied 4
+009047 INFO S0 applied log[4, 4], lastApplied 4
+009092 INFO S1 applied log[5, 5], lastApplied 5
+009093 INFO S1 Complete GetRequest 0
+009094 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 y
+009095 INFO Leader S1 receive Get Request Get 0, from C1
+009096 INFO Leader S1 replicated log 6 {true {0 1} {   0} 591652713598135257}
+010044 LOG1 S3 received log [6, 6] from S1, commitId 4 leaderCommitId 5
+010045 LOG1 S4 received log [6, 6] from S1, commitId 4 leaderCommitId 5
+010046 INFO S3 applied log[5, 5], lastApplied 5
+010046 INFO S4 applied log[5, 5], lastApplied 5
+010047 LOG1 S0 received log [6, 6] from S1, commitId 5 leaderCommitId 5
+010047 LOG1 S2 received log [6, 6] from S1, commitId 4 leaderCommitId 5
+010047 INFO S0 applied log[5, 5], lastApplied 5
+010050 INFO S2 applied log[5, 5], lastApplied 5
+010128 INFO S1 applied log[6, 6], lastApplied 6
+010129 INFO S1 Complete GetRequest 0
+010130 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 y
+010131 INFO S1 receive AppendRequest [0, x 0 3 y], from C1
+010132 INFO Leader S1 replicated log 7 {false { 0} {0 x 0 3 y Append 1} 4457139066242635049}
+011054 LOG1 S0 received log [7, 7] from S1, commitId 5 leaderCommitId 6
+011057 LOG1 S4 received log [7, 7] from S1, commitId 6 leaderCommitId 6
+011057 LOG1 S3 received log [7, 7] from S1, commitId 5 leaderCommitId 6
+011058 LOG1 S2 received log [7, 7] from S1, commitId 5 leaderCommitId 6
+011058 INFO S0 applied log[6, 6], lastApplied 6
+011059 INFO S3 applied log[6, 6], lastApplied 6
+011059 INFO S2 applied log[6, 6], lastApplied 6
+011059 INFO S4 applied log[6, 6], lastApplied 6
+011160 INFO S1 applied log[7, 7], lastApplied 7
+011161 INFO SAppend Complete 0Request [x 0 3 y, %!v(MISSING)]
+011164 INFO Leader S1 receive Get Request Get 0, from C1
+011164 INFO Leader S1 replicated log 8 {true {0 1} {   0} 188749722569565236}
+012057 LOG1 S0 received log [8, 8] from S1, commitId 6 leaderCommitId 7
+012058 INFO S0 applied log[7, 7], lastApplied 7
+012058 INFO S4 applied log[7, 7], lastApplied 7
+012059 INFO S2 applied log[7, 7], lastApplied 7
+012060 INFO S3 applied log[7, 7], lastApplied 7
+012061 LOG1 S2 received log [8, 8] from S1, commitId 7 leaderCommitId 7
+012063 LOG1 S4 received log [8, 8] from S1, commitId 7 leaderCommitId 7
+012064 LOG1 S3 received log [8, 8] from S1, commitId 7 leaderCommitId 7
+012098 INFO S1 applied log[8, 8], lastApplied 8
+012098 INFO S1 Complete GetRequest 0
+012100 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 y
+012101 INFO S1 receive AppendRequest [0, x 0 4 y], from C1
+012101 INFO Leader S1 replicated log 9 {false { 0} {0 x 0 4 y Append 1} 670997915878147479}
+013058 LOG1 S0 received log [9, 9] from S1, commitId 7 leaderCommitId 8
+013060 LOG1 S3 received log [9, 9] from S1, commitId 8 leaderCommitId 8
+013061 INFO S0 applied log[8, 8], lastApplied 8
+013059 LOG1 S2 received log [9, 9] from S1, commitId 7 leaderCommitId 8
+013061 LOG1 S4 received log [9, 9] from S1, commitId 8 leaderCommitId 8
+013061 INFO S2 applied log[8, 8], lastApplied 8
+013059 INFO S4 applied log[8, 8], lastApplied 8
+013061 INFO S3 applied log[8, 8], lastApplied 8
+013141 INFO S1 applied log[9, 9], lastApplied 9
+013141 INFO SAppend Complete 0Request [x 0 4 y, %!v(MISSING)]
+013144 INFO Leader S1 receive Get Request Get 0, from C1
+013144 INFO Leader S1 replicated log 10 {true {0 1} {   0} 2434070370905539649}
+014067 LOG1 S4 received log [10, 10] from S1, commitId 8 leaderCommitId 9
+014068 LOG1 S3 received log [10, 10] from S1, commitId 8 leaderCommitId 9
+014068 LOG1 S0 received log [10, 10] from S1, commitId 8 leaderCommitId 9
+014068 INFO S4 applied log[9, 9], lastApplied 9
+014069 INFO S3 applied log[9, 9], lastApplied 9
+014069 LOG1 S2 received log [10, 10] from S1, commitId 9 leaderCommitId 9
+014070 INFO S0 applied log[9, 9], lastApplied 9
+014070 INFO S2 applied log[9, 9], lastApplied 9
+014177 INFO S1 applied log[10, 10], lastApplied 10
+014179 INFO S1 Complete GetRequest 0
+014181 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y
+014184 INFO S1 receive AppendRequest [0, x 0 5 y], from C1
+014185 INFO Leader S1 replicated log 11 {false { 0} {0 x 0 5 y Append 1} 123827221806009200}
+015068 INFO S4 applied log[10, 10], lastApplied 10
+015068 INFO S0 applied log[10, 10], lastApplied 10
+015069 LOG1 S0 received log [11, 11] from S1, commitId 10 leaderCommitId 10
+015069 LOG1 S3 received log [11, 11] from S1, commitId 9 leaderCommitId 10
+015070 LOG1 S2 received log [11, 11] from S1, commitId 9 leaderCommitId 10
+015069 LOG1 S4 received log [11, 11] from S1, commitId 10 leaderCommitId 10
+015070 INFO S3 applied log[10, 10], lastApplied 10
+015070 INFO S2 applied log[10, 10], lastApplied 10
+015114 INFO S1 applied log[11, 11], lastApplied 11
+015115 INFO SAppend Complete 0Request [x 0 5 y, %!v(MISSING)]
+015119 INFO S1 receive AppendRequest [0, x 0 6 y], from C1
+015120 INFO Leader S1 replicated log 12 {false { 0} {0 x 0 6 y Append 1} 3577837219944183184}
+016072 LOG1 S4 received log [12, 12] from S1, commitId 11 leaderCommitId 11
+016073 LOG1 S3 received log [12, 12] from S1, commitId 10 leaderCommitId 11
+016074 INFO S0 applied log[11, 11], lastApplied 11
+016074 INFO S4 applied log[11, 11], lastApplied 11
+016074 LOG1 S2 received log [12, 12] from S1, commitId 11 leaderCommitId 11
+016075 INFO S3 applied log[11, 11], lastApplied 11
+016075 LOG1 S0 received log [12, 12] from S1, commitId 11 leaderCommitId 11
+016075 INFO S2 applied log[11, 11], lastApplied 11
+016150 INFO S1 applied log[12, 12], lastApplied 12
+016151 INFO SAppend Complete 0Request [x 0 6 y, %!v(MISSING)]
+016152 INFO S1 receive AppendRequest [0, x 0 7 y], from C1
+016153 INFO Leader S1 replicated log 13 {false { 0} {0 x 0 7 y Append 1} 4203450109435904220}
+017082 LOG1 S0 received log [13, 13] from S1, commitId 11 leaderCommitId 12
+017083 LOG1 S2 received log [13, 13] from S1, commitId 12 leaderCommitId 12
+017084 LOG1 S4 received log [13, 13] from S1, commitId 12 leaderCommitId 12
+017084 LOG1 S3 received log [13, 13] from S1, commitId 12 leaderCommitId 12
+017085 INFO S4 applied log[12, 12], lastApplied 12
+017085 INFO S2 applied log[12, 12], lastApplied 12
+017085 INFO S0 applied log[12, 12], lastApplied 12
+017085 INFO S3 applied log[12, 12], lastApplied 12
+017187 INFO S1 applied log[13, 13], lastApplied 13
+017188 INFO SAppend Complete 0Request [x 0 7 y, %!v(MISSING)]
+017190 INFO S1 receive AppendRequest [0, x 0 8 y], from C1
+017190 INFO Leader S1 replicated log 14 {false { 0} {0 x 0 8 y Append 1} 2081577358621394748}
+018093 LOG1 S4 received log [14, 14] from S1, commitId 12 leaderCommitId 13
+018095 LOG1 S3 received log [14, 14] from S1, commitId 13 leaderCommitId 13
+018095 INFO S4 applied log[13, 13], lastApplied 13
+018094 LOG1 S0 received log [14, 14] from S1, commitId 12 leaderCommitId 13
+018096 INFO S3 applied log[13, 13], lastApplied 13
+018094 LOG1 S2 received log [14, 14] from S1, commitId 12 leaderCommitId 13
+018096 INFO S2 applied log[13, 13], lastApplied 13
+018097 INFO S0 applied log[13, 13], lastApplied 13
+018117 INFO S1 applied log[14, 14], lastApplied 14
+018118 INFO SAppend Complete 0Request [x 0 8 y, %!v(MISSING)]
+018120 INFO S1 receive AppendRequest [0, x 0 9 y], from C1
+018121 INFO Leader S1 replicated log 15 {false { 0} {0 x 0 9 y Append 1} 711097179701747882}
+019099 LOG1 S3 received log [15, 15] from S1, commitId 13 leaderCommitId 14
+019100 LOG1 S0 received log [15, 15] from S1, commitId 14 leaderCommitId 14
+019101 LOG1 S4 received log [15, 15] from S1, commitId 13 leaderCommitId 14
+019101 LOG1 S2 received log [15, 15] from S1, commitId 14 leaderCommitId 14
+019101 INFO S0 applied log[14, 14], lastApplied 14
+019101 INFO S3 applied log[14, 14], lastApplied 14
+019099 INFO S2 applied log[14, 14], lastApplied 14
+019101 INFO S4 applied log[14, 14], lastApplied 14
+019160 INFO S1 applied log[15, 15], lastApplied 15
+019162 INFO SAppend Complete 0Request [x 0 9 y, %!v(MISSING)]
+019166 INFO Leader S1 receive Get Request Get 0, from C1
+019166 INFO Leader S1 replicated log 16 {true {0 1} {   0} 599979143399885365}
+020107 LOG1 S2 received log [16, 16] from S1, commitId 14 leaderCommitId 15
+020108 LOG1 S3 received log [16, 16] from S1, commitId 14 leaderCommitId 15
+020108 LOG1 S4 received log [16, 16] from S1, commitId 14 leaderCommitId 15
+020108 LOG1 S0 received log [16, 16] from S1, commitId 14 leaderCommitId 15
+020108 INFO S2 applied log[15, 15], lastApplied 15
+020109 INFO S3 applied log[15, 15], lastApplied 15
+020110 INFO S4 applied log[15, 15], lastApplied 15
+020111 INFO S0 applied log[15, 15], lastApplied 15
+020198 INFO S1 applied log[16, 16], lastApplied 16
+020199 INFO S1 Complete GetRequest 0
+020201 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y
+020203 INFO S1 receive AppendRequest [0, x 0 10 y], from C1
+020203 INFO Leader S1 replicated log 17 {false { 0} {0 x 0 10 y Append 1} 2443797535567305815}
+021111 LOG1 S0 received log [17, 17] from S1, commitId 15 leaderCommitId 16
+021111 LOG1 S2 received log [17, 17] from S1, commitId 15 leaderCommitId 16
+021113 LOG1 S4 received log [17, 17] from S1, commitId 15 leaderCommitId 16
+021114 INFO S0 applied log[16, 16], lastApplied 16
+021114 INFO S2 applied log[16, 16], lastApplied 16
+021114 INFO S4 applied log[16, 16], lastApplied 16
+021116 LOG1 S3 received log [17, 17] from S1, commitId 15 leaderCommitId 16
+021118 INFO S3 applied log[16, 16], lastApplied 16
+021143 INFO S1 applied log[17, 17], lastApplied 17
+021144 INFO SAppend Complete 0Request [x 0 10 y, %!v(MISSING)]
+021146 INFO Leader S1 receive Get Request Get 0, from C1
+021147 INFO Leader S1 replicated log 18 {true {0 1} {   0} 2756234813231642051}
+022124 LOG1 S0 received log [18, 18] from S1, commitId 16 leaderCommitId 17
+022124 INFO S3 applied log[17, 17], lastApplied 17
+022127 INFO S0 applied log[17, 17], lastApplied 17
+022124 LOG1 S4 received log [18, 18] from S1, commitId 16 leaderCommitId 17
+022124 LOG1 S2 received log [18, 18] from S1, commitId 17 leaderCommitId 17
+022126 LOG1 S3 received log [18, 18] from S1, commitId 17 leaderCommitId 17
+022130 INFO S4 applied log[17, 17], lastApplied 17
+022133 INFO S2 applied log[17, 17], lastApplied 17
+022193 INFO S1 applied log[18, 18], lastApplied 18
+022194 INFO S1 Complete GetRequest 0
+022195 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y
+022196 INFO S1 receive AppendRequest [0, x 0 11 y], from C1
+022196 INFO Leader S1 replicated log 19 {false { 0} {0 x 0 11 y Append 1} 1877230024610125042}
+023125 LOG1 S4 received log [19, 19] from S1, commitId 17 leaderCommitId 18
+023126 LOG1 S2 received log [19, 19] from S1, commitId 17 leaderCommitId 18
+023126 LOG1 S0 received log [19, 19] from S1, commitId 17 leaderCommitId 18
+023127 LOG1 S3 received log [19, 19] from S1, commitId 17 leaderCommitId 18
+023128 INFO S4 applied log[18, 18], lastApplied 18
+023127 INFO S2 applied log[18, 18], lastApplied 18
+023127 INFO S0 applied log[18, 18], lastApplied 18
+023128 INFO S3 applied log[18, 18], lastApplied 18
+023229 INFO S1 applied log[19, 19], lastApplied 19
+023229 INFO SAppend Complete 0Request [x 0 11 y, %!v(MISSING)]
+023231 INFO S1 receive AppendRequest [0, x 0 12 y], from C1
+023232 INFO Leader S1 replicated log 20 {false { 0} {0 x 0 12 y Append 1} 642369509218780794}
+024127 LOG1 S4 received log [20, 20] from S1, commitId 18 leaderCommitId 19
+024129 INFO S4 applied log[19, 19], lastApplied 19
+024129 LOG1 S0 received log [20, 20] from S1, commitId 18 leaderCommitId 19
+024130 LOG1 S3 received log [20, 20] from S1, commitId 18 leaderCommitId 19
+024131 INFO S0 applied log[19, 19], lastApplied 19
+024131 INFO S3 applied log[19, 19], lastApplied 19
+024131 INFO S2 applied log[19, 19], lastApplied 19
+024132 LOG1 S2 received log [20, 20] from S1, commitId 19 leaderCommitId 19
+024156 INFO S1 applied log[20, 20], lastApplied 20
+024157 INFO SAppend Complete 0Request [x 0 12 y, %!v(MISSING)]
+024161 INFO S1 receive AppendRequest [0, x 0 13 y], from C1
+024162 INFO Leader S1 replicated log 21 {false { 0} {0 x 0 13 y Append 1} 2573541330601766638}
+025136 LOG1 S3 received log [21, 21] from S1, commitId 19 leaderCommitId 20
+025137 LOG1 S2 received log [21, 21] from S1, commitId 20 leaderCommitId 20
+025137 LOG1 S4 received log [21, 21] from S1, commitId 19 leaderCommitId 20
+025136 LOG1 S0 received log [21, 21] from S1, commitId 19 leaderCommitId 20
+025137 INFO S2 applied log[20, 20], lastApplied 20
+025137 INFO S3 applied log[20, 20], lastApplied 20
+025137 INFO S0 applied log[20, 20], lastApplied 20
+025138 INFO S4 applied log[20, 20], lastApplied 20
+025195 INFO S1 applied log[21, 21], lastApplied 21
+025195 INFO SAppend Complete 0Request [x 0 13 y, %!v(MISSING)]
+025197 INFO Leader S1 receive Get Request Get 0, from C1
+025198 INFO Leader S1 replicated log 22 {true {0 1} {   0} 3168726927932642395}
+026137 INFO S4 applied log[21, 21], lastApplied 21
+026138 INFO S2 applied log[21, 21], lastApplied 21
+026138 LOG1 S0 received log [22, 22] from S1, commitId 20 leaderCommitId 21
+026139 INFO S0 applied log[21, 21], lastApplied 21
+026139 LOG1 S2 received log [22, 22] from S1, commitId 21 leaderCommitId 21
+026140 LOG1 S3 received log [22, 22] from S1, commitId 20 leaderCommitId 21
+026140 LOG1 S4 received log [22, 22] from S1, commitId 21 leaderCommitId 21
+026142 INFO S3 applied log[21, 21], lastApplied 21
+026230 INFO S1 applied log[22, 22], lastApplied 22
+026232 INFO S1 Complete GetRequest 0
+026234 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+026237 INFO Leader S1 receive Get Request Get 0, from C1
+026238 INFO Leader S1 replicated log 23 {true {0 1} {   0} 3438742292787837725}
+027146 LOG1 S2 received log [23, 23] from S1, commitId 21 leaderCommitId 22
+027147 LOG1 S3 received log [23, 23] from S1, commitId 21 leaderCommitId 22
+027148 INFO S4 applied log[22, 22], lastApplied 22
+027146 LOG1 S0 received log [23, 23] from S1, commitId 21 leaderCommitId 22
+027147 INFO S2 applied log[22, 22], lastApplied 22
+027149 INFO S3 applied log[22, 22], lastApplied 22
+027149 LOG1 S4 received log [23, 23] from S1, commitId 22 leaderCommitId 22
+027149 INFO S0 applied log[22, 22], lastApplied 22
+027162 INFO S1 applied log[23, 23], lastApplied 23
+027162 INFO S1 Complete GetRequest 0
+027164 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+027166 INFO Leader S1 receive Get Request Get 0, from C1
+027166 INFO Leader S1 replicated log 24 {true {0 1} {   0} 2669286964888606111}
+028153 LOG1 S2 received log [24, 24] from S1, commitId 22 leaderCommitId 23
+028153 LOG1 S0 received log [24, 24] from S1, commitId 22 leaderCommitId 23
+028156 LOG1 S4 received log [24, 24] from S1, commitId 22 leaderCommitId 23
+028157 INFO S2 applied log[23, 23], lastApplied 23
+028157 LOG1 S3 received log [24, 24] from S1, commitId 22 leaderCommitId 23
+028160 INFO S0 applied log[23, 23], lastApplied 23
+028163 INFO S3 applied log[23, 23], lastApplied 23
+028168 INFO S4 applied log[23, 23], lastApplied 23
+028198 INFO S1 applied log[24, 24], lastApplied 24
+028199 INFO S1 Complete GetRequest 0
+028200 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+028201 INFO Leader S1 receive Get Request Get 0, from C1
+028202 INFO Leader S1 replicated log 25 {true {0 1} {   0} 3482901497980023542}
+029159 LOG1 S3 received log [25, 25] from S1, commitId 23 leaderCommitId 24
+029161 LOG1 S2 received log [25, 25] from S1, commitId 23 leaderCommitId 24
+029162 INFO S4 applied log[24, 24], lastApplied 24
+029161 INFO S3 applied log[24, 24], lastApplied 24
+029161 LOG1 S0 received log [25, 25] from S1, commitId 23 leaderCommitId 24
+029162 INFO S2 applied log[24, 24], lastApplied 24
+029163 LOG1 S4 received log [25, 25] from S1, commitId 24 leaderCommitId 24
+029163 INFO S0 applied log[24, 24], lastApplied 24
+029243 INFO S1 applied log[25, 25], lastApplied 25
+029244 INFO S1 Complete GetRequest 0
+029245 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+029247 INFO Leader S1 receive Get Request Get 0, from C1
+029247 INFO Leader S1 replicated log 26 {true {0 1} {   0} 4579367572382206127}
+030171 LOG1 S4 received log [26, 26] from S1, commitId 24 leaderCommitId 25
+030172 INFO S0 applied log[25, 25], lastApplied 25
+030171 LOG1 S3 received log [26, 26] from S1, commitId 24 leaderCommitId 25
+030172 INFO S4 applied log[25, 25], lastApplied 25
+030173 LOG1 S0 received log [26, 26] from S1, commitId 25 leaderCommitId 25
+030173 LOG1 S2 received log [26, 26] from S1, commitId 24 leaderCommitId 25
+030174 INFO S3 applied log[25, 25], lastApplied 25
+030175 INFO S2 applied log[25, 25], lastApplied 25
+030272 INFO S1 applied log[26, 26], lastApplied 26
+030273 INFO S1 Complete GetRequest 0
+030275 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+030277 INFO Leader S1 receive Get Request Get 0, from C1
+030278 INFO Leader S1 replicated log 27 {true {0 1} {   0} 2927836299863120661}
+031176 LOG1 S3 received log [27, 27] from S1, commitId 25 leaderCommitId 26
+031177 LOG1 S2 received log [27, 27] from S1, commitId 25 leaderCommitId 26
+031177 INFO S0 applied log[26, 26], lastApplied 26
+031178 LOG1 S0 received log [27, 27] from S1, commitId 26 leaderCommitId 26
+031178 INFO S3 applied log[26, 26], lastApplied 26
+031178 INFO S2 applied log[26, 26], lastApplied 26
+031178 INFO S4 applied log[26, 26], lastApplied 26
+031179 LOG1 S4 received log [27, 27] from S1, commitId 26 leaderCommitId 26
+031202 INFO S1 applied log[27, 27], lastApplied 27
+031202 INFO S1 Complete GetRequest 0
+031204 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+031206 INFO Leader S1 receive Get Request Get 0, from C1
+031207 INFO Leader S1 replicated log 28 {true {0 1} {   0} 3095957169462052097}
+032186 LOG1 S2 received log [28, 28] from S1, commitId 26 leaderCommitId 27
+032186 LOG1 S0 received log [28, 28] from S1, commitId 26 leaderCommitId 27
+032187 LOG1 S3 received log [28, 28] from S1, commitId 26 leaderCommitId 27
+032187 INFO S0 applied log[27, 27], lastApplied 27
+032187 INFO S3 applied log[27, 27], lastApplied 27
+032188 LOG1 S4 received log [28, 28] from S1, commitId 26 leaderCommitId 27
+032189 INFO S2 applied log[27, 27], lastApplied 27
+032190 INFO S4 applied log[27, 27], lastApplied 27
+032247 INFO S1 applied log[28, 28], lastApplied 28
+032248 INFO S1 Complete GetRequest 0
+032250 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+032252 INFO Leader S1 receive Get Request Get 0, from C1
+032253 INFO Leader S1 replicated log 29 {true {0 1} {   0} 521610078152199986}
+033193 LOG1 S3 received log [29, 29] from S1, commitId 27 leaderCommitId 28
+033193 LOG1 S0 received log [29, 29] from S1, commitId 27 leaderCommitId 28
+033194 INFO S3 applied log[28, 28], lastApplied 28
+033193 LOG1 S2 received log [29, 29] from S1, commitId 27 leaderCommitId 28
+033195 INFO S0 applied log[28, 28], lastApplied 28
+033195 INFO S2 applied log[28, 28], lastApplied 28
+033194 LOG1 S4 received log [29, 29] from S1, commitId 27 leaderCommitId 28
+033196 INFO S4 applied log[28, 28], lastApplied 28
+033289 INFO S1 applied log[29, 29], lastApplied 29
+033290 INFO S1 Complete GetRequest 0
+033292 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+033294 INFO S1 receive AppendRequest [0, x 0 14 y], from C1
+033295 INFO Leader S1 replicated log 30 {false { 0} {0 x 0 14 y Append 1} 3419751954851891847}
+034197 LOG1 S3 received log [30, 30] from S1, commitId 28 leaderCommitId 29
+034199 LOG1 S2 received log [30, 30] from S1, commitId 29 leaderCommitId 29
+034199 LOG1 S4 received log [30, 30] from S1, commitId 29 leaderCommitId 29
+034198 LOG1 S0 received log [30, 30] from S1, commitId 28 leaderCommitId 29
+034199 INFO S3 applied log[29, 29], lastApplied 29
+034201 INFO S2 applied log[29, 29], lastApplied 29
+034201 INFO S4 applied log[29, 29], lastApplied 29
+034202 INFO S0 applied log[29, 29], lastApplied 29
+034223 INFO S1 applied log[30, 30], lastApplied 30
+034224 INFO SAppend Complete 0Request [x 0 14 y, %!v(MISSING)]
+034225 INFO Leader S1 receive Get Request Get 0, from C1
+034226 INFO Leader S1 replicated log 31 {true {0 1} {   0} 4290251162298439869}
+035198 INFO S3 applied log[30, 30], lastApplied 30
+035198 LOG1 S3 received log [31, 31] from S1, commitId 30 leaderCommitId 30
+035199 LOG1 S4 received log [31, 31] from S1, commitId 29 leaderCommitId 30
+035198 LOG1 S2 received log [31, 31] from S1, commitId 29 leaderCommitId 30
+035200 INFO S4 applied log[30, 30], lastApplied 30
+035200 INFO S0 applied log[30, 30], lastApplied 30
+035201 LOG1 S0 received log [31, 31] from S1, commitId 30 leaderCommitId 30
+035202 INFO S2 applied log[30, 30], lastApplied 30
+035268 INFO S1 applied log[31, 31], lastApplied 31
+035269 INFO S1 Complete GetRequest 0
+035270 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 y
+035272 INFO S1 receive AppendRequest [0, x 0 15 y], from C1
+035272 INFO Leader S1 replicated log 32 {false { 0} {0 x 0 15 y Append 1} 4049199992187724793}
+036201 INFO S4 applied log[31, 31], lastApplied 31
+036201 LOG1 S2 received log [32, 32] from S1, commitId 31 leaderCommitId 31
+036202 LOG1 S4 received log [32, 32] from S1, commitId 31 leaderCommitId 31
+036202 LOG1 S3 received log [32, 32] from S1, commitId 31 leaderCommitId 31
+036201 LOG1 S0 received log [32, 32] from S1, commitId 30 leaderCommitId 31
+036203 INFO S2 applied log[31, 31], lastApplied 31
+036203 INFO S3 applied log[31, 31], lastApplied 31
+036204 INFO S0 applied log[31, 31], lastApplied 31
+036311 INFO S1 applied log[32, 32], lastApplied 32
+036312 INFO SAppend Complete 0Request [x 0 15 y, %!v(MISSING)]
+036314 INFO Leader S1 receive Get Request Get 0, from C1
+036314 INFO Leader S1 replicated log 33 {true {0 1} {   0} 253334991226188908}
+037202 LOG1 S4 received log [33, 33] from S1, commitId 31 leaderCommitId 32
+037203 LOG1 S2 received log [33, 33] from S1, commitId 31 leaderCommitId 32
+037205 INFO S4 applied log[32, 32], lastApplied 32
+037206 LOG1 S3 received log [33, 33] from S1, commitId 31 leaderCommitId 32
+037206 INFO S2 applied log[32, 32], lastApplied 32
+037207 LOG1 S0 received log [33, 33] from S1, commitId 32 leaderCommitId 32
+037208 INFO S3 applied log[32, 32], lastApplied 32
+037208 INFO S0 applied log[32, 32], lastApplied 32
+037263 INFO S1 applied log[33, 33], lastApplied 33
+037264 INFO S1 Complete GetRequest 0
+037265 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 y
+037267 INFO S1 receive AppendRequest [0, x 0 16 y], from C1
+037268 INFO Leader S1 replicated log 34 {false { 0} {0 x 0 16 y Append 1} 2496708781691519930}
+038205 LOG1 S3 received log [34, 34] from S1, commitId 32 leaderCommitId 33
+038206 LOG1 S2 received log [34, 34] from S1, commitId 33 leaderCommitId 33
+038206 LOG1 S4 received log [34, 34] from S1, commitId 32 leaderCommitId 33
+038207 INFO S3 applied log[33, 33], lastApplied 33
+038207 LOG1 S0 received log [34, 34] from S1, commitId 32 leaderCommitId 33
+038207 INFO S4 applied log[33, 33], lastApplied 33
+038206 INFO S2 applied log[33, 33], lastApplied 33
+038208 INFO S0 applied log[33, 33], lastApplied 33
+038310 INFO S1 applied log[34, 34], lastApplied 34
+038311 INFO SAppend Complete 0Request [x 0 16 y, %!v(MISSING)]
+038313 INFO Leader S1 receive Get Request Get 0, from C1
+038314 INFO Leader S1 replicated log 35 {true {0 1} {   0} 2442460949206006081}
+039217 LOG1 S2 received log [35, 35] from S1, commitId 33 leaderCommitId 34
+039219 LOG1 S4 received log [35, 35] from S1, commitId 33 leaderCommitId 34
+039220 LOG1 S3 received log [35, 35] from S1, commitId 33 leaderCommitId 34
+039219 INFO S2 applied log[34, 34], lastApplied 34
+039221 INFO S4 applied log[34, 34], lastApplied 34
+039221 LOG1 S0 received log [35, 35] from S1, commitId 34 leaderCommitId 34
+039229 INFO S0 applied log[34, 34], lastApplied 34
+039231 INFO S3 applied log[34, 34], lastApplied 34
+039244 INFO S1 applied log[35, 35], lastApplied 35
+039245 INFO S1 Complete GetRequest 0
+039246 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 y
+039248 INFO S1 receive AppendRequest [0, x 0 17 y], from C1
+039248 INFO Leader S1 replicated log 36 {false { 0} {0 x 0 17 y Append 1} 445483431672615647}
+040219 LOG1 S2 received log [36, 36] from S1, commitId 34 leaderCommitId 35
+040220 INFO S0 applied log[35, 35], lastApplied 35
+040220 LOG1 S3 received log [36, 36] from S1, commitId 34 leaderCommitId 35
+040221 LOG1 S0 received log [36, 36] from S1, commitId 35 leaderCommitId 35
+040221 INFO S4 applied log[35, 35], lastApplied 35
+040222 INFO S2 applied log[35, 35], lastApplied 35
+040222 LOG1 S4 received log [36, 36] from S1, commitId 35 leaderCommitId 35
+040223 INFO S3 applied log[35, 35], lastApplied 35
+040288 INFO S1 applied log[36, 36], lastApplied 36
+040289 INFO SAppend Complete 0Request [x 0 17 y, %!v(MISSING)]
+040291 INFO S1 receive AppendRequest [0, x 0 18 y], from C1
+040292 INFO Leader S1 replicated log 37 {false { 0} {0 x 0 18 y Append 1} 3495890787521907236}
+041224 LOG1 S2 received log [37, 37] from S1, commitId 35 leaderCommitId 36
+041226 LOG1 S4 received log [37, 37] from S1, commitId 36 leaderCommitId 36
+041225 LOG1 S3 received log [37, 37] from S1, commitId 35 leaderCommitId 36
+041226 LOG1 S0 received log [37, 37] from S1, commitId 35 leaderCommitId 36
+041226 INFO S2 applied log[36, 36], lastApplied 36
+041227 INFO S4 applied log[36, 36], lastApplied 36
+041227 INFO S3 applied log[36, 36], lastApplied 36
+041228 INFO S0 applied log[36, 36], lastApplied 36
+041326 INFO S1 applied log[37, 37], lastApplied 37
+041327 INFO SAppend Complete 0Request [x 0 18 y, %!v(MISSING)]
+041331 INFO Leader S1 receive Get Request Get 0, from C1
+041332 INFO Leader S1 replicated log 38 {true {0 1} {   0} 936225410399169146}
+042235 LOG1 S2 received log [38, 38] from S1, commitId 36 leaderCommitId 37
+042237 INFO S2 applied log[37, 37], lastApplied 37
+042237 LOG1 S4 received log [38, 38] from S1, commitId 37 leaderCommitId 37
+042238 LOG1 S0 received log [38, 38] from S1, commitId 36 leaderCommitId 37
+042238 INFO S4 applied log[37, 37], lastApplied 37
+042239 LOG1 S3 received log [38, 38] from S1, commitId 37 leaderCommitId 37
+042241 INFO S3 applied log[37, 37], lastApplied 37
+042241 INFO S0 applied log[37, 37], lastApplied 37
+042261 INFO S1 applied log[38, 38], lastApplied 38
+042262 INFO S1 Complete GetRequest 0
+042263 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y
+042264 INFO Leader S1 receive Get Request Get 0, from C1
+042265 INFO Leader S1 replicated log 39 {true {0 1} {   0} 1050227118413445504}
+043245 LOG1 S0 received log [39, 39] from S1, commitId 37 leaderCommitId 38
+043247 LOG1 S2 received log [39, 39] from S1, commitId 37 leaderCommitId 38
+043248 INFO S0 applied log[38, 38], lastApplied 38
+043250 INFO S2 applied log[38, 38], lastApplied 38
+043250 LOG1 S3 received log [39, 39] from S1, commitId 37 leaderCommitId 38
+043252 INFO S4 applied log[38, 38], lastApplied 38
+043253 INFO S3 applied log[38, 38], lastApplied 38
+043255 LOG1 S4 received log [39, 39] from S1, commitId 38 leaderCommitId 38
+043300 INFO S1 applied log[39, 39], lastApplied 39
+043301 INFO S1 Complete GetRequest 0
+043303 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y
+043305 INFO S1 receive AppendRequest [0, x 0 19 y], from C1
+043305 INFO Leader S1 replicated log 40 {false { 0} {0 x 0 19 y Append 1} 1368254433898949031}
+044251 LOG1 S4 received log [40, 40] from S1, commitId 39 leaderCommitId 39
+044252 INFO S0 applied log[39, 39], lastApplied 39
+044252 LOG1 S2 received log [40, 40] from S1, commitId 38 leaderCommitId 39
+044253 LOG1 S0 received log [40, 40] from S1, commitId 39 leaderCommitId 39
+044252 LOG1 S3 received log [40, 40] from S1, commitId 38 leaderCommitId 39
+044253 INFO S2 applied log[39, 39], lastApplied 39
+044253 INFO S4 applied log[39, 39], lastApplied 39
+044254 INFO S3 applied log[39, 39], lastApplied 39
+044344 INFO S1 applied log[40, 40], lastApplied 40
+044344 INFO SAppend Complete 0Request [x 0 19 y, %!v(MISSING)]
+044348 INFO S1 receive AppendRequest [0, x 0 20 y], from C1
+044348 INFO Leader S1 replicated log 41 {false { 0} {0 x 0 20 y Append 1} 896338728963891782}
+045260 LOG1 S2 received log [41, 41] from S1, commitId 40 leaderCommitId 40
+045261 INFO S2 applied log[40, 40], lastApplied 40
+045262 LOG1 S0 received log [41, 41] from S1, commitId 40 leaderCommitId 40
+045262 LOG1 S3 received log [41, 41] from S1, commitId 40 leaderCommitId 40
+045261 LOG1 S4 received log [41, 41] from S1, commitId 40 leaderCommitId 40
+045263 INFO S0 applied log[40, 40], lastApplied 40
+045263 INFO S3 applied log[40, 40], lastApplied 40
+045265 INFO S4 applied log[40, 40], lastApplied 40
+045273 INFO S1 applied log[41, 41], lastApplied 41
+045274 INFO SAppend Complete 0Request [x 0 20 y, %!v(MISSING)]
+045276 INFO Leader S1 receive Get Request Get 0, from C1
+045276 INFO Leader S1 replicated log 42 {true {0 1} {   0} 4567511635638479579}
+046268 LOG1 S2 received log [42, 42] from S1, commitId 40 leaderCommitId 41
+046269 LOG1 S3 received log [42, 42] from S1, commitId 40 leaderCommitId 41
+046271 INFO S2 applied log[41, 41], lastApplied 41
+046271 INFO S3 applied log[41, 41], lastApplied 41
+046271 LOG1 S4 received log [42, 42] from S1, commitId 41 leaderCommitId 41
+046272 LOG1 S0 received log [42, 42] from S1, commitId 40 leaderCommitId 41
+046273 INFO S4 applied log[41, 41], lastApplied 41
+046273 INFO S0 applied log[41, 41], lastApplied 41
+046321 INFO S1 applied log[42, 42], lastApplied 42
+046322 INFO S1 Complete GetRequest 0
+046323 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+046325 INFO Leader S1 receive Get Request Get 0, from C1
+046325 INFO Leader S1 replicated log 43 {true {0 1} {   0} 1898971324707325797}
+047270 LOG1 S3 received log [43, 43] from S1, commitId 41 leaderCommitId 42
+047271 LOG1 S2 received log [43, 43] from S1, commitId 41 leaderCommitId 42
+047271 LOG1 S0 received log [43, 43] from S1, commitId 41 leaderCommitId 42
+047272 INFO S0 applied log[42, 42], lastApplied 42
+047272 INFO S2 applied log[42, 42], lastApplied 42
+047272 LOG1 S4 received log [43, 43] from S1, commitId 42 leaderCommitId 42
+047273 INFO S3 applied log[42, 42], lastApplied 42
+047273 INFO S4 applied log[42, 42], lastApplied 42
+047365 INFO S1 applied log[43, 43], lastApplied 43
+047366 INFO S1 Complete GetRequest 0
+047366 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+047367 INFO S1 receive AppendRequest [0, x 0 21 y], from C1
+047367 INFO Leader S1 replicated log 44 {false { 0} {0 x 0 21 y Append 1} 3477563439718190479}
+048277 LOG1 S0 received log [44, 44] from S1, commitId 42 leaderCommitId 43
+048278 LOG1 S3 received log [44, 44] from S1, commitId 42 leaderCommitId 43
+048278 LOG1 S2 received log [44, 44] from S1, commitId 42 leaderCommitId 43
+048277 LOG1 S4 received log [44, 44] from S1, commitId 42 leaderCommitId 43
+048279 INFO S2 applied log[43, 43], lastApplied 43
+048279 INFO S0 applied log[43, 43], lastApplied 43
+048279 INFO S3 applied log[43, 43], lastApplied 43
+048280 INFO S4 applied log[43, 43], lastApplied 43
+048304 INFO S1 applied log[44, 44], lastApplied 44
+048304 INFO SAppend Complete 0Request [x 0 21 y, %!v(MISSING)]
+048307 INFO S1 receive AppendRequest [0, x 0 22 y], from C1
+048307 INFO Leader S1 replicated log 45 {false { 0} {0 x 0 22 y Append 1} 2170382903800843255}
+049283 LOG1 S4 received log [45, 45] from S1, commitId 43 leaderCommitId 44
+049284 LOG1 S3 received log [45, 45] from S1, commitId 43 leaderCommitId 44
+049284 LOG1 S0 received log [45, 45] from S1, commitId 43 leaderCommitId 44
+049285 INFO S2 applied log[44, 44], lastApplied 44
+049286 INFO S3 applied log[44, 44], lastApplied 44
+049286 INFO S0 applied log[44, 44], lastApplied 44
+049284 INFO S4 applied log[44, 44], lastApplied 44
+049287 LOG1 S2 received log [45, 45] from S1, commitId 44 leaderCommitId 44
+049349 INFO S1 applied log[45, 45], lastApplied 45
+049350 INFO SAppend Complete 0Request [x 0 22 y, %!v(MISSING)]
+049355 INFO Leader S1 receive Get Request Get 0, from C1
+049356 INFO Leader S1 replicated log 46 {true {0 1} {   0} 3857552015269692884}
+050284 LOG1 S0 received log [46, 46] from S1, commitId 44 leaderCommitId 45
+050286 LOG1 S4 received log [46, 46] from S1, commitId 45 leaderCommitId 45
+050287 LOG1 S2 received log [46, 46] from S1, commitId 45 leaderCommitId 45
+050287 LOG1 S3 received log [46, 46] from S1, commitId 44 leaderCommitId 45
+050286 INFO S4 applied log[45, 45], lastApplied 45
+050287 INFO S0 applied log[45, 45], lastApplied 45
+050289 INFO S2 applied log[45, 45], lastApplied 45
+050290 INFO S3 applied log[45, 45], lastApplied 45
+050389 INFO S1 applied log[46, 46], lastApplied 46
+050390 INFO S1 Complete GetRequest 0
+050392 INFO C1 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 y
+050398 INFO Leader S1 receive Get Request Get 0, from C0
+050398 INFO Leader S1 replicated log 47 {true {0 0} {   0} 238902114846279307}
+051286 LOG1 S0 received log [47, 47] from S1, commitId 45 leaderCommitId 46
+051287 LOG1 S4 received log [47, 47] from S1, commitId 46 leaderCommitId 46
+051288 INFO S0 applied log[46, 46], lastApplied 46
+051289 LOG1 S2 received log [47, 47] from S1, commitId 45 leaderCommitId 46
+051289 INFO S4 applied log[46, 46], lastApplied 46
+051290 INFO S3 applied log[46, 46], lastApplied 46
+051291 LOG1 S3 received log [47, 47] from S1, commitId 46 leaderCommitId 46
+051292 INFO S2 applied log[46, 46], lastApplied 46
+051322 INFO S1 applied log[47, 47], lastApplied 47
+051323 INFO S1 Complete GetRequest 0
+051324 INFO C0 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 y
+051326 INFO S1 receive PutRequest [0, ], from C2
+051326 INFO Leader S1 replicated log 48 {false { 0} {0  Put 2} 1832730815213101944}
+052293 LOG1 S3 received log [48, 48] from S1, commitId 46 leaderCommitId 47
+052295 LOG1 S0 received log [48, 48] from S1, commitId 46 leaderCommitId 47
+052296 INFO S4 applied log[47, 47], lastApplied 47
+052296 LOG1 S4 received log [48, 48] from S1, commitId 47 leaderCommitId 47
+052297 INFO S3 applied log[47, 47], lastApplied 47
+052298 INFO S0 applied log[47, 47], lastApplied 47
+052297 LOG1 S2 received log [48, 48] from S1, commitId 46 leaderCommitId 47
+052302 INFO S2 applied log[47, 47], lastApplied 47
+052369 INFO S1 applied log[48, 48], lastApplied 48
+052370 INFO SPut Complete 0Request [, %!v(MISSING)]
+052373 INFO S1 receive AppendRequest [0, x 0 0 y], from C2
+052373 INFO Leader S1 replicated log 49 {false { 0} {0 x 0 0 y Append 2} 2566021805741125671}
+053296 LOG1 S0 received log [49, 49] from S1, commitId 47 leaderCommitId 48
+053300 LOG1 S3 received log [49, 49] from S1, commitId 47 leaderCommitId 48
+053301 LOG1 S2 received log [49, 49] from S1, commitId 47 leaderCommitId 48
+053302 LOG1 S4 received log [49, 49] from S1, commitId 48 leaderCommitId 48
+053303 INFO S3 applied log[48, 48], lastApplied 48
+053303 INFO S0 applied log[48, 48], lastApplied 48
+053303 INFO S2 applied log[48, 48], lastApplied 48
+053305 INFO S4 applied log[48, 48], lastApplied 48
+053317 INFO S1 applied log[49, 49], lastApplied 49
+053317 INFO SAppend Complete 0Request [x 0 0 y, %!v(MISSING)]
+053318 INFO Leader S1 receive Get Request Get 0, from C2
+053319 INFO Leader S1 replicated log 50 {true {0 2} {   0} 3583739079518151717}
+054298 LOG1 S0 received log [50, 50] from S1, commitId 48 leaderCommitId 49
+054299 LOG1 S3 received log [50, 50] from S1, commitId 48 leaderCommitId 49
+054300 LOG1 S4 received log [50, 50] from S1, commitId 48 leaderCommitId 49
+054301 INFO S3 applied log[49, 49], lastApplied 49
+054301 INFO S2 applied log[49, 49], lastApplied 49
+054301 LOG1 S2 received log [50, 50] from S1, commitId 49 leaderCommitId 49
+054302 INFO S0 applied log[49, 49], lastApplied 49
+054302 INFO S4 applied log[49, 49], lastApplied 49
+054363 INFO S1 applied log[50, 50], lastApplied 50
+054363 INFO S1 Complete GetRequest 0
+054365 INFO C2 successfully Get Key: 0, Value: x 0 0 y
+054367 INFO Leader S1 receive Get Request Get 0, from C2
+054367 INFO Leader S1 replicated log 51 {true {0 2} {   0} 231586968057288285}
+055304 LOG1 S2 received log [51, 51] from S1, commitId 49 leaderCommitId 50
+055305 LOG1 S3 received log [51, 51] from S1, commitId 49 leaderCommitId 50
+055305 LOG1 S0 received log [51, 51] from S1, commitId 50 leaderCommitId 50
+055305 INFO S2 applied log[50, 50], lastApplied 50
+055306 INFO S3 applied log[50, 50], lastApplied 50
+055306 INFO S0 applied log[50, 50], lastApplied 50
+055306 INFO S4 applied log[50, 50], lastApplied 50
+055306 LOG1 S4 received log [51, 51] from S1, commitId 50 leaderCommitId 50
+055394 INFO S1 applied log[51, 51], lastApplied 51
+055395 INFO S1 Complete GetRequest 0
+055397 INFO C2 successfully Get Key: 0, Value: x 0 0 y
+055399 INFO S1 receive AppendRequest [0, x 0 1 y], from C2
+055399 INFO Leader S1 replicated log 52 {false { 0} {0 x 0 1 y Append 2} 2665436250967556293}
+056315 LOG1 S2 received log [52, 52] from S1, commitId 50 leaderCommitId 51
+056315 LOG1 S0 received log [52, 52] from S1, commitId 50 leaderCommitId 51
+056316 LOG1 S4 received log [52, 52] from S1, commitId 51 leaderCommitId 51
+056316 INFO S0 applied log[51, 51], lastApplied 51
+056315 LOG1 S3 received log [52, 52] from S1, commitId 50 leaderCommitId 51
+056316 INFO S2 applied log[51, 51], lastApplied 51
+056317 INFO S4 applied log[51, 51], lastApplied 51
+056318 INFO S3 applied log[51, 51], lastApplied 51
+056340 INFO S1 applied log[52, 52], lastApplied 52
+056341 INFO SAppend Complete 0Request [x 0 1 y, %!v(MISSING)]
+056344 INFO Leader S1 receive Get Request Get 0, from C2
+056345 INFO Leader S1 replicated log 53 {true {0 2} {   0} 821865537121500161}
+057319 LOG1 S3 received log [53, 53] from S1, commitId 51 leaderCommitId 52
+057320 INFO S2 applied log[52, 52], lastApplied 52
+057319 LOG1 S4 received log [53, 53] from S1, commitId 51 leaderCommitId 52
+057321 INFO S3 applied log[52, 52], lastApplied 52
+057321 INFO S0 applied log[52, 52], lastApplied 52
+057321 LOG1 S2 received log [53, 53] from S1, commitId 52 leaderCommitId 52
+057323 LOG1 S0 received log [53, 53] from S1, commitId 52 leaderCommitId 52
+057321 INFO S4 applied log[52, 52], lastApplied 52
+057380 INFO S1 applied log[53, 53], lastApplied 53
+057381 INFO S1 Complete GetRequest 0
+057383 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 y
+057385 INFO Leader S1 receive Get Request Get 0, from C2
+057385 INFO Leader S1 replicated log 54 {true {0 2} {   0} 3894218222691313103}
+058319 LOG1 S3 received log [54, 54] from S1, commitId 52 leaderCommitId 53
+058321 LOG1 S4 received log [54, 54] from S1, commitId 52 leaderCommitId 53
+058322 LOG1 S0 received log [54, 54] from S1, commitId 52 leaderCommitId 53
+058323 INFO S3 applied log[53, 53], lastApplied 53
+058323 INFO S2 applied log[53, 53], lastApplied 53
+058323 INFO S0 applied log[53, 53], lastApplied 53
+058323 INFO S4 applied log[53, 53], lastApplied 53
+058325 LOG1 S2 received log [54, 54] from S1, commitId 53 leaderCommitId 53
+058417 INFO S1 applied log[54, 54], lastApplied 54
+058419 INFO S1 Complete GetRequest 0
+058422 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 y
+058425 INFO S1 receive AppendRequest [0, x 0 2 y], from C2
+058426 INFO Leader S1 replicated log 55 {false { 0} {0 x 0 2 y Append 2} 4024940338139765418}
+059323 LOG1 S2 received log [55, 55] from S1, commitId 54 leaderCommitId 54
+059324 LOG1 S4 received log [55, 55] from S1, commitId 54 leaderCommitId 54
+059325 INFO S3 applied log[54, 54], lastApplied 54
+059324 LOG1 S0 received log [55, 55] from S1, commitId 54 leaderCommitId 54
+059325 LOG1 S3 received log [55, 55] from S1, commitId 54 leaderCommitId 54
+059325 INFO S2 applied log[54, 54], lastApplied 54
+059325 INFO S4 applied log[54, 54], lastApplied 54
+059333 INFO S0 applied log[54, 54], lastApplied 54
+059347 INFO S1 applied log[55, 55], lastApplied 55
+059348 INFO SAppend Complete 0Request [x 0 2 y, %!v(MISSING)]
+059352 INFO S1 receive AppendRequest [0, x 0 3 y], from C2
+059353 INFO Leader S1 replicated log 56 {false { 0} {0 x 0 3 y Append 2} 862481040201831607}
+060332 LOG1 S3 received log [56, 56] from S1, commitId 54 leaderCommitId 55
+060335 LOG1 S0 received log [56, 56] from S1, commitId 54 leaderCommitId 55
+060336 INFO S3 applied log[55, 55], lastApplied 55
+060336 INFO S0 applied log[55, 55], lastApplied 55
+060336 LOG1 S4 received log [56, 56] from S1, commitId 54 leaderCommitId 55
+060338 INFO S4 applied log[55, 55], lastApplied 55
+060339 INFO S2 applied log[55, 55], lastApplied 55
+060339 LOG1 S2 received log [56, 56] from S1, commitId 55 leaderCommitId 55
+060396 INFO S1 applied log[56, 56], lastApplied 56
+060396 INFO SAppend Complete 0Request [x 0 3 y, %!v(MISSING)]
+060399 INFO S1 receive AppendRequest [0, x 0 4 y], from C2
+060400 INFO Leader S1 replicated log 57 {false { 0} {0 x 0 4 y Append 2} 968737683901425563}
+061346 LOG1 S3 received log [57, 57] from S1, commitId 55 leaderCommitId 56
+061347 LOG1 S4 received log [57, 57] from S1, commitId 56 leaderCommitId 56
+061348 LOG1 S0 received log [57, 57] from S1, commitId 56 leaderCommitId 56
+061348 INFO S4 applied log[56, 56], lastApplied 56
+061348 INFO S3 applied log[56, 56], lastApplied 56
+061348 LOG1 S2 received log [57, 57] from S1, commitId 55 leaderCommitId 56
+061349 INFO S0 applied log[56, 56], lastApplied 56
+061352 INFO S2 applied log[56, 56], lastApplied 56
+061448 INFO S1 applied log[57, 57], lastApplied 57
+061449 INFO SAppend Complete 0Request [x 0 4 y, %!v(MISSING)]
+061451 INFO S1 receive AppendRequest [0, x 0 5 y], from C2
+061452 INFO Leader S1 replicated log 58 {false { 0} {0 x 0 5 y Append 2} 1520693469926291427}
+062354 LOG1 S2 received log [58, 58] from S1, commitId 56 leaderCommitId 57
+062354 LOG1 S4 received log [58, 58] from S1, commitId 56 leaderCommitId 57
+062356 LOG1 S0 received log [58, 58] from S1, commitId 57 leaderCommitId 57
+062356 LOG1 S3 received log [58, 58] from S1, commitId 56 leaderCommitId 57
+062358 INFO S0 applied log[57, 57], lastApplied 57
+062356 INFO S4 applied log[57, 57], lastApplied 57
+062356 INFO S2 applied log[57, 57], lastApplied 57
+062359 INFO S3 applied log[57, 57], lastApplied 57
+062383 INFO S1 applied log[58, 58], lastApplied 58
+062384 INFO SAppend Complete 0Request [x 0 5 y, %!v(MISSING)]
+062386 INFO S1 receive AppendRequest [0, x 0 6 y], from C2
+062387 INFO Leader S1 replicated log 59 {false { 0} {0 x 0 6 y Append 2} 3985180237586491003}
+063363 LOG1 S3 received log [59, 59] from S1, commitId 57 leaderCommitId 58
+063364 LOG1 S2 received log [59, 59] from S1, commitId 58 leaderCommitId 58
+063363 LOG1 S0 received log [59, 59] from S1, commitId 57 leaderCommitId 58
+063363 INFO S4 applied log[58, 58], lastApplied 58
+063363 LOG1 S4 received log [59, 59] from S1, commitId 58 leaderCommitId 58
+063367 INFO S3 applied log[58, 58], lastApplied 58
+063367 INFO S0 applied log[58, 58], lastApplied 58
+063363 INFO S2 applied log[58, 58], lastApplied 58
+063433 INFO S1 applied log[59, 59], lastApplied 59
+063434 INFO SAppend Complete 0Request [x 0 6 y, %!v(MISSING)]
+063435 INFO Leader S1 receive Get Request Get 0, from C2
+063436 INFO Leader S1 replicated log 60 {true {0 2} {   0} 2706523172631543389}
+064369 LOG1 S2 received log [60, 60] from S1, commitId 58 leaderCommitId 59
+064371 LOG1 S3 received log [60, 60] from S1, commitId 58 leaderCommitId 59
+064371 INFO S2 applied log[59, 59], lastApplied 59
+064371 LOG1 S0 received log [60, 60] from S1, commitId 58 leaderCommitId 59
+064372 LOG1 S4 received log [60, 60] from S1, commitId 59 leaderCommitId 59
+064373 INFO S3 applied log[59, 59], lastApplied 59
+064374 INFO S0 applied log[59, 59], lastApplied 59
+064375 INFO S4 applied log[59, 59], lastApplied 59
+064474 INFO S1 applied log[60, 60], lastApplied 60
+064475 INFO S1 Complete GetRequest 0
+064477 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y
+064478 INFO Leader S1 receive Get Request Get 0, from C2
+064479 INFO Leader S1 replicated log 61 {true {0 2} {   0} 4004419782565507081}
+065372 LOG1 S4 received log [61, 61] from S1, commitId 59 leaderCommitId 60
+065373 LOG1 S2 received log [61, 61] from S1, commitId 59 leaderCommitId 60
+065374 LOG1 S3 received log [61, 61] from S1, commitId 59 leaderCommitId 60
+065374 INFO S2 applied log[60, 60], lastApplied 60
+065375 LOG1 S0 received log [61, 61] from S1, commitId 60 leaderCommitId 60
+065376 INFO S3 applied log[60, 60], lastApplied 60
+065376 INFO S0 applied log[60, 60], lastApplied 60
+065377 INFO S4 applied log[60, 60], lastApplied 60
+065409 INFO S1 applied log[61, 61], lastApplied 61
+065410 INFO S1 Complete GetRequest 0
+065413 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 y
+065416 INFO S1 receive AppendRequest [0, x 0 7 y], from C2
+065417 INFO Leader S1 replicated log 62 {false { 0} {0 x 0 7 y Append 2} 1653293925753666303}
+066385 LOG1 S0 received log [62, 62] from S1, commitId 60 leaderCommitId 61
+066387 LOG1 S3 received log [62, 62] from S1, commitId 61 leaderCommitId 61
+066387 INFO S0 applied log[61, 61], lastApplied 61
+066388 LOG1 S2 received log [62, 62] from S1, commitId 60 leaderCommitId 61
+066388 INFO S3 applied log[61, 61], lastApplied 61
+066389 INFO S4 applied log[61, 61], lastApplied 61
+066389 LOG1 S4 received log [62, 62] from S1, commitId 61 leaderCommitId 61
+066390 INFO S2 applied log[61, 61], lastApplied 61
+066448 INFO S1 applied log[62, 62], lastApplied 62
+066451 INFO SAppend Complete 0Request [x 0 7 y, %!v(MISSING)]
+066456 INFO Leader S1 receive Get Request Get 0, from C2
+066457 INFO Leader S1 replicated log 63 {true {0 2} {   0} 2588043729397996191}
+067388 LOG1 S3 received log [63, 63] from S1, commitId 61 leaderCommitId 62
+067389 LOG1 S0 received log [63, 63] from S1, commitId 61 leaderCommitId 62
+067390 INFO S0 applied log[62, 62], lastApplied 62
+067392 INFO S2 applied log[62, 62], lastApplied 62
+067392 LOG1 S4 received log [63, 63] from S1, commitId 62 leaderCommitId 62
+067394 LOG1 S2 received log [63, 63] from S1, commitId 62 leaderCommitId 62
+067394 INFO S4 applied log[62, 62], lastApplied 62
+067394 INFO S3 applied log[62, 62], lastApplied 62
+067493 INFO S1 applied log[63, 63], lastApplied 63
+067493 INFO S1 Complete GetRequest 0
+067496 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y
+067499 INFO S1 receive AppendRequest [0, x 0 8 y], from C2
+067500 INFO Leader S1 replicated log 64 {false { 0} {0 x 0 8 y Append 2} 3396491453072274466}
+068398 LOG1 S2 received log [64, 64] from S1, commitId 62 leaderCommitId 63
+068398 LOG1 S0 received log [64, 64] from S1, commitId 63 leaderCommitId 63
+068399 LOG1 S3 received log [64, 64] from S1, commitId 62 leaderCommitId 63
+068398 LOG1 S4 received log [64, 64] from S1, commitId 62 leaderCommitId 63
+068399 INFO S2 applied log[63, 63], lastApplied 63
+068400 INFO S0 applied log[63, 63], lastApplied 63
+068400 INFO S4 applied log[63, 63], lastApplied 63
+068400 INFO S3 applied log[63, 63], lastApplied 63
+068433 INFO S1 applied log[64, 64], lastApplied 64
+068434 INFO SAppend Complete 0Request [x 0 8 y, %!v(MISSING)]
+068439 INFO Leader S1 receive Get Request Get 0, from C2
+068440 INFO Leader S1 replicated log 65 {true {0 2} {   0} 4120446736874837745}
+069402 LOG1 S3 received log [65, 65] from S1, commitId 63 leaderCommitId 64
+069413 INFO S3 applied log[64, 64], lastApplied 64
+069413 INFO S0 applied log[64, 64], lastApplied 64
+069414 LOG1 S4 received log [65, 65] from S1, commitId 63 leaderCommitId 64
+069418 LOG1 S2 received log [65, 65] from S1, commitId 63 leaderCommitId 64
+069420 INFO S2 applied log[64, 64], lastApplied 64
+069423 LOG1 S0 received log [65, 65] from S1, commitId 64 leaderCommitId 64
+069423 INFO S4 applied log[64, 64], lastApplied 64
+069479 INFO S1 applied log[65, 65], lastApplied 65
+069480 INFO S1 Complete GetRequest 0
+069481 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 y
+069482 INFO Leader S1 receive Get Request Get 0, from C2
+069483 INFO Leader S1 replicated log 66 {true {0 2} {   0} 824242228774070857}
+070409 LOG1 S2 received log [66, 66] from S1, commitId 64 leaderCommitId 65
+070411 INFO S4 applied log[65, 65], lastApplied 65
+070410 LOG1 S0 received log [66, 66] from S1, commitId 64 leaderCommitId 65
+070413 LOG1 S4 received log [66, 66] from S1, commitId 65 leaderCommitId 65
+070414 INFO S3 applied log[65, 65], lastApplied 65
+070412 INFO S2 applied log[65, 65], lastApplied 65
+070414 INFO S0 applied log[65, 65], lastApplied 65
+070414 LOG1 S3 received log [66, 66] from S1, commitId 65 leaderCommitId 65
+070516 INFO S1 applied log[66, 66], lastApplied 66
+070517 INFO S1 Complete GetRequest 0
+070519 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 y
+070522 INFO S1 receive AppendRequest [0, x 0 9 y], from C2
+070522 INFO Leader S1 replicated log 67 {false { 0} {0 x 0 9 y Append 2} 4412343356316922718}
+071423 LOG1 S0 received log [67, 67] from S1, commitId 65 leaderCommitId 66
+071424 LOG1 S3 received log [67, 67] from S1, commitId 65 leaderCommitId 66
+071425 LOG1 S2 received log [67, 67] from S1, commitId 65 leaderCommitId 66
+071427 INFO S2 applied log[66, 66], lastApplied 66
+071425 INFO S4 applied log[66, 66], lastApplied 66
+071428 INFO S3 applied log[66, 66], lastApplied 66
+071428 LOG1 S4 received log [67, 67] from S1, commitId 66 leaderCommitId 66
+071430 INFO S0 applied log[66, 66], lastApplied 66
+071464 INFO S1 applied log[67, 67], lastApplied 67
+071464 INFO SAppend Complete 0Request [x 0 9 y, %!v(MISSING)]
+071467 INFO Leader S1 receive Get Request Get 0, from C2
+071467 INFO Leader S1 replicated log 68 {true {0 2} {   0} 2825707806400940972}
+072431 LOG1 S4 received log [68, 68] from S1, commitId 66 leaderCommitId 67
+072431 LOG1 S3 received log [68, 68] from S1, commitId 66 leaderCommitId 67
+072432 INFO S2 applied log[67, 67], lastApplied 67
+072431 LOG1 S0 received log [68, 68] from S1, commitId 66 leaderCommitId 67
+072433 INFO S3 applied log[67, 67], lastApplied 67
+072433 INFO S4 applied log[67, 67], lastApplied 67
+072433 LOG1 S2 received log [68, 68] from S1, commitId 67 leaderCommitId 67
+072433 INFO S0 applied log[67, 67], lastApplied 67
+072510 INFO S1 applied log[68, 68], lastApplied 68
+072511 INFO S1 Complete GetRequest 0
+072513 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y
+072514 INFO Leader S1 receive Get Request Get 0, from C2
+072514 INFO Leader S1 replicated log 69 {true {0 2} {   0} 4052253099242930611}
+073435 LOG1 S4 received log [69, 69] from S1, commitId 67 leaderCommitId 68
+073436 INFO S2 applied log[68, 68], lastApplied 68
+073435 LOG1 S0 received log [69, 69] from S1, commitId 67 leaderCommitId 68
+073437 INFO S3 applied log[68, 68], lastApplied 68
+073437 INFO S4 applied log[68, 68], lastApplied 68
+073437 INFO S0 applied log[68, 68], lastApplied 68
+073438 LOG1 S3 received log [69, 69] from S1, commitId 68 leaderCommitId 68
+073438 LOG1 S2 received log [69, 69] from S1, commitId 68 leaderCommitId 68
+073439 INFO S1 applied log[69, 69], lastApplied 69
+073439 INFO S1 Complete GetRequest 0
+073439 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y
+073440 INFO Leader S1 receive Get Request Get 0, from C2
+073440 INFO Leader S1 replicated log 70 {true {0 2} {   0} 1735711731976622906}
+074446 LOG1 S4 received log [70, 70] from S1, commitId 68 leaderCommitId 69
+074450 INFO S4 applied log[69, 69], lastApplied 69
+074453 LOG1 S0 received log [70, 70] from S1, commitId 68 leaderCommitId 69
+074453 LOG1 S3 received log [70, 70] from S1, commitId 68 leaderCommitId 69
+074454 INFO S2 applied log[69, 69], lastApplied 69
+074456 LOG1 S2 received log [70, 70] from S1, commitId 69 leaderCommitId 69
+074458 INFO S3 applied log[69, 69], lastApplied 69
+074458 INFO S0 applied log[69, 69], lastApplied 69
+074470 INFO S1 applied log[70, 70], lastApplied 70
+074470 INFO S1 Complete GetRequest 0
+074472 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 y
+074473 INFO S1 receive AppendRequest [0, x 0 10 y], from C2
+074474 INFO Leader S1 replicated log 71 {false { 0} {0 x 0 10 y Append 2} 614409683766976797}
+075457 LOG1 S4 received log [71, 71] from S1, commitId 69 leaderCommitId 70
+075458 LOG1 S2 received log [71, 71] from S1, commitId 69 leaderCommitId 70
+075462 INFO S0 applied log[70, 70], lastApplied 70
+075462 LOG1 S3 received log [71, 71] from S1, commitId 69 leaderCommitId 70
+075464 LOG1 S0 received log [71, 71] from S1, commitId 70 leaderCommitId 70
+075465 INFO S2 applied log[70, 70], lastApplied 70
+075465 INFO S4 applied log[70, 70], lastApplied 70
+075466 INFO S3 applied log[70, 70], lastApplied 70
+075511 INFO S1 applied log[71, 71], lastApplied 71
+075511 INFO SAppend Complete 0Request [x 0 10 y, %!v(MISSING)]
+075513 INFO S1 receive AppendRequest [0, x 0 11 y], from C2
+075513 INFO Leader S1 replicated log 72 {false { 0} {0 x 0 11 y Append 2} 1698461023064730260}
+076463 LOG1 S0 received log [72, 72] from S1, commitId 70 leaderCommitId 71
+076464 LOG1 S4 received log [72, 72] from S1, commitId 71 leaderCommitId 71
+076465 INFO S0 applied log[71, 71], lastApplied 71
+076466 INFO S3 applied log[71, 71], lastApplied 71
+076466 INFO S2 applied log[71, 71], lastApplied 71
+076466 LOG1 S3 received log [72, 72] from S1, commitId 71 leaderCommitId 71
+076467 LOG1 S2 received log [72, 72] from S1, commitId 71 leaderCommitId 71
+076467 INFO S4 applied log[71, 71], lastApplied 71
+076557 INFO S1 applied log[72, 72], lastApplied 72
+076558 INFO SAppend Complete 0Request [x 0 11 y, %!v(MISSING)]
+076562 INFO S1 receive AppendRequest [0, x 0 12 y], from C2
+076562 INFO Leader S1 replicated log 73 {false { 0} {0 x 0 12 y Append 2} 3933802132934697034}
+077473 LOG1 S4 received log [73, 73] from S1, commitId 71 leaderCommitId 72
+077473 LOG1 S0 received log [73, 73] from S1, commitId 71 leaderCommitId 72
+077474 LOG1 S3 received log [73, 73] from S1, commitId 71 leaderCommitId 72
+077475 LOG1 S2 received log [73, 73] from S1, commitId 71 leaderCommitId 72
+077476 INFO S0 applied log[72, 72], lastApplied 72
+077476 INFO S2 applied log[72, 72], lastApplied 72
+077477 INFO S3 applied log[72, 72], lastApplied 72
+077478 INFO S4 applied log[72, 72], lastApplied 72
+077490 INFO S1 applied log[73, 73], lastApplied 73
+077491 INFO SAppend Complete 0Request [x 0 12 y, %!v(MISSING)]
+077494 INFO S1 receive AppendRequest [0, x 0 13 y], from C2
+077495 INFO Leader S1 replicated log 74 {false { 0} {0 x 0 13 y Append 2} 1658113550624596820}
+078478 LOG1 S4 received log [74, 74] from S1, commitId 72 leaderCommitId 73
+078480 LOG1 S2 received log [74, 74] from S1, commitId 72 leaderCommitId 73
+078479 LOG1 S0 received log [74, 74] from S1, commitId 72 leaderCommitId 73
+078485 LOG1 S3 received log [74, 74] from S1, commitId 72 leaderCommitId 73
+078497 INFO S3 applied log[73, 73], lastApplied 73
+078498 INFO S4 applied log[73, 73], lastApplied 73
+078498 INFO S0 applied log[73, 73], lastApplied 73
+078498 INFO S2 applied log[73, 73], lastApplied 73
+078532 INFO S1 applied log[74, 74], lastApplied 74
+078533 INFO SAppend Complete 0Request [x 0 13 y, %!v(MISSING)]
+078536 INFO S1 receive AppendRequest [0, x 0 14 y], from C2
+078537 INFO Leader S1 replicated log 75 {false { 0} {0 x 0 14 y Append 2} 4510952156780474708}
+079478 LOG1 S4 received log [75, 75] from S1, commitId 73 leaderCommitId 74
+079478 LOG1 S3 received log [75, 75] from S1, commitId 73 leaderCommitId 74
+079480 INFO S4 applied log[74, 74], lastApplied 74
+079478 LOG1 S2 received log [75, 75] from S1, commitId 73 leaderCommitId 74
+079481 INFO S3 applied log[74, 74], lastApplied 74
+079481 LOG1 S0 received log [75, 75] from S1, commitId 74 leaderCommitId 74
+079482 INFO S2 applied log[74, 74], lastApplied 74
+079483 INFO S0 applied log[74, 74], lastApplied 74
+079569 INFO S1 applied log[75, 75], lastApplied 75
+079569 INFO SAppend Complete 0Request [x 0 14 y, %!v(MISSING)]
+079571 INFO S1 receive AppendRequest [0, x 0 15 y], from C2
+079572 INFO Leader S1 replicated log 76 {false { 0} {0 x 0 15 y Append 2} 2523722224487192538}
+080482 LOG1 S2 received log [76, 76] from S1, commitId 74 leaderCommitId 75
+080483 LOG1 S4 received log [76, 76] from S1, commitId 74 leaderCommitId 75
+080486 LOG1 S3 received log [76, 76] from S1, commitId 74 leaderCommitId 75
+080486 LOG1 S0 received log [76, 76] from S1, commitId 74 leaderCommitId 75
+080487 INFO S2 applied log[75, 75], lastApplied 75
+080488 INFO S3 applied log[75, 75], lastApplied 75
+080489 INFO S0 applied log[75, 75], lastApplied 75
+080489 INFO S4 applied log[75, 75], lastApplied 75
+080514 INFO S1 applied log[76, 76], lastApplied 76
+080515 INFO SAppend Complete 0Request [x 0 15 y, %!v(MISSING)]
+080517 INFO S1 receive AppendRequest [0, x 0 16 y], from C2
+080518 INFO Leader S1 replicated log 77 {false { 0} {0 x 0 16 y Append 2} 3189815607874354476}
+081488 LOG1 S3 received log [77, 77] from S1, commitId 75 leaderCommitId 76
+081488 LOG1 S2 received log [77, 77] from S1, commitId 75 leaderCommitId 76
+081491 LOG1 S4 received log [77, 77] from S1, commitId 76 leaderCommitId 76
+081494 INFO S2 applied log[76, 76], lastApplied 76
+081494 LOG1 S0 received log [77, 77] from S1, commitId 75 leaderCommitId 76
+081492 INFO S3 applied log[76, 76], lastApplied 76
+081496 INFO S4 applied log[76, 76], lastApplied 76
+081496 INFO S0 applied log[76, 76], lastApplied 76
+081553 INFO S1 applied log[77, 77], lastApplied 77
+081554 INFO SAppend Complete 0Request [x 0 16 y, %!v(MISSING)]
+081557 INFO S1 receive AppendRequest [0, x 0 17 y], from C2
+081557 INFO Leader S1 replicated log 78 {false { 0} {0 x 0 17 y Append 2} 1521882022773090444}
+082489 LOG1 S2 received log [78, 78] from S1, commitId 76 leaderCommitId 77
+082490 LOG1 S3 received log [78, 78] from S1, commitId 76 leaderCommitId 77
+082490 LOG1 S0 received log [78, 78] from S1, commitId 76 leaderCommitId 77
+082491 LOG1 S4 received log [78, 78] from S1, commitId 77 leaderCommitId 77
+082491 INFO S3 applied log[77, 77], lastApplied 77
+082492 INFO S0 applied log[77, 77], lastApplied 77
+082492 INFO S4 applied log[77, 77], lastApplied 77
+082493 INFO S2 applied log[77, 77], lastApplied 77
+082604 INFO S1 applied log[78, 78], lastApplied 78
+082606 INFO SAppend Complete 0Request [x 0 17 y, %!v(MISSING)]
+082610 INFO S1 receive AppendRequest [0, x 0 18 y], from C2
+082611 INFO Leader S1 replicated log 79 {false { 0} {0 x 0 18 y Append 2} 318317021876543154}
+083494 LOG1 S2 received log [79, 79] from S1, commitId 77 leaderCommitId 78
+083495 LOG1 S0 received log [79, 79] from S1, commitId 77 leaderCommitId 78
+083496 LOG1 S4 received log [79, 79] from S1, commitId 77 leaderCommitId 78
+083497 INFO S0 applied log[78, 78], lastApplied 78
+083497 INFO S4 applied log[78, 78], lastApplied 78
+083498 LOG1 S3 received log [79, 79] from S1, commitId 77 leaderCommitId 78
+083498 INFO S2 applied log[78, 78], lastApplied 78
+083500 INFO S3 applied log[78, 78], lastApplied 78
+083534 INFO S1 applied log[79, 79], lastApplied 79
+083536 INFO SAppend Complete 0Request [x 0 18 y, %!v(MISSING)]
+083540 INFO S1 receive AppendRequest [0, x 0 19 y], from C2
+083541 INFO Leader S1 replicated log 80 {false { 0} {0 x 0 19 y Append 2} 4346002748126755887}
+084499 LOG1 S3 received log [80, 80] from S1, commitId 78 leaderCommitId 79
+084500 LOG1 S4 received log [80, 80] from S1, commitId 79 leaderCommitId 79
+084501 LOG1 S0 received log [80, 80] from S1, commitId 79 leaderCommitId 79
+084499 LOG1 S2 received log [80, 80] from S1, commitId 78 leaderCommitId 79
+084501 INFO S3 applied log[79, 79], lastApplied 79
+084502 INFO S4 applied log[79, 79], lastApplied 79
+084502 INFO S0 applied log[79, 79], lastApplied 79
+084502 INFO S2 applied log[79, 79], lastApplied 79
+084581 INFO S1 applied log[80, 80], lastApplied 80
+084582 INFO SAppend Complete 0Request [x 0 19 y, %!v(MISSING)]
+084584 INFO S1 receive AppendRequest [0, x 0 20 y], from C2
+084584 INFO Leader S1 replicated log 81 {false { 0} {0 x 0 20 y Append 2} 2184110994495060420}
+085507 LOG1 S2 received log [81, 81] from S1, commitId 79 leaderCommitId 80
+085509 LOG1 S3 received log [81, 81] from S1, commitId 79 leaderCommitId 80
+085509 LOG1 S0 received log [81, 81] from S1, commitId 79 leaderCommitId 80
+085511 INFO S2 applied log[80, 80], lastApplied 80
+085511 INFO S3 applied log[80, 80], lastApplied 80
+085511 INFO S1 applied log[81, 81], lastApplied 81
+085511 INFO SAppend Complete 0Request [x 0 20 y, %!v(MISSING)]
+085513 INFO S0 applied log[80, 80], lastApplied 80
+085513 LOG1 S4 received log [81, 81] from S1, commitId 80 leaderCommitId 80
+085515 INFO S4 applied log[80, 80], lastApplied 80
+085516 INFO S1 receive AppendRequest [0, x 0 21 y], from C2
+085516 INFO Leader S1 replicated log 82 {false { 0} {0 x 0 21 y Append 2} 2709621615622889783}
+086518 LOG1 S0 received log [82, 82] from S1, commitId 81 leaderCommitId 81
+086519 LOG1 S4 received log [82, 82] from S1, commitId 81 leaderCommitId 81
+086519 LOG1 S3 received log [82, 82] from S1, commitId 81 leaderCommitId 81
+086518 INFO S2 applied log[81, 81], lastApplied 81
+086519 INFO S3 applied log[81, 81], lastApplied 81
+086519 INFO S4 applied log[81, 81], lastApplied 81
+086519 LOG1 S2 received log [82, 82] from S1, commitId 81 leaderCommitId 81
+086526 INFO S0 applied log[81, 81], lastApplied 81
+086544 INFO S1 applied log[82, 82], lastApplied 82
+086545 INFO SAppend Complete 0Request [x 0 21 y, %!v(MISSING)]
+086548 INFO S1 receive AppendRequest [0, x 0 22 y], from C2
+086548 INFO Leader S1 replicated log 83 {false { 0} {0 x 0 22 y Append 2} 3855312869046068870}
+087526 LOG1 S4 received log [83, 83] from S1, commitId 81 leaderCommitId 82
+087527 LOG1 S3 received log [83, 83] from S1, commitId 82 leaderCommitId 82
+087526 LOG1 S0 received log [83, 83] from S1, commitId 81 leaderCommitId 82
+087528 LOG1 S2 received log [83, 83] from S1, commitId 81 leaderCommitId 82
+087528 INFO S4 applied log[82, 82], lastApplied 82
+087529 INFO S3 applied log[82, 82], lastApplied 82
+087529 INFO S0 applied log[82, 82], lastApplied 82
+087529 INFO S2 applied log[82, 82], lastApplied 82
+087587 INFO S1 applied log[83, 83], lastApplied 83
+087588 INFO SAppend Complete 0Request [x 0 22 y, %!v(MISSING)]
+087591 INFO Leader S1 receive Get Request Get 0, from C2
+087592 INFO Leader S1 replicated log 84 {true {0 2} {   0} 3459285523138263279}
+088535 LOG1 S4 received log [84, 84] from S1, commitId 82 leaderCommitId 83
+088536 LOG1 S2 received log [84, 84] from S1, commitId 83 leaderCommitId 83
+088536 LOG1 S3 received log [84, 84] from S1, commitId 82 leaderCommitId 83
+088537 INFO S4 applied log[83, 83], lastApplied 83
+088537 LOG1 S0 received log [84, 84] from S1, commitId 83 leaderCommitId 83
+088537 INFO S2 applied log[83, 83], lastApplied 83
+088537 INFO S3 applied log[83, 83], lastApplied 83
+088538 INFO S0 applied log[83, 83], lastApplied 83
+088628 INFO S1 applied log[84, 84], lastApplied 84
+088629 INFO S1 Complete GetRequest 0
+088631 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 y
+088633 INFO S1 receive AppendRequest [0, x 0 23 y], from C2
+088634 INFO Leader S1 replicated log 85 {false { 0} {0 x 0 23 y Append 2} 2703813615206522935}
+089541 LOG1 S0 received log [85, 85] from S1, commitId 83 leaderCommitId 84
+089542 LOG1 S3 received log [85, 85] from S1, commitId 83 leaderCommitId 84
+089543 LOG1 S2 received log [85, 85] from S1, commitId 83 leaderCommitId 84
+089543 LOG1 S4 received log [85, 85] from S1, commitId 84 leaderCommitId 84
+089543 INFO S3 applied log[84, 84], lastApplied 84
+089543 INFO S0 applied log[84, 84], lastApplied 84
+089545 INFO S2 applied log[84, 84], lastApplied 84
+089546 INFO S4 applied log[84, 84], lastApplied 84
+089570 INFO S1 applied log[85, 85], lastApplied 85
+089570 INFO SAppend Complete 0Request [x 0 23 y, %!v(MISSING)]
+089573 INFO Leader S1 receive Get Request Get 0, from C2
+089573 INFO Leader S1 replicated log 86 {true {0 2} {   0} 4300804722144553150}
+090545 LOG1 S2 received log [86, 86] from S1, commitId 84 leaderCommitId 85
+090547 LOG1 S4 received log [86, 86] from S1, commitId 84 leaderCommitId 85
+090552 INFO S4 applied log[85, 85], lastApplied 85
+090552 LOG1 S3 received log [86, 86] from S1, commitId 84 leaderCommitId 85
+090556 LOG1 S0 received log [86, 86] from S1, commitId 85 leaderCommitId 85
+090552 INFO S2 applied log[85, 85], lastApplied 85
+090555 INFO S0 applied log[85, 85], lastApplied 85
+090559 INFO S3 applied log[85, 85], lastApplied 85
+090612 INFO S1 applied log[86, 86], lastApplied 86
+090613 INFO S1 Complete GetRequest 0
+090616 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y
+090619 INFO Leader S1 receive Get Request Get 0, from C2
+090620 INFO Leader S1 replicated log 87 {true {0 2} {   0} 3379740181179765987}
+091548 LOG1 S3 received log [87, 87] from S1, commitId 85 leaderCommitId 86
+091549 LOG1 S2 received log [87, 87] from S1, commitId 85 leaderCommitId 86
+091550 LOG1 S4 received log [87, 87] from S1, commitId 85 leaderCommitId 86
+091550 INFO S3 applied log[86, 86], lastApplied 86
+091552 INFO S4 applied log[86, 86], lastApplied 86
+091552 INFO S2 applied log[86, 86], lastApplied 86
+091554 LOG1 S0 received log [87, 87] from S1, commitId 85 leaderCommitId 86
+091556 INFO S0 applied log[86, 86], lastApplied 86
+091648 INFO S1 applied log[87, 87], lastApplied 87
+091649 INFO S1 Complete GetRequest 0
+091651 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y
+091652 INFO Leader S1 receive Get Request Get 0, from C2
+091652 INFO Leader S1 replicated log 88 {true {0 2} {   0} 3531308843865380604}
+092555 LOG1 S0 received log [88, 88] from S1, commitId 86 leaderCommitId 87
+092557 LOG1 S2 received log [88, 88] from S1, commitId 86 leaderCommitId 87
+092558 LOG1 S3 received log [88, 88] from S1, commitId 86 leaderCommitId 87
+092559 INFO S2 applied log[87, 87], lastApplied 87
+092559 LOG1 S4 received log [88, 88] from S1, commitId 87 leaderCommitId 87
+092560 INFO S0 applied log[87, 87], lastApplied 87
+092560 INFO S3 applied log[87, 87], lastApplied 87
+092561 INFO S4 applied log[87, 87], lastApplied 87
+092583 INFO S1 applied log[88, 88], lastApplied 88
+092584 INFO S1 Complete GetRequest 0
+092585 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y
+092586 INFO S1 receive AppendRequest [0, x 0 24 y], from C2
+092587 INFO Leader S1 replicated log 89 {false { 0} {0 x 0 24 y Append 2} 4367179558033070319}
+093563 LOG1 S4 received log [89, 89] from S1, commitId 87 leaderCommitId 88
+093564 LOG1 S3 received log [89, 89] from S1, commitId 87 leaderCommitId 88
+093565 INFO S4 applied log[88, 88], lastApplied 88
+093563 LOG1 S0 received log [89, 89] from S1, commitId 87 leaderCommitId 88
+093566 INFO S3 applied log[88, 88], lastApplied 88
+093566 INFO S2 applied log[88, 88], lastApplied 88
+093566 INFO S0 applied log[88, 88], lastApplied 88
+093566 LOG1 S2 received log [89, 89] from S1, commitId 88 leaderCommitId 88
+093632 INFO S1 applied log[89, 89], lastApplied 89
+093632 INFO SAppend Complete 0Request [x 0 24 y, %!v(MISSING)]
+093634 INFO S1 receive AppendRequest [0, x 0 25 y], from C2
+093634 INFO Leader S1 replicated log 90 {false { 0} {0 x 0 25 y Append 2} 1871971128853195030}
+094568 LOG1 S3 received log [90, 90] from S1, commitId 88 leaderCommitId 89
+094569 LOG1 S2 received log [90, 90] from S1, commitId 88 leaderCommitId 89
+094573 INFO S3 applied log[89, 89], lastApplied 89
+094578 INFO S2 applied log[89, 89], lastApplied 89
+094578 INFO S4 applied log[89, 89], lastApplied 89
+094578 LOG1 S4 received log [90, 90] from S1, commitId 89 leaderCommitId 89
+094581 INFO S0 applied log[89, 89], lastApplied 89
+094582 LOG1 S0 received log [90, 90] from S1, commitId 89 leaderCommitId 89
+094676 INFO S1 applied log[90, 90], lastApplied 90
+094677 INFO SAppend Complete 0Request [x 0 25 y, %!v(MISSING)]
+094679 INFO Leader S1 receive Get Request Get 0, from C2
+094679 INFO Leader S1 replicated log 91 {true {0 2} {   0} 3496547082913068279}
+095572 LOG1 S0 received log [91, 91] from S1, commitId 89 leaderCommitId 90
+095575 LOG1 S4 received log [91, 91] from S1, commitId 90 leaderCommitId 90
+095573 LOG1 S2 received log [91, 91] from S1, commitId 89 leaderCommitId 90
+095575 INFO S0 applied log[90, 90], lastApplied 90
+095576 LOG1 S3 received log [91, 91] from S1, commitId 89 leaderCommitId 90
+095580 INFO S2 applied log[90, 90], lastApplied 90
+095581 INFO S4 applied log[90, 90], lastApplied 90
+095581 INFO S3 applied log[90, 90], lastApplied 90
+095630 INFO S1 applied log[91, 91], lastApplied 91
+095631 INFO S1 Complete GetRequest 0
+095633 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 y
+095635 INFO S1 receive AppendRequest [0, x 0 26 y], from C2
+095635 INFO Leader S1 replicated log 92 {false { 0} {0 x 0 26 y Append 2} 3151730195820565533}
+096576 LOG1 S0 received log [92, 92] from S1, commitId 90 leaderCommitId 91
+096577 LOG1 S4 received log [92, 92] from S1, commitId 90 leaderCommitId 91
+096577 LOG1 S3 received log [92, 92] from S1, commitId 90 leaderCommitId 91
+096579 INFO S3 applied log[91, 91], lastApplied 91
+096579 LOG1 S2 received log [92, 92] from S1, commitId 90 leaderCommitId 91
+096580 INFO S4 applied log[91, 91], lastApplied 91
+096579 INFO S0 applied log[91, 91], lastApplied 91
+096581 INFO S2 applied log[91, 91], lastApplied 91
+096670 INFO S1 applied log[92, 92], lastApplied 92
+096671 INFO SAppend Complete 0Request [x 0 26 y, %!v(MISSING)]
+096675 INFO S1 receive AppendRequest [0, x 0 27 y], from C2
+096675 INFO Leader S1 replicated log 93 {false { 0} {0 x 0 27 y Append 2} 3818813281690647454}
+097579 LOG1 S4 received log [93, 93] from S1, commitId 91 leaderCommitId 92
+097580 INFO S2 applied log[92, 92], lastApplied 92
+097579 LOG1 S0 received log [93, 93] from S1, commitId 91 leaderCommitId 92
+097580 LOG1 S2 received log [93, 93] from S1, commitId 92 leaderCommitId 92
+097579 LOG1 S3 received log [93, 93] from S1, commitId 91 leaderCommitId 92
+097581 INFO S4 applied log[92, 92], lastApplied 92
+097581 INFO S0 applied log[92, 92], lastApplied 92
+097583 INFO S3 applied log[92, 92], lastApplied 92
+097604 INFO S1 applied log[93, 93], lastApplied 93
+097605 INFO SAppend Complete 0Request [x 0 27 y, %!v(MISSING)]
+097608 INFO Leader S1 receive Get Request Get 0, from C2
+097609 INFO Leader S1 replicated log 94 {true {0 2} {   0} 638497183765752275}
+098589 LOG1 S4 received log [94, 94] from S1, commitId 92 leaderCommitId 93
+098590 LOG1 S2 received log [94, 94] from S1, commitId 92 leaderCommitId 93
+098591 LOG1 S3 received log [94, 94] from S1, commitId 92 leaderCommitId 93
+098592 INFO S2 applied log[93, 93], lastApplied 93
+098590 LOG1 S0 received log [94, 94] from S1, commitId 92 leaderCommitId 93
+098592 INFO S4 applied log[93, 93], lastApplied 93
+098592 INFO S3 applied log[93, 93], lastApplied 93
+098594 INFO S0 applied log[93, 93], lastApplied 93
+098652 INFO S1 applied log[94, 94], lastApplied 94
+098653 INFO S1 Complete GetRequest 0
+098655 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 y
+098656 INFO Leader S1 receive Get Request Get 0, from C2
+098657 INFO Leader S1 replicated log 95 {true {0 2} {   0} 2061344050447778204}
+099593 LOG1 S2 received log [95, 95] from S1, commitId 93 leaderCommitId 94
+099594 LOG1 S3 received log [95, 95] from S1, commitId 93 leaderCommitId 94
+099595 LOG1 S0 received log [95, 95] from S1, commitId 93 leaderCommitId 94
+099595 INFO S2 applied log[94, 94], lastApplied 94
+099594 LOG1 S4 received log [95, 95] from S1, commitId 93 leaderCommitId 94
+099596 INFO S3 applied log[94, 94], lastApplied 94
+099597 INFO S4 applied log[94, 94], lastApplied 94
+099599 INFO S0 applied log[94, 94], lastApplied 94
+099687 INFO S1 applied log[95, 95], lastApplied 95
+099687 INFO S1 Complete GetRequest 0
+099689 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 y
+099690 INFO S1 receive AppendRequest [0, x 0 28 y], from C2
+099691 INFO Leader S1 replicated log 96 {false { 0} {0 x 0 28 y Append 2} 968884587361594907}
+100599 LOG1 S2 received log [96, 96] from S1, commitId 94 leaderCommitId 95
+100600 LOG1 S0 received log [96, 96] from S1, commitId 94 leaderCommitId 95
+100601 LOG1 S3 received log [96, 96] from S1, commitId 94 leaderCommitId 95
+100601 INFO S2 applied log[95, 95], lastApplied 95
+100602 INFO S0 applied log[95, 95], lastApplied 95
+100602 INFO S4 applied log[95, 95], lastApplied 95
+100602 LOG1 S4 received log [96, 96] from S1, commitId 95 leaderCommitId 95
+100604 INFO S3 applied log[95, 95], lastApplied 95
+100631 INFO S1 applied log[96, 96], lastApplied 96
+100632 INFO SAppend Complete 0Request [x 0 28 y, %!v(MISSING)]
+100634 INFO Leader S1 receive Get Request Get 0, from C2
+100635 INFO Leader S1 replicated log 97 {true {0 2} {   0} 4180016996797291844}
+101608 LOG1 S2 received log [97, 97] from S1, commitId 95 leaderCommitId 96
+101611 LOG1 S3 received log [97, 97] from S1, commitId 95 leaderCommitId 96
+101608 LOG1 S0 received log [97, 97] from S1, commitId 95 leaderCommitId 96
+101616 INFO S2 applied log[96, 96], lastApplied 96
+101622 INFO S3 applied log[96, 96], lastApplied 96
+101625 INFO S0 applied log[96, 96], lastApplied 96
+101626 LOG1 S4 received log [97, 97] from S1, commitId 96 leaderCommitId 96
+101631 INFO S4 applied log[96, 96], lastApplied 96
+101673 INFO S1 applied log[97, 97], lastApplied 97
+101674 INFO S1 Complete GetRequest 0
+101676 INFO C2 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y
+101680 INFO Leader S1 receive Get Request Get 0, from C0
+101680 INFO Leader S1 replicated log 98 {true {0 0} {   0} 2190136685464344157}
+102617 LOG1 S2 received log [98, 98] from S1, commitId 96 leaderCommitId 97
+102620 INFO S2 applied log[97, 97], lastApplied 97
+102621 INFO S0 applied log[97, 97], lastApplied 97
+102621 LOG1 S4 received log [98, 98] from S1, commitId 97 leaderCommitId 97
+102622 INFO S3 applied log[97, 97], lastApplied 97
+102622 LOG1 S3 received log [98, 98] from S1, commitId 97 leaderCommitId 97
+102622 LOG1 S0 received log [98, 98] from S1, commitId 97 leaderCommitId 97
+102625 INFO S4 applied log[97, 97], lastApplied 97
+102722 INFO S1 applied log[98, 98], lastApplied 98
+102723 INFO S1 Complete GetRequest 0
+102725 INFO C0 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 yx 0 27 yx 0 28 y
+102729 INFO S1 receive PutRequest [0, ], from C3
+102729 INFO Leader S1 replicated log 99 {false { 0} {0  Put 3} 2177322376430133562}
+103620 INFO S2 applied log[98, 98], lastApplied 98
+103620 INFO S4 applied log[98, 98], lastApplied 98
+103620 INFO S0 applied log[98, 98], lastApplied 98
+103621 INFO S3 applied log[98, 98], lastApplied 98
+103621 LOG1 S2 received log [99, 99] from S1, commitId 98 leaderCommitId 98
+103621 LOG1 S4 received log [99, 99] from S1, commitId 98 leaderCommitId 98
+103622 LOG1 S0 received log [99, 99] from S1, commitId 98 leaderCommitId 98
+103624 LOG1 S3 received log [99, 99] from S1, commitId 98 leaderCommitId 98
+103658 INFO S1 applied log[99, 99], lastApplied 99
+103659 INFO SPut Complete 0Request [, %!v(MISSING)]
+103662 INFO S1 receive AppendRequest [0, x 0 0 y], from C3
+103662 INFO Leader S1 replicated log 100 {false { 0} {0 x 0 0 y Append 3} 1391402741317663351}
+104632 LOG1 S2 received log [100, 100] from S1, commitId 98 leaderCommitId 99
+104633 LOG1 S3 received log [100, 100] from S1, commitId 98 leaderCommitId 99
+104634 INFO S4 applied log[99, 99], lastApplied 99
+104632 LOG1 S0 received log [100, 100] from S1, commitId 98 leaderCommitId 99
+104634 LOG1 S4 received log [100, 100] from S1, commitId 99 leaderCommitId 99
+104635 INFO S0 applied log[99, 99], lastApplied 99
+104635 INFO S2 applied log[99, 99], lastApplied 99
+104636 INFO S3 applied log[99, 99], lastApplied 99
+104704 INFO S1 applied log[100, 100], lastApplied 100
+104705 INFO SAppend Complete 0Request [x 0 0 y, %!v(MISSING)]
+104707 INFO S1 receive AppendRequest [0, x 0 1 y], from C3
+104707 INFO Leader S1 replicated log 101 {false { 0} {0 x 0 1 y Append 3} 2281434043887285819}
+105637 LOG1 S2 received log [101, 101] from S1, commitId 99 leaderCommitId 100
+105638 LOG1 S4 received log [101, 101] from S1, commitId 100 leaderCommitId 100
+105639 LOG1 S0 received log [101, 101] from S1, commitId 99 leaderCommitId 100
+105640 INFO S4 applied log[100, 100], lastApplied 100
+105637 LOG1 S3 received log [101, 101] from S1, commitId 99 leaderCommitId 100
+105639 INFO S2 applied log[100, 100], lastApplied 100
+105641 INFO S0 applied log[100, 100], lastApplied 100
+105642 INFO S3 applied log[100, 100], lastApplied 100
+105744 INFO S1 applied log[101, 101], lastApplied 101
+105745 INFO SAppend Complete 0Request [x 0 1 y, %!v(MISSING)]
+105747 INFO S1 receive AppendRequest [0, x 0 2 y], from C3
+105747 INFO Leader S1 replicated log 102 {false { 0} {0 x 0 2 y Append 3} 1824916432475042669}
+106641 LOG1 S0 received log [102, 102] from S1, commitId 100 leaderCommitId 101
+106642 LOG1 S2 received log [102, 102] from S1, commitId 100 leaderCommitId 101
+106644 INFO S4 applied log[101, 101], lastApplied 101
+106645 INFO S2 applied log[101, 101], lastApplied 101
+106645 INFO S0 applied log[101, 101], lastApplied 101
+106645 LOG1 S4 received log [102, 102] from S1, commitId 101 leaderCommitId 101
+106645 LOG1 S3 received log [102, 102] from S1, commitId 101 leaderCommitId 101
+106648 INFO S3 applied log[101, 101], lastApplied 101
+106680 INFO S1 applied log[102, 102], lastApplied 102
+106681 INFO SAppend Complete 0Request [x 0 2 y, %!v(MISSING)]
+106682 INFO Leader S1 receive Get Request Get 0, from C3
+106683 INFO Leader S1 replicated log 103 {true {0 3} {   0} 949086588853030837}
+107656 LOG1 S0 received log [103, 103] from S1, commitId 101 leaderCommitId 102
+107658 LOG1 S2 received log [103, 103] from S1, commitId 101 leaderCommitId 102
+107660 INFO S0 applied log[102, 102], lastApplied 102
+107659 LOG1 S4 received log [103, 103] from S1, commitId 102 leaderCommitId 102
+107662 LOG1 S3 received log [103, 103] from S1, commitId 101 leaderCommitId 102
+107663 INFO S2 applied log[102, 102], lastApplied 102
+107662 INFO S4 applied log[102, 102], lastApplied 102
+107668 INFO S3 applied log[102, 102], lastApplied 102
+107725 INFO S1 applied log[103, 103], lastApplied 103
+107725 INFO S1 Complete GetRequest 0
+107727 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 y
+107729 INFO Leader S1 receive Get Request Get 0, from C3
+107730 INFO Leader S1 replicated log 104 {true {0 3} {   0} 4157923866297448733}
+108662 LOG1 S0 received log [104, 104] from S1, commitId 102 leaderCommitId 103
+108668 LOG1 S4 received log [104, 104] from S1, commitId 103 leaderCommitId 103
+108668 LOG1 S3 received log [104, 104] from S1, commitId 102 leaderCommitId 103
+108668 LOG1 S2 received log [104, 104] from S1, commitId 102 leaderCommitId 103
+108675 INFO S4 applied log[103, 103], lastApplied 103
+108676 INFO S3 applied log[103, 103], lastApplied 103
+108676 INFO S0 applied log[103, 103], lastApplied 103
+108678 INFO S2 applied log[103, 103], lastApplied 103
+108763 INFO S1 applied log[104, 104], lastApplied 104
+108763 INFO S1 Complete GetRequest 0
+108766 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 y
+108768 INFO Leader S1 receive Get Request Get 0, from C3
+108769 INFO Leader S1 replicated log 105 {true {0 3} {   0} 1983318271231206451}
+109669 LOG1 S4 received log [105, 105] from S1, commitId 103 leaderCommitId 104
+109670 LOG1 S0 received log [105, 105] from S1, commitId 103 leaderCommitId 104
+109671 INFO S4 applied log[104, 104], lastApplied 104
+109670 LOG1 S2 received log [105, 105] from S1, commitId 103 leaderCommitId 104
+109670 LOG1 S3 received log [105, 105] from S1, commitId 103 leaderCommitId 104
+109673 INFO S2 applied log[104, 104], lastApplied 104
+109672 INFO S0 applied log[104, 104], lastApplied 104
+109674 INFO S3 applied log[104, 104], lastApplied 104
+109698 INFO S1 applied log[105, 105], lastApplied 105
+109699 INFO S1 Complete GetRequest 0
+109701 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 y
+109702 INFO S1 receive AppendRequest [0, x 0 3 y], from C3
+109702 INFO Leader S1 replicated log 106 {false { 0} {0 x 0 3 y Append 3} 294727381949599315}
+110679 LOG1 S3 received log [106, 106] from S1, commitId 104 leaderCommitId 105
+110680 LOG1 S2 received log [106, 106] from S1, commitId 104 leaderCommitId 105
+110681 LOG1 S0 received log [106, 106] from S1, commitId 105 leaderCommitId 105
+110682 LOG1 S4 received log [106, 106] from S1, commitId 105 leaderCommitId 105
+110682 INFO S2 applied log[105, 105], lastApplied 105
+110682 INFO S3 applied log[105, 105], lastApplied 105
+110682 INFO S0 applied log[105, 105], lastApplied 105
+110684 INFO S4 applied log[105, 105], lastApplied 105
+110753 INFO S1 applied log[106, 106], lastApplied 106
+110755 INFO SAppend Complete 0Request [x 0 3 y, %!v(MISSING)]
+110759 INFO Leader S1 receive Get Request Get 0, from C3
+110760 INFO Leader S1 replicated log 107 {true {0 3} {   0} 1905255638684872125}
+111691 INFO S4 applied log[106, 106], lastApplied 106
+111692 INFO S0 applied log[106, 106], lastApplied 106
+111692 INFO S2 applied log[106, 106], lastApplied 106
+111693 INFO S3 applied log[106, 106], lastApplied 106
+111693 LOG1 S3 received log [107, 107] from S1, commitId 106 leaderCommitId 106
+111695 LOG1 S0 received log [107, 107] from S1, commitId 106 leaderCommitId 106
+111695 LOG1 S4 received log [107, 107] from S1, commitId 106 leaderCommitId 106
+111696 LOG1 S2 received log [107, 107] from S1, commitId 106 leaderCommitId 106
+111795 INFO S1 applied log[107, 107], lastApplied 107
+111796 INFO S1 Complete GetRequest 0
+111797 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 y
+111799 INFO Leader S1 receive Get Request Get 0, from C3
+111800 INFO Leader S1 replicated log 108 {true {0 3} {   0} 21228180216340126}
+112699 LOG1 S0 received log [108, 108] from S1, commitId 106 leaderCommitId 107
+112700 LOG1 S2 received log [108, 108] from S1, commitId 106 leaderCommitId 107
+112701 LOG1 S4 received log [108, 108] from S1, commitId 107 leaderCommitId 107
+112700 LOG1 S3 received log [108, 108] from S1, commitId 106 leaderCommitId 107
+112702 INFO S4 applied log[107, 107], lastApplied 107
+112702 INFO S2 applied log[107, 107], lastApplied 107
+112702 INFO S0 applied log[107, 107], lastApplied 107
+112703 INFO S3 applied log[107, 107], lastApplied 107
+112728 INFO S1 applied log[108, 108], lastApplied 108
+112729 INFO S1 Complete GetRequest 0
+112730 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 y
+112732 INFO S1 receive AppendRequest [0, x 0 4 y], from C3
+112732 INFO Leader S1 replicated log 109 {false { 0} {0 x 0 4 y Append 3} 3869684649720188145}
+113700 LOG1 S0 received log [109, 109] from S1, commitId 107 leaderCommitId 108
+113702 INFO S2 applied log[108, 108], lastApplied 108
+113702 LOG1 S3 received log [109, 109] from S1, commitId 107 leaderCommitId 108
+113703 LOG1 S2 received log [109, 109] from S1, commitId 108 leaderCommitId 108
+113702 LOG1 S4 received log [109, 109] from S1, commitId 107 leaderCommitId 108
+113704 INFO S3 applied log[108, 108], lastApplied 108
+113704 INFO S0 applied log[108, 108], lastApplied 108
+113706 INFO S4 applied log[108, 108], lastApplied 108
+113770 INFO S1 applied log[109, 109], lastApplied 109
+113771 INFO SAppend Complete 0Request [x 0 4 y, %!v(MISSING)]
+113778 INFO Leader S1 receive Get Request Get 0, from C3
+113779 INFO Leader S1 replicated log 110 {true {0 3} {   0} 3036995654395844293}
+114706 INFO S4 applied log[109, 109], lastApplied 109
+114707 LOG1 S3 received log [110, 110] from S1, commitId 108 leaderCommitId 109
+114707 LOG1 S2 received log [110, 110] from S1, commitId 108 leaderCommitId 109
+114708 LOG1 S0 received log [110, 110] from S1, commitId 109 leaderCommitId 109
+114709 INFO S2 applied log[109, 109], lastApplied 109
+114712 LOG1 S4 received log [110, 110] from S1, commitId 109 leaderCommitId 109
+114712 INFO S3 applied log[109, 109], lastApplied 109
+114714 INFO S0 applied log[109, 109], lastApplied 109
+114807 INFO S1 applied log[110, 110], lastApplied 110
+114809 INFO S1 Complete GetRequest 0
+114811 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 y
+114814 INFO S1 receive AppendRequest [0, x 0 5 y], from C3
+114814 INFO Leader S1 replicated log 111 {false { 0} {0 x 0 5 y Append 3} 4240068539043405134}
+115715 LOG1 S3 received log [111, 111] from S1, commitId 109 leaderCommitId 110
+115716 LOG1 S4 received log [111, 111] from S1, commitId 110 leaderCommitId 110
+115717 LOG1 S2 received log [111, 111] from S1, commitId 110 leaderCommitId 110
+115716 LOG1 S0 received log [111, 111] from S1, commitId 109 leaderCommitId 110
+115718 INFO S4 applied log[110, 110], lastApplied 110
+115716 INFO S2 applied log[110, 110], lastApplied 110
+115719 INFO S0 applied log[110, 110], lastApplied 110
+115717 INFO S3 applied log[110, 110], lastApplied 110
+115740 INFO S1 applied log[111, 111], lastApplied 111
+115741 INFO SAppend Complete 0Request [x 0 5 y, %!v(MISSING)]
+115745 INFO Leader S1 receive Get Request Get 0, from C3
+115745 INFO Leader S1 replicated log 112 {true {0 3} {   0} 3764937037783770958}
+116719 LOG1 S4 received log [112, 112] from S1, commitId 110 leaderCommitId 111
+116722 LOG1 S0 received log [112, 112] from S1, commitId 110 leaderCommitId 111
+116723 LOG1 S3 received log [112, 112] from S1, commitId 110 leaderCommitId 111
+116724 LOG1 S2 received log [112, 112] from S1, commitId 110 leaderCommitId 111
+116725 INFO S0 applied log[111, 111], lastApplied 111
+116726 INFO S3 applied log[111, 111], lastApplied 111
+116728 INFO S2 applied log[111, 111], lastApplied 111
+116729 INFO S4 applied log[111, 111], lastApplied 111
+116783 INFO S1 applied log[112, 112], lastApplied 112
+116784 INFO S1 Complete GetRequest 0
+116785 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 y
+116786 INFO S1 receive AppendRequest [0, x 0 6 y], from C3
+116787 INFO Leader S1 replicated log 113 {false { 0} {0 x 0 6 y Append 3} 3564671871237705962}
+117726 INFO S3 applied log[112, 112], lastApplied 112
+117727 LOG1 S0 received log [113, 113] from S1, commitId 111 leaderCommitId 112
+117728 LOG1 S2 received log [113, 113] from S1, commitId 112 leaderCommitId 112
+117727 LOG1 S3 received log [113, 113] from S1, commitId 112 leaderCommitId 112
+117727 INFO S2 applied log[112, 112], lastApplied 112
+117728 LOG1 S4 received log [113, 113] from S1, commitId 111 leaderCommitId 112
+117731 INFO S0 applied log[112, 112], lastApplied 112
+117735 INFO S4 applied log[112, 112], lastApplied 112
+117831 INFO S1 applied log[113, 113], lastApplied 113
+117832 INFO SAppend Complete 0Request [x 0 6 y, %!v(MISSING)]
+117834 INFO S1 receive AppendRequest [0, x 0 7 y], from C3
+117835 INFO Leader S1 replicated log 114 {false { 0} {0 x 0 7 y Append 3} 3301248790073199102}
+118732 LOG1 S0 received log [114, 114] from S1, commitId 112 leaderCommitId 113
+118735 INFO S0 applied log[113, 113], lastApplied 113
+118735 LOG1 S2 received log [114, 114] from S1, commitId 112 leaderCommitId 113
+118735 INFO S4 applied log[113, 113], lastApplied 113
+118735 LOG1 S4 received log [114, 114] from S1, commitId 113 leaderCommitId 113
+118736 LOG1 S3 received log [114, 114] from S1, commitId 112 leaderCommitId 113
+118736 INFO S2 applied log[113, 113], lastApplied 113
+118738 INFO S3 applied log[113, 113], lastApplied 113
+118760 INFO S1 applied log[114, 114], lastApplied 114
+118760 INFO SAppend Complete 0Request [x 0 7 y, %!v(MISSING)]
+118762 INFO Leader S1 receive Get Request Get 0, from C3
+118763 INFO Leader S1 replicated log 115 {true {0 3} {   0} 2730866072175006318}
+119743 LOG1 S4 received log [115, 115] from S1, commitId 113 leaderCommitId 114
+119745 INFO S3 applied log[114, 114], lastApplied 114
+119746 INFO S0 applied log[114, 114], lastApplied 114
+119747 LOG1 S2 received log [115, 115] from S1, commitId 113 leaderCommitId 114
+119747 LOG1 S0 received log [115, 115] from S1, commitId 114 leaderCommitId 114
+119747 LOG1 S3 received log [115, 115] from S1, commitId 114 leaderCommitId 114
+119750 INFO S4 applied log[114, 114], lastApplied 114
+119751 INFO S2 applied log[114, 114], lastApplied 114
+119798 INFO S1 applied log[115, 115], lastApplied 115
+119798 INFO S1 Complete GetRequest 0
+119800 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 y
+119801 INFO S1 receive AppendRequest [0, x 0 8 y], from C3
+119801 INFO Leader S1 replicated log 116 {false { 0} {0 x 0 8 y Append 3} 1758448457641587389}
+120746 LOG1 S4 received log [116, 116] from S1, commitId 114 leaderCommitId 115
+120747 LOG1 S0 received log [116, 116] from S1, commitId 115 leaderCommitId 115
+120746 LOG1 S3 received log [116, 116] from S1, commitId 115 leaderCommitId 115
+120747 LOG1 S2 received log [116, 116] from S1, commitId 114 leaderCommitId 115
+120747 INFO S0 applied log[115, 115], lastApplied 115
+120750 INFO S4 applied log[115, 115], lastApplied 115
+120751 INFO S2 applied log[115, 115], lastApplied 115
+120752 INFO S3 applied log[115, 115], lastApplied 115
+120841 INFO S1 applied log[116, 116], lastApplied 116
+120842 INFO SAppend Complete 0Request [x 0 8 y, %!v(MISSING)]
+120844 INFO S1 receive AppendRequest [0, x 0 9 y], from C3
+120845 INFO Leader S1 replicated log 117 {false { 0} {0 x 0 9 y Append 3} 197639512711053390}
+121755 LOG1 S2 received log [117, 117] from S1, commitId 115 leaderCommitId 116
+121761 INFO S4 applied log[116, 116], lastApplied 116
+121764 INFO S2 applied log[116, 116], lastApplied 116
+121764 INFO S0 applied log[116, 116], lastApplied 116
+121765 LOG1 S0 received log [117, 117] from S1, commitId 116 leaderCommitId 116
+121766 LOG1 S4 received log [117, 117] from S1, commitId 116 leaderCommitId 116
+121767 LOG1 S3 received log [117, 117] from S1, commitId 115 leaderCommitId 116
+121768 INFO S3 applied log[116, 116], lastApplied 116
+121868 INFO S1 applied log[117, 117], lastApplied 117
+121869 INFO SAppend Complete 0Request [x 0 9 y, %!v(MISSING)]
+121873 INFO S1 receive AppendRequest [0, x 0 10 y], from C3
+121873 INFO Leader S1 replicated log 118 {false { 0} {0 x 0 10 y Append 3} 1843372603677484806}
+122754 LOG1 S3 received log [118, 118] from S1, commitId 116 leaderCommitId 117
+122756 LOG1 S4 received log [118, 118] from S1, commitId 117 leaderCommitId 117
+122754 LOG1 S2 received log [118, 118] from S1, commitId 116 leaderCommitId 117
+122757 INFO S3 applied log[117, 117], lastApplied 117
+122757 LOG1 S0 received log [118, 118] from S1, commitId 117 leaderCommitId 117
+122760 INFO S2 applied log[117, 117], lastApplied 117
+122760 INFO S4 applied log[117, 117], lastApplied 117
+122762 INFO S0 applied log[117, 117], lastApplied 117
+122800 INFO S1 applied log[118, 118], lastApplied 118
+122800 INFO SAppend Complete 0Request [x 0 10 y, %!v(MISSING)]
+122802 INFO Leader S1 receive Get Request Get 0, from C3
+122803 INFO Leader S1 replicated log 119 {true {0 3} {   0} 1291176980761999544}
+123760 LOG1 S0 received log [119, 119] from S1, commitId 117 leaderCommitId 118
+123762 LOG1 S4 received log [119, 119] from S1, commitId 118 leaderCommitId 118
+123763 LOG1 S2 received log [119, 119] from S1, commitId 118 leaderCommitId 118
+123760 LOG1 S3 received log [119, 119] from S1, commitId 117 leaderCommitId 118
+123762 INFO S0 applied log[118, 118], lastApplied 118
+123766 INFO S3 applied log[118, 118], lastApplied 118
+123766 INFO S4 applied log[118, 118], lastApplied 118
+123766 INFO S2 applied log[118, 118], lastApplied 118
+123843 INFO S1 applied log[119, 119], lastApplied 119
+123844 INFO S1 Complete GetRequest 0
+123846 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 y
+123847 INFO S1 receive AppendRequest [0, x 0 11 y], from C3
+123848 INFO Leader S1 replicated log 120 {false { 0} {0 x 0 11 y Append 3} 2135801875489805727}
+124767 LOG1 S3 received log [120, 120] from S1, commitId 119 leaderCommitId 119
+124767 LOG1 S2 received log [120, 120] from S1, commitId 119 leaderCommitId 119
+124767 LOG1 S0 received log [120, 120] from S1, commitId 118 leaderCommitId 119
+124773 INFO S2 applied log[119, 119], lastApplied 119
+124767 INFO S4 applied log[119, 119], lastApplied 119
+124768 LOG1 S4 received log [120, 120] from S1, commitId 119 leaderCommitId 119
+124774 INFO S0 applied log[119, 119], lastApplied 119
+124770 INFO S3 applied log[119, 119], lastApplied 119
+124789 INFO S1 applied log[120, 120], lastApplied 120
+124790 INFO SAppend Complete 0Request [x 0 11 y, %!v(MISSING)]
+124791 INFO S1 receive AppendRequest [0, x 0 12 y], from C3
+124792 INFO Leader S1 replicated log 121 {false { 0} {0 x 0 12 y Append 3} 4405410748889013022}
+125777 LOG1 S4 received log [121, 121] from S1, commitId 119 leaderCommitId 120
+125780 LOG1 S3 received log [121, 121] from S1, commitId 119 leaderCommitId 120
+125781 INFO S4 applied log[120, 120], lastApplied 120
+125780 LOG1 S0 received log [121, 121] from S1, commitId 119 leaderCommitId 120
+125778 LOG1 S2 received log [121, 121] from S1, commitId 119 leaderCommitId 120
+125783 INFO S3 applied log[120, 120], lastApplied 120
+125785 INFO S2 applied log[120, 120], lastApplied 120
+125787 INFO S0 applied log[120, 120], lastApplied 120
+125839 INFO S1 applied log[121, 121], lastApplied 121
+125841 INFO SAppend Complete 0Request [x 0 12 y, %!v(MISSING)]
+125845 INFO Leader S1 receive Get Request Get 0, from C3
+125846 INFO Leader S1 replicated log 122 {true {0 3} {   0} 2364116342358889696}
+126777 LOG1 S2 received log [122, 122] from S1, commitId 120 leaderCommitId 121
+126779 INFO S2 applied log[121, 121], lastApplied 121
+126779 LOG1 S3 received log [122, 122] from S1, commitId 120 leaderCommitId 121
+126780 LOG1 S4 received log [122, 122] from S1, commitId 120 leaderCommitId 121
+126780 LOG1 S0 received log [122, 122] from S1, commitId 120 leaderCommitId 121
+126781 INFO S3 applied log[121, 121], lastApplied 121
+126782 INFO S0 applied log[121, 121], lastApplied 121
+126782 INFO S4 applied log[121, 121], lastApplied 121
+126877 INFO S1 applied log[122, 122], lastApplied 122
+126877 INFO S1 Complete GetRequest 0
+126879 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 y
+126880 INFO S1 receive AppendRequest [0, x 0 13 y], from C3
+126881 INFO Leader S1 replicated log 123 {false { 0} {0 x 0 13 y Append 3} 1768186604329779584}
+127785 INFO S0 applied log[122, 122], lastApplied 122
+127785 INFO S4 applied log[122, 122], lastApplied 122
+127786 LOG1 S4 received log [123, 123] from S1, commitId 122 leaderCommitId 122
+127787 LOG1 S3 received log [123, 123] from S1, commitId 121 leaderCommitId 122
+127788 LOG1 S2 received log [123, 123] from S1, commitId 122 leaderCommitId 122
+127788 LOG1 S0 received log [123, 123] from S1, commitId 122 leaderCommitId 122
+127791 INFO S2 applied log[122, 122], lastApplied 122
+127788 INFO S3 applied log[122, 122], lastApplied 122
+127811 INFO S1 applied log[123, 123], lastApplied 123
+127812 INFO SAppend Complete 0Request [x 0 13 y, %!v(MISSING)]
+127814 INFO Leader S1 receive Get Request Get 0, from C3
+127815 INFO Leader S1 replicated log 124 {true {0 3} {   0} 4487256883716890150}
+128794 LOG1 S0 received log [124, 124] from S1, commitId 122 leaderCommitId 123
+128795 LOG1 S2 received log [124, 124] from S1, commitId 122 leaderCommitId 123
+128795 LOG1 S4 received log [124, 124] from S1, commitId 123 leaderCommitId 123
+128796 INFO S0 applied log[123, 123], lastApplied 123
+128796 INFO S3 applied log[123, 123], lastApplied 123
+128796 INFO S2 applied log[123, 123], lastApplied 123
+128797 LOG1 S3 received log [124, 124] from S1, commitId 123 leaderCommitId 123
+128797 INFO S4 applied log[123, 123], lastApplied 123
+128863 INFO S1 applied log[124, 124], lastApplied 124
+128864 INFO S1 Complete GetRequest 0
+128866 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 y
+128868 INFO S1 receive AppendRequest [0, x 0 14 y], from C3
+128868 INFO Leader S1 replicated log 125 {false { 0} {0 x 0 14 y Append 3} 4419616209711805936}
+129795 LOG1 S2 received log [125, 125] from S1, commitId 123 leaderCommitId 124
+129795 LOG1 S4 received log [125, 125] from S1, commitId 124 leaderCommitId 124
+129797 INFO S2 applied log[124, 124], lastApplied 124
+129797 INFO S4 applied log[124, 124], lastApplied 124
+129796 INFO S3 applied log[124, 124], lastApplied 124
+129796 LOG1 S0 received log [125, 125] from S1, commitId 123 leaderCommitId 124
+129799 LOG1 S3 received log [125, 125] from S1, commitId 124 leaderCommitId 124
+129800 INFO S0 applied log[124, 124], lastApplied 124
+129897 INFO S1 applied log[125, 125], lastApplied 125
+129898 INFO SAppend Complete 0Request [x 0 14 y, %!v(MISSING)]
+129900 INFO S1 receive AppendRequest [0, x 0 15 y], from C3
+129900 INFO Leader S1 replicated log 126 {false { 0} {0 x 0 15 y Append 3} 3529162363984503255}
+130798 LOG1 S0 received log [126, 126] from S1, commitId 124 leaderCommitId 125
+130799 LOG1 S4 received log [126, 126] from S1, commitId 125 leaderCommitId 125
+130799 INFO S2 applied log[125, 125], lastApplied 125
+130799 INFO S3 applied log[125, 125], lastApplied 125
+130800 LOG1 S2 received log [126, 126] from S1, commitId 125 leaderCommitId 125
+130800 LOG1 S3 received log [126, 126] from S1, commitId 125 leaderCommitId 125
+130800 INFO S0 applied log[125, 125], lastApplied 125
+130802 INFO S4 applied log[125, 125], lastApplied 125
+130844 INFO S1 applied log[126, 126], lastApplied 126
+130845 INFO SAppend Complete 0Request [x 0 15 y, %!v(MISSING)]
+130848 INFO S1 receive AppendRequest [0, x 0 16 y], from C3
+130849 INFO Leader S1 replicated log 127 {false { 0} {0 x 0 16 y Append 3} 3289762788210076611}
+131808 LOG1 S2 received log [127, 127] from S1, commitId 125 leaderCommitId 126
+131808 LOG1 S4 received log [127, 127] from S1, commitId 125 leaderCommitId 126
+131809 LOG1 S3 received log [127, 127] from S1, commitId 125 leaderCommitId 126
+131810 INFO S2 applied log[126, 126], lastApplied 126
+131808 LOG1 S0 received log [127, 127] from S1, commitId 125 leaderCommitId 126
+131810 INFO S3 applied log[126, 126], lastApplied 126
+131810 INFO S4 applied log[126, 126], lastApplied 126
+131812 INFO S0 applied log[126, 126], lastApplied 126
+131890 INFO S1 applied log[127, 127], lastApplied 127
+131891 INFO SAppend Complete 0Request [x 0 16 y, %!v(MISSING)]
+131894 INFO Leader S1 receive Get Request Get 0, from C3
+131895 INFO Leader S1 replicated log 128 {true {0 3} {   0} 3813524134948682625}
+132818 LOG1 S3 received log [128, 128] from S1, commitId 126 leaderCommitId 127
+132818 LOG1 S4 received log [128, 128] from S1, commitId 126 leaderCommitId 127
+132819 LOG1 S2 received log [128, 128] from S1, commitId 126 leaderCommitId 127
+132821 LOG1 S0 received log [128, 128] from S1, commitId 126 leaderCommitId 127
+132822 INFO S4 applied log[127, 127], lastApplied 127
+132822 INFO S2 applied log[127, 127], lastApplied 127
+132822 INFO S3 applied log[127, 127], lastApplied 127
+132824 INFO S0 applied log[127, 127], lastApplied 127
+132836 INFO S1 applied log[128, 128], lastApplied 128
+132836 INFO S1 Complete GetRequest 0
+132837 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 y
+132838 INFO Leader S1 receive Get Request Get 0, from C3
+132839 INFO Leader S1 replicated log 129 {true {0 3} {   0} 264210588095617891}
+133825 LOG1 S2 received log [129, 129] from S1, commitId 127 leaderCommitId 128
+133827 LOG1 S3 received log [129, 129] from S1, commitId 127 leaderCommitId 128
+133828 LOG1 S4 received log [129, 129] from S1, commitId 127 leaderCommitId 128
+133828 INFO S2 applied log[128, 128], lastApplied 128
+133831 INFO S3 applied log[128, 128], lastApplied 128
+133831 INFO S4 applied log[128, 128], lastApplied 128
+133831 LOG1 S0 received log [129, 129] from S1, commitId 127 leaderCommitId 128
+133841 INFO S0 applied log[128, 128], lastApplied 128
+133876 INFO S1 applied log[129, 129], lastApplied 129
+133877 INFO S1 Complete GetRequest 0
+133878 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 y
+133879 INFO Leader S1 receive Get Request Get 0, from C3
+133880 INFO Leader S1 replicated log 130 {true {0 3} {   0} 1748765850948884103}
+134835 LOG1 S4 received log [130, 130] from S1, commitId 129 leaderCommitId 129
+134835 LOG1 S3 received log [130, 130] from S1, commitId 128 leaderCommitId 129
+134836 INFO S0 applied log[129, 129], lastApplied 129
+134837 LOG1 S0 received log [130, 130] from S1, commitId 129 leaderCommitId 129
+134835 LOG1 S2 received log [130, 130] from S1, commitId 128 leaderCommitId 129
+134838 INFO S4 applied log[129, 129], lastApplied 129
+134837 INFO S3 applied log[129, 129], lastApplied 129
+134839 INFO S2 applied log[129, 129], lastApplied 129
+134920 INFO S1 applied log[130, 130], lastApplied 130
+134921 INFO S1 Complete GetRequest 0
+134923 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 y
+134926 INFO S1 receive AppendRequest [0, x 0 17 y], from C3
+134926 INFO Leader S1 replicated log 131 {false { 0} {0 x 0 17 y Append 3} 3661574717676721869}
+135839 LOG1 S2 received log [131, 131] from S1, commitId 130 leaderCommitId 130
+135840 LOG1 S3 received log [131, 131] from S1, commitId 130 leaderCommitId 130
+135841 INFO S0 applied log[130, 130], lastApplied 130
+135841 INFO S4 applied log[130, 130], lastApplied 130
+135841 LOG1 S4 received log [131, 131] from S1, commitId 130 leaderCommitId 130
+135843 INFO S2 applied log[130, 130], lastApplied 130
+135843 INFO S3 applied log[130, 130], lastApplied 130
+135843 LOG1 S0 received log [131, 131] from S1, commitId 130 leaderCommitId 130
+135855 INFO S1 applied log[131, 131], lastApplied 131
+135855 INFO SAppend Complete 0Request [x 0 17 y, %!v(MISSING)]
+135857 INFO S1 receive AppendRequest [0, x 0 18 y], from C3
+135857 INFO Leader S1 replicated log 132 {false { 0} {0 x 0 18 y Append 3} 926148950666718060}
+136851 LOG1 S0 received log [132, 132] from S1, commitId 130 leaderCommitId 131
+136852 LOG1 S2 received log [132, 132] from S1, commitId 130 leaderCommitId 131
+136856 LOG1 S3 received log [132, 132] from S1, commitId 130 leaderCommitId 131
+136858 INFO S3 applied log[131, 131], lastApplied 131
+136858 INFO S4 applied log[131, 131], lastApplied 131
+136861 INFO S2 applied log[131, 131], lastApplied 131
+136862 LOG1 S4 received log [132, 132] from S1, commitId 131 leaderCommitId 131
+136864 INFO S0 applied log[131, 131], lastApplied 131
+136898 INFO S1 applied log[132, 132], lastApplied 132
+136898 INFO SAppend Complete 0Request [x 0 18 y, %!v(MISSING)]
+136901 INFO Leader S1 receive Get Request Get 0, from C3
+136902 INFO Leader S1 replicated log 133 {true {0 3} {   0} 1628945447705193094}
+137857 LOG1 S0 received log [133, 133] from S1, commitId 131 leaderCommitId 132
+137857 LOG1 S3 received log [133, 133] from S1, commitId 131 leaderCommitId 132
+137858 LOG1 S4 received log [133, 133] from S1, commitId 132 leaderCommitId 132
+137875 INFO S0 applied log[132, 132], lastApplied 132
+137858 LOG1 S2 received log [133, 133] from S1, commitId 131 leaderCommitId 132
+137876 INFO S4 applied log[132, 132], lastApplied 132
+137876 INFO S3 applied log[132, 132], lastApplied 132
+137879 INFO S2 applied log[132, 132], lastApplied 132
+137938 INFO S1 applied log[133, 133], lastApplied 133
+137940 INFO S1 Complete GetRequest 0
+137942 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 y
+137944 INFO S1 receive AppendRequest [0, x 0 19 y], from C3
+137945 INFO Leader S1 replicated log 134 {false { 0} {0 x 0 19 y Append 3} 4139325273689142504}
+138860 LOG1 S4 received log [134, 134] from S1, commitId 133 leaderCommitId 133
+138861 LOG1 S0 received log [134, 134] from S1, commitId 132 leaderCommitId 133
+138862 LOG1 S3 received log [134, 134] from S1, commitId 132 leaderCommitId 133
+138861 LOG1 S2 received log [134, 134] from S1, commitId 132 leaderCommitId 133
+138867 INFO S2 applied log[133, 133], lastApplied 133
+138867 INFO S3 applied log[133, 133], lastApplied 133
+138867 INFO S0 applied log[133, 133], lastApplied 133
+138868 INFO S4 applied log[133, 133], lastApplied 133
+138968 INFO S1 applied log[134, 134], lastApplied 134
+138969 INFO SAppend Complete 0Request [x 0 19 y, %!v(MISSING)]
+138972 INFO S1 receive AppendRequest [0, x 0 20 y], from C3
+138973 INFO Leader S1 replicated log 135 {false { 0} {0 x 0 20 y Append 3} 4199131129295866134}
+139868 LOG1 S3 received log [135, 135] from S1, commitId 133 leaderCommitId 134
+139870 LOG1 S0 received log [135, 135] from S1, commitId 133 leaderCommitId 134
+139870 LOG1 S2 received log [135, 135] from S1, commitId 133 leaderCommitId 134
+139871 LOG1 S4 received log [135, 135] from S1, commitId 134 leaderCommitId 134
+139871 INFO S3 applied log[134, 134], lastApplied 134
+139883 INFO S0 applied log[134, 134], lastApplied 134
+139885 INFO S2 applied log[134, 134], lastApplied 134
+139885 INFO S4 applied log[134, 134], lastApplied 134
+139903 INFO S1 applied log[135, 135], lastApplied 135
+139903 INFO SAppend Complete 0Request [x 0 20 y, %!v(MISSING)]
+139905 INFO Leader S1 receive Get Request Get 0, from C3
+139905 INFO Leader S1 replicated log 136 {true {0 3} {   0} 3764476348898661512}
+140874 LOG1 S4 received log [136, 136] from S1, commitId 135 leaderCommitId 135
+140875 LOG1 S2 received log [136, 136] from S1, commitId 135 leaderCommitId 135
+140877 INFO S2 applied log[135, 135], lastApplied 135
+140877 LOG1 S3 received log [136, 136] from S1, commitId 134 leaderCommitId 135
+140877 INFO S0 applied log[135, 135], lastApplied 135
+140879 INFO S4 applied log[135, 135], lastApplied 135
+140879 LOG1 S0 received log [136, 136] from S1, commitId 135 leaderCommitId 135
+140879 INFO S3 applied log[135, 135], lastApplied 135
+140950 INFO S1 applied log[136, 136], lastApplied 136
+140951 INFO S1 Complete GetRequest 0
+140953 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+140956 INFO Leader S1 receive Get Request Get 0, from C3
+140957 INFO Leader S1 replicated log 137 {true {0 3} {   0} 2306283350845780557}
+141884 LOG1 S2 received log [137, 137] from S1, commitId 135 leaderCommitId 136
+141886 LOG1 S0 received log [137, 137] from S1, commitId 135 leaderCommitId 136
+141886 LOG1 S3 received log [137, 137] from S1, commitId 135 leaderCommitId 136
+141887 INFO S0 applied log[136, 136], lastApplied 136
+141886 INFO S2 applied log[136, 136], lastApplied 136
+141888 LOG1 S4 received log [137, 137] from S1, commitId 136 leaderCommitId 136
+141890 INFO S4 applied log[136, 136], lastApplied 136
+141890 INFO S3 applied log[136, 136], lastApplied 136
+141991 INFO S1 applied log[137, 137], lastApplied 137
+141991 INFO S1 Complete GetRequest 0
+141993 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+141994 INFO Leader S1 receive Get Request Get 0, from C3
+141995 INFO Leader S1 replicated log 138 {true {0 3} {   0} 1154842457061416552}
+142885 LOG1 S2 received log [138, 138] from S1, commitId 136 leaderCommitId 137
+142887 LOG1 S3 received log [138, 138] from S1, commitId 136 leaderCommitId 137
+142887 INFO S2 applied log[137, 137], lastApplied 137
+142888 LOG1 S4 received log [138, 138] from S1, commitId 136 leaderCommitId 137
+142888 LOG1 S0 received log [138, 138] from S1, commitId 136 leaderCommitId 137
+142889 INFO S3 applied log[137, 137], lastApplied 137
+142890 INFO S0 applied log[137, 137], lastApplied 137
+142891 INFO S4 applied log[137, 137], lastApplied 137
+142931 INFO S1 applied log[138, 138], lastApplied 138
+142932 INFO S1 Complete GetRequest 0
+142935 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+142937 INFO Leader S1 receive Get Request Get 0, from C3
+142938 INFO Leader S1 replicated log 139 {true {0 3} {   0} 1540534496437624639}
+143892 LOG1 S3 received log [139, 139] from S1, commitId 137 leaderCommitId 138
+143893 LOG1 S4 received log [139, 139] from S1, commitId 137 leaderCommitId 138
+143894 LOG1 S0 received log [139, 139] from S1, commitId 137 leaderCommitId 138
+143892 LOG1 S2 received log [139, 139] from S1, commitId 137 leaderCommitId 138
+143895 INFO S3 applied log[138, 138], lastApplied 138
+143895 INFO S4 applied log[138, 138], lastApplied 138
+143897 INFO S2 applied log[138, 138], lastApplied 138
+143897 INFO S0 applied log[138, 138], lastApplied 138
+143977 INFO S1 applied log[139, 139], lastApplied 139
+143978 INFO S1 Complete GetRequest 0
+143979 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+143980 INFO Leader S1 receive Get Request Get 0, from C3
+143980 INFO Leader S1 replicated log 140 {true {0 3} {   0} 4283653323954541934}
+144894 LOG1 S2 received log [140, 140] from S1, commitId 138 leaderCommitId 139
+144895 INFO S4 applied log[139, 139], lastApplied 139
+144895 INFO S3 applied log[139, 139], lastApplied 139
+144895 LOG1 S4 received log [140, 140] from S1, commitId 139 leaderCommitId 139
+144896 LOG1 S3 received log [140, 140] from S1, commitId 139 leaderCommitId 139
+144897 INFO S2 applied log[139, 139], lastApplied 139
+144895 LOG1 S0 received log [140, 140] from S1, commitId 139 leaderCommitId 139
+144900 INFO S0 applied log[139, 139], lastApplied 139
+144910 INFO S1 applied log[140, 140], lastApplied 140
+144910 INFO S1 Complete GetRequest 0
+144911 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 y
+144913 INFO S1 receive AppendRequest [0, x 0 21 y], from C3
+144914 INFO Leader S1 replicated log 141 {false { 0} {0 x 0 21 y Append 3} 4042757400336982465}
+145901 LOG1 S2 received log [141, 141] from S1, commitId 139 leaderCommitId 140
+145903 LOG1 S0 received log [141, 141] from S1, commitId 140 leaderCommitId 140
+145903 LOG1 S4 received log [141, 141] from S1, commitId 140 leaderCommitId 140
+145904 INFO S2 applied log[140, 140], lastApplied 140
+145905 LOG1 S3 received log [141, 141] from S1, commitId 139 leaderCommitId 140
+145906 INFO S0 applied log[140, 140], lastApplied 140
+145906 INFO S4 applied log[140, 140], lastApplied 140
+145907 INFO S3 applied log[140, 140], lastApplied 140
+145954 INFO S1 applied log[141, 141], lastApplied 141
+145955 INFO SAppend Complete 0Request [x 0 21 y, %!v(MISSING)]
+145957 INFO S1 receive AppendRequest [0, x 0 22 y], from C3
+145957 INFO Leader S1 replicated log 142 {false { 0} {0 x 0 22 y Append 3} 1109323071134470533}
+146901 LOG1 S2 received log [142, 142] from S1, commitId 140 leaderCommitId 141
+146903 LOG1 S0 received log [142, 142] from S1, commitId 140 leaderCommitId 141
+146904 INFO S2 applied log[141, 141], lastApplied 141
+146904 LOG1 S4 received log [142, 142] from S1, commitId 141 leaderCommitId 141
+146905 INFO S3 applied log[141, 141], lastApplied 141
+146905 INFO S4 applied log[141, 141], lastApplied 141
+146906 LOG1 S3 received log [142, 142] from S1, commitId 141 leaderCommitId 141
+146906 INFO S0 applied log[141, 141], lastApplied 141
+146996 INFO S1 applied log[142, 142], lastApplied 142
+146996 INFO SAppend Complete 0Request [x 0 22 y, %!v(MISSING)]
+146998 INFO S1 receive AppendRequest [0, x 0 23 y], from C3
+146999 INFO Leader S1 replicated log 143 {false { 0} {0 x 0 23 y Append 3} 3589684756897361789}
+147909 LOG1 S3 received log [143, 143] from S1, commitId 141 leaderCommitId 142
+147911 INFO S0 applied log[142, 142], lastApplied 142
+147911 INFO S4 applied log[142, 142], lastApplied 142
+147910 LOG1 S2 received log [143, 143] from S1, commitId 141 leaderCommitId 142
+147912 LOG1 S0 received log [143, 143] from S1, commitId 142 leaderCommitId 142
+147912 LOG1 S4 received log [143, 143] from S1, commitId 142 leaderCommitId 142
+147913 INFO S2 applied log[142, 142], lastApplied 142
+147914 INFO S3 applied log[142, 142], lastApplied 142
+147937 INFO S1 applied log[143, 143], lastApplied 143
+147938 INFO SAppend Complete 0Request [x 0 23 y, %!v(MISSING)]
+147940 INFO Leader S1 receive Get Request Get 0, from C3
+147940 INFO Leader S1 replicated log 144 {true {0 3} {   0} 1079507754072353285}
+148919 LOG1 S0 received log [144, 144] from S1, commitId 142 leaderCommitId 143
+148923 INFO S0 applied log[143, 143], lastApplied 143
+148924 INFO S4 applied log[143, 143], lastApplied 143
+148924 LOG1 S3 received log [144, 144] from S1, commitId 142 leaderCommitId 143
+148926 INFO S3 applied log[143, 143], lastApplied 143
+148926 LOG1 S4 received log [144, 144] from S1, commitId 143 leaderCommitId 143
+148926 INFO S2 applied log[143, 143], lastApplied 143
+148927 LOG1 S2 received log [144, 144] from S1, commitId 143 leaderCommitId 143
+148974 INFO S1 applied log[144, 144], lastApplied 144
+148975 INFO S1 Complete GetRequest 0
+148978 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 y
+148980 INFO S1 receive AppendRequest [0, x 0 24 y], from C3
+148980 INFO Leader S1 replicated log 145 {false { 0} {0 x 0 24 y Append 3} 3990994453655673290}
+149922 LOG1 S0 received log [145, 145] from S1, commitId 143 leaderCommitId 144
+149927 LOG1 S2 received log [145, 145] from S1, commitId 144 leaderCommitId 144
+149928 INFO S4 applied log[144, 144], lastApplied 144
+149928 LOG1 S4 received log [145, 145] from S1, commitId 144 leaderCommitId 144
+149927 INFO S3 applied log[144, 144], lastApplied 144
+149927 INFO S0 applied log[144, 144], lastApplied 144
+149930 INFO S2 applied log[144, 144], lastApplied 144
+149927 LOG1 S3 received log [145, 145] from S1, commitId 144 leaderCommitId 144
+150010 INFO S1 applied log[145, 145], lastApplied 145
+150011 INFO SAppend Complete 0Request [x 0 24 y, %!v(MISSING)]
+150013 INFO S1 receive AppendRequest [0, x 0 25 y], from C3
+150014 INFO Leader S1 replicated log 146 {false { 0} {0 x 0 25 y Append 3} 708359535245011865}
+150924 LOG1 S0 received log [146, 146] from S1, commitId 144 leaderCommitId 145
+150926 INFO S4 applied log[145, 145], lastApplied 145
+150927 LOG1 S3 received log [146, 146] from S1, commitId 144 leaderCommitId 145
+150928 INFO S0 applied log[145, 145], lastApplied 145
+150933 INFO S3 applied log[145, 145], lastApplied 145
+150934 LOG1 S4 received log [146, 146] from S1, commitId 145 leaderCommitId 145
+150938 INFO S2 applied log[145, 145], lastApplied 145
+150938 LOG1 S2 received log [146, 146] from S1, commitId 145 leaderCommitId 145
+150940 INFO S1 applied log[146, 146], lastApplied 146
+150940 INFO SAppend Complete 0Request [x 0 25 y, %!v(MISSING)]
+150945 INFO S1 receive AppendRequest [0, x 0 26 y], from C3
+150945 INFO Leader S1 replicated log 147 {false { 0} {0 x 0 26 y Append 3} 3400712470518330915}
+151932 LOG1 S4 received log [147, 147] from S1, commitId 145 leaderCommitId 146
+151933 LOG1 S2 received log [147, 147] from S1, commitId 145 leaderCommitId 146
+151933 LOG1 S3 received log [147, 147] from S1, commitId 145 leaderCommitId 146
+151935 LOG1 S0 received log [147, 147] from S1, commitId 145 leaderCommitId 146
+151936 INFO S3 applied log[146, 146], lastApplied 146
+151935 INFO S4 applied log[146, 146], lastApplied 146
+151935 INFO S2 applied log[146, 146], lastApplied 146
+151939 INFO S0 applied log[146, 146], lastApplied 146
+151992 INFO S1 applied log[147, 147], lastApplied 147
+151993 INFO SAppend Complete 0Request [x 0 26 y, %!v(MISSING)]
+151995 INFO Leader S1 receive Get Request Get 0, from C3
+151996 INFO Leader S1 replicated log 148 {true {0 3} {   0} 1460391027915189729}
+152937 INFO S4 applied log[147, 147], lastApplied 147
+152937 LOG1 S0 received log [148, 148] from S1, commitId 146 leaderCommitId 147
+152938 LOG1 S4 received log [148, 148] from S1, commitId 147 leaderCommitId 147
+152938 LOG1 S2 received log [148, 148] from S1, commitId 146 leaderCommitId 147
+152939 LOG1 S3 received log [148, 148] from S1, commitId 146 leaderCommitId 147
+152940 INFO S2 applied log[147, 147], lastApplied 147
+152940 INFO S0 applied log[147, 147], lastApplied 147
+152940 INFO S3 applied log[147, 147], lastApplied 147
+153043 INFO S1 applied log[148, 148], lastApplied 148
+153044 INFO S1 Complete GetRequest 0
+153047 INFO C3 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 y
+153052 INFO Leader S1 receive Get Request Get 0, from C0
+153053 INFO Leader S1 replicated log 149 {true {0 0} {   0} 3286530503142205145}
+153947 LOG1 S4 received log [149, 149] from S1, commitId 147 leaderCommitId 148
+153948 LOG1 S0 received log [149, 149] from S1, commitId 147 leaderCommitId 148
+153950 INFO S4 applied log[148, 148], lastApplied 148
+153950 INFO S0 applied log[148, 148], lastApplied 148
+153951 LOG1 S3 received log [149, 149] from S1, commitId 147 leaderCommitId 148
+153951 LOG1 S2 received log [149, 149] from S1, commitId 148 leaderCommitId 148
+153954 INFO S3 applied log[148, 148], lastApplied 148
+153955 INFO S2 applied log[148, 148], lastApplied 148
+153987 INFO S1 applied log[149, 149], lastApplied 149
+153989 INFO S1 Complete GetRequest 0
+153991 INFO C0 successfully Get Key: 0, Value: x 0 0 yx 0 1 yx 0 2 yx 0 3 yx 0 4 yx 0 5 yx 0 6 yx 0 7 yx 0 8 yx 0 9 yx 0 10 yx 0 11 yx 0 12 yx 0 13 yx 0 14 yx 0 15 yx 0 16 yx 0 17 yx 0 18 yx 0 19 yx 0 20 yx 0 21 yx 0 22 yx 0 23 yx 0 24 yx 0 25 yx 0 26 y
+  ... Passed --  15.4  5  6028  150
+PASS
+ok  	6.824/kvraft	15.403s

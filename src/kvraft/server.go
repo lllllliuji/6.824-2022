@@ -1,12 +1,13 @@
 package kvraft
 
 import (
-	"6.824/labgob"
-	"6.824/labrpc"
-	"6.824/raft"
 	"log"
 	"sync"
 	"sync/atomic"
+
+	"6.824/labgob"
+	"6.824/labrpc"
+	"6.824/raft"
 )
 
 const Debug = false
@@ -18,11 +19,14 @@ func DPrintf(format string, a ...interface{}) (n int, err error) {
 	return
 }
 
-
 type Op struct {
 	// Your definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
+	IsGetOp      bool
+	GetArg       GetArgs
+	PutAppendArg PutAppendArgs
+	Id           int64
 }
 
 type KVServer struct {
@@ -35,15 +39,60 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
+	KVMap         map[string]string
+	CompletedPool map[int64]string
+	CompletedCond *sync.Cond
 }
-
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
+	kv.mu.Lock()
+	defer kv.mu.Unlock()
+	if _, isLeader := kv.rf.GetState(); !isLeader {
+		reply.Success = false
+		return
+	}
+	debug(dInfo, "Leader S%v receive Get Request Get %v, from C%v", kv.me, args.Key, args.ClientId)
+	op := Op{
+		IsGetOp: true,
+		GetArg:  *args,
+		Id:      nrand(),
+	}
+	kv.rf.Start(op)
+	// debug(dInfo, "Start %v", op.Id)
+	for _, exist := kv.CompletedPool[op.Id]; !exist; {
+		kv.CompletedCond.Wait()
+		_, exist = kv.CompletedPool[op.Id]
+	}
+	reply.Value = kv.CompletedPool[op.Id]
+	delete(kv.CompletedPool, op.Id)
+	reply.Success = true
+	debug(dInfo, "S%v Complete GetRequest %v", kv.me, args.Key)
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
+	kv.mu.Lock()
+	defer kv.mu.Unlock()
+	if _, isLeader := kv.rf.GetState(); !isLeader {
+		reply.Success = false
+		return
+	}
+	debug(dInfo, "S%v receive %vRequest [%v, %v], from C%v", kv.me, args.Op, args.Key, args.Value, args.ClientId)
+	op := Op{
+		IsGetOp:      false,
+		PutAppendArg: *args,
+		Id:           nrand(),
+	}
+	kv.rf.Start(op)
+	// debug(dInfo, "Start %v", op.Id)
+	for _, exist := kv.CompletedPool[op.Id]; !exist; {
+		kv.CompletedCond.Wait()
+		_, exist = kv.CompletedPool[op.Id]
+	}
+	delete(kv.CompletedPool, op.Id)
+	reply.Success = true
+	debug(dInfo, "S%v Complete %vRequest [%v, %v]", args.Op, args.Key, args.Value)
 }
 
 //
@@ -96,6 +145,32 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
-
+	kv.CompletedCond = sync.NewCond(&kv.mu)
+	kv.KVMap = make(map[string]string)
+	kv.CompletedPool = make(map[int64]string)
+	go kv.applyLog()
 	return kv
+}
+
+func (kv *KVServer) applyLog() {
+	for !kv.killed() {
+		for applyMsg := range kv.applyCh {
+			kv.mu.Lock()
+			var msg Op = applyMsg.Command.(Op)
+			if msg.IsGetOp {
+				kv.CompletedPool[msg.Id] = kv.KVMap[msg.GetArg.Key]
+			} else {
+				switch msg.PutAppendArg.Op {
+				case T_PUT:
+					kv.KVMap[msg.PutAppendArg.Key] = msg.PutAppendArg.Value
+				case T_APPEND:
+					kv.KVMap[msg.PutAppendArg.Key] += msg.PutAppendArg.Value
+				}
+				kv.CompletedPool[msg.Id] = ""
+			}
+			// debug(dInfo, "Commited %v", msg.Id)
+			kv.CompletedCond.Broadcast()
+			kv.mu.Unlock()
+		}
+	}
 }
