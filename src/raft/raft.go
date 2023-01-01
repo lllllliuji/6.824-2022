@@ -819,7 +819,7 @@ func (rf *Raft) replicateLog(server, leaderTerm int) {
 			// cond.Wait()
 		}
 		rf.mu.Unlock()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 	}
 }
 
@@ -924,7 +924,7 @@ func (rf *Raft) issueLeaderElection(templateArgs RequestVoteArgs, templateReply 
 					}
 					done = true
 					rf.State = Leader
-					// debug(dVote, "S%v got enough votes(%v), became leader of term %v", rf.me, votes, rf.CurrentTerm)
+					debug(dVote, "S%v got enough votes(%v), became leader of term %v", rf.me, votes, rf.CurrentTerm)
 					rf.becomeLeader()
 				} else if reply.Term > rf.CurrentTerm {
 					rf.State = Follower

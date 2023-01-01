@@ -32,6 +32,7 @@ func MakeClerk(servers []*labrpc.ClientEnd) *Clerk {
 	ck.servers = servers
 	// You'll have to add code here.
 	ck.recentLeader = 0
+	ck.reqNo = 0
 	ck.me = atomic.AddInt64(&seq, 1)
 	return ck
 }
