@@ -64,14 +64,14 @@ func (ck *Clerk) Get(key string) string {
 	for {
 		ok := ck.servers[ck.recentLeader].Call("KVServer.Get", &args, &reply)
 		if ok && reply.Success {
-			debug(dInfo, "C%v successfully Get Key: %v, Value: %v", ck.me, key, reply.Value)
+			// debug(dInfo, "C%v successfully Get Key: %v, Value: %v", ck.me, key, reply.Value)
 			return reply.Value
 		}
 		for i := 0; i < len(ck.servers); i++ {
 			ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
 			if ok && reply.Success {
 				ck.recentLeader = i
-				debug(dInfo, "C%v successfully Get Key: %v, Value: %v", ck.me, key, reply.Value)
+				// debug(dInfo, "C%v successfully Get Key: %v, Value: %v", ck.me, key, reply.Value)
 				return reply.Value
 			}
 		}

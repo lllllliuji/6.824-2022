@@ -2,9 +2,9 @@ package kvraft
 
 import (
 	"log"
-	"math/rand"
 	"sync"
 	"sync/atomic"
+	"time"
 
 	"6.824/labgob"
 	"6.824/labrpc"
@@ -44,63 +44,96 @@ type KVServer struct {
 	// Your definitions here.
 	KVMap         map[string]string
 	CompletedPool map[int64]string
-	CompletedCond *sync.Cond
-	CompletedReq  map[int64]int64
+	// CompletedCond *sync.Cond
+	CompletedReq map[int64]int64
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
 	kv.mu.Lock()
-	defer kv.mu.Unlock()
+	debug(dInfo, "GetLock")
+	defer func() {
+		debug(dInfo, "GetUnlock")
+		kv.mu.Unlock()
+	}()
 	if _, isLeader := kv.rf.GetState(); !isLeader {
 		reply.Success = false
 		return
 	}
-	if args.ReqNo <= kv.CompletedReq[int64(args.ClientId)] {
-		reply.Success = true
-		return
-	}
-	debug(dInfo, "Leader S%v receive Get Request Get %v, from C%v", kv.me, args.Key, args.ClientId)
+	// if args.ReqNo <= kv.CompletedReq[int64(args.ClientId)] {
+	// 	reply.Success = true
+	// 	return
+	// }
+	debug(dInfo, "S%v receive Get Request Get %v, from C%v", kv.me, args.Key, args.ClientId)
 	op := Op{
 		IsGetOp: true,
 		GetArg:  *args,
-		Tag:     rand.Int63(),
+		Tag:     nrand(),
 	}
-	kv.rf.Start(op)
-	// debug(dInfo, "Start %v", op.Id)
+	_, startTerm, _ := kv.rf.Start(op)
 	for _, exist := kv.CompletedPool[op.Tag]; !exist; {
-		kv.CompletedCond.Wait()
+		curTerm, _ := kv.rf.GetState()
+		if curTerm != startTerm {
+			reply.Success = false
+			return
+		}
+		kv.mu.Unlock()
+		time.Sleep(10 * time.Millisecond)
+		kv.mu.Lock()
 		_, exist = kv.CompletedPool[op.Tag]
 	}
+	// debug(dInfo, "getping tag %v", op.Tag)
+	// for _, exist := kv.CompletedPool[op.Tag]; !exist; {
+	// 	kv.CompletedCond.Wait()
+	// 	_, exist = kv.CompletedPool[op.Tag]
+	// }
+	// debug(dInfo, "getpong tag %v", op.Tag)
 	reply.Value = kv.CompletedPool[op.Tag]
 	delete(kv.CompletedPool, op.Tag)
 	reply.Success = true
-	debug(dInfo, "S%v Complete GetRequest %v", kv.me, args.Key)
+	debug(dInfo, "S%v Complete GetRequest %v: %v", kv.me, args.Key, reply.Value)
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
 	kv.mu.Lock()
-	defer kv.mu.Unlock()
+	debug(dInfo, "PutAppendLock")
+	defer func() {
+		kv.mu.Unlock()
+		debug(dInfo, "PutAppendUnlock")
+	}()
 	if _, isLeader := kv.rf.GetState(); !isLeader {
 		reply.Success = false
 		return
 	}
-	if args.ReqNo <= kv.CompletedReq[args.ClientId] {
-		reply.Success = true
-	}
+	// if args.ReqNo <= kv.CompletedReq[args.ClientId] {
+	// 	reply.Success = true
+	// 	return
+	// }
 	debug(dInfo, "S%v receive %vRequest [%v, %v], from C%v", kv.me, args.Op, args.Key, args.Value, args.ClientId)
 	op := Op{
 		IsGetOp:      false,
 		PutAppendArg: *args,
-		Tag:          rand.Int63(),
+		Tag:          nrand(),
 	}
-	kv.rf.Start(op)
-	// debug(dInfo, "Start %v", op.Id)
+	_, startTerm, _ := kv.rf.Start(op)
 	for _, exist := kv.CompletedPool[op.Tag]; !exist; {
-		kv.CompletedCond.Wait()
+		curTerm, _ := kv.rf.GetState()
+		if curTerm != startTerm {
+			reply.Success = false
+			return
+		}
+		kv.mu.Unlock()
+		time.Sleep(10 * time.Millisecond)
+		kv.mu.Lock()
 		_, exist = kv.CompletedPool[op.Tag]
 	}
+	// debug(dInfo, "PutAppendPing tag %v", op.Tag)
+	// for _, exist := kv.CompletedPool[op.Tag]; !exist; {
+	// 	kv.CompletedCond.Wait()
+	// 	_, exist = kv.CompletedPool[op.Tag]
+	// }
+	// debug(dInfo, "PutAppendPong %v", op.Tag)
 	delete(kv.CompletedPool, op.Tag)
 	reply.Success = true
 	debug(dInfo, "S%v Complete %vRequest [%v, %v]", kv.me, args.Op, args.Key, args.Value)
@@ -156,7 +189,7 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
 
 	// You may need initialization code here.
-	kv.CompletedCond = sync.NewCond(&kv.mu)
+	// kv.CompletedCond = sync.NewCond(&kv.mu)
 	kv.KVMap = make(map[string]string)
 	kv.CompletedPool = make(map[int64]string)
 	kv.CompletedReq = make(map[int64]int64)
@@ -168,6 +201,7 @@ func (kv *KVServer) applyLog() {
 	for !kv.killed() {
 		applyMsg := <-kv.applyCh
 		kv.mu.Lock()
+		debug(dInfo, "ApplyLock")
 		msg := applyMsg.Command.(Op)
 		if msg.IsGetOp {
 			kv.CompletedPool[msg.Tag] = kv.KVMap[msg.GetArg.Key]
@@ -182,7 +216,8 @@ func (kv *KVServer) applyLog() {
 		}
 		kv.CompletedReq[msg.ClientId] = msg.ReqNo
 		// debug(dInfo, "Commited %v", msg.Id)
-		kv.CompletedCond.Broadcast()
+		// kv.CompletedCond.Broadcast()
 		kv.mu.Unlock()
+		debug(dInfo, "ApplyUnlock tag %v", msg.Tag)
 	}
 }
