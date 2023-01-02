@@ -598,7 +598,7 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 			return
 		}
 		// vote for this candidate and reset election timer
-		// debug(dVote, "S%v term %v voted for S%v in term %v", rf.me, rf.CurrentTerm, args.CandidateId, args.Term)
+		debug(dVote, "S%v term %v voted for S%v in term %v", rf.me, rf.CurrentTerm, args.CandidateId, args.Term)
 		rf.VotedFor = args.CandidateId
 		rf.LastReceive = time.Now()
 		rf.ElectionTimeout = randElectionTimeout()

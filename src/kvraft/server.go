@@ -42,8 +42,9 @@ type KVServer struct {
 	maxraftstate int // snapshot if log grows this big
 
 	// Your definitions here.
-	KVMap         map[string]string
-	CompletedPool map[int64]int64
+	KVMap             map[string]string
+	CompletedPool     map[int64]int64
+	CompletedCondPool map[int64]*sync.Cond
 	// CompletedCond *sync.Cond
 }
 
@@ -77,23 +78,20 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 		reply.Success = false
 		return
 	}
+	kv.CompletedCondPool[args.ClientId] = sync.NewCond(&kv.mu)
 	for {
-		// debug(dInfo, "GetHere")
+		kv.CompletedCondPool[args.ClientId].Wait()
 		curTerm, isLeader := kv.rf.GetState()
-		if !isLeader || curTerm != startTerm {
+		if curTerm != startTerm || !isLeader {
 			reply.Success = false
 			return
 		}
 		if completedReq, exist := kv.CompletedPool[args.ClientId]; exist && completedReq == args.ReqNo {
 			break
 		}
-		// kv.CompletedCond.Wait()
-		kv.mu.Unlock()
-		time.Sleep(1 * time.Millisecond)
-		kv.mu.Lock()
 	}
-	reply.Value = kv.KVMap[args.Key]
 	reply.Success = true
+	reply.Value = kv.KVMap[args.Key]
 	debug(dInfo, "K%v complete GetRequest %v: %v", kv.me, args.Key, reply.Value)
 }
 
@@ -126,23 +124,31 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		reply.Success = false
 		return
 	}
+	kv.CompletedCondPool[args.ClientId] = sync.NewCond(&kv.mu)
 	for {
-		// debug(dInfo, "PutAppendHere")
+		kv.CompletedCondPool[args.ClientId].Wait()
 		curTerm, isLeader := kv.rf.GetState()
-		if !isLeader || curTerm != startTerm {
+		if curTerm != startTerm || !isLeader {
 			reply.Success = false
 			return
 		}
 		if completedReq, exist := kv.CompletedPool[args.ClientId]; exist && completedReq == args.ReqNo {
 			break
 		}
-		// kv.CompletedCond.Wait()
-		kv.mu.Unlock()
-		time.Sleep(1 * time.Millisecond)
-		kv.mu.Lock()
 	}
 	reply.Success = true
 	debug(dInfo, "K%v complete %vRequest [%v, %v]", kv.me, args.Op, args.Key, args.Value)
+}
+
+func (kv *KVServer) BroadcastAllPeoridly() {
+	for !kv.killed() {
+		kv.mu.Lock()
+		for _, v := range kv.CompletedCondPool {
+			v.Broadcast()
+		}
+		kv.mu.Unlock()
+		time.Sleep(100 * time.Millisecond)
+	}
 }
 
 //
@@ -197,8 +203,9 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	// You may need initialization code here.
 	kv.KVMap = make(map[string]string)
 	kv.CompletedPool = make(map[int64]int64)
-	// kv.CompletedCond = sync.NewCond(&kv.mu)
+	kv.CompletedCondPool = make(map[int64]*sync.Cond)
 	go kv.applyLog()
+	go kv.BroadcastAllPeoridly()
 	return kv
 }
 
@@ -219,7 +226,9 @@ func (kv *KVServer) applyLog() {
 			}
 			kv.CompletedPool[msg.ClientId] = msg.ReqNo
 		}
-		// kv.CompletedCond.Broadcast()
+		if _, exist := kv.CompletedCondPool[msg.ClientId]; exist {
+			kv.CompletedCondPool[msg.ClientId].Broadcast()
+		}
 		kv.mu.Unlock()
 	}
 }

@@ -3,4 +3,4 @@ lab 3A
 * deadlock start agreement could fail(leader change), it's not good to use cond.wait, never wakeup, use periodly check found this bug by monitor applych
 * applyCh, decouple
 * leader change, return quickly and retry another server
-* deadlock, 
+* deadlock, kv startagreement to raft, might fail, cond.wait never wake up, solution: periodlly broadcast all cond
