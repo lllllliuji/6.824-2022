@@ -1,6 +1,7 @@
 package kvraft
 
 import (
+	"bytes"
 	"log"
 	"sync"
 	"sync/atomic"
@@ -27,9 +28,8 @@ type Op struct {
 	IsGetOp      bool
 	GetArg       GetArgs
 	PutAppendArg PutAppendArgs
-	// Tag          int64
-	ClientId int64
-	ReqNo    int64
+	ClientId     int64
+	ReqNo        int64
 }
 
 type KVServer struct {
@@ -45,7 +45,8 @@ type KVServer struct {
 	KVMap             map[string]string
 	CompletedPool     map[int64]int64
 	CompletedCondPool map[int64]*sync.Cond
-	// CompletedCond *sync.Cond
+	CommitedId        int
+	// SnapshotCond      *sync.Cond
 }
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
@@ -73,7 +74,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 		ClientId: args.ClientId,
 		ReqNo:    args.ReqNo,
 	}
-	_, startTerm, isLeader := kv.rf.Start(op)
+	index, startTerm, isLeader := kv.rf.Start(op)
 	if !isLeader {
 		reply.Success = false
 		return
@@ -92,7 +93,7 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	}
 	reply.Success = true
 	reply.Value = kv.KVMap[args.Key]
-	debug(dInfo, "K%v complete GetRequest %v: %v", kv.me, args.Key, reply.Value)
+	debug(dInfo, "K%v complete GetRequest %v: %v index: %v", kv.me, args.Key, reply.Value, index)
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
@@ -119,7 +120,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		ClientId:     args.ClientId,
 		ReqNo:        args.ReqNo,
 	}
-	_, startTerm, isLeader := kv.rf.Start(op)
+	index, startTerm, isLeader := kv.rf.Start(op)
 	if !isLeader {
 		reply.Success = false
 		return
@@ -137,7 +138,7 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		}
 	}
 	reply.Success = true
-	debug(dInfo, "K%v complete %vRequest [%v, %v]", kv.me, args.Op, args.Key, args.Value)
+	debug(dInfo, "K%v complete %vRequest [%v, %v] Index: %v", kv.me, args.Op, args.Key, args.Value, index)
 }
 
 func (kv *KVServer) BroadcastAllPeoridly() {
@@ -204,31 +205,90 @@ func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persiste
 	kv.KVMap = make(map[string]string)
 	kv.CompletedPool = make(map[int64]int64)
 	kv.CompletedCondPool = make(map[int64]*sync.Cond)
+	kv.CommitedId = 0
+	// kv.SnapshotCond = sync.NewCond(&kv.mu)
+	kv.ReadSnapshot(persister.ReadSnapshot())
 	go kv.applyLog()
 	go kv.BroadcastAllPeoridly()
+	go kv.Snapshot()
 	return kv
+}
+
+func (kv *KVServer) ReadSnapshot(data []byte) {
+	if data == nil || len(data) < 1 {
+		return
+	}
+	r := bytes.NewBuffer(data)
+	d := labgob.NewDecoder(r)
+	var CommitedId int
+	var KVMap map[string]string
+	var CompletedPool map[int64]int64
+	if d.Decode(&CommitedId) != nil || d.Decode(&CompletedPool) != nil || d.Decode(&KVMap) != nil {
+		debug(dError, "K%v Error when decode in ReadSnapshot", kv.me)
+		return
+	} else {
+		kv.CommitedId = CommitedId
+		kv.KVMap = KVMap
+		kv.CompletedPool = CompletedPool
+	}
+	kv.rf.Snapshot(kv.CommitedId, data)
+	debug(dInfo, "K%v ReadSnapshot Index: %v", kv.me, CommitedId)
+}
+
+func (kv *KVServer) Snapshot() {
+	for !kv.killed() {
+		kv.mu.Lock()
+		if kv.maxraftstate == -1 || kv.rf.GetRaftStateSize() < kv.maxraftstate {
+			kv.mu.Unlock()
+			time.Sleep(100 * time.Millisecond)
+			continue
+		}
+		w := new(bytes.Buffer)
+		e := labgob.NewEncoder(w)
+		e.Encode(kv.CommitedId)
+		e.Encode(kv.CompletedPool)
+		e.Encode(kv.KVMap)
+		data := w.Bytes()
+		kv.rf.Snapshot(kv.CommitedId, data)
+		debug(dInfo, "K%v Snapshot Index %v, kv.rf.RaftStateSize: %v", kv.me, kv.CommitedId, kv.rf.GetRaftStateSize())
+		kv.mu.Unlock()
+		time.Sleep(100 * time.Millisecond)
+	}
 }
 
 func (kv *KVServer) applyLog() {
 	for !kv.killed() {
 		applyMsg := <-kv.applyCh
 		kv.mu.Lock()
-		// debug(dInfo, "ApplyLock")
-		msg := applyMsg.Command.(Op)
-		if msg.ReqNo > kv.CompletedPool[msg.ClientId] {
-			if !msg.IsGetOp {
-				switch msg.PutAppendArg.Op {
-				case T_PUT:
-					kv.KVMap[msg.PutAppendArg.Key] = msg.PutAppendArg.Value
-				case T_APPEND:
-					kv.KVMap[msg.PutAppendArg.Key] += msg.PutAppendArg.Value
+		if applyMsg.CommandValid {
+			msg := applyMsg.Command.(Op)
+			debug(dInfo, "K%v receive clientId: %v, reqNo: %v, index: %v", kv.me, msg.ClientId, msg.ReqNo, applyMsg.CommandIndex)
+			if msg.ReqNo > kv.CompletedPool[msg.ClientId] {
+				if !msg.IsGetOp {
+					switch msg.PutAppendArg.Op {
+					case T_PUT:
+						kv.KVMap[msg.PutAppendArg.Key] = msg.PutAppendArg.Value
+					case T_APPEND:
+						kv.KVMap[msg.PutAppendArg.Key] += msg.PutAppendArg.Value
+					}
 				}
+				debug(dInfo, "K%v apply Index %v, clientId: %v, msgReqNo: %v, completedReqNo: %v", kv.me, applyMsg.CommandIndex, msg.ClientId, msg.ReqNo, kv.CompletedPool[msg.ClientId])
+				kv.CompletedPool[msg.ClientId] = msg.ReqNo
 			}
-			kv.CompletedPool[msg.ClientId] = msg.ReqNo
-		}
-		if _, exist := kv.CompletedCondPool[msg.ClientId]; exist {
-			kv.CompletedCondPool[msg.ClientId].Broadcast()
+			if _, exist := kv.CompletedCondPool[msg.ClientId]; exist {
+				kv.CompletedCondPool[msg.ClientId].Broadcast()
+			}
+			kv.CommitedId = max(kv.CommitedId, applyMsg.CommandIndex)
+		} else if applyMsg.SnapshotIndex > kv.CommitedId {
+			kv.ReadSnapshot(applyMsg.Snapshot)
 		}
 		kv.mu.Unlock()
 	}
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
