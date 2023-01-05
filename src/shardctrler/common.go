@@ -28,6 +28,16 @@ type Config struct {
 	Groups map[int][]string // gid -> servers[]
 }
 
+func deepCopy(cfg *Config) Config {
+	ncfg := Config{}
+	ncfg.Shards = cfg.Shards
+	ncfg.Groups = make(map[int][]string)
+	for key, value := range cfg.Groups {
+		ncfg.Groups[key] = append(ncfg.Groups[key], value...)
+	}
+	return ncfg
+}
+
 const (
 	OK = "OK"
 )
@@ -35,7 +45,9 @@ const (
 type Err string
 
 type JoinArgs struct {
-	Servers map[int][]string // new GID -> servers mappings
+	ClientId int64
+	ReqNo    int64
+	Servers  map[int][]string // new GID -> servers mappings
 }
 
 type JoinReply struct {
@@ -44,7 +56,9 @@ type JoinReply struct {
 }
 
 type LeaveArgs struct {
-	GIDs []int
+	ClientId int64
+	ReqNo    int64
+	GIDs     []int
 }
 
 type LeaveReply struct {
@@ -53,8 +67,10 @@ type LeaveReply struct {
 }
 
 type MoveArgs struct {
-	Shard int
-	GID   int
+	ClientId int64
+	ReqNo    int64
+	Shard    int
+	GID      int
 }
 
 type MoveReply struct {
@@ -63,7 +79,9 @@ type MoveReply struct {
 }
 
 type QueryArgs struct {
-	Num int // desired config number
+	ClientId int64
+	ReqNo    int64
+	Num      int // desired config number
 }
 
 type QueryReply struct {

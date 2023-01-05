@@ -215,7 +215,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 				i++
 				continue
 			}
-			if rf.Logs[index] != args.Entries[i] {
+			if rf.Logs[index].Index != args.Entries[i].Index || rf.Logs[index].Term != args.Entries[i].Term {
 				break
 			}
 			index++
@@ -719,7 +719,7 @@ func (rf *Raft) applyLog() {
 				Command:      entry.Command,
 				CommandIndex: entry.Index,
 			}
-			if rf.snapshotMsg.SnapshotIndex == 0 || applyMsg.CommandIndex > rf.snapshotMsg.SnapshotIndex{
+			if rf.snapshotMsg.SnapshotIndex == 0 || applyMsg.CommandIndex > rf.snapshotMsg.SnapshotIndex {
 				applyMsgs = append(applyMsgs, applyMsg)
 			}
 			// rf.applyMsgs = append(rf.applyMsgs, applyMsg)
