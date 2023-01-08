@@ -409,7 +409,7 @@ func (sc *ShardCtrler) applyLog() {
 					sc.doQuery(&msg.QueryArgs)
 				}
 				sc.CompletedPool[msg.ClientId] = msg.ReqNo
-				debug(dInfo, "SC%v apply log type: %v, index: %v, config: %v", sc.me, msg.ReqType, applyMsg.CommandIndex, sc.configs[len(sc.configs)-1])
+				// debug(dInfo, "SC%v apply log type: %v, index: %v, config: %v", sc.me, msg.ReqType, applyMsg.CommandIndex, sc.configs[len(sc.configs)-1])
 			}
 			if _, exist := sc.CompletedCondPool[msg.ClientId]; exist {
 				sc.CompletedCondPool[msg.ClientId].Broadcast()

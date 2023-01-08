@@ -34,6 +34,7 @@ lab 3A
 * applyCh, decouple
 * leader change, return quickly and retry another server
 * deadlock, kv startagreement to raft, might fail, cond.wait never wake up, solution: periodlly broadcast all cond
+* at most once req
 
 lab 3B
 * duplicate log entry in raft
@@ -44,3 +45,8 @@ lab 3B
 lab 4A
 * rebalance should be determinstic, stable sort matters a lot
 * operation result should be deterministic
+
+lab 4B
+* periodly query latest shard config, update confg using raft
+* fail & recovery, updateconfig conflict deadlock with bring kvserver back, when fail, raft redo its log iteself, bring kvsever back 
+* compute kv state after reconfig, save kv state in a raft log, otherwise fail & recovery may deadlock
