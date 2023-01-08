@@ -47,6 +47,7 @@ lab 4A
 * operation result should be deterministic
 
 lab 4B
-* periodly query latest shard config, update confg using raft
+* periodly query latest shard config, update config using raft
 * fail & recovery, updateconfig conflict deadlock with bring kvserver back, when fail, raft redo its log iteself, bring kvsever back 
-* compute kv state after reconfig, save kv state in a raft log, otherwise fail & recovery may deadlock
+* update config: compute kv state it should be then make agreement using raft,  otherwise fail & recovery may deadlock
+* rpc args should be a copy of original data, if rpc retry, won't suffer from descent modification(better not modify, use another copy)
