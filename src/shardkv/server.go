@@ -76,7 +76,7 @@ type ShardKV struct {
 	ConfigReqNo   int64
 	IncomeShards  map[int]map[int]ShiftShard
 	OutcomeShards map[int]map[int]ShiftShard
-	ConfigMu      sync.Mutex
+	// ConfigMu      sync.Mutex
 }
 
 func (skv *ShardKV) cleaner() {
@@ -93,17 +93,16 @@ func (skv *ShardKV) cleaner() {
 		for _, key := range extraKeys {
 			delete(skv.ShardKVMap, key)
 		}
-		skv.mu.Unlock()
+
 		// delete config pool
-		skv.ConfigMu.Lock()
 		expiredConfigNum := make(map[int]bool)
 		for configNum := range skv.IncomeShards {
-			if configNum <= curConfigNum {
+			if configNum < curConfigNum {
 				expiredConfigNum[configNum] = true
 			}
 		}
 		for configNum := range skv.OutcomeShards {
-			if configNum <= curConfigNum {
+			if configNum < curConfigNum {
 				expiredConfigNum[configNum] = true
 			}
 		}
@@ -111,14 +110,14 @@ func (skv *ShardKV) cleaner() {
 			delete(skv.IncomeShards, configNum)
 			delete(skv.OutcomeShards, configNum)
 		}
-		skv.ConfigMu.Unlock()
+		skv.mu.Unlock()
 		time.Sleep(1 * time.Second)
 	}
 }
 
 func (skv *ShardKV) MigrateShards(args *ShiftShardArgs, reply *ShiftShardReply) {
-	skv.ConfigMu.Lock()
-	defer skv.ConfigMu.Unlock()
+	skv.mu.Lock()
+	defer skv.mu.Unlock()
 	if skv.IncomeShards[args.ConfigNum] == nil {
 		skv.IncomeShards[args.ConfigNum] = make(map[int]ShiftShard)
 	}
@@ -126,7 +125,7 @@ func (skv *ShardKV) MigrateShards(args *ShiftShardArgs, reply *ShiftShardReply) 
 	if _, isLeader := skv.rf.GetState(); isLeader {
 		reply.Success = true
 		reply.IsLeader = true
-		debug(dInfo, "G%v S%v migrateshards configNum: %v shard: %v", skv.gid, skv.me, args.ConfigNum, args.Shard)
+		debug(dInfo, "G%v S%v migrateshards configNum: %v shard: %v, len: %v", skv.gid, skv.me, args.ConfigNum, args.Shard, len(args.KVMap))
 	}
 }
 
@@ -136,7 +135,7 @@ func (skv *ShardKV) checkInShards(complete chan<- bool, curConfig, config shardc
 		if curConfig.Shards[0] == 0 {
 			break
 		}
-		skv.ConfigMu.Lock()
+		skv.mu.Lock()
 		receivedShards := make(map[int]bool)
 		for _, ShiftShard := range skv.IncomeShards[config.Num] {
 			receivedShards[ShiftShard.Shard] = true
@@ -154,13 +153,13 @@ func (skv *ShardKV) checkInShards(complete chan<- bool, curConfig, config shardc
 				completeShift = true
 			}
 		}
-		skv.ConfigMu.Unlock()
+		skv.mu.Unlock()
 		if completeShift {
 			break
 		}
 		time.Sleep(100 * time.Millisecond)
 	}
-	debug(dInfo, "G%v S%v configNum: %v checkInshards", skv.gid, skv.me, config.Num)
+	// debug(dInfo, "G%v S%v configNum: %v checkInshards", skv.gid, skv.me, config.Num)
 	complete <- true
 }
 
@@ -211,8 +210,9 @@ func (skv *ShardKV) checkOutShards(complete chan<- bool, config shardctrler.Conf
 }
 
 func (skv *ShardKV) makeNewMap(inShards map[int]bool, configNum int) map[string]string {
+	skv.mu.Lock()
+	defer skv.mu.Unlock()
 	retMap := make(map[string]string)
-	skv.ConfigMu.Lock()
 	for shard, shiftShard := range skv.IncomeShards[configNum] {
 		if inShards[shard] {
 			for key, value := range shiftShard.KVMap {
@@ -220,7 +220,6 @@ func (skv *ShardKV) makeNewMap(inShards map[int]bool, configNum int) map[string]
 			}
 		}
 	}
-	skv.ConfigMu.Unlock()
 	return retMap
 }
 
@@ -527,7 +526,6 @@ func (skv *ShardKV) ReadSnapshot(data []byte) {
 		skv.CompletedPool = CompletedPool
 		skv.CompletedResult = CompletedResult
 	}
-	skv.rf.Snapshot(skv.CommitedId, data)
 	debug(dInfo, "G%v S%v ReadSnapshot Index: %v", skv.gid, skv.me, CommitedId)
 }
 
@@ -601,7 +599,7 @@ func (skv *ShardKV) doOperation(opMsg Op) Result {
 			result.Value = skv.ShardKVMap[opMsg.PutAppendArg.Key]
 		}
 	case APPEND:
-		if _, exist := skv.Shards[opMsg.GetArg.ShardId]; !exist || !skv.Shards[opMsg.GetArg.ShardId] {
+		if _, exist := skv.Shards[opMsg.PutAppendArg.ShardId]; !exist || !skv.Shards[opMsg.PutAppendArg.ShardId] {
 			result.Err = ErrWrongGroup
 		} else {
 			skv.ShardKVMap[opMsg.PutAppendArg.Key] += opMsg.PutAppendArg.Value
@@ -623,14 +621,18 @@ func (skv *ShardKV) doUpdateConfig(kvState KVState) {
 			ShardIds[shard] = true
 		}
 	}
+	KVMap := make(map[string]string)
+	for key, value := range kvState.KVMap {
+		KVMap[key] = value
+	}
 	for key, value := range skv.ShardKVMap {
 		shard := key2shard(key)
 		if _, ok := kvState.KeepShards[shard]; ok && kvState.KeepShards[shard] {
-			kvState.KVMap[key] = value
+			KVMap[key] = value
 		}
 	}
 	skv.Shards = ShardIds
-	skv.ShardKVMap = kvState.KVMap
+	skv.ShardKVMap = KVMap
 	skv.Config = kvState.Config
 	debug(dInfo, "G%v S%v update ConfigNum %v Shards %v KVMap %v", skv.gid, skv.me, skv.Config.Num, skv.Shards, skv.ShardKVMap)
 }
