@@ -49,13 +49,22 @@ type GetReply struct {
 	Value string
 }
 
-type ShiftShardArgs struct {
+type MigrateShardArgs struct {
 	ConfigNum int
-	Shard     int
-	KVMap     map[string]string
+	Gid       int
+	ServerId  int
 }
 
-type ShiftShardReply struct {
-	Success  bool
-	IsLeader bool
+type MigrateShardReply struct {
+	Success bool
+	KVMap   map[string]string
+}
+
+type HelloArgs struct {
+	Gid      int
+	ServerId int
+}
+type HelloReply struct {
+	ConfigNum int
+	Success   bool
 }

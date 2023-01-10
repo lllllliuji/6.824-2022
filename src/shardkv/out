@@ -1,15 +1,211 @@
-Test: static shards ...
-  ... Passed
 Test: join then leave ...
-here1
-here2
-here3
-here4
-here5
-here6
+004037 VOTE S1 in term 1 issued a election
+004039 VOTE S2 term 1 voted for S1 in term 1
+004040 VOTE S1 got enough votes(2), became leader of term 1
+004041 VOTE S0 term 1 voted for S1 in term 1
+005048 VOTE S2 in term 1 issued a election
+005049 VOTE S0 in term 1 issued a election
+005050 VOTE S2 term 1 voted for S0 in term 1
+005050 VOTE S1 term 1 voted for S2 in term 1
+005051 VOTE S0 term 1 voted for S2 in term 1
+005052 VOTE S0 got enough votes(2), became leader of term 1
+005052 VOTE S0 in term 1 issued a election
+005052 VOTE S1 term 1 voted for S0 in term 1
+005051 VOTE S2 got enough votes(2), became leader of term 1
+005052 VOTE S2 term 1 voted for S0 in term 1
+005053 VOTE S0 got enough votes(2), became leader of term 1
+005054 VOTE S1 term 1 voted for S0 in term 1
+006216 INFO G101 S0 curConfig: 0 nextConfig: 1 OutShardsMap: map[]
+006217 INFO G101 S0 curConfig: 0 nextConfig: 1 makeNewMap: map[] inShards: map[]
+006431 INFO G101 S0 update ConfigNum 1 Shards map[] KVMap map[]
+007055 INFO G101 S2 update ConfigNum 1 Shards map[] KVMap map[]
+007055 INFO G101 S1 update ConfigNum 1 Shards map[] KVMap map[]
+007398 INFO G102 S2 curConfig: 0 nextConfig: 1 OutShardsMap: map[]
+007399 INFO G100 S1 curConfig: 0 nextConfig: 1 OutShardsMap: map[]
+007399 INFO G102 S2 curConfig: 0 nextConfig: 1 makeNewMap: map[] inShards: map[]
+007399 INFO G100 S1 curConfig: 0 nextConfig: 1 makeNewMap: map[] inShards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
+007405 INFO G100 S1 receive Put Request [0, 4OMU5] Shard: 8 from C1 ReqNo: 1
+007509 INFO G100 S1 update ConfigNum 1 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[]
+007509 INFO G100 S1 complete Put Request [0, 4OMU5] Shard 8 from C1, ReqNo: 1 index: 2 err: OK
+007511 INFO G100 S1 receive Put Request [1, YhUYk] Shard: 9 from C1 ReqNo: 2
+007615 INFO G102 S2 update ConfigNum 1 Shards map[] KVMap map[]
+007617 INFO G100 S0 update ConfigNum 1 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[]
+007618 INFO G100 S2 update ConfigNum 1 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[]
+007719 INFO G100 S1 complete Put Request [1, YhUYk] Shard 9 from C1, ReqNo: 2 index: 3 err: OK
+007723 INFO G100 S1 receive Put Request [2, sU4AL] Shard: 0 from C1 ReqNo: 3
+007926 INFO G100 S1 complete Put Request [2, sU4AL] Shard 0 from C1, ReqNo: 3 index: 4 err: OK
+007929 INFO G100 S1 receive Put Request [3, QDeob] Shard: 1 from C1 ReqNo: 4
+008066 INFO G102 S1 update ConfigNum 1 Shards map[] KVMap map[]
+008068 INFO G102 S0 update ConfigNum 1 Shards map[] KVMap map[]
+008142 INFO G100 S1 complete Put Request [3, QDeob] Shard 1 from C1, ReqNo: 4 index: 5 err: OK
+008147 INFO G100 S1 receive Put Request [4, Q5l4l] Shard: 2 from C1 ReqNo: 5
+008352 INFO G100 S1 complete Put Request [4, Q5l4l] Shard 2 from C1, ReqNo: 5 index: 6 err: OK
+008356 INFO G100 S1 receive Put Request [5, tsMXA] Shard: 3 from C1 ReqNo: 6
+008680 INFO G100 S1 complete Put Request [5, tsMXA] Shard 3 from C1, ReqNo: 6 index: 7 err: OK
+008683 INFO G100 S1 receive Put Request [6, xfdkL] Shard: 4 from C1 ReqNo: 7
+008894 INFO G100 S1 complete Put Request [6, xfdkL] Shard 4 from C1, ReqNo: 7 index: 8 err: OK
+008898 INFO G100 S1 receive Put Request [7, 4V8za] Shard: 5 from C1 ReqNo: 8
+009107 INFO G100 S1 complete Put Request [7, 4V8za] Shard 5 from C1, ReqNo: 8 index: 9 err: OK
+009110 INFO G100 S1 receive Put Request [8, RIbuj] Shard: 6 from C1 ReqNo: 9
+009321 INFO G100 S1 complete Put Request [8, RIbuj] Shard 6 from C1, ReqNo: 9 index: 10 err: OK
+009325 INFO G100 S1 receive Put Request [9, oenfB] Shard: 7 from C1 ReqNo: 10
+009538 INFO G100 S1 complete Put Request [9, oenfB] Shard 7 from C1, ReqNo: 10 index: 11 err: OK
+009546 INFO G100 S1 receive Get Request Get 0 Shard: 8, from C1
+009853 INFO G100 S1 complete Get Request 0: 4OMU5 Shard: 8 index: 12
+009855 INFO G100 S1 receive Get Request Get 1 Shard: 9, from C1
+010062 INFO G100 S1 complete Get Request 1: YhUYk Shard: 9 index: 13
+010065 INFO G100 S1 receive Get Request Get 2 Shard: 0, from C1
+010273 INFO G100 S1 complete Get Request 2: sU4AL Shard: 0 index: 14
+010277 INFO G100 S1 receive Get Request Get 3 Shard: 1, from C1
+010482 INFO G100 S1 complete Get Request 3: QDeob Shard: 1 index: 15
+010489 INFO G100 S1 receive Get Request Get 4 Shard: 2, from C1
+010694 INFO G100 S1 complete Get Request 4: Q5l4l Shard: 2 index: 16
+010697 INFO G100 S1 receive Get Request Get 5 Shard: 3, from C1
+011030 INFO G100 S1 complete Get Request 5: tsMXA Shard: 3 index: 17
+011033 INFO G100 S1 receive Get Request Get 6 Shard: 4, from C1
+011228 INFO G100 S1 complete Get Request 6: xfdkL Shard: 4 index: 18
+011232 INFO G100 S1 receive Get Request Get 7 Shard: 5, from C1
+011444 INFO G100 S1 complete Get Request 7: 4V8za Shard: 5 index: 19
+011450 INFO G100 S1 receive Get Request Get 8 Shard: 6, from C1
+011654 INFO G100 S1 complete Get Request 8: RIbuj Shard: 6 index: 20
+011660 INFO G100 S1 receive Get Request Get 9 Shard: 7, from C1
+011874 INFO G100 S1 complete Get Request 9: oenfB Shard: 7 index: 21
+012093 INFO G100 S1 curConfig: 1 nextConfig: 2 OutShardsMap: map[101:{101 map[2:sU4AL 3:QDeob 4:Q5l4l 5:tsMXA 6:xfdkL]}]
+012094 INFO G100 S1 receive Get Request Get 0 Shard: 8, from C1
+012094 INFO G100 S1 curConfig: 1 nextConfig: 2 makeNewMap: map[] inShards: map[]
+012302 INFO G100 S1 update ConfigNum 2 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:4OMU5 1:YhUYk 7:4V8za 8:RIbuj 9:oenfB]
+012302 INFO G100 S1 complete Get Request 0: 4OMU5 Shard: 8 index: 22
+012304 INFO G102 S2 curConfig: 1 nextConfig: 2 OutShardsMap: map[]
+012305 INFO G101 S0 curConfig: 1 nextConfig: 2 OutShardsMap: map[]
+012305 INFO G102 S2 curConfig: 1 nextConfig: 2 makeNewMap: map[] inShards: map[]
+012306 INFO G100 S1 receive Append Request [0, jilgr] Shard: 8 from C1 ReqNo: 22
+012310 INFO G101 S0 migrate shards from G100 S1 ShardsMap: map[2:sU4AL 3:QDeob 4:Q5l4l 5:tsMXA 6:xfdkL]
+012312 INFO G101 S0 curConfig: 1 nextConfig: 2 makeNewMap: map[2:sU4AL 3:QDeob 4:Q5l4l 5:tsMXA 6:xfdkL] inShards: map[0:true 1:true 2:true 3:true 4:true]
+012418 INFO G102 S2 update ConfigNum 2 Shards map[] KVMap map[]
+012420 INFO G100 S0 update ConfigNum 2 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:4OMU5 1:YhUYk 7:4V8za 8:RIbuj 9:oenfB]
+012422 INFO G100 S2 update ConfigNum 2 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:4OMU5 1:YhUYk 7:4V8za 8:RIbuj 9:oenfB]
+012518 INFO G101 S0 update ConfigNum 2 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:sU4AL 3:QDeob 4:Q5l4l 5:tsMXA 6:xfdkL]
+012518 INFO G100 S1 complete Append Request [0, jilgr] Shard 8 from C1, ReqNo: 22 index: 24 err: OK
+012530 INFO G100 S1 receive Get Request Get 1 Shard: 9, from C1
+012731 INFO G100 S1 complete Get Request 1: YhUYk Shard: 9 index: 25
+012737 INFO G100 S1 receive Append Request [1, _zfnL] Shard: 9 from C1 ReqNo: 24
+012948 INFO G100 S1 complete Append Request [1, _zfnL] Shard 9 from C1, ReqNo: 24 index: 26 err: OK
+012952 INFO G100 S1 receive Get Request Get 2 Shard: 0, from C1
+013094 INFO G101 S2 update ConfigNum 2 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:sU4AL 3:QDeob 4:Q5l4l 5:tsMXA 6:xfdkL]
+013095 INFO G102 S0 update ConfigNum 2 Shards map[] KVMap map[]
+013095 INFO G102 S1 update ConfigNum 2 Shards map[] KVMap map[]
+013095 INFO G101 S1 update ConfigNum 2 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:sU4AL 3:QDeob 4:Q5l4l 5:tsMXA 6:xfdkL]
+013160 INFO G100 S1 complete Get Request 2:  Shard: 0 index: 27
+014348 INFO G101 S0 receive Get Request Get 2 Shard: 0, from C1
+014553 INFO G101 S0 complete Get Request 2: sU4AL Shard: 0 index: 3
+014557 INFO G101 S0 receive Append Request [2, K23ee] Shard: 0 from C1 ReqNo: 27
+014880 INFO G101 S0 complete Append Request [2, K23ee] Shard 0 from C1, ReqNo: 27 index: 4 err: OK
+014884 INFO G101 S0 receive Get Request Get 3 Shard: 1, from C1
+015084 INFO G101 S0 complete Get Request 3: QDeob Shard: 1 index: 5
+015085 INFO G101 S0 receive Append Request [3, cfsEi] Shard: 1 from C1 ReqNo: 29
+015189 INFO G101 S0 complete Append Request [3, cfsEi] Shard 1 from C1, ReqNo: 29 index: 6 err: OK
+015193 INFO G101 S0 receive Get Request Get 4 Shard: 2, from C1
+015410 INFO G101 S0 complete Get Request 4: Q5l4l Shard: 2 index: 7
+015414 INFO G101 S0 receive Append Request [4, cyV1e] Shard: 2 from C1 ReqNo: 31
+015610 INFO G101 S0 complete Append Request [4, cyV1e] Shard 2 from C1, ReqNo: 31 index: 8 err: OK
+015613 INFO G101 S0 receive Get Request Get 5 Shard: 3, from C1
+015710 INFO G101 S0 complete Get Request 5: tsMXA Shard: 3 index: 9
+015712 INFO G101 S0 receive Append Request [5, XhRHP] Shard: 3 from C1 ReqNo: 33
+016028 INFO G101 S0 complete Append Request [5, XhRHP] Shard 3 from C1, ReqNo: 33 index: 10 err: OK
+016032 INFO G101 S0 receive Get Request Get 6 Shard: 4, from C1
+016242 INFO G101 S0 complete Get Request 6: xfdkL Shard: 4 index: 11
+016246 INFO G101 S0 receive Append Request [6, k0oA7] Shard: 4 from C1 ReqNo: 35
+016456 INFO G101 S0 complete Append Request [6, k0oA7] Shard 4 from C1, ReqNo: 35 index: 12 err: OK
+016460 INFO G100 S1 receive Get Request Get 7 Shard: 5, from C1
+016675 INFO G100 S1 complete Get Request 7: 4V8za Shard: 5 index: 28
+016680 INFO G100 S1 receive Append Request [7, jpM6j] Shard: 5 from C1 ReqNo: 37
+016888 INFO G100 S1 complete Append Request [7, jpM6j] Shard 5 from C1, ReqNo: 37 index: 29 err: OK
+016892 INFO G100 S1 receive Get Request Get 8 Shard: 6, from C1
+017105 INFO G100 S1 complete Get Request 8: RIbuj Shard: 6 index: 30
+017108 INFO G100 S1 receive Append Request [8, wujCz] Shard: 6 from C1 ReqNo: 39
+017316 INFO G100 S1 complete Append Request [8, wujCz] Shard 6 from C1, ReqNo: 39 index: 31 err: OK
+017321 INFO G100 S1 receive Get Request Get 9 Shard: 7, from C1
+017533 INFO G100 S1 complete Get Request 9: oenfB Shard: 7 index: 32
+017538 INFO G100 S1 receive Append Request [9, oqBLO] Shard: 7 from C1 ReqNo: 41
+017753 INFO G100 S1 complete Append Request [9, oqBLO] Shard 7 from C1, ReqNo: 41 index: 33 err: OK
+018082 INFO G100 S1 curConfig: 2 nextConfig: 3 OutShardsMap: map[101:{101 map[0:4OMU5jilgr 1:YhUYk_zfnL 7:4V8zajpM6j 8:RIbujwujCz 9:oenfBoqBLO]}]
+018083 INFO G100 S1 curConfig: 2 nextConfig: 3 makeNewMap: map[] inShards: map[]
+018086 INFO G100 S1 receive Get Request Get 0 Shard: 8, from C1
+018181 INFO G102 S2 curConfig: 2 nextConfig: 3 OutShardsMap: map[]
+018182 INFO G102 S2 curConfig: 2 nextConfig: 3 makeNewMap: map[] inShards: map[]
+018285 INFO G100 S1 update ConfigNum 3 Shards map[] KVMap map[]
+018286 INFO G100 S1 complete Get Request 0:  Shard: 8 index: 35
+018395 INFO G102 S2 update ConfigNum 3 Shards map[] KVMap map[]
+018397 INFO G101 S0 curConfig: 2 nextConfig: 3 OutShardsMap: map[]
+018400 INFO G101 S0 migrate shards from G100 S1 ShardsMap: map[0:4OMU5jilgr 1:YhUYk_zfnL 7:4V8zajpM6j 8:RIbujwujCz 9:oenfBoqBLO]
+018401 INFO G101 S0 curConfig: 2 nextConfig: 3 makeNewMap: map[0:4OMU5jilgr 1:YhUYk_zfnL 7:4V8zajpM6j 8:RIbujwujCz 9:oenfBoqBLO] inShards: map[5:true 6:true 7:true 8:true 9:true]
+018610 INFO G101 S0 update ConfigNum 3 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[0:4OMU5jilgr 1:YhUYk_zfnL 2:sU4ALK23ee 3:QDeobcfsEi 4:Q5l4lcyV1e 5:tsMXAXhRHP 6:xfdkLk0oA7 7:4V8zajpM6j 8:RIbujwujCz 9:oenfBoqBLO]
+019132 INFO G101 S2 update ConfigNum 3 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[0:4OMU5jilgr 1:YhUYk_zfnL 2:sU4ALK23ee 3:QDeobcfsEi 4:Q5l4lcyV1e 5:tsMXAXhRHP 6:xfdkLk0oA7 7:4V8zajpM6j 8:RIbujwujCz 9:oenfBoqBLO]
+019133 INFO G101 S1 update ConfigNum 3 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[0:4OMU5jilgr 1:YhUYk_zfnL 2:sU4ALK23ee 3:QDeobcfsEi 4:Q5l4lcyV1e 5:tsMXAXhRHP 6:xfdkLk0oA7 7:4V8zajpM6j 8:RIbujwujCz 9:oenfBoqBLO]
+019134 INFO G100 S2 update ConfigNum 3 Shards map[] KVMap map[]
+019135 INFO G102 S0 update ConfigNum 3 Shards map[] KVMap map[]
+019135 INFO G100 S0 update ConfigNum 3 Shards map[] KVMap map[]
+019135 INFO G102 S1 update ConfigNum 3 Shards map[] KVMap map[]
+019488 INFO G101 S0 receive Get Request Get 0 Shard: 8, from C1
+019803 INFO G101 S0 complete Get Request 0: 4OMU5jilgr Shard: 8 index: 14
+019805 INFO G101 S0 receive Append Request [0, sm4wY] Shard: 8 from C1 ReqNo: 44
+020009 INFO G101 S0 complete Append Request [0, sm4wY] Shard 8 from C1, ReqNo: 44 index: 15 err: OK
+020012 INFO G101 S0 receive Get Request Get 1 Shard: 9, from C1
+020220 INFO G101 S0 complete Get Request 1: YhUYk_zfnL Shard: 9 index: 16
+020225 INFO G101 S0 receive Append Request [1, Ahtid] Shard: 9 from C1 ReqNo: 46
+020442 INFO G101 S0 complete Append Request [1, Ahtid] Shard 9 from C1, ReqNo: 46 index: 17 err: OK
+020445 INFO G101 S0 receive Get Request Get 2 Shard: 0, from C1
+020653 INFO G101 S0 complete Get Request 2: sU4ALK23ee Shard: 0 index: 18
+020656 INFO G101 S0 receive Append Request [2, vnoZ6] Shard: 0 from C1 ReqNo: 48
+020976 INFO G101 S0 complete Append Request [2, vnoZ6] Shard 0 from C1, ReqNo: 48 index: 19 err: OK
+020979 INFO G101 S0 receive Get Request Get 3 Shard: 1, from C1
+021186 INFO G101 S0 complete Get Request 3: QDeobcfsEi Shard: 1 index: 20
+021187 INFO G101 S0 receive Append Request [3, BS78D] Shard: 1 from C1 ReqNo: 50
+021402 INFO G101 S0 complete Append Request [3, BS78D] Shard 1 from C1, ReqNo: 50 index: 21 err: OK
+021404 INFO G101 S0 receive Get Request Get 4 Shard: 2, from C1
+021617 INFO G101 S0 complete Get Request 4: Q5l4lcyV1e Shard: 2 index: 22
+021619 INFO G101 S0 receive Append Request [4, j79VZ] Shard: 2 from C1 ReqNo: 52
+021829 INFO G101 S0 complete Append Request [4, j79VZ] Shard 2 from C1, ReqNo: 52 index: 23 err: OK
+021831 INFO G101 S0 receive Get Request Get 5 Shard: 3, from C1
+022147 INFO G101 S0 complete Get Request 5: tsMXAXhRHP Shard: 3 index: 24
+022149 INFO G101 S0 receive Append Request [5, 2zZmI] Shard: 3 from C1 ReqNo: 54
+022361 INFO G101 S0 complete Append Request [5, 2zZmI] Shard 3 from C1, ReqNo: 54 index: 25 err: OK
+022364 INFO G101 S0 receive Get Request Get 6 Shard: 4, from C1
+022465 INFO G101 S0 complete Get Request 6: xfdkLk0oA7 Shard: 4 index: 26
+022467 INFO G101 S0 receive Append Request [6, RyhZA] Shard: 4 from C1 ReqNo: 56
+022573 INFO G101 S0 complete Append Request [6, RyhZA] Shard 4 from C1, ReqNo: 56 index: 27 err: OK
+022575 INFO G101 S0 receive Get Request Get 7 Shard: 5, from C1
+022777 INFO G101 S0 complete Get Request 7: 4V8zajpM6j Shard: 5 index: 28
+022780 INFO G101 S0 receive Append Request [7, dHTem] Shard: 5 from C1 ReqNo: 58
+022994 INFO G101 S0 complete Append Request [7, dHTem] Shard 5 from C1, ReqNo: 58 index: 29 err: OK
+022996 INFO G101 S0 receive Get Request Get 8 Shard: 6, from C1
+023318 INFO G101 S0 complete Get Request 8: RIbujwujCz Shard: 6 index: 30
+023322 INFO G101 S0 receive Append Request [8, liKdW] Shard: 6 from C1 ReqNo: 60
+023532 INFO G101 S0 complete Append Request [8, liKdW] Shard 6 from C1, ReqNo: 60 index: 31 err: OK
+023536 INFO G101 S0 receive Get Request Get 9 Shard: 7, from C1
+023749 INFO G101 S0 complete Get Request 9: oenfBoqBLO Shard: 7 index: 32
+023751 INFO G101 S0 receive Append Request [9, Nna-I] Shard: 7 from C1 ReqNo: 62
+023969 INFO G101 S0 complete Append Request [9, Nna-I] Shard 7 from C1, ReqNo: 62 index: 33 err: OK
+033979 INFO G101 S0 receive Get Request Get 0 Shard: 8, from C1
+034191 INFO G101 S0 complete Get Request 0: 4OMU5jilgrsm4wY Shard: 8 index: 34
+034198 INFO G101 S0 receive Get Request Get 1 Shard: 9, from C1
+034402 INFO G101 S0 complete Get Request 1: YhUYk_zfnLAhtid Shard: 9 index: 35
+034407 INFO G101 S0 receive Get Request Get 2 Shard: 0, from C1
+034615 INFO G101 S0 complete Get Request 2: sU4ALK23eevnoZ6 Shard: 0 index: 36
+034618 INFO G101 S0 receive Get Request Get 3 Shard: 1, from C1
+034826 INFO G101 S0 complete Get Request 3: QDeobcfsEiBS78D Shard: 1 index: 37
+034829 INFO G101 S0 receive Get Request Get 4 Shard: 2, from C1
+035045 INFO G101 S0 complete Get Request 4: Q5l4lcyV1ej79VZ Shard: 2 index: 38
+035048 INFO G101 S0 receive Get Request Get 5 Shard: 3, from C1
+035250 INFO G101 S0 complete Get Request 5: tsMXAXhRHP2zZmI Shard: 3 index: 39
+035255 INFO G101 S0 receive Get Request Get 6 Shard: 4, from C1
+035464 INFO G101 S0 complete Get Request 6: xfdkLk0oA7RyhZA Shard: 4 index: 40
+035468 INFO G101 S0 receive Get Request Get 7 Shard: 5, from C1
+035682 INFO G101 S0 complete Get Request 7: 4V8zajpM6jdHTem Shard: 5 index: 41
+035687 INFO G101 S0 receive Get Request Get 8 Shard: 6, from C1
+035899 INFO G101 S0 complete Get Request 8: RIbujwujCzliKdW Shard: 6 index: 42
+035902 INFO G101 S0 receive Get Request Get 9 Shard: 7, from C1
+036221 INFO G101 S0 complete Get Request 9: oenfBoqBLONna-I Shard: 7 index: 43
   ... Passed
-Test: snapshots, join, and leave ...
-  ... Passed
-Test: servers miss configuration changes...
-signal: interrupt
-FAIL	6.824/shardkv	156.944s
+PASS
+ok  	6.824/shardkv	3.625s

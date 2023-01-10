@@ -51,3 +51,4 @@ lab 4B
 * fail & recovery, updateconfig conflict deadlock with bring kvserver back, when fail, raft redo its log iteself, bring kvsever back 
 * update config: compute kv state it should be then make agreement using raft,  otherwise fail & recovery may deadlock
 * rpc args should be a copy of original data, if rpc retry, won't suffer from descent modification(better not modify, use another copy)
+* migrate shard to another group's leader, leader fail, unable to get these shards, use poll config rather than push
