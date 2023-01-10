@@ -170,14 +170,27 @@ func (sc *ShardCtrler) doLeave(args *LeaveArgs) {
 		deletedGid[gid] = true
 	}
 	// add deleted gid's shard to a temp gid
+	gid2ShardNum := make(map[int]int)
+	for _, gid := range ncfg.Shards {
+		if !deletedGid[gid] {
+			gid2ShardNum[gid]++
+		}
+	}
 	tGid := 0
-	for gid, _ := range ncfg.Groups {
-		if tGid == 0 {
+	for gid := range gid2ShardNum {
+		if gid2ShardNum[gid] > gid2ShardNum[tGid] {
 			tGid = gid
-		} else {
+		} else if gid2ShardNum[gid] == gid2ShardNum[tGid] {
 			tGid = min(tGid, gid)
 		}
 	}
+	// for gid, _ := range ncfg.Groups {
+	// 	if tGid == 0 {
+	// 		tGid = gid
+	// 	} else {
+	// 		tGid = min(tGid, gid)
+	// 	}
+	// }
 	for shardId, gid := range ncfg.Shards {
 		if _, exist := deletedGid[gid]; exist {
 			ncfg.Shards[shardId] = tGid
