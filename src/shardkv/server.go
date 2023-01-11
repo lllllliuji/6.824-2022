@@ -22,9 +22,10 @@ const (
 )
 
 type KVState struct {
-	KVMap      map[string]string
-	Config     shardctrler.Config
-	KeepShards map[int]bool
+	KVMap       map[string]string
+	Config      shardctrler.Config
+	KeepShards  map[int]bool
+	ShiftShards map[int]ShiftShards
 }
 
 type Op struct {
@@ -74,26 +75,30 @@ type ShardKV struct {
 	CommitedId int
 
 	ConfigReqNo int64
-	
+
 	Gid2ShardsBuffer map[int]map[int]ShiftShards
 	Gid2ConfigNum    map[int]int
 }
 
 func (skv *ShardKV) cleaner() {
-	skv.mu.Lock()
-	defer skv.mu.Unlock()
-	lowestConfigNum := skv.Config.Num
-	for _, configNum := range skv.Gid2ConfigNum {
-		lowestConfigNum = min(lowestConfigNum, configNum)
-	}
-	expiredConfigNum := make(map[int]bool)
-	for configNum := range skv.Gid2ShardsBuffer {
-		if configNum <= lowestConfigNum {
-			expiredConfigNum[configNum] = true
+	for {
+		skv.mu.Lock()
+		lowestConfigNum := skv.Config.Num
+		for _, configNum := range skv.Gid2ConfigNum {
+			lowestConfigNum = min(lowestConfigNum, configNum)
 		}
-	}
-	for configNum := range expiredConfigNum {
-		delete(skv.Gid2ShardsBuffer, configNum)
+		expiredConfigNum := make(map[int]bool)
+		for configNum := range skv.Gid2ShardsBuffer {
+			if configNum <= lowestConfigNum {
+				expiredConfigNum[configNum] = true
+			}
+		}
+		for configNum := range expiredConfigNum {
+			delete(skv.Gid2ShardsBuffer, configNum)
+		}
+		skv.mu.Unlock()
+		debug(dInfo, "G%v S%v delete configNum %v", skv.gid, skv.me, lowestConfigNum)
+		time.Sleep(1 * time.Second)
 	}
 }
 
@@ -112,8 +117,13 @@ func (skv *ShardKV) sayHelloToEveryGroup() {
 	for {
 		skv.mu.Lock()
 		curConfig := skv.Config
-		skv.mu.Unlock()
+		// debug(dInfo, "G%v S%v curConfigNum: %v", skv.gid, skv.me, skv.Config.Num)
 		gid2configNum := make(map[int]int)
+		for gid, configNum := range skv.Gid2ConfigNum {
+			gid2configNum[gid] = configNum
+		}
+		skv.mu.Unlock()
+
 		for gid, servers := range curConfig.Groups {
 			if gid == skv.gid {
 				continue
@@ -124,7 +134,7 @@ func (skv *ShardKV) sayHelloToEveryGroup() {
 				srv := skv.make_end(server)
 				ok := srv.Call("ShardKV.Hello", &args, &reply)
 				if ok && reply.Success {
-					gid2configNum[gid] = reply.ConfigNum
+					gid2configNum[gid] = max(gid2configNum[gid], reply.ConfigNum)
 					break
 				}
 			}
@@ -145,7 +155,7 @@ func (skv *ShardKV) updateConfig() {
 			skv.mu.Lock()
 			curConfig := skv.Config
 			nextConfig := skv.mck.Query(curConfig.Num + 1)
-			if curConfig.Num == nextConfig.Num {
+			if curConfig.Num >= nextConfig.Num {
 				skv.mu.Unlock()
 				break
 			}
@@ -209,7 +219,7 @@ func (skv *ShardKV) makeInShardsMap(inShards map[int]bool, curConfig, nextConfig
 			}
 		}
 	}
-	debug(dInfo, "G%v S%v curConfig: %v nextConfig: %v makeNewMap: %v inShards: %v",
+	debug(dInfo, "G%v S%v curConfig: %v nextConfig: %v makeInShardMap: %v inShards: %v",
 		skv.gid, skv.me, curConfig.Num, nextConfig.Num, retMap, inShards)
 	return retMap
 }
@@ -222,21 +232,31 @@ func (skv *ShardKV) makeConfigAgreement(inShards, keepShards map[int]bool, curCo
 		Config:   nextConfig,
 		KvState:  KVState{KVMap: skv.makeInShardsMap(inShards, curConfig, nextConfig), Config: nextConfig, KeepShards: keepShards},
 	}
+	skv.mu.Lock()
+	op.KvState.ShiftShards = skv.Gid2ShardsBuffer[nextConfig.Num]
+	skv.mu.Unlock()
 	for {
 		skv.mu.Lock()
 		retry := true
-		_, startTerm, isLeader := skv.rf.Start(op)
+		index, startTerm, isLeader := skv.rf.Start(op)
 		if !isLeader {
 			break
 		}
+		debug(dInfo, "G%v S%v start make agreement on ConfigNum: %v Index: %v", skv.gid, skv.me, nextConfig.Num, index)
 		skv.CompletedCondPool[0] = sync.NewCond(&skv.mu)
 		for {
 			skv.CompletedCondPool[0].Wait()
 			curTerm, isLeader := skv.rf.GetState()
 			if curTerm != startTerm || !isLeader {
+				debug(dInfo, "G%v S%v fail make agreement on ConfigNum: %v", skv.gid, skv.me, nextConfig.Num)
+				break
+			}
+			if skv.Config.Num >= curConfig.Num {
+				retry = false
 				break
 			}
 			if completedReq, exist := skv.CompletedPool[0]; exist && completedReq == op.ReqNo {
+				debug(dInfo, "G%v S%v make agreement on configNum %v", skv.gid, skv.me, nextConfig.Num)
 				retry = false
 				break
 			}
@@ -344,8 +364,8 @@ func (skv *ShardKV) Get(args *GetArgs, reply *GetReply) {
 	}
 	reply.Err = skv.CompletedResult[args.ClientId].Err
 	reply.Value = skv.CompletedResult[args.ClientId].Value
-	debug(dInfo, "G%v S%v complete Get Request %v: %v Shard: %v index: %v",
-		skv.gid, skv.me, args.Key, reply.Value, key2shard(args.Key), index)
+	debug(dInfo, "G%v S%v complete Get Request %v: %v Shard: %v index: %v Err: %v Shards: %v",
+		skv.gid, skv.me, args.Key, reply.Value, key2shard(args.Key), index, reply.Err, skv.Shards)
 }
 
 func (skv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
@@ -393,8 +413,8 @@ func (skv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		}
 	}
 	reply.Err = skv.CompletedResult[args.ClientId].Err
-	debug(dInfo, "G%v S%v complete %v Request [%v, %v] Shard %v from C%v, ReqNo: %v index: %v err: %v",
-		skv.gid, skv.me, args.Op, args.Key, args.Value, args.ShardId, args.ClientId, args.ReqNo, index, reply.Err)
+	debug(dInfo, "G%v S%v complete %v Request [%v, %v] Shard %v from C%v, ReqNo: %v index: %v Err: %v Shards: %v",
+		skv.gid, skv.me, args.Op, args.Key, args.Value, args.ShardId, args.ClientId, args.ReqNo, index, reply.Err, skv.Shards)
 }
 
 func (skv *ShardKV) BroadcastAllPeoridly() {
@@ -476,8 +496,6 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	skv.ConfigReqNo = 0
 	skv.Gid2ShardsBuffer = make(map[int]map[int]ShiftShards)
 	skv.Gid2ConfigNum = make(map[int]int)
-	// skv.IncomeShards = make(map[int]map[int]ShiftShard)
-	// skv.OutcomeShards = make(map[int]map[int]ShiftShard)
 	skv.mck = shardctrler.MakeClerk(ctrlers)
 
 	skv.ReadSnapshot(persister.ReadSnapshot())
@@ -491,14 +509,13 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	go skv.Snapshot()
 	go skv.applyLog()
 	go skv.updateConfig()
-	go skv.cleaner()
+	// go skv.cleaner()
 	go skv.BroadcastAllPeoridly()
 	go skv.sayHelloToEveryGroup()
 	return skv
 }
 
 func (skv *ShardKV) ReadSnapshot(data []byte) {
-	// debug(dInfo, "G%v S%v readsnapshot", skv.gid, skv.me)
 	if data == nil || len(data) < 1 {
 		return
 	}
@@ -527,7 +544,7 @@ func (skv *ShardKV) ReadSnapshot(data []byte) {
 		skv.CompletedResult = CompletedResult
 		skv.Gid2ShardsBuffer = Gid2ShardsBuffer
 	}
-	debug(dInfo, "G%v S%v ReadSnapshot Index: %v", skv.gid, skv.me, CommitedId)
+	debug(dInfo, "G%v S%v ReadSnapshot Index: %v ConfigNum %v", skv.gid, skv.me, CommitedId, skv.Config.Num)
 }
 
 func (skv *ShardKV) Snapshot() {
@@ -550,7 +567,7 @@ func (skv *ShardKV) Snapshot() {
 		e.Encode(skv.Gid2ShardsBuffer)
 		data := w.Bytes()
 		skv.rf.Snapshot(skv.CommitedId, data)
-		debug(dInfo, "G%v S%v Snapshot Index %v, kv.rf.RaftStateSize: %v", skv.gid, skv.me, skv.CommitedId, skv.rf.GetRaftStateSize())
+		debug(dInfo, "G%v S%v Snapshot Index %v, kv.rf.RaftStateSize: %v ConfigNum %v", skv.gid, skv.me, skv.CommitedId, skv.rf.GetRaftStateSize(), skv.Config.Num)
 		skv.mu.Unlock()
 		time.Sleep(100 * time.Millisecond)
 	}
@@ -562,11 +579,11 @@ func (skv *ShardKV) applyLog() {
 		skv.mu.Lock()
 		if applyMsg.CommandValid {
 			msg := applyMsg.Command.(Op)
-			// debug(dInfo, "SK%v receive clientId: %v, reqNo: %v, index: %v", skv.me, msg.ClientId, msg.ReqNo, applyMsg.CommandIndex)
+			debug(dInfo, "G%v S%v receive clientId: %v, reqNo: %v, index: %v", skv.gid, skv.me, msg.ClientId, msg.ReqNo, applyMsg.CommandIndex)
 			if msg.ReqNo > skv.CompletedPool[msg.ClientId] {
 				result := skv.doOperation(msg)
-				// debug(dInfo, "G%v S%v apply Index %v clientId: %v msgReqNo: %v",
-				// 	skv.gid, skv.me, applyMsg.CommandIndex, msg.ClientId, msg.ReqNo)
+				debug(dInfo, "G%v S%v apply Index %v clientId: %v msgReqNo: %v",
+					skv.gid, skv.me, applyMsg.CommandIndex, msg.ClientId, msg.ReqNo)
 				skv.CompletedPool[msg.ClientId] = msg.ReqNo
 				skv.CompletedResult[msg.ClientId] = result
 			}
@@ -574,6 +591,9 @@ func (skv *ShardKV) applyLog() {
 				skv.CompletedCondPool[msg.ClientId].Broadcast()
 			}
 			skv.CommitedId = max(skv.CommitedId, applyMsg.CommandIndex)
+			if msg.ClientId == 0 && msg.ReqNo > skv.ConfigReqNo {
+				skv.ConfigReqNo = msg.ReqNo
+			}
 		} else if applyMsg.SnapshotIndex > skv.CommitedId {
 			skv.ReadSnapshot(applyMsg.Snapshot)
 		}
@@ -636,7 +656,9 @@ func (skv *ShardKV) doUpdateConfig(kvState KVState) {
 	skv.Shards = ShardIds
 	skv.ShardKVMap = KVMap
 	skv.Config = kvState.Config
-	debug(dInfo, "G%v S%v update ConfigNum %v Shards %v KVMap %v", skv.gid, skv.me, skv.Config.Num, skv.Shards, skv.ShardKVMap)
+	skv.Gid2ShardsBuffer[kvState.Config.Num] = kvState.ShiftShards
+	debug(dInfo, "G%v S%v update ConfigNum %v Shards %v KVMap %v ConfigShards %v",
+		skv.gid, skv.me, skv.Config.Num, skv.Shards, skv.ShardKVMap, skv.Config.Shards)
 }
 
 func max(a, b int) int {

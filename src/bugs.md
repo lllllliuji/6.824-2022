@@ -52,3 +52,5 @@ lab 4B
 * update config: compute kv state it should be then make agreement using raft,  otherwise fail & recovery may deadlock
 * rpc args should be a copy of original data, if rpc retry, won't suffer from descent modification(better not modify, use another copy)
 * migrate shard to another group's leader, leader fail, unable to get these shards, use poll config rather than push
+* configReqNo should update in group along with make agreement on raft log
+* a server shutdowned as a leader, update config(staled) as soon as stand up, read snapshot and catch up, leader fail, this server elected as leader again, keep update staled config, blocked
