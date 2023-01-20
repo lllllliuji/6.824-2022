@@ -492,12 +492,12 @@ func (rf *Raft) sendInstallSnapshot(server int, args *InstallSnapshotArg, reply 
 	return ok
 }
 
-func (rf *Raft) advanceToIndex(index int) bool {
+func (rf *Raft) advanceToIndex(index int) {
 	if index <= rf.SnapshotLastIncludedIndex {
-		return false
+		return
 	}
 	if len(rf.Logs) == 0 {
-		return false
+		return
 	}
 	startIndex := index - rf.SnapshotLastIncludedIndex - 1
 	if startIndex > 0 {
@@ -505,7 +505,6 @@ func (rf *Raft) advanceToIndex(index int) bool {
 		rf.SnapshotLastIncludedTerm = rf.Logs[min(startIndex, len(rf.Logs))-1].Term
 	}
 	rf.Logs = rf.Logs[min(startIndex, len(rf.Logs)):]
-	return true
 }
 
 // the service says it has created a snapshot that has
@@ -521,14 +520,12 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 	}
 	// debug(dInfo, "S%v Snapshot %v", rf.me, index)
 	// trim obsolete rf log
-	success := rf.advanceToIndex(index + 1)
+	rf.advanceToIndex(index + 1)
 	rf.CommitIndex = max(rf.CommitIndex, index)
 	rf.LastApplied = max(rf.LastApplied, index)
 	rf.SnapshotLastIncludedIndex = max(rf.SnapshotLastIncludedIndex, index)
 	rf.persist()
-	if success {
-		rf.persister.SaveStateAndSnapshot(rf.persister.raftstate, snapshot)
-	}
+	rf.persister.SaveStateAndSnapshot(rf.persister.raftstate, snapshot)
 	// go rf.acceptSnapshot(index, snapshot)
 }
 

@@ -1,1227 +1,261 @@
-Test: servers miss configuration changes...
-004041 VOTE S2 in term 1 issued a election
-004043 VOTE S1 term 1 voted for S2 in term 1
-004044 VOTE S2 got enough votes(2), became leader of term 1
+Test: partial migration shard access (challenge 2) ...
+000004 INFO G100 S0 start
+000005 INFO G100 S1 start
+000006 INFO G100 S2 start
+000007 INFO G101 S0 start
+000008 INFO G101 S1 start
+000009 INFO G101 S2 start
+000010 INFO G102 S0 start
+000010 INFO G102 S1 start
+000012 INFO G102 S2 start
+004043 VOTE S1 in term 1 issued a election
 004044 VOTE S1 in term 1 issued a election
-004047 VOTE S0 term 1 voted for S2 in term 1
-004049 VOTE S0 term 1 voted for S1 in term 1
-004050 VOTE S2 term 1 voted for S1 in term 1
-004050 VOTE S1 got enough votes(2), became leader of term 1
-005050 VOTE S0 in term 1 issued a election
-005053 VOTE S2 term 1 voted for S0 in term 1
-005054 VOTE S0 got enough votes(2), became leader of term 1
-005054 VOTE S1 in term 1 issued a election
-005058 VOTE S2 term 1 voted for S1 in term 1
-005053 VOTE S1 in term 1 issued a election
-005061 VOTE S1 got enough votes(2), became leader of term 1
-005062 VOTE S0 term 1 voted for S1 in term 1
-005197 INFO G102 S0 curConfig: 0 nextConfig: 1 OutShardsMap: map[]
-005198 INFO G102 S0 curConfig: 0 nextConfig: 1 makeInShardMap: map[] inShards: map[]
-005199 INFO G101 S1 curConfig: 0 nextConfig: 1 OutShardsMap: map[]
-005199 INFO G101 S1 curConfig: 0 nextConfig: 1 makeInShardMap: map[] inShards: map[]
-005200 INFO G102 S0 start make agreement on ConfigNum: 1 Index: 1
-005201 INFO G101 S1 start make agreement on ConfigNum: 1 Index: 1
-005301 INFO SK1 receive clientId: 0, reqNo: 1, index: 1
-005302 INFO G101 S1 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-005303 INFO G101 S1 apply Index 1 clientId: 0 msgReqNo: 1
-005303 INFO G101 S1 make agreement on configNum 1
-005308 INFO SK0 receive clientId: 0, reqNo: 1, index: 1
-005309 INFO G101 S0 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-005309 INFO G101 S0 apply Index 1 clientId: 0 msgReqNo: 1
-005371 INFO SK0 receive clientId: 0, reqNo: 1, index: 1
-005372 INFO G102 S0 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-005372 INFO G102 S0 apply Index 1 clientId: 0 msgReqNo: 1
-005372 INFO G102 S0 make agreement on configNum 1
-005413 INFO G100 S1 receive Put Request [0, P2hLEMQN8enP_1i1Omn-] Shard: 8 from C1 ReqNo: 1
-005586 INFO SK1 receive clientId: 1, reqNo: 1, index: 1
-005587 INFO G100 S1 apply Index 1 clientId: 1 msgReqNo: 1
-005587 INFO G100 S1 complete Put Request [0, P2hLEMQN8enP_1i1Omn-] Shard 8 from C1, ReqNo: 1 index: 1 Err: ErrWrongGroup Shards: map[]
-006062 INFO SK2 receive clientId: 0, reqNo: 1, index: 1
-006063 INFO G102 S2 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-006063 INFO G102 S2 apply Index 1 clientId: 0 msgReqNo: 1
-006062 INFO SK1 receive clientId: 0, reqNo: 1, index: 1
-006063 INFO G102 S1 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-006064 INFO G102 S1 apply Index 1 clientId: 0 msgReqNo: 1
-006065 INFO SK0 receive clientId: 1, reqNo: 1, index: 1
-006066 INFO G100 S0 apply Index 1 clientId: 1 msgReqNo: 1
-006066 INFO SK2 receive clientId: 0, reqNo: 1, index: 1
-006066 INFO G101 S2 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-006067 INFO G101 S2 apply Index 1 clientId: 0 msgReqNo: 1
-006067 INFO SK2 receive clientId: 1, reqNo: 1, index: 1
-006067 INFO G100 S2 apply Index 1 clientId: 1 msgReqNo: 1
-006163 INFO G100 S1 curConfig: 0 nextConfig: 1 OutShardsMap: map[]
-006164 INFO G100 S1 curConfig: 0 nextConfig: 1 makeInShardMap: map[] inShards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-006164 INFO G100 S1 start make agreement on ConfigNum: 1 Index: 2
-006337 INFO SK1 receive clientId: 0, reqNo: 1, index: 2
-006338 INFO G100 S1 update ConfigNum 1 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-006339 INFO G100 S1 apply Index 2 clientId: 0 msgReqNo: 1
-006339 INFO G100 S1 make agreement on configNum 1
-006803 INFO G100 S1 receive Put Request [0, P2hLEMQN8enP_1i1Omn-] Shard: 8 from C1 ReqNo: 2
-006894 INFO SK0 receive clientId: 0, reqNo: 1, index: 2
-006895 INFO G100 S0 update ConfigNum 1 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-006895 INFO G100 S0 apply Index 2 clientId: 0 msgReqNo: 1
-006895 INFO SK2 receive clientId: 0, reqNo: 1, index: 2
-006896 INFO G100 S2 update ConfigNum 1 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[] ConfigShards [100 100 100 100 100 100 100 100 100 100]
-006896 INFO G100 S2 apply Index 2 clientId: 0 msgReqNo: 1
-006998 INFO SK1 receive clientId: 1, reqNo: 2, index: 3
-006999 INFO G100 S1 apply Index 3 clientId: 1 msgReqNo: 2
-006999 INFO G100 S1 complete Put Request [0, P2hLEMQN8enP_1i1Omn-] Shard 8 from C1, ReqNo: 2 index: 3 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-007005 INFO G100 S1 receive Put Request [1, d0zKof9Glhe_0UKPKBNc] Shard: 9 from C1 ReqNo: 3
-007070 INFO G100 S0 Snapshot Index 2, kv.rf.RaftStateSize: 800 ConfigNum 1
-007071 INFO G100 S1 Snapshot Index 3, kv.rf.RaftStateSize: 800 ConfigNum 1
-007072 INFO G100 S2 Snapshot Index 2, kv.rf.RaftStateSize: 800 ConfigNum 1
-007073 INFO SK2 receive clientId: 1, reqNo: 2, index: 3
-007074 INFO G100 S2 apply Index 3 clientId: 1 msgReqNo: 2
-007073 INFO SK0 receive clientId: 1, reqNo: 2, index: 3
-007074 INFO G100 S0 apply Index 3 clientId: 1 msgReqNo: 2
-007218 INFO SK1 receive clientId: 1, reqNo: 3, index: 4
-007218 INFO G100 S1 apply Index 4 clientId: 1 msgReqNo: 3
-007218 INFO G100 S1 complete Put Request [1, d0zKof9Glhe_0UKPKBNc] Shard 9 from C1, ReqNo: 3 index: 4 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-007222 INFO G100 S1 receive Put Request [2, z2bU0qOYOKLZxIFRZ8nU] Shard: 0 from C1 ReqNo: 4
-007328 INFO SK0 receive clientId: 1, reqNo: 3, index: 4
-007329 INFO G100 S0 apply Index 4 clientId: 1 msgReqNo: 3
-007329 INFO SK2 receive clientId: 1, reqNo: 3, index: 4
-007329 INFO G100 S2 apply Index 4 clientId: 1 msgReqNo: 3
-007438 INFO SK1 receive clientId: 1, reqNo: 4, index: 5
-007438 INFO G100 S1 apply Index 5 clientId: 1 msgReqNo: 4
-007438 INFO G100 S1 complete Put Request [2, z2bU0qOYOKLZxIFRZ8nU] Shard 0 from C1, ReqNo: 4 index: 5 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-007440 INFO G100 S1 receive Put Request [3, x-Imgbh6VmhDdMs9u-Kr] Shard: 1 from C1 ReqNo: 5
-007545 INFO SK1 receive clientId: 1, reqNo: 5, index: 6
-007545 INFO G100 S1 apply Index 6 clientId: 1 msgReqNo: 5
-007545 INFO G100 S1 complete Put Request [3, x-Imgbh6VmhDdMs9u-Kr] Shard 1 from C1, ReqNo: 5 index: 6 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-007547 INFO SK2 receive clientId: 1, reqNo: 4, index: 5
-007547 INFO SK0 receive clientId: 1, reqNo: 4, index: 5
-007548 INFO G100 S0 apply Index 5 clientId: 1 msgReqNo: 4
-007547 INFO G100 S1 receive Put Request [4, M62c55Mbe1jnhNNzaxSF] Shard: 2 from C1 ReqNo: 6
-007547 INFO G100 S2 apply Index 5 clientId: 1 msgReqNo: 4
-007550 INFO SK2 receive clientId: 1, reqNo: 5, index: 6
-007550 INFO G100 S2 apply Index 6 clientId: 1 msgReqNo: 5
-007650 INFO SK0 receive clientId: 1, reqNo: 5, index: 6
-007652 INFO G100 S0 apply Index 6 clientId: 1 msgReqNo: 5
-007756 INFO SK1 receive clientId: 1, reqNo: 6, index: 7
-007757 INFO G100 S1 apply Index 7 clientId: 1 msgReqNo: 6
-007757 INFO G100 S1 complete Put Request [4, M62c55Mbe1jnhNNzaxSF] Shard 2 from C1, ReqNo: 6 index: 7 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-007764 INFO G100 S1 receive Put Request [5, 9WiA0op_vzDRvfNxTvk5] Shard: 3 from C1 ReqNo: 7
-007866 INFO SK2 receive clientId: 1, reqNo: 6, index: 7
-007867 INFO G100 S2 apply Index 7 clientId: 1 msgReqNo: 6
-007867 INFO SK0 receive clientId: 1, reqNo: 6, index: 7
-007868 INFO G100 S0 apply Index 7 clientId: 1 msgReqNo: 6
-007968 INFO SK1 receive clientId: 1, reqNo: 7, index: 8
-007969 INFO G100 S1 apply Index 8 clientId: 1 msgReqNo: 7
-007969 INFO G100 S1 complete Put Request [5, 9WiA0op_vzDRvfNxTvk5] Shard 3 from C1, ReqNo: 7 index: 8 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-007972 INFO G100 S1 receive Put Request [6, BB2bD6akpcLMbPVGk19v] Shard: 4 from C1 ReqNo: 8
-008067 INFO SK2 receive clientId: 1, reqNo: 7, index: 8
-008068 INFO G100 S2 apply Index 8 clientId: 1 msgReqNo: 7
-008069 INFO SK0 receive clientId: 1, reqNo: 7, index: 8
-008070 INFO G100 S0 apply Index 8 clientId: 1 msgReqNo: 7
-008072 INFO G100 S0 Snapshot Index 8, kv.rf.RaftStateSize: 800 ConfigNum 1
-008074 INFO G100 S1 Snapshot Index 8, kv.rf.RaftStateSize: 800 ConfigNum 1
-008076 INFO G100 S2 Snapshot Index 8, kv.rf.RaftStateSize: 800 ConfigNum 1
-008179 INFO SK1 receive clientId: 1, reqNo: 8, index: 9
-008180 INFO G100 S1 apply Index 9 clientId: 1 msgReqNo: 8
-008180 INFO G100 S1 complete Put Request [6, BB2bD6akpcLMbPVGk19v] Shard 4 from C1, ReqNo: 8 index: 9 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-008187 INFO G100 S1 receive Put Request [7, PKbQoOexLSMcJUoBgUxl] Shard: 5 from C1 ReqNo: 9
-008291 INFO SK0 receive clientId: 1, reqNo: 8, index: 9
-008292 INFO G100 S0 apply Index 9 clientId: 1 msgReqNo: 8
-008294 INFO SK2 receive clientId: 1, reqNo: 8, index: 9
-008294 INFO G100 S2 apply Index 9 clientId: 1 msgReqNo: 8
-008389 INFO SK1 receive clientId: 1, reqNo: 9, index: 10
-008390 INFO G100 S1 apply Index 10 clientId: 1 msgReqNo: 9
-008390 INFO G100 S1 complete Put Request [7, PKbQoOexLSMcJUoBgUxl] Shard 5 from C1, ReqNo: 9 index: 10 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-008392 INFO G100 S1 receive Put Request [8, iFZPVwHuJ5c7JeJXu7NQ] Shard: 6 from C1 ReqNo: 10
-008504 INFO SK0 receive clientId: 1, reqNo: 9, index: 10
-008505 INFO G100 S0 apply Index 10 clientId: 1 msgReqNo: 9
-008505 INFO SK2 receive clientId: 1, reqNo: 9, index: 10
-008506 INFO G100 S2 apply Index 10 clientId: 1 msgReqNo: 9
-008613 INFO SK1 receive clientId: 1, reqNo: 10, index: 11
-008613 INFO G100 S1 apply Index 11 clientId: 1 msgReqNo: 10
-008613 INFO G100 S1 complete Put Request [8, iFZPVwHuJ5c7JeJXu7NQ] Shard 6 from C1, ReqNo: 10 index: 11 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-008616 INFO G100 S1 receive Put Request [9, D14TYAX3NwkbMPoWHWsj] Shard: 7 from C1 ReqNo: 11
-008724 INFO SK0 receive clientId: 1, reqNo: 10, index: 11
-008725 INFO G100 S0 apply Index 11 clientId: 1 msgReqNo: 10
-008725 INFO SK2 receive clientId: 1, reqNo: 10, index: 11
-008725 INFO G100 S2 apply Index 11 clientId: 1 msgReqNo: 10
-008831 INFO SK1 receive clientId: 1, reqNo: 11, index: 12
-008832 INFO G100 S1 apply Index 12 clientId: 1 msgReqNo: 11
-008833 INFO G100 S1 complete Put Request [9, D14TYAX3NwkbMPoWHWsj] Shard 7 from C1, ReqNo: 11 index: 12 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-008841 INFO G100 S1 receive Get Request Get 0 Shard: 8, from C1
-008942 INFO SK2 receive clientId: 1, reqNo: 11, index: 12
-008942 INFO G100 S2 apply Index 12 clientId: 1 msgReqNo: 11
-008945 INFO SK0 receive clientId: 1, reqNo: 11, index: 12
-008945 INFO G100 S0 apply Index 12 clientId: 1 msgReqNo: 11
-009047 INFO SK1 receive clientId: 1, reqNo: 12, index: 13
-009048 INFO G100 S1 apply Index 13 clientId: 1 msgReqNo: 12
-009048 INFO G100 S1 complete Get Request 0: P2hLEMQN8enP_1i1Omn- Shard: 8 index: 13 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-009054 INFO G100 S1 receive Get Request Get 1 Shard: 9, from C1
-009072 INFO SK2 receive clientId: 1, reqNo: 12, index: 13
-009072 INFO G100 S2 apply Index 13 clientId: 1 msgReqNo: 12
-009073 INFO SK0 receive clientId: 1, reqNo: 12, index: 13
-009073 INFO G100 S0 apply Index 13 clientId: 1 msgReqNo: 12
-009073 INFO G100 S0 Snapshot Index 13, kv.rf.RaftStateSize: 93 ConfigNum 1
-009075 INFO G100 S1 Snapshot Index 13, kv.rf.RaftStateSize: 773 ConfigNum 1
-009085 INFO G100 S2 Snapshot Index 13, kv.rf.RaftStateSize: 93 ConfigNum 1
-009256 INFO SK1 receive clientId: 1, reqNo: 13, index: 14
-009257 INFO G100 S1 apply Index 14 clientId: 1 msgReqNo: 13
-009257 INFO G100 S1 complete Get Request 1: d0zKof9Glhe_0UKPKBNc Shard: 9 index: 14 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-009258 INFO G100 S1 receive Get Request Get 2 Shard: 0, from C1
-009370 INFO SK0 receive clientId: 1, reqNo: 13, index: 14
-009371 INFO G100 S0 apply Index 14 clientId: 1 msgReqNo: 13
-009372 INFO SK2 receive clientId: 1, reqNo: 13, index: 14
-009372 INFO G100 S2 apply Index 14 clientId: 1 msgReqNo: 13
-009467 INFO SK1 receive clientId: 1, reqNo: 14, index: 15
-009467 INFO G100 S1 apply Index 15 clientId: 1 msgReqNo: 14
-009467 INFO G100 S1 complete Get Request 2: z2bU0qOYOKLZxIFRZ8nU Shard: 0 index: 15 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-009470 INFO G100 S1 receive Get Request Get 3 Shard: 1, from C1
-009575 INFO SK2 receive clientId: 1, reqNo: 14, index: 15
-009576 INFO G100 S2 apply Index 15 clientId: 1 msgReqNo: 14
-009575 INFO SK0 receive clientId: 1, reqNo: 14, index: 15
-009577 INFO G100 S0 apply Index 15 clientId: 1 msgReqNo: 14
-009784 INFO SK1 receive clientId: 1, reqNo: 15, index: 16
-009785 INFO G100 S1 apply Index 16 clientId: 1 msgReqNo: 15
-009785 INFO G100 S1 complete Get Request 3: x-Imgbh6VmhDdMs9u-Kr Shard: 1 index: 16 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-009793 INFO G100 S1 receive Get Request Get 4 Shard: 2, from C1
-009899 INFO SK0 receive clientId: 1, reqNo: 15, index: 16
-009900 INFO G100 S0 apply Index 16 clientId: 1 msgReqNo: 15
-009902 INFO SK2 receive clientId: 1, reqNo: 15, index: 16
-009903 INFO G100 S2 apply Index 16 clientId: 1 msgReqNo: 15
-010000 INFO SK1 receive clientId: 1, reqNo: 16, index: 17
-010001 INFO G100 S1 apply Index 17 clientId: 1 msgReqNo: 16
-010001 INFO G100 S1 complete Get Request 4: M62c55Mbe1jnhNNzaxSF Shard: 2 index: 17 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-010004 INFO G100 S1 receive Get Request Get 5 Shard: 3, from C1
-010075 INFO G100 S0 Snapshot Index 16, kv.rf.RaftStateSize: 773 ConfigNum 1
-010076 INFO G100 S1 Snapshot Index 17, kv.rf.RaftStateSize: 773 ConfigNum 1
-010077 INFO SK0 receive clientId: 1, reqNo: 16, index: 17
-010077 INFO G100 S0 apply Index 17 clientId: 1 msgReqNo: 16
-010078 INFO SK2 receive clientId: 1, reqNo: 16, index: 17
-010079 INFO G100 S2 apply Index 17 clientId: 1 msgReqNo: 16
-010088 INFO G100 S2 Snapshot Index 17, kv.rf.RaftStateSize: 93 ConfigNum 1
-010210 INFO SK1 receive clientId: 1, reqNo: 17, index: 18
-010210 INFO G100 S1 apply Index 18 clientId: 1 msgReqNo: 17
-010210 INFO G100 S1 complete Get Request 5: 9WiA0op_vzDRvfNxTvk5 Shard: 3 index: 18 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-010215 INFO G100 S1 receive Get Request Get 6 Shard: 4, from C1
-010318 INFO SK0 receive clientId: 1, reqNo: 17, index: 18
-010320 INFO G100 S0 apply Index 18 clientId: 1 msgReqNo: 17
-010318 INFO SK2 receive clientId: 1, reqNo: 17, index: 18
-010320 INFO G100 S2 apply Index 18 clientId: 1 msgReqNo: 17
-010416 INFO SK1 receive clientId: 1, reqNo: 18, index: 19
-010417 INFO G100 S1 apply Index 19 clientId: 1 msgReqNo: 18
-010417 INFO G100 S1 complete Get Request 6: BB2bD6akpcLMbPVGk19v Shard: 4 index: 19 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-010423 INFO G100 S1 receive Get Request Get 7 Shard: 5, from C1
-010531 INFO SK0 receive clientId: 1, reqNo: 18, index: 19
-010532 INFO G100 S0 apply Index 19 clientId: 1 msgReqNo: 18
-010533 INFO SK2 receive clientId: 1, reqNo: 18, index: 19
-010533 INFO G100 S2 apply Index 19 clientId: 1 msgReqNo: 18
-010636 INFO SK1 receive clientId: 1, reqNo: 19, index: 20
-010637 INFO G100 S1 apply Index 20 clientId: 1 msgReqNo: 19
-010638 INFO G100 S1 complete Get Request 7: PKbQoOexLSMcJUoBgUxl Shard: 5 index: 20 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-010645 INFO G100 S1 receive Get Request Get 8 Shard: 6, from C1
-010751 INFO SK0 receive clientId: 1, reqNo: 19, index: 20
-010753 INFO G100 S0 apply Index 20 clientId: 1 msgReqNo: 19
-010752 INFO SK2 receive clientId: 1, reqNo: 19, index: 20
-010754 INFO G100 S2 apply Index 20 clientId: 1 msgReqNo: 19
-010964 INFO SK1 receive clientId: 1, reqNo: 20, index: 21
-010965 INFO G100 S1 apply Index 21 clientId: 1 msgReqNo: 20
-010966 INFO G100 S1 complete Get Request 8: iFZPVwHuJ5c7JeJXu7NQ Shard: 6 index: 21 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-010969 INFO G100 S1 receive Get Request Get 9 Shard: 7, from C1
-011073 INFO SK2 receive clientId: 1, reqNo: 20, index: 21
-011074 INFO G100 S2 apply Index 21 clientId: 1 msgReqNo: 20
-011073 INFO SK0 receive clientId: 1, reqNo: 20, index: 21
-011074 INFO G100 S0 apply Index 21 clientId: 1 msgReqNo: 20
-011077 INFO G100 S0 Snapshot Index 21, kv.rf.RaftStateSize: 773 ConfigNum 1
-011078 INFO G100 S1 Snapshot Index 21, kv.rf.RaftStateSize: 773 ConfigNum 1
-011089 INFO G100 S2 Snapshot Index 21, kv.rf.RaftStateSize: 773 ConfigNum 1
-011180 INFO SK1 receive clientId: 1, reqNo: 21, index: 22
-011181 INFO G100 S1 apply Index 22 clientId: 1 msgReqNo: 21
-011181 INFO G100 S1 complete Get Request 9: D14TYAX3NwkbMPoWHWsj Shard: 7 index: 22 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-011398 INFO here1
-012041 INFO here2
-012076 INFO SK2 receive clientId: 1, reqNo: 21, index: 22
-012076 INFO G100 S2 apply Index 22 clientId: 1 msgReqNo: 21
-012149 INFO G100 S1 curConfig: 1 nextConfig: 2 OutShardsMap: map[101:{101 map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v]}]
-012151 INFO G100 S1 curConfig: 1 nextConfig: 2 makeInShardMap: map[] inShards: map[]
-012152 INFO G100 S1 start make agreement on ConfigNum: 2 Index: 23
-012154 INFO G100 S1 Snapshot Index 22, kv.rf.RaftStateSize: 1104 ConfigNum 1
-012354 INFO SK1 receive clientId: 0, reqNo: 2, index: 23
-012355 INFO G100 S1 update ConfigNum 2 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn- 1:d0zKof9Glhe_0UKPKBNc 7:PKbQoOexLSMcJUoBgUxl 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [101 101 101 101 101 100 100 100 100 100]
-012356 INFO G100 S1 apply Index 23 clientId: 0 msgReqNo: 2
-012356 INFO G100 S1 make agreement on configNum 2
-012356 INFO G101 S1 curConfig: 1 nextConfig: 2 OutShardsMap: map[]
-012930 INFO G100 S1 receive Get Request Get 0 Shard: 8, from C1
-013001 INFO SK2 receive clientId: 0, reqNo: 2, index: 23
-013002 INFO G100 S2 update ConfigNum 2 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn- 1:d0zKof9Glhe_0UKPKBNc 7:PKbQoOexLSMcJUoBgUxl 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [101 101 101 101 101 100 100 100 100 100]
-013002 INFO G100 S2 apply Index 23 clientId: 0 msgReqNo: 2
-013090 INFO G101 S1 migrate shards from G100 S1 ShardsMap: map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v]
-013092 INFO G100 S2 Snapshot Index 23, kv.rf.RaftStateSize: 773 ConfigNum 2
-013093 INFO G101 S1 curConfig: 1 nextConfig: 2 makeInShardMap: map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v] inShards: map[0:true 1:true 2:true 3:true 4:true]
-013094 INFO G101 S1 start make agreement on ConfigNum: 2 Index: 2
-013103 INFO SK1 receive clientId: 1, reqNo: 22, index: 24
-013103 INFO SK1 receive clientId: 0, reqNo: 2, index: 2
-013103 INFO G101 S1 update ConfigNum 2 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v] ConfigShards [101 101 101 101 101 100 100 100 100 100]
-013104 INFO G101 S1 apply Index 2 clientId: 0 msgReqNo: 2
-013104 INFO G101 S1 make agreement on configNum 2
-013103 INFO G100 S1 apply Index 24 clientId: 1 msgReqNo: 22
-013104 INFO G100 S1 complete Get Request 0: P2hLEMQN8enP_1i1Omn- Shard: 8 index: 24 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-013157 INFO G100 S1 Snapshot Index 24, kv.rf.RaftStateSize: 93 ConfigNum 2
-013368 INFO G101 S1 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 2
-013541 INFO G100 S1 curConfig: 2 nextConfig: 3 OutShardsMap: map[102:{102 map[7:PKbQoOexLSMcJUoBgUxl]}]
-013542 INFO G100 S1 curConfig: 2 nextConfig: 3 makeInShardMap: map[] inShards: map[]
-013543 INFO G100 S1 start make agreement on ConfigNum: 3 Index: 25
-013661 INFO SK2 receive clientId: 1, reqNo: 22, index: 24
-013661 INFO G100 S2 apply Index 24 clientId: 1 msgReqNo: 22
-013756 INFO SK1 receive clientId: 0, reqNo: 3, index: 25
-013756 INFO G100 S1 update ConfigNum 3 Shards map[6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn- 1:d0zKof9Glhe_0UKPKBNc 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [102 102 101 101 101 102 100 100 100 100]
-013757 INFO G100 S1 apply Index 25 clientId: 0 msgReqNo: 3
-013757 INFO G100 S1 make agreement on configNum 3
-013954 INFO G100 S1 receive Append Request [0, x2z1FimD4pQVkzOVGSH7] Shard: 8 from C1 ReqNo: 23
-013965 INFO SK2 receive clientId: 0, reqNo: 3, index: 25
-013965 INFO G100 S2 update ConfigNum 3 Shards map[6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn- 1:d0zKof9Glhe_0UKPKBNc 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [102 102 101 101 101 102 100 100 100 100]
-013966 INFO G100 S2 apply Index 25 clientId: 0 msgReqNo: 3
-014082 INFO SK1 receive clientId: 1, reqNo: 23, index: 26
-014083 INFO G100 S1 apply Index 26 clientId: 1 msgReqNo: 23
-014083 INFO G100 S1 complete Append Request [0, x2z1FimD4pQVkzOVGSH7] Shard 8 from C1, ReqNo: 23 index: 26 Err: OK Shards: map[6:true 7:true 8:true 9:true]
-014091 INFO G101 S2 Snapshot Index 1, kv.rf.RaftStateSize: 1086 ConfigNum 1
-014092 INFO SK2 receive clientId: 0, reqNo: 2, index: 2
-014092 INFO SK2 receive clientId: 1, reqNo: 23, index: 26
-014092 INFO G100 S2 apply Index 26 clientId: 1 msgReqNo: 23
-014092 INFO G101 S2 update ConfigNum 2 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v] ConfigShards [101 101 101 101 101 100 100 100 100 100]
-014092 INFO G101 S2 apply Index 2 clientId: 0 msgReqNo: 2
-014097 INFO G100 S2 Snapshot Index 26, kv.rf.RaftStateSize: 93 ConfigNum 3
-014164 INFO G100 S1 Snapshot Index 26, kv.rf.RaftStateSize: 93 ConfigNum 3
-014291 INFO G101 S1 curConfig: 2 nextConfig: 3 OutShardsMap: map[102:{102 map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr]}]
-014292 INFO G101 S1 curConfig: 2 nextConfig: 3 makeInShardMap: map[] inShards: map[]
-014293 INFO G101 S1 start make agreement on ConfigNum: 3 Index: 3
-014374 INFO G101 S1 Snapshot Index 2, kv.rf.RaftStateSize: 1115 ConfigNum 2
-014458 INFO G100 S1 receive Get Request Get 1 Shard: 9, from C1
-014504 INFO SK1 receive clientId: 0, reqNo: 3, index: 3
-014504 INFO G101 S1 update ConfigNum 3 Shards map[2:true 3:true 4:true] KVMap map[4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v] ConfigShards [102 102 101 101 101 102 100 100 100 100]
-014504 INFO G101 S1 apply Index 3 clientId: 0 msgReqNo: 3
-014504 INFO G101 S1 make agreement on configNum 3
-014615 INFO SK1 receive clientId: 1, reqNo: 24, index: 27
-014616 INFO G100 S1 apply Index 27 clientId: 1 msgReqNo: 24
-014617 INFO G100 S1 complete Get Request 1: d0zKof9Glhe_0UKPKBNc Shard: 9 index: 27 Err: OK Shards: map[6:true 7:true 8:true 9:true]
-014827 INFO G100 S1 curConfig: 3 nextConfig: 4 OutShardsMap: map[]
-014962 INFO G100 S1 receive Append Request [1, RCO3qHf987PJzxQ1-JDY] Shard: 9 from C1 ReqNo: 25
-015037 INFO SK2 receive clientId: 1, reqNo: 24, index: 27
-015038 INFO G100 S2 apply Index 27 clientId: 1 msgReqNo: 24
-015102 INFO SK2 receive clientId: 0, reqNo: 3, index: 3
-015102 INFO G101 S2 update ConfigNum 3 Shards map[2:true 3:true 4:true] KVMap map[4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v] ConfigShards [102 102 101 101 101 102 100 100 100 100]
-015102 INFO G101 S2 apply Index 3 clientId: 0 msgReqNo: 3
-015104 INFO G101 S2 Snapshot Index 3, kv.rf.RaftStateSize: 93 ConfigNum 3
-015104 VOTE S2 in term 2 issued a election
-015107 VOTE S1 term 2 voted for S2 in term 2
-015110 VOTE S2 got enough votes(2), became leader of term 2
-015140 INFO SK1 receive clientId: 1, reqNo: 25, index: 28
-015140 INFO G100 S1 apply Index 28 clientId: 1 msgReqNo: 25
-015141 INFO G100 S1 complete Append Request [1, RCO3qHf987PJzxQ1-JDY] Shard 9 from C1, ReqNo: 25 index: 28 Err: OK Shards: map[6:true 7:true 8:true 9:true]
-015249 INFO G100 S1 receive Get Request Get 2 Shard: 0, from C1
-015362 INFO SK2 receive clientId: 1, reqNo: 25, index: 28
-015363 INFO G100 S2 apply Index 28 clientId: 1 msgReqNo: 25
-015383 INFO G101 S1 Snapshot Index 3, kv.rf.RaftStateSize: 93 ConfigNum 3
-015463 INFO SK1 receive clientId: 1, reqNo: 26, index: 29
-015464 INFO G100 S1 apply Index 29 clientId: 1 msgReqNo: 26
-015464 INFO G100 S1 complete Get Request 2:  Shard: 0 index: 29 Err: ErrWrongGroup Shards: map[6:true 7:true 8:true 9:true]
-015688 INFO G101 S1 curConfig: 3 nextConfig: 4 OutShardsMap: map[100:{100 map[6:BB2bD6akpcLMbPVGk19v]} 102:{102 map[4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5]}]
-015689 INFO G101 S1 curConfig: 3 nextConfig: 4 makeInShardMap: map[] inShards: map[]
-015691 INFO G101 S1 start make agreement on ConfigNum: 4 Index: 4
-015856 INFO G100 S1 migrate shards from G101 S1 ShardsMap: map[6:BB2bD6akpcLMbPVGk19v]
-015858 INFO G100 S1 curConfig: 3 nextConfig: 4 makeInShardMap: map[6:BB2bD6akpcLMbPVGk19v] inShards: map[4:true]
-015858 INFO G100 S1 start make agreement on ConfigNum: 4 Index: 30
-015902 INFO SK1 receive clientId: 0, reqNo: 4, index: 4
-015903 INFO G101 S1 update ConfigNum 4 Shards map[] KVMap map[] ConfigShards [102 102 102 102 100 102 100 100 100 100]
-015903 INFO G101 S1 apply Index 4 clientId: 0 msgReqNo: 4
-015903 INFO G101 S1 make agreement on configNum 4
-015911 INFO SK2 receive clientId: 1, reqNo: 26, index: 29
-015912 INFO G100 S2 apply Index 29 clientId: 1 msgReqNo: 26
-016005 INFO SK1 receive clientId: 0, reqNo: 4, index: 30
-016005 INFO G100 S1 update ConfigNum 4 Shards map[4:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 6:BB2bD6akpcLMbPVGk19v 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [102 102 102 102 100 102 100 100 100 100]
-016005 INFO G100 S1 apply Index 30 clientId: 0 msgReqNo: 4
-016005 INFO G100 S1 make agreement on configNum 4
-016108 INFO G100 S2 Snapshot Index 29, kv.rf.RaftStateSize: 1002 ConfigNum 3
-016111 INFO G101 S2 Snapshot Index 3, kv.rf.RaftStateSize: 1056 ConfigNum 3
-016113 INFO SK2 receive clientId: 0, reqNo: 4, index: 30
-016113 INFO G100 S2 update ConfigNum 4 Shards map[4:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 6:BB2bD6akpcLMbPVGk19v 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [102 102 102 102 100 102 100 100 100 100]
-016113 INFO G100 S2 apply Index 30 clientId: 0 msgReqNo: 4
-016113 INFO SK2 receive clientId: 0, reqNo: 4, index: 4
-016113 INFO G101 S2 update ConfigNum 4 Shards map[] KVMap map[] ConfigShards [102 102 102 102 100 102 100 100 100 100]
-016113 INFO G101 S2 apply Index 4 clientId: 0 msgReqNo: 4
-016177 INFO G100 S1 Snapshot Index 30, kv.rf.RaftStateSize: 93 ConfigNum 4
-016323 INFO G102 S2 curConfig: 1 nextConfig: 2 OutShardsMap: map[]
-016324 INFO G102 S2 curConfig: 1 nextConfig: 2 makeInShardMap: map[] inShards: map[]
-016325 INFO G102 S2 start make agreement on ConfigNum: 2 Index: 2
-016393 INFO G101 S1 Snapshot Index 4, kv.rf.RaftStateSize: 93 ConfigNum 4
-016498 INFO SK2 receive clientId: 0, reqNo: 2, index: 2
-016499 INFO G102 S2 update ConfigNum 2 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 100 100 100 100 100]
-016499 INFO G102 S2 apply Index 2 clientId: 0 msgReqNo: 2
-016499 INFO G102 S2 make agreement on configNum 2
-016969 INFO G101 S1 curConfig: 4 nextConfig: 5 OutShardsMap: map[]
-016971 INFO G101 S1 curConfig: 4 nextConfig: 5 makeInShardMap: map[] inShards: map[]
-016972 INFO G101 S1 start make agreement on ConfigNum: 5 Index: 5
-017076 INFO G100 S1 curConfig: 4 nextConfig: 5 OutShardsMap: map[102:{102 map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 6:BB2bD6akpcLMbPVGk19v 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj]}]
-017077 INFO G100 S1 curConfig: 4 nextConfig: 5 makeInShardMap: map[] inShards: map[]
-017077 INFO G100 S1 start make agreement on ConfigNum: 5 Index: 31
-017076 INFO SK1 receive clientId: 0, reqNo: 5, index: 5
-017078 INFO G101 S1 update ConfigNum 5 Shards map[] KVMap map[] ConfigShards [102 102 102 102 102 102 102 102 102 102]
-017078 INFO G101 S1 apply Index 5 clientId: 0 msgReqNo: 5
-017078 INFO G101 S1 make agreement on configNum 5
-017113 INFO G100 S2 Snapshot Index 30, kv.rf.RaftStateSize: 93 ConfigNum 4
-017113 INFO G102 S2 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 2
-017114 INFO G102 S1 Snapshot Index 1, kv.rf.RaftStateSize: 970 ConfigNum 1
-017117 INFO SK1 receive clientId: 0, reqNo: 2, index: 2
-017117 INFO G102 S1 update ConfigNum 2 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 100 100 100 100 100]
-017118 INFO G102 S1 apply Index 2 clientId: 0 msgReqNo: 2
-017119 INFO G101 S2 Snapshot Index 4, kv.rf.RaftStateSize: 885 ConfigNum 4
-017121 INFO SK2 receive clientId: 0, reqNo: 5, index: 5
-017121 INFO G101 S2 update ConfigNum 5 Shards map[] KVMap map[] ConfigShards [102 102 102 102 102 102 102 102 102 102]
-017121 INFO G101 S2 apply Index 5 clientId: 0 msgReqNo: 5
-017179 INFO G100 S1 Snapshot Index 30, kv.rf.RaftStateSize: 1050 ConfigNum 4
-017285 INFO SK1 receive clientId: 0, reqNo: 5, index: 31
-017286 INFO G100 S1 update ConfigNum 5 Shards map[] KVMap map[] ConfigShards [102 102 102 102 102 102 102 102 102 102]
-017287 INFO G100 S1 apply Index 31 clientId: 0 msgReqNo: 5
-017287 INFO G100 S1 make agreement on configNum 5
-017291 INFO G102 S2 receive Get Request Get 2 Shard: 0, from C1
-017430 INFO SK2 receive clientId: 1, reqNo: 27, index: 3
-017430 INFO G102 S2 apply Index 3 clientId: 1 msgReqNo: 27
-017430 INFO G102 S2 complete Get Request 2:  Shard: 0 index: 3 Err: ErrWrongGroup Shards: map[]
-017710 INFO G102 S2 curConfig: 2 nextConfig: 3 OutShardsMap: map[]
-018117 INFO G102 S1 Snapshot Index 2, kv.rf.RaftStateSize: 771 ConfigNum 2
-018121 INFO SK1 receive clientId: 1, reqNo: 27, index: 3
-018122 INFO G102 S1 apply Index 3 clientId: 1 msgReqNo: 27
-018123 INFO G100 S2 Snapshot Index 30, kv.rf.RaftStateSize: 1050 ConfigNum 4
-018123 INFO SK2 receive clientId: 0, reqNo: 5, index: 31
-018124 INFO G100 S2 update ConfigNum 5 Shards map[] KVMap map[] ConfigShards [102 102 102 102 102 102 102 102 102 102]
-018124 INFO G100 S2 apply Index 31 clientId: 0 msgReqNo: 5
-018189 INFO G100 S1 Snapshot Index 31, kv.rf.RaftStateSize: 93 ConfigNum 5
-018699 INFO G102 S2 migrate shards from G101 S1 ShardsMap: map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr]
-019126 INFO G100 S2 Snapshot Index 31, kv.rf.RaftStateSize: 93 ConfigNum 5
-019367 INFO G102 S2 receive Get Request Get 2 Shard: 0, from C1
-019547 INFO SK2 receive clientId: 1, reqNo: 28, index: 4
-019548 INFO G102 S2 apply Index 4 clientId: 1 msgReqNo: 28
-019548 INFO G102 S2 complete Get Request 2:  Shard: 0 index: 4 Err: ErrWrongGroup Shards: map[]
-019604 INFO G102 S2 migrate shards from G100 S1 ShardsMap: map[7:PKbQoOexLSMcJUoBgUxl]
-019605 INFO G102 S2 curConfig: 2 nextConfig: 3 makeInShardMap: map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 7:PKbQoOexLSMcJUoBgUxl] inShards: map[0:true 1:true 5:true]
-019606 INFO G102 S2 start make agreement on ConfigNum: 3 Index: 5
-019654 INFO SK1 receive clientId: 1, reqNo: 28, index: 4
-019655 INFO G102 S1 apply Index 4 clientId: 1 msgReqNo: 28
-019757 INFO SK2 receive clientId: 0, reqNo: 3, index: 5
-019758 INFO G102 S2 update ConfigNum 3 Shards map[0:true 1:true 5:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 7:PKbQoOexLSMcJUoBgUxl] ConfigShards [102 102 101 101 101 102 100 100 100 100]
-019758 INFO G102 S2 apply Index 5 clientId: 0 msgReqNo: 3
-019758 INFO G102 S2 make agreement on configNum 3
-020125 INFO G102 S1 Snapshot Index 4, kv.rf.RaftStateSize: 1124 ConfigNum 2
-020135 INFO SK1 receive clientId: 0, reqNo: 3, index: 5
-020135 INFO G102 S1 update ConfigNum 3 Shards map[0:true 1:true 5:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU 3:x-Imgbh6VmhDdMs9u-Kr 7:PKbQoOexLSMcJUoBgUxl] ConfigShards [102 102 101 101 101 102 100 100 100 100]
-020135 INFO G102 S1 apply Index 5 clientId: 0 msgReqNo: 3
-020136 INFO G102 S2 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 3
-020972 INFO G102 S2 curConfig: 3 nextConfig: 4 OutShardsMap: map[]
-020974 INFO G102 S2 receive Get Request Get 2 Shard: 0, from C1
-021128 INFO SK2 receive clientId: 1, reqNo: 29, index: 6
-021129 INFO G102 S2 apply Index 6 clientId: 1 msgReqNo: 29
-021129 INFO G102 S2 complete Get Request 2: z2bU0qOYOKLZxIFRZ8nU Shard: 0 index: 6 Err: OK Shards: map[0:true 1:true 5:true]
-021131 INFO SK1 receive clientId: 1, reqNo: 29, index: 6
-021131 INFO G102 S1 apply Index 6 clientId: 1 msgReqNo: 29
-021133 INFO G102 S1 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 3
-021383 INFO G102 S2 receive Append Request [2, 7cE-7Qgd64OJ17beIPCv] Shard: 0 from C1 ReqNo: 30
-021556 INFO SK2 receive clientId: 1, reqNo: 30, index: 7
-021557 INFO G102 S2 apply Index 7 clientId: 1 msgReqNo: 30
-021557 INFO G102 S2 complete Append Request [2, 7cE-7Qgd64OJ17beIPCv] Shard 0 from C1, ReqNo: 30 index: 7 Err: OK Shards: map[0:true 1:true 5:true]
-021806 INFO G102 S2 migrate shards from G101 S1 ShardsMap: map[4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5]
-021808 INFO G102 S2 curConfig: 3 nextConfig: 4 makeInShardMap: map[4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5] inShards: map[2:true 3:true]
-021809 INFO G102 S2 start make agreement on ConfigNum: 4 Index: 8
-021835 INFO G102 S2 receive Get Request Get 3 Shard: 1, from C1
-021885 INFO SK1 receive clientId: 1, reqNo: 30, index: 7
-021886 INFO G102 S1 apply Index 7 clientId: 1 msgReqNo: 30
-021977 INFO SK2 receive clientId: 0, reqNo: 4, index: 8
-021978 INFO G102 S2 update ConfigNum 4 Shards map[0:true 1:true 2:true 3:true 5:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 7:PKbQoOexLSMcJUoBgUxl] ConfigShards [102 102 102 102 100 102 100 100 100 100]
-021978 INFO G102 S2 apply Index 8 clientId: 0 msgReqNo: 4
-021979 INFO SK2 receive clientId: 1, reqNo: 31, index: 9
-021979 INFO G102 S2 apply Index 9 clientId: 1 msgReqNo: 31
-021979 INFO G102 S2 complete Get Request 3: x-Imgbh6VmhDdMs9u-Kr Shard: 1 index: 9 Err: OK Shards: map[0:true 1:true 2:true 3:true 5:true]
-021979 INFO G102 S2 make agreement on configNum 4
-022137 INFO G102 S1 Snapshot Index 7, kv.rf.RaftStateSize: 1102 ConfigNum 3
-022142 INFO SK1 receive clientId: 0, reqNo: 4, index: 8
-022143 INFO G102 S1 update ConfigNum 4 Shards map[0:true 1:true 2:true 3:true 5:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-Kr 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 7:PKbQoOexLSMcJUoBgUxl] ConfigShards [102 102 102 102 100 102 100 100 100 100]
-022144 INFO G102 S1 apply Index 8 clientId: 0 msgReqNo: 4
-022145 INFO SK1 receive clientId: 1, reqNo: 31, index: 9
-022145 INFO G102 S1 apply Index 9 clientId: 1 msgReqNo: 31
-022145 INFO G102 S2 Snapshot Index 9, kv.rf.RaftStateSize: 93 ConfigNum 4
-022744 INFO G102 S2 receive Append Request [3, TtdmHUDzoGEKw0lkDq_o] Shard: 1 from C1 ReqNo: 32
-022919 INFO SK2 receive clientId: 1, reqNo: 32, index: 10
-022920 INFO G102 S2 apply Index 10 clientId: 1 msgReqNo: 32
-022920 INFO G102 S2 complete Append Request [3, TtdmHUDzoGEKw0lkDq_o] Shard 1 from C1, ReqNo: 32 index: 10 Err: OK Shards: map[0:true 1:true 2:true 3:true 5:true]
-023150 INFO G102 S1 Snapshot Index 9, kv.rf.RaftStateSize: 806 ConfigNum 4
-023152 INFO SK1 receive clientId: 1, reqNo: 32, index: 10
-023152 INFO G102 S1 apply Index 10 clientId: 1 msgReqNo: 32
-023211 INFO G102 S2 curConfig: 4 nextConfig: 5 OutShardsMap: map[]
-023258 INFO G102 S2 receive Get Request Get 4 Shard: 2, from C1
-023446 INFO SK2 receive clientId: 1, reqNo: 33, index: 11
-023446 INFO G102 S2 apply Index 11 clientId: 1 msgReqNo: 33
-023446 INFO G102 S2 complete Get Request 4: M62c55Mbe1jnhNNzaxSF Shard: 2 index: 11 Err: OK Shards: map[0:true 1:true 2:true 3:true 5:true]
-024159 INFO G102 S2 migrate shards from G100 S1 ShardsMap: map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 6:BB2bD6akpcLMbPVGk19v 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj]
-024160 INFO SK1 receive clientId: 1, reqNo: 33, index: 11
-024160 INFO G102 S1 apply Index 11 clientId: 1 msgReqNo: 33
-024161 INFO G102 S2 curConfig: 4 nextConfig: 5 makeInShardMap: map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 6:BB2bD6akpcLMbPVGk19v 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] inShards: map[4:true 6:true 7:true 8:true 9:true]
-024161 INFO G102 S2 start make agreement on ConfigNum: 5 Index: 12
-024227 INFO G102 S2 Snapshot Index 11, kv.rf.RaftStateSize: 1052 ConfigNum 4
-024297 INFO SK2 receive clientId: 0, reqNo: 5, index: 12
-024298 INFO G102 S2 update ConfigNum 5 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v 7:PKbQoOexLSMcJUoBgUxl 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [102 102 102 102 102 102 102 102 102 102]
-024298 INFO G102 S2 apply Index 12 clientId: 0 msgReqNo: 5
-024299 INFO G102 S2 make agreement on configNum 5
-024344 INFO G102 S2 receive Append Request [4, T2_V7tg36i0lBUUxemMm] Shard: 2 from C1 ReqNo: 34
-024404 INFO SK1 receive clientId: 0, reqNo: 5, index: 12
-024405 INFO G102 S1 update ConfigNum 5 Shards map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSF 5:9WiA0op_vzDRvfNxTvk5 6:BB2bD6akpcLMbPVGk19v 7:PKbQoOexLSMcJUoBgUxl 8:iFZPVwHuJ5c7JeJXu7NQ 9:D14TYAX3NwkbMPoWHWsj] ConfigShards [102 102 102 102 102 102 102 102 102 102]
-024405 INFO G102 S1 apply Index 12 clientId: 0 msgReqNo: 5
-024506 INFO SK2 receive clientId: 1, reqNo: 34, index: 13
-024506 INFO G102 S2 apply Index 13 clientId: 1 msgReqNo: 34
-024506 INFO G102 S2 complete Append Request [4, T2_V7tg36i0lBUUxemMm] Shard 2 from C1, ReqNo: 34 index: 13 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-024742 INFO G102 S2 receive Get Request Get 5 Shard: 3, from C1
-024822 INFO SK1 receive clientId: 1, reqNo: 34, index: 13
-024823 INFO G102 S1 apply Index 13 clientId: 1 msgReqNo: 34
-024927 INFO SK2 receive clientId: 1, reqNo: 35, index: 14
-024928 INFO G102 S2 apply Index 14 clientId: 1 msgReqNo: 35
-024928 INFO G102 S2 complete Get Request 5: 9WiA0op_vzDRvfNxTvk5 Shard: 3 index: 14 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-025008 INFO G102 S2 receive Append Request [5, fnSuObD34lQ63mKgIgJw] Shard: 3 from C1 ReqNo: 36
-025033 INFO SK1 receive clientId: 1, reqNo: 35, index: 14
-025034 INFO G102 S1 apply Index 14 clientId: 1 msgReqNo: 35
-025141 INFO SK2 receive clientId: 1, reqNo: 36, index: 15
-025142 INFO G102 S2 apply Index 15 clientId: 1 msgReqNo: 36
-025143 INFO G102 S2 complete Append Request [5, fnSuObD34lQ63mKgIgJw] Shard 3 from C1, ReqNo: 36 index: 15 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-025166 INFO G102 S1 Snapshot Index 14, kv.rf.RaftStateSize: 806 ConfigNum 5
-025168 INFO SK1 receive clientId: 1, reqNo: 36, index: 15
-025168 INFO G102 S1 apply Index 15 clientId: 1 msgReqNo: 36
-025239 INFO G102 S2 Snapshot Index 15, kv.rf.RaftStateSize: 93 ConfigNum 5
-026147 INFO G102 S2 receive Get Request Get 6 Shard: 4, from C1
-026312 INFO SK2 receive clientId: 1, reqNo: 37, index: 16
-026313 INFO G102 S2 apply Index 16 clientId: 1 msgReqNo: 37
-026314 INFO G102 S2 complete Get Request 6: BB2bD6akpcLMbPVGk19v Shard: 4 index: 16 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-026351 INFO G102 S2 receive Append Request [6, tEPfaEOXYR7DFxGcUxGW] Shard: 4 from C1 ReqNo: 38
-026427 INFO SK1 receive clientId: 1, reqNo: 37, index: 16
-026428 INFO G102 S1 apply Index 16 clientId: 1 msgReqNo: 37
-026572 INFO SK2 receive clientId: 1, reqNo: 38, index: 17
-026572 INFO G102 S2 apply Index 17 clientId: 1 msgReqNo: 38
-026573 INFO G102 S2 complete Append Request [6, tEPfaEOXYR7DFxGcUxGW] Shard 4 from C1, ReqNo: 38 index: 17 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-026616 INFO G102 S2 receive Get Request Get 7 Shard: 5, from C1
-026637 INFO SK1 receive clientId: 1, reqNo: 38, index: 17
-026637 INFO G102 S1 apply Index 17 clientId: 1 msgReqNo: 38
-026736 INFO SK2 receive clientId: 1, reqNo: 39, index: 18
-026736 INFO G102 S2 apply Index 18 clientId: 1 msgReqNo: 39
-026736 INFO G102 S2 complete Get Request 7: PKbQoOexLSMcJUoBgUxl Shard: 5 index: 18 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-027178 INFO G102 S1 Snapshot Index 17, kv.rf.RaftStateSize: 773 ConfigNum 5
-027183 INFO SK1 receive clientId: 1, reqNo: 39, index: 18
-027183 INFO G102 S1 apply Index 18 clientId: 1 msgReqNo: 39
-027344 INFO G102 S2 receive Append Request [7, HnRELa7r7r_LTkvry7pZ] Shard: 5 from C1 ReqNo: 40
-027496 INFO SK2 receive clientId: 1, reqNo: 40, index: 19
-027497 INFO G102 S2 apply Index 19 clientId: 1 msgReqNo: 40
-027497 INFO G102 S2 complete Append Request [7, HnRELa7r7r_LTkvry7pZ] Shard 5 from C1, ReqNo: 40 index: 19 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-028184 INFO SK1 receive clientId: 1, reqNo: 40, index: 19
-028184 INFO G102 S1 apply Index 19 clientId: 1 msgReqNo: 40
-028263 INFO G102 S2 Snapshot Index 19, kv.rf.RaftStateSize: 93 ConfigNum 5
-028439 INFO G102 S2 receive Get Request Get 8 Shard: 6, from C1
-028644 INFO SK2 receive clientId: 1, reqNo: 41, index: 20
-028645 INFO G102 S2 apply Index 20 clientId: 1 msgReqNo: 41
-028645 INFO G102 S2 complete Get Request 8: iFZPVwHuJ5c7JeJXu7NQ Shard: 6 index: 20 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-029121 INFO G102 S2 receive Append Request [8, TdgPGN77MOxZO_1Zcctm] Shard: 6 from C1 ReqNo: 42
-029174 INFO SK1 receive clientId: 1, reqNo: 41, index: 20
-029174 INFO G102 S1 apply Index 20 clientId: 1 msgReqNo: 41
-029193 INFO G102 S1 Snapshot Index 20, kv.rf.RaftStateSize: 806 ConfigNum 5
-029276 INFO SK2 receive clientId: 1, reqNo: 42, index: 21
-029276 INFO G102 S2 apply Index 21 clientId: 1 msgReqNo: 42
-029277 INFO G102 S2 complete Append Request [8, TdgPGN77MOxZO_1Zcctm] Shard 6 from C1, ReqNo: 42 index: 21 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-029374 INFO G102 S2 receive Get Request Get 9 Shard: 7, from C1
-029383 INFO SK1 receive clientId: 1, reqNo: 42, index: 21
-029383 INFO G102 S1 apply Index 21 clientId: 1 msgReqNo: 42
-029479 INFO SK2 receive clientId: 1, reqNo: 43, index: 22
-029479 INFO G102 S2 apply Index 22 clientId: 1 msgReqNo: 43
-029480 INFO G102 S2 complete Get Request 9: D14TYAX3NwkbMPoWHWsj Shard: 7 index: 22 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-030196 INFO SK1 receive clientId: 1, reqNo: 43, index: 22
-030197 INFO G102 S1 apply Index 22 clientId: 1 msgReqNo: 43
-030264 INFO G102 S2 receive Append Request [9, bbrxIEzoi2ZV_qE_aefq] Shard: 7 from C1 ReqNo: 44
-030285 INFO G102 S2 Snapshot Index 22, kv.rf.RaftStateSize: 806 ConfigNum 5
-030417 INFO SK2 receive clientId: 1, reqNo: 44, index: 23
-030417 INFO G102 S2 apply Index 23 clientId: 1 msgReqNo: 44
-030417 INFO G102 S2 complete Append Request [9, bbrxIEzoi2ZV_qE_aefq] Shard 7 from C1, ReqNo: 44 index: 23 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true 5:true 6:true 7:true 8:true 9:true]
-031028 INFO G101 S1 curConfig: 5 nextConfig: 6 OutShardsMap: map[]
-031133 INFO G100 S1 curConfig: 5 nextConfig: 6 OutShardsMap: map[]
-031133 INFO G100 S1 curConfig: 5 nextConfig: 6 makeInShardMap: map[] inShards: map[]
-031134 INFO G100 S1 start make agreement on ConfigNum: 6 Index: 32
-031198 INFO SK1 receive clientId: 1, reqNo: 44, index: 23
-031199 INFO G102 S1 apply Index 23 clientId: 1 msgReqNo: 44
-031242 INFO SK1 receive clientId: 0, reqNo: 6, index: 32
-031244 INFO G100 S1 update ConfigNum 6 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-031244 INFO G100 S1 apply Index 32 clientId: 0 msgReqNo: 6
-031245 INFO G100 S1 make agreement on configNum 6
-031243 INFO G102 S2 curConfig: 5 nextConfig: 6 OutShardsMap: map[101:{101 map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMm 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGW]}]
-031245 INFO G102 S2 curConfig: 5 nextConfig: 6 makeInShardMap: map[] inShards: map[]
-031246 INFO G102 S2 start make agreement on ConfigNum: 6 Index: 24
-031295 INFO G102 S2 Snapshot Index 23, kv.rf.RaftStateSize: 1204 ConfigNum 5
-031356 INFO SK2 receive clientId: 0, reqNo: 6, index: 24
-031357 INFO G102 S2 update ConfigNum 6 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZ 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1Zcctm 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-031357 INFO G102 S2 apply Index 24 clientId: 0 msgReqNo: 6
-031357 INFO G102 S2 make agreement on configNum 6
-031358 INFO G102 S2 receive Get Request Get 0 Shard: 8, from C1
-031470 INFO SK1 receive clientId: 0, reqNo: 6, index: 24
-031470 INFO G102 S1 update ConfigNum 6 Shards map[5:true 6:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZ 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1Zcctm 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-031471 INFO G102 S1 apply Index 24 clientId: 0 msgReqNo: 6
-031575 INFO SK2 receive clientId: 1, reqNo: 45, index: 25
-031576 INFO G102 S2 apply Index 25 clientId: 1 msgReqNo: 45
-031576 INFO G102 S2 complete Get Request 0: P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7 Shard: 8 index: 25 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-031602 INFO G101 S1 migrate shards from G102 S1 ShardsMap: map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMm 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGW]
-031603 INFO G101 S1 curConfig: 5 nextConfig: 6 makeInShardMap: map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMm 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGW] inShards: map[0:true 1:true 2:true 3:true 4:true]
-031605 INFO G101 S1 start make agreement on ConfigNum: 6 Index: 6
-031780 INFO SK1 receive clientId: 0, reqNo: 6, index: 6
-031781 INFO G101 S1 update ConfigNum 6 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMm 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGW] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-031782 INFO G101 S1 apply Index 6 clientId: 0 msgReqNo: 6
-031783 INFO G101 S1 make agreement on configNum 6
-032036 INFO G101 S1 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 6
-032094 INFO G102 S2 receive Append Request [0, SP2sPLk_EWd2CJwMXCOt] Shard: 8 from C1 ReqNo: 46
-032118 INFO SK1 receive clientId: 1, reqNo: 45, index: 25
-032119 INFO G102 S1 apply Index 25 clientId: 1 msgReqNo: 45
-032175 INFO G101 S2 Snapshot Index 5, kv.rf.RaftStateSize: 1186 ConfigNum 5
-032198 INFO SK2 receive clientId: 1, reqNo: 46, index: 26
-032199 INFO G102 S2 apply Index 26 clientId: 1 msgReqNo: 46
-032199 INFO G102 S2 complete Append Request [0, SP2sPLk_EWd2CJwMXCOt] Shard 8 from C1, ReqNo: 46 index: 26 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-032200 INFO SK2 receive clientId: 0, reqNo: 6, index: 6
-032200 INFO G101 S2 update ConfigNum 6 Shards map[0:true 1:true 2:true 3:true 4:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMm 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGW] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-032200 INFO G101 S2 apply Index 6 clientId: 0 msgReqNo: 6
-032200 INFO G102 S1 Snapshot Index 25, kv.rf.RaftStateSize: 806 ConfigNum 6
-032201 INFO SK2 receive clientId: 0, reqNo: 6, index: 32
-032202 INFO G100 S2 update ConfigNum 6 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-032202 INFO G100 S2 apply Index 32 clientId: 0 msgReqNo: 6
-032246 INFO G102 S2 receive Get Request Get 1 Shard: 9, from C1
-032309 INFO G102 S2 Snapshot Index 26, kv.rf.RaftStateSize: 773 ConfigNum 6
-032337 INFO SK1 receive clientId: 1, reqNo: 46, index: 26
-032337 INFO G102 S1 apply Index 26 clientId: 1 msgReqNo: 46
-032417 INFO SK2 receive clientId: 1, reqNo: 47, index: 27
-032418 INFO G102 S2 apply Index 27 clientId: 1 msgReqNo: 47
-032418 INFO G102 S2 complete Get Request 1: d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDY Shard: 9 index: 27 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-033180 INFO G101 S2 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 6
-033209 INFO SK1 receive clientId: 1, reqNo: 47, index: 27
-033210 INFO G102 S1 apply Index 27 clientId: 1 msgReqNo: 47
-033417 INFO G102 S2 receive Append Request [1, BfYjNd5gM0XswLlj3w8W] Shard: 9 from C1 ReqNo: 48
-033585 INFO SK2 receive clientId: 1, reqNo: 48, index: 28
-033586 INFO G102 S2 apply Index 28 clientId: 1 msgReqNo: 48
-033586 INFO G102 S2 complete Append Request [1, BfYjNd5gM0XswLlj3w8W] Shard 9 from C1, ReqNo: 48 index: 28 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-034212 INFO SK1 receive clientId: 1, reqNo: 48, index: 28
-034213 INFO G102 S1 apply Index 28 clientId: 1 msgReqNo: 48
-034442 INFO G102 S2 receive Get Request Get 2 Shard: 0, from C1
-034652 INFO SK2 receive clientId: 1, reqNo: 49, index: 29
-034654 INFO G102 S2 apply Index 29 clientId: 1 msgReqNo: 49
-034654 INFO G102 S2 complete Get Request 2:  Shard: 0 index: 29 Err: ErrWrongGroup Shards: map[5:true 6:true 7:true 8:true 9:true]
-035214 INFO SK1 receive clientId: 1, reqNo: 49, index: 29
-035215 INFO G102 S1 apply Index 29 clientId: 1 msgReqNo: 49
-035216 INFO G102 S1 Snapshot Index 29, kv.rf.RaftStateSize: 93 ConfigNum 6
-036020 INFO G101 S1 receive Get Request Get 2 Shard: 0, from C1
-036148 INFO SK1 receive clientId: 1, reqNo: 50, index: 7
-036148 INFO G101 S1 apply Index 7 clientId: 1 msgReqNo: 50
-036148 INFO G101 S1 complete Get Request 2: z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCv Shard: 0 index: 7 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-036230 INFO SK2 receive clientId: 1, reqNo: 50, index: 7
-036236 INFO G101 S2 apply Index 7 clientId: 1 msgReqNo: 50
-036733 INFO G101 S1 receive Append Request [2, z6sdPCbdzoJYmeGmOLla] Shard: 0 from C1 ReqNo: 51
-036882 INFO SK1 receive clientId: 1, reqNo: 51, index: 8
-036883 INFO G101 S1 apply Index 8 clientId: 1 msgReqNo: 51
-036883 INFO G101 S1 complete Append Request [2, z6sdPCbdzoJYmeGmOLla] Shard 0 from C1, ReqNo: 51 index: 8 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-037230 INFO SK2 receive clientId: 1, reqNo: 51, index: 8
-037230 INFO G101 S2 apply Index 8 clientId: 1 msgReqNo: 51
-037239 INFO G101 S1 receive Get Request Get 3 Shard: 1, from C1
-037412 INFO SK1 receive clientId: 1, reqNo: 52, index: 9
-037413 INFO G101 S1 apply Index 9 clientId: 1 msgReqNo: 52
-037413 INFO G101 S1 complete Get Request 3: x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_o Shard: 1 index: 9 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-037712 INFO G101 S1 receive Append Request [3, GQlpyJKoPT8uGpMCRfYA] Shard: 1 from C1 ReqNo: 53
-037736 INFO SK2 receive clientId: 1, reqNo: 52, index: 9
-037736 INFO G101 S2 apply Index 9 clientId: 1 msgReqNo: 52
-037838 INFO SK1 receive clientId: 1, reqNo: 53, index: 10
-037839 INFO G101 S1 apply Index 10 clientId: 1 msgReqNo: 53
-037839 INFO G101 S1 complete Append Request [3, GQlpyJKoPT8uGpMCRfYA] Shard 1 from C1, ReqNo: 53 index: 10 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-038145 INFO G101 S1 Snapshot Index 10, kv.rf.RaftStateSize: 93 ConfigNum 6
-038212 INFO G101 S2 Snapshot Index 9, kv.rf.RaftStateSize: 806 ConfigNum 6
-038234 INFO SK2 receive clientId: 1, reqNo: 53, index: 10
-038235 INFO G101 S2 apply Index 10 clientId: 1 msgReqNo: 53
-038797 INFO G101 S1 receive Get Request Get 4 Shard: 2, from C1
-038994 INFO SK1 receive clientId: 1, reqNo: 54, index: 11
-038994 INFO G101 S1 apply Index 11 clientId: 1 msgReqNo: 54
-038994 INFO G101 S1 complete Get Request 4: M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMm Shard: 2 index: 11 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-039236 INFO SK2 receive clientId: 1, reqNo: 54, index: 11
-039236 INFO G101 S2 apply Index 11 clientId: 1 msgReqNo: 54
-039959 INFO G101 S1 receive Append Request [4, jrw8J1vvOoFNswy4HeHs] Shard: 2 from C1 ReqNo: 55
-040172 INFO SK1 receive clientId: 1, reqNo: 55, index: 12
-040192 INFO G101 S1 apply Index 12 clientId: 1 msgReqNo: 55
-040193 INFO G101 S1 complete Append Request [4, jrw8J1vvOoFNswy4HeHs] Shard 2 from C1, ReqNo: 55 index: 12 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-040246 INFO SK2 receive clientId: 1, reqNo: 55, index: 12
-040246 INFO G101 S2 apply Index 12 clientId: 1 msgReqNo: 55
-041133 INFO G101 S1 receive Get Request Get 5 Shard: 3, from C1
-041348 INFO SK1 receive clientId: 1, reqNo: 56, index: 13
-041348 INFO G101 S1 apply Index 13 clientId: 1 msgReqNo: 56
-041349 INFO G101 S1 complete Get Request 5: 9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw Shard: 3 index: 13 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-042121 INFO G101 S1 receive Append Request [5, 52nqk61rfenu8M2pglox] Shard: 3 from C1 ReqNo: 57
-042203 INFO SK2 receive clientId: 1, reqNo: 56, index: 13
-042204 INFO G101 S2 apply Index 13 clientId: 1 msgReqNo: 56
-042225 INFO G101 S2 Snapshot Index 13, kv.rf.RaftStateSize: 806 ConfigNum 6
-042310 INFO G101 S1 Snapshot Index 13, kv.rf.RaftStateSize: 806 ConfigNum 6
-042311 INFO SK1 receive clientId: 1, reqNo: 57, index: 14
-042311 INFO G101 S1 apply Index 14 clientId: 1 msgReqNo: 57
-042311 INFO G101 S1 complete Append Request [5, 52nqk61rfenu8M2pglox] Shard 3 from C1, ReqNo: 57 index: 14 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-042800 INFO G101 S1 receive Get Request Get 6 Shard: 4, from C1
-042845 INFO SK2 receive clientId: 1, reqNo: 57, index: 14
-042846 INFO G101 S2 apply Index 14 clientId: 1 msgReqNo: 57
-042947 INFO SK1 receive clientId: 1, reqNo: 58, index: 15
-042947 INFO G101 S1 apply Index 15 clientId: 1 msgReqNo: 58
-042947 INFO G101 S1 complete Get Request 6: BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGW Shard: 4 index: 15 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-043259 INFO SK2 receive clientId: 1, reqNo: 58, index: 15
-043260 INFO G101 S2 apply Index 15 clientId: 1 msgReqNo: 58
-043477 INFO G101 S1 receive Append Request [6, rVJRYZiGXbz_CBeNQNDf] Shard: 4 from C1 ReqNo: 59
-043682 INFO SK1 receive clientId: 1, reqNo: 59, index: 16
-043683 INFO G101 S1 apply Index 16 clientId: 1 msgReqNo: 59
-043683 INFO G101 S1 complete Append Request [6, rVJRYZiGXbz_CBeNQNDf] Shard 4 from C1, ReqNo: 59 index: 16 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-044259 INFO SK2 receive clientId: 1, reqNo: 59, index: 16
-044260 INFO G101 S2 apply Index 16 clientId: 1 msgReqNo: 59
-044406 INFO G102 S2 receive Get Request Get 7 Shard: 5, from C1
-044525 INFO G102 S2 Snapshot Index 29, kv.rf.RaftStateSize: 773 ConfigNum 6
-044541 INFO SK2 receive clientId: 1, reqNo: 60, index: 30
-044541 INFO G102 S2 apply Index 30 clientId: 1 msgReqNo: 60
-044543 INFO G102 S2 complete Get Request 7: PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZ Shard: 5 index: 30 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-044691 INFO G102 S2 receive Append Request [7, K4sJhzM5zyCWMXoAn2vs] Shard: 5 from C1 ReqNo: 61
-044748 INFO SK1 receive clientId: 1, reqNo: 60, index: 30
-044749 INFO G102 S1 apply Index 30 clientId: 1 msgReqNo: 60
-044854 INFO SK2 receive clientId: 1, reqNo: 61, index: 31
-044855 INFO G102 S2 apply Index 31 clientId: 1 msgReqNo: 61
-044855 INFO G102 S2 complete Append Request [7, K4sJhzM5zyCWMXoAn2vs] Shard 5 from C1, ReqNo: 61 index: 31 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-045244 INFO G102 S2 receive Get Request Get 8 Shard: 6, from C1
-045268 INFO SK1 receive clientId: 1, reqNo: 61, index: 31
-045268 INFO G102 S1 apply Index 31 clientId: 1 msgReqNo: 61
-045386 INFO SK2 receive clientId: 1, reqNo: 62, index: 32
-045387 INFO G102 S2 apply Index 32 clientId: 1 msgReqNo: 62
-045387 INFO G102 S2 complete Get Request 8: iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1Zcctm Shard: 6 index: 32 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-045406 INFO G102 S2 receive Append Request [8, jLTfoPqLpMTm_SfzGv9k] Shard: 6 from C1 ReqNo: 63
-045493 INFO SK1 receive clientId: 1, reqNo: 62, index: 32
-045494 INFO G102 S1 apply Index 32 clientId: 1 msgReqNo: 62
-045534 INFO G102 S2 Snapshot Index 32, kv.rf.RaftStateSize: 806 ConfigNum 6
-045590 INFO SK2 receive clientId: 1, reqNo: 63, index: 33
-045591 INFO G102 S2 apply Index 33 clientId: 1 msgReqNo: 63
-045591 INFO G102 S2 complete Append Request [8, jLTfoPqLpMTm_SfzGv9k] Shard 6 from C1, ReqNo: 63 index: 33 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-046277 INFO G102 S1 Snapshot Index 32, kv.rf.RaftStateSize: 806 ConfigNum 6
-046278 INFO SK1 receive clientId: 1, reqNo: 63, index: 33
-046279 INFO G102 S1 apply Index 33 clientId: 1 msgReqNo: 63
-046329 INFO G102 S2 receive Get Request Get 9 Shard: 7, from C1
-046539 INFO SK2 receive clientId: 1, reqNo: 64, index: 34
-046540 INFO G102 S2 apply Index 34 clientId: 1 msgReqNo: 64
-046540 INFO G102 S2 complete Get Request 9: D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq Shard: 7 index: 34 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-047287 INFO SK1 receive clientId: 1, reqNo: 64, index: 34
-047288 INFO G102 S1 apply Index 34 clientId: 1 msgReqNo: 64
-047475 INFO G102 S2 receive Append Request [9, 4TPexUr9zhax9DCtTLCX] Shard: 7 from C1 ReqNo: 65
-047550 INFO G102 S2 Snapshot Index 34, kv.rf.RaftStateSize: 808 ConfigNum 6
-047694 INFO SK2 receive clientId: 1, reqNo: 65, index: 35
-047694 INFO G102 S2 apply Index 35 clientId: 1 msgReqNo: 65
-047694 INFO G102 S2 complete Append Request [9, 4TPexUr9zhax9DCtTLCX] Shard 7 from C1, ReqNo: 65 index: 35 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-047696 INFO G100 S0 ReadSnapshot Index: 21 ConfigNum 1
-047700 INFO here3
-047704 INFO G102 S2 receive Get Request Get 0 Shard: 8, from C1
-047803 INFO SK1 receive clientId: 1, reqNo: 65, index: 35
-047804 INFO G102 S1 apply Index 35 clientId: 1 msgReqNo: 65
-047907 INFO SK2 receive clientId: 1, reqNo: 66, index: 36
-047907 INFO G102 S2 apply Index 36 clientId: 1 msgReqNo: 66
-047907 INFO G102 S2 complete Get Request 0: P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOt Shard: 8 index: 36 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-047912 INFO G102 S2 receive Append Request [0, YVjuoRy7lAA-CMi031Ma] Shard: 8 from C1 ReqNo: 67
-047914 INFO G101 S0 ReadSnapshot Index: 13 ConfigNum 6
-047915 INFO SK0 receive clientId: 1, reqNo: 57, index: 14
-047915 INFO G101 S0 apply Index 14 clientId: 1 msgReqNo: 57
-047915 INFO SK0 receive clientId: 1, reqNo: 58, index: 15
-047915 INFO G101 S0 apply Index 15 clientId: 1 msgReqNo: 58
-047916 INFO SK0 receive clientId: 1, reqNo: 59, index: 16
-047916 INFO G101 S0 apply Index 16 clientId: 1 msgReqNo: 59
-047916 INFO G100 S0 ReadSnapshot Index: 31 ConfigNum 5
-047917 INFO SK0 receive clientId: 0, reqNo: 6, index: 32
-047917 INFO G100 S0 update ConfigNum 6 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 102 102 102 102 102]
-047917 INFO SK1 receive clientId: 1, reqNo: 66, index: 36
-047917 INFO G102 S1 apply Index 36 clientId: 1 msgReqNo: 66
-047917 INFO G100 S0 apply Index 32 clientId: 0 msgReqNo: 6
-047969 INFO G102 S0 ReadSnapshot Index: 34 ConfigNum 6
-047970 INFO SK0 receive clientId: 1, reqNo: 65, index: 35
-047971 INFO G102 S0 apply Index 35 clientId: 1 msgReqNo: 65
-047971 INFO SK0 receive clientId: 1, reqNo: 66, index: 36
-047972 INFO G102 S0 apply Index 36 clientId: 1 msgReqNo: 66
-048013 INFO SK2 receive clientId: 1, reqNo: 67, index: 37
-048014 INFO G102 S2 apply Index 37 clientId: 1 msgReqNo: 67
-048014 INFO G102 S2 complete Append Request [0, YVjuoRy7lAA-CMi031Ma] Shard 8 from C1, ReqNo: 67 index: 37 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-048021 INFO G102 S2 receive Get Request Get 1 Shard: 9, from C1
-048076 INFO SK0 receive clientId: 1, reqNo: 67, index: 37
-048077 INFO G102 S0 apply Index 37 clientId: 1 msgReqNo: 67
-048118 INFO SK2 receive clientId: 1, reqNo: 68, index: 38
-048119 INFO G102 S2 apply Index 38 clientId: 1 msgReqNo: 68
-048119 INFO G102 S2 complete Get Request 1: d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8W Shard: 9 index: 38 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-048119 INFO SK1 receive clientId: 1, reqNo: 67, index: 37
-048119 INFO G102 S1 apply Index 37 clientId: 1 msgReqNo: 67
-048125 INFO G102 S2 receive Append Request [1, UzlHEsqqV4oHIg9CBAO-] Shard: 9 from C1 ReqNo: 69
-048183 INFO SK0 receive clientId: 1, reqNo: 68, index: 38
-048184 INFO G102 S0 apply Index 38 clientId: 1 msgReqNo: 68
-048221 INFO SK2 receive clientId: 1, reqNo: 69, index: 39
-048222 INFO G102 S2 apply Index 39 clientId: 1 msgReqNo: 69
-048222 INFO G102 S2 complete Append Request [1, UzlHEsqqV4oHIg9CBAO-] Shard 9 from C1, ReqNo: 69 index: 39 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-048225 INFO G101 S1 receive Get Request Get 2 Shard: 0, from C1
-048229 INFO SK1 receive clientId: 1, reqNo: 68, index: 38
-048229 INFO G102 S1 apply Index 38 clientId: 1 msgReqNo: 68
-048229 INFO SK1 receive clientId: 1, reqNo: 69, index: 39
-048229 INFO G102 S1 apply Index 39 clientId: 1 msgReqNo: 69
-048298 INFO SK0 receive clientId: 1, reqNo: 69, index: 39
-048299 INFO G102 S0 apply Index 39 clientId: 1 msgReqNo: 69
-048300 INFO G102 S1 Snapshot Index 39, kv.rf.RaftStateSize: 93 ConfigNum 6
-048340 INFO G101 S1 Snapshot Index 16, kv.rf.RaftStateSize: 773 ConfigNum 6
-048444 INFO SK1 receive clientId: 1, reqNo: 70, index: 17
-048445 INFO G101 S1 apply Index 17 clientId: 1 msgReqNo: 70
-048445 INFO G101 S1 complete Get Request 2: z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLla Shard: 0 index: 17 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-048447 INFO G101 S1 receive Append Request [2, Ae3LGXUcTIKX6SJH_uSb] Shard: 0 from C1 ReqNo: 71
-048559 INFO SK2 receive clientId: 1, reqNo: 70, index: 17
-048560 INFO G101 S2 apply Index 17 clientId: 1 msgReqNo: 70
-048562 INFO SK0 receive clientId: 1, reqNo: 70, index: 17
-048563 INFO G101 S0 apply Index 17 clientId: 1 msgReqNo: 70
-048633 INFO G102 S2 Snapshot Index 39, kv.rf.RaftStateSize: 93 ConfigNum 6
-048666 INFO SK1 receive clientId: 1, reqNo: 71, index: 18
-048666 INFO G101 S1 apply Index 18 clientId: 1 msgReqNo: 71
-048666 INFO G101 S1 complete Append Request [2, Ae3LGXUcTIKX6SJH_uSb] Shard 0 from C1, ReqNo: 71 index: 18 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-048671 INFO G101 S1 receive Get Request Get 3 Shard: 1, from C1
-048708 INFO G101 S0 Snapshot Index 17, kv.rf.RaftStateSize: 806 ConfigNum 6
-048710 INFO G102 S0 Snapshot Index 39, kv.rf.RaftStateSize: 93 ConfigNum 6
-048778 INFO SK0 receive clientId: 1, reqNo: 71, index: 18
-048779 INFO G101 S0 apply Index 18 clientId: 1 msgReqNo: 71
-048783 INFO SK2 receive clientId: 1, reqNo: 71, index: 18
-048784 INFO G101 S2 apply Index 18 clientId: 1 msgReqNo: 71
-048885 INFO SK1 receive clientId: 1, reqNo: 72, index: 19
-048886 INFO G101 S1 apply Index 19 clientId: 1 msgReqNo: 72
-048886 INFO G101 S1 complete Get Request 3: x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYA Shard: 1 index: 19 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-048894 INFO G101 S1 receive Append Request [3, C_kLP0qyoppat7sEnOyj] Shard: 1 from C1 ReqNo: 73
-048997 INFO SK2 receive clientId: 1, reqNo: 72, index: 19
-048997 INFO G101 S2 apply Index 19 clientId: 1 msgReqNo: 72
-048998 INFO SK0 receive clientId: 1, reqNo: 72, index: 19
-048998 INFO G101 S0 apply Index 19 clientId: 1 msgReqNo: 72
-049174 INFO SK1 receive clientId: 1, reqNo: 73, index: 20
-049175 INFO G101 S1 apply Index 20 clientId: 1 msgReqNo: 73
-049175 INFO G101 S1 complete Append Request [3, C_kLP0qyoppat7sEnOyj] Shard 1 from C1, ReqNo: 73 index: 20 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-049183 INFO G101 S1 receive Get Request Get 4 Shard: 2, from C1
-049210 INFO SK0 receive clientId: 1, reqNo: 73, index: 20
-049211 INFO G101 S0 apply Index 20 clientId: 1 msgReqNo: 73
-049212 INFO SK2 receive clientId: 1, reqNo: 73, index: 20
-049213 INFO G101 S2 apply Index 20 clientId: 1 msgReqNo: 73
-049271 INFO G101 S2 Snapshot Index 20, kv.rf.RaftStateSize: 775 ConfigNum 6
-049309 INFO SK1 receive clientId: 1, reqNo: 74, index: 21
-049310 INFO G101 S1 apply Index 21 clientId: 1 msgReqNo: 74
-049310 INFO G101 S1 complete Get Request 4: M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHs Shard: 2 index: 21 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-049315 INFO G101 S1 receive Append Request [4, BCQ6M4tllLAyYVaXJ3Op] Shard: 2 from C1 ReqNo: 75
-049347 INFO G101 S1 Snapshot Index 21, kv.rf.RaftStateSize: 808 ConfigNum 6
-049421 INFO SK0 receive clientId: 1, reqNo: 74, index: 21
-049422 INFO G101 S0 apply Index 21 clientId: 1 msgReqNo: 74
-049422 INFO SK2 receive clientId: 1, reqNo: 74, index: 21
-049422 INFO G101 S2 apply Index 21 clientId: 1 msgReqNo: 74
-049527 INFO SK1 receive clientId: 1, reqNo: 75, index: 22
-049528 INFO G101 S1 apply Index 22 clientId: 1 msgReqNo: 75
-049529 INFO G101 S1 complete Append Request [4, BCQ6M4tllLAyYVaXJ3Op] Shard 2 from C1, ReqNo: 75 index: 22 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-049534 INFO G101 S1 receive Get Request Get 5 Shard: 3, from C1
-049631 INFO SK2 receive clientId: 1, reqNo: 75, index: 22
-049631 INFO G101 S2 apply Index 22 clientId: 1 msgReqNo: 75
-049631 INFO SK0 receive clientId: 1, reqNo: 75, index: 22
-049631 INFO G101 S0 apply Index 22 clientId: 1 msgReqNo: 75
-049717 INFO G101 S0 Snapshot Index 22, kv.rf.RaftStateSize: 775 ConfigNum 6
-049730 INFO SK1 receive clientId: 1, reqNo: 76, index: 23
-049730 INFO G101 S1 apply Index 23 clientId: 1 msgReqNo: 76
-049730 INFO G101 S1 complete Get Request 5: 9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pglox Shard: 3 index: 23 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-049733 INFO G101 S1 receive Append Request [5, o1YYh7bNCF0LUXVJm_VL] Shard: 3 from C1 ReqNo: 77
-049836 INFO SK0 receive clientId: 1, reqNo: 76, index: 23
-049836 INFO G101 S0 apply Index 23 clientId: 1 msgReqNo: 76
-049842 INFO SK2 receive clientId: 1, reqNo: 76, index: 23
-049843 INFO G101 S2 apply Index 23 clientId: 1 msgReqNo: 76
-049939 INFO SK1 receive clientId: 1, reqNo: 77, index: 24
-049939 INFO G101 S1 apply Index 24 clientId: 1 msgReqNo: 77
-049939 INFO G101 S1 complete Append Request [5, o1YYh7bNCF0LUXVJm_VL] Shard 3 from C1, ReqNo: 77 index: 24 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-049941 INFO G101 S1 receive Get Request Get 6 Shard: 4, from C1
-050044 INFO SK0 receive clientId: 1, reqNo: 77, index: 24
-050044 INFO G101 S0 apply Index 24 clientId: 1 msgReqNo: 77
-050048 INFO SK2 receive clientId: 1, reqNo: 77, index: 24
-050048 INFO G101 S2 apply Index 24 clientId: 1 msgReqNo: 77
-050149 INFO SK1 receive clientId: 1, reqNo: 78, index: 25
-050149 INFO G101 S1 apply Index 25 clientId: 1 msgReqNo: 78
-050150 INFO G101 S1 complete Get Request 6: BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf Shard: 4 index: 25 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-050152 INFO G101 S1 receive Append Request [6, 3oM0CVMMVWmCNDtck_3v] Shard: 4 from C1 ReqNo: 79
-050264 INFO SK0 receive clientId: 1, reqNo: 78, index: 25
-050264 INFO G101 S0 apply Index 25 clientId: 1 msgReqNo: 78
-050265 INFO SK2 receive clientId: 1, reqNo: 78, index: 25
-050265 INFO G101 S2 apply Index 25 clientId: 1 msgReqNo: 78
-050279 INFO G101 S2 Snapshot Index 25, kv.rf.RaftStateSize: 808 ConfigNum 6
-050360 INFO G101 S1 Snapshot Index 25, kv.rf.RaftStateSize: 808 ConfigNum 6
-050361 INFO SK1 receive clientId: 1, reqNo: 79, index: 26
-050362 INFO G101 S1 apply Index 26 clientId: 1 msgReqNo: 79
-050362 INFO G101 S1 complete Append Request [6, 3oM0CVMMVWmCNDtck_3v] Shard 4 from C1, ReqNo: 79 index: 26 Err: OK Shards: map[0:true 1:true 2:true 3:true 4:true]
-050371 INFO G102 S2 receive Get Request Get 7 Shard: 5, from C1
-050457 INFO SK2 receive clientId: 1, reqNo: 80, index: 40
-050458 INFO G102 S2 apply Index 40 clientId: 1 msgReqNo: 80
-050459 INFO G102 S2 complete Get Request 7: PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vs Shard: 5 index: 40 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-050467 INFO G102 S2 receive Append Request [7, YK9WjKIjwDRk3e-lDvL0] Shard: 5 from C1 ReqNo: 81
-050511 INFO SK0 receive clientId: 1, reqNo: 80, index: 40
-050512 INFO G102 S0 apply Index 40 clientId: 1 msgReqNo: 80
-050564 INFO SK2 receive clientId: 1, reqNo: 81, index: 41
-050564 INFO G102 S2 apply Index 41 clientId: 1 msgReqNo: 81
-050564 INFO G102 S2 complete Append Request [7, YK9WjKIjwDRk3e-lDvL0] Shard 5 from C1, ReqNo: 81 index: 41 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-050567 INFO SK1 receive clientId: 1, reqNo: 80, index: 40
-050567 INFO G102 S1 apply Index 40 clientId: 1 msgReqNo: 80
-050567 INFO SK1 receive clientId: 1, reqNo: 81, index: 41
-050567 INFO G102 S1 apply Index 41 clientId: 1 msgReqNo: 81
-050569 INFO G102 S2 receive Get Request Get 8 Shard: 6, from C1
-050622 INFO SK0 receive clientId: 1, reqNo: 81, index: 41
-050623 INFO G102 S0 apply Index 41 clientId: 1 msgReqNo: 81
-050667 INFO SK2 receive clientId: 1, reqNo: 82, index: 42
-050668 INFO G102 S2 apply Index 42 clientId: 1 msgReqNo: 82
-050669 INFO G102 S2 complete Get Request 8: iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9k Shard: 6 index: 42 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-050674 INFO SK1 receive clientId: 1, reqNo: 82, index: 42
-050675 INFO G102 S1 apply Index 42 clientId: 1 msgReqNo: 82
-050675 INFO G102 S2 receive Append Request [8, R4CdLMuzv9yxcOrJRLe6] Shard: 6 from C1 ReqNo: 83
-050728 INFO G101 S0 Snapshot Index 25, kv.rf.RaftStateSize: 808 ConfigNum 6
-050733 INFO SK0 receive clientId: 1, reqNo: 82, index: 42
-050733 INFO G102 S0 apply Index 42 clientId: 1 msgReqNo: 82
-050774 INFO SK2 receive clientId: 1, reqNo: 83, index: 43
-050775 INFO G102 S2 apply Index 43 clientId: 1 msgReqNo: 83
-050775 INFO G102 S2 complete Append Request [8, R4CdLMuzv9yxcOrJRLe6] Shard 6 from C1, ReqNo: 83 index: 43 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-050781 INFO SK1 receive clientId: 1, reqNo: 83, index: 43
-050782 INFO G102 S1 apply Index 43 clientId: 1 msgReqNo: 83
-050783 INFO G102 S2 receive Get Request Get 9 Shard: 7, from C1
-050838 INFO SK0 receive clientId: 1, reqNo: 83, index: 43
-050838 INFO G102 S0 apply Index 43 clientId: 1 msgReqNo: 83
-050882 INFO SK1 receive clientId: 1, reqNo: 84, index: 44
-050883 INFO G102 S1 apply Index 44 clientId: 1 msgReqNo: 84
-050986 INFO SK2 receive clientId: 1, reqNo: 84, index: 44
-050987 INFO G102 S2 apply Index 44 clientId: 1 msgReqNo: 84
-050987 INFO G102 S2 complete Get Request 9: D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCX Shard: 7 index: 44 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-050995 INFO G102 S2 receive Append Request [9, jvDR_WFDSBuvtnYi-jq_] Shard: 7 from C1 ReqNo: 85
-051050 INFO SK0 receive clientId: 1, reqNo: 84, index: 44
-051051 INFO G102 S0 apply Index 44 clientId: 1 msgReqNo: 84
-051094 INFO SK2 receive clientId: 1, reqNo: 85, index: 45
-051095 INFO G102 S2 apply Index 45 clientId: 1 msgReqNo: 85
-051095 INFO G102 S2 complete Append Request [9, jvDR_WFDSBuvtnYi-jq_] Shard 7 from C1, ReqNo: 85 index: 45 Err: OK Shards: map[5:true 6:true 7:true 8:true 9:true]
-051323 INFO SK0 receive clientId: 1, reqNo: 79, index: 26
-051324 INFO G101 S0 apply Index 26 clientId: 1 msgReqNo: 79
-051325 INFO G102 S1 Snapshot Index 44, kv.rf.RaftStateSize: 808 ConfigNum 6
-051326 INFO SK1 receive clientId: 1, reqNo: 85, index: 45
-051329 INFO G102 S1 apply Index 45 clientId: 1 msgReqNo: 85
-051329 INFO SK0 receive clientId: 1, reqNo: 85, index: 45
-051330 INFO G102 S0 apply Index 45 clientId: 1 msgReqNo: 85
-051333 INFO SK2 receive clientId: 1, reqNo: 79, index: 26
-051334 INFO G101 S2 apply Index 26 clientId: 1 msgReqNo: 79
-051664 INFO G102 S2 Snapshot Index 45, kv.rf.RaftStateSize: 93 ConfigNum 6
-051730 INFO G102 S0 Snapshot Index 45, kv.rf.RaftStateSize: 93 ConfigNum 6
-071098 INFO here4
-071903 INFO G102 S2 curConfig: 6 nextConfig: 7 OutShardsMap: map[100:{100 map[7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6]}]
-071904 INFO G102 S2 curConfig: 6 nextConfig: 7 makeInShardMap: map[] inShards: map[]
-071905 INFO G102 S2 start make agreement on ConfigNum: 7 Index: 46
-071907 INFO G102 S2 Snapshot Index 45, kv.rf.RaftStateSize: 1235 ConfigNum 6
-072116 INFO SK2 receive clientId: 0, reqNo: 7, index: 46
-072117 INFO G102 S2 update ConfigNum 7 Shards map[7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_] ConfigShards [100 101 101 101 101 100 100 102 102 102]
-072118 INFO G102 S2 apply Index 46 clientId: 0 msgReqNo: 7
-072118 INFO G102 S2 make agreement on configNum 7
-072392 INFO G102 S2 receive Get Request Get 0 Shard: 8, from C1
-072403 INFO SK0 receive clientId: 0, reqNo: 7, index: 46
-072403 INFO G102 S0 update ConfigNum 7 Shards map[7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_] ConfigShards [100 101 101 101 101 100 100 102 102 102]
-072403 INFO G102 S0 apply Index 46 clientId: 0 msgReqNo: 7
-072547 INFO SK2 receive clientId: 1, reqNo: 86, index: 47
-072548 INFO G102 S2 apply Index 47 clientId: 1 msgReqNo: 86
-072548 INFO G102 S2 complete Get Request 0: P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma Shard: 8 index: 47 Err: OK Shards: map[7:true 8:true 9:true]
-072854 INFO G102 S0 Snapshot Index 46, kv.rf.RaftStateSize: 775 ConfigNum 7
-072913 INFO G102 S2 Snapshot Index 47, kv.rf.RaftStateSize: 93 ConfigNum 7
-072995 INFO G102 S2 receive Append Request [0, Ou28duYv6QN0NoILToVG] Shard: 8 from C1 ReqNo: 87
-073071 INFO SK0 receive clientId: 1, reqNo: 86, index: 47
-073072 INFO G102 S0 apply Index 47 clientId: 1 msgReqNo: 86
-073284 INFO G102 S2 curConfig: 7 nextConfig: 8 OutShardsMap: map[101:{101 map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_]}]
-073285 INFO G102 S2 curConfig: 7 nextConfig: 8 makeInShardMap: map[] inShards: map[]
-073285 INFO G102 S2 start make agreement on ConfigNum: 8 Index: 49
-073285 INFO SK2 receive clientId: 1, reqNo: 87, index: 48
-073285 INFO G102 S2 apply Index 48 clientId: 1 msgReqNo: 87
-073285 INFO G102 S2 complete Append Request [0, Ou28duYv6QN0NoILToVG] Shard 8 from C1, ReqNo: 87 index: 48 Err: ErrWrongGroup Shards: map[7:false 8:false 9:false]
-073391 INFO SK0 receive clientId: 1, reqNo: 87, index: 48
-073392 INFO G102 S0 apply Index 48 clientId: 1 msgReqNo: 87
-073493 INFO SK2 receive clientId: 0, reqNo: 8, index: 49
-073494 INFO G102 S2 update ConfigNum 8 Shards map[] KVMap map[] ConfigShards [100 100 100 101 101 100 100 101 101 101]
-073494 INFO G102 S2 apply Index 49 clientId: 0 msgReqNo: 8
-073494 INFO G102 S2 make agreement on configNum 8
-073867 INFO G102 S0 Snapshot Index 48, kv.rf.RaftStateSize: 1228 ConfigNum 7
-073916 INFO G102 S2 Snapshot Index 49, kv.rf.RaftStateSize: 93 ConfigNum 8
-074412 INFO SK0 receive clientId: 0, reqNo: 8, index: 49
-074413 INFO G102 S0 update ConfigNum 8 Shards map[] KVMap map[] ConfigShards [100 100 100 101 101 100 100 101 101 101]
-074413 INFO G102 S0 apply Index 49 clientId: 0 msgReqNo: 8
-074876 INFO G102 S0 Snapshot Index 49, kv.rf.RaftStateSize: 93 ConfigNum 8
-074878 VOTE S0 in term 2 issued a election
-074881 VOTE S2 term 2 voted for S0 in term 2
-074884 VOTE S0 got enough votes(2), became leader of term 2
-076061 INFO G100 S0 curConfig: 6 nextConfig: 7 OutShardsMap: map[]
-076891 VOTE S0 in term 2 issued a election
-076893 VOTE S2 term 2 voted for S0 in term 2
-076894 VOTE S0 got enough votes(2), became leader of term 2
-077759 INFO G101 S0 receive Append Request [0, Ou28duYv6QN0NoILToVG] Shard: 8 from C1 ReqNo: 88
-078062 INFO G101 S0 curConfig: 6 nextConfig: 7 OutShardsMap: map[100:{100 map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb]}]
-078063 INFO G101 S0 curConfig: 6 nextConfig: 7 makeInShardMap: map[] inShards: map[]
-078064 INFO G101 S0 start make agreement on ConfigNum: 7 Index: 28
-078066 INFO G101 S0 Snapshot Index 26, kv.rf.RaftStateSize: 1268 ConfigNum 6
-078067 INFO SK0 receive clientId: 1, reqNo: 88, index: 27
-078067 INFO G101 S0 apply Index 27 clientId: 1 msgReqNo: 88
-078067 INFO G101 S0 complete Append Request [0, Ou28duYv6QN0NoILToVG] Shard 8 from C1, ReqNo: 88 index: 27 Err: ErrWrongGroup Shards: map[0:false 1:true 2:true 3:true 4:true]
-078166 INFO SK2 receive clientId: 1, reqNo: 88, index: 27
-078166 INFO G101 S2 apply Index 27 clientId: 1 msgReqNo: 88
-078216 INFO G100 S0 migrate shards from G101 S0 ShardsMap: map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb]
-078217 INFO G100 S0 migrate shards from G102 S0 ShardsMap: map[7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6]
-078220 INFO G100 S0 curConfig: 6 nextConfig: 7 makeInShardMap: map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6] inShards: map[0:true 5:true 6:true]
-078222 INFO G100 S0 start make agreement on ConfigNum: 7 Index: 33
-078264 INFO SK0 receive clientId: 0, reqNo: 7, index: 28
-078264 INFO G101 S0 update ConfigNum 7 Shards map[1:true 2:true 3:true 4:true] KVMap map[3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pgloxo1YYh7bNCF0LUXVJm_VL 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf3oM0CVMMVWmCNDtck_3v] ConfigShards [100 101 101 101 101 100 100 102 102 102]
-078264 INFO G101 S0 apply Index 28 clientId: 0 msgReqNo: 7
-078265 INFO G101 S0 make agreement on configNum 7
-078371 INFO SK0 receive clientId: 0, reqNo: 7, index: 33
-078372 INFO G100 S0 update ConfigNum 7 Shards map[0:true 5:true 6:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6] ConfigShards [100 101 101 101 101 100 100 102 102 102]
-078372 INFO G100 S0 apply Index 33 clientId: 0 msgReqNo: 7
-078372 INFO G100 S0 make agreement on configNum 7
-078426 INFO G101 S2 Snapshot Index 27, kv.rf.RaftStateSize: 1154 ConfigNum 6
-078427 INFO G100 S2 Snapshot Index 32, kv.rf.RaftStateSize: 1304 ConfigNum 6
-078880 INFO G100 S0 Snapshot Index 33, kv.rf.RaftStateSize: 93 ConfigNum 7
-078908 INFO SK2 receive clientId: 0, reqNo: 7, index: 33
-078909 INFO G100 S2 update ConfigNum 7 Shards map[0:true 5:true 6:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6] ConfigShards [100 101 101 101 101 100 100 102 102 102]
-078909 INFO G100 S2 apply Index 33 clientId: 0 msgReqNo: 7
-078910 INFO SK2 receive clientId: 0, reqNo: 7, index: 28
-078910 INFO G101 S2 update ConfigNum 7 Shards map[1:true 2:true 3:true 4:true] KVMap map[3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pgloxo1YYh7bNCF0LUXVJm_VL 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf3oM0CVMMVWmCNDtck_3v] ConfigShards [100 101 101 101 101 100 100 102 102 102]
-078910 INFO G101 S2 apply Index 28 clientId: 0 msgReqNo: 7
-079074 INFO G101 S0 Snapshot Index 28, kv.rf.RaftStateSize: 93 ConfigNum 7
-079232 INFO G101 S0 receive Append Request [0, Ou28duYv6QN0NoILToVG] Shard: 8 from C1 ReqNo: 89
-079436 INFO G101 S0 curConfig: 7 nextConfig: 8 OutShardsMap: map[100:{100 map[3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op]}]
-079439 INFO G101 S0 migrate shards from G102 S0 ShardsMap: map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_]
-079446 INFO G101 S0 curConfig: 7 nextConfig: 8 makeInShardMap: map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_] inShards: map[7:true 8:true 9:true]
-079454 INFO G101 S0 start make agreement on ConfigNum: 8 Index: 30
-079455 INFO SK0 receive clientId: 1, reqNo: 89, index: 29
-079455 INFO G101 S0 apply Index 29 clientId: 1 msgReqNo: 89
-079455 INFO G101 S0 complete Append Request [0, Ou28duYv6QN0NoILToVG] Shard 8 from C1, ReqNo: 89 index: 29 Err: ErrWrongGroup Shards: map[1:false 2:false 3:true 4:true]
-079458 INFO G101 S2 Snapshot Index 28, kv.rf.RaftStateSize: 808 ConfigNum 7
-079459 INFO G100 S2 Snapshot Index 33, kv.rf.RaftStateSize: 93 ConfigNum 7
-079549 INFO G100 S0 curConfig: 7 nextConfig: 8 OutShardsMap: map[]
-079551 INFO G100 S0 migrate shards from G101 S0 ShardsMap: map[3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op]
-079553 INFO SK2 receive clientId: 1, reqNo: 89, index: 29
-079553 INFO G101 S2 apply Index 29 clientId: 1 msgReqNo: 89
-079553 INFO G100 S0 curConfig: 7 nextConfig: 8 makeInShardMap: map[3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op] inShards: map[1:true 2:true]
-079554 INFO G100 S0 start make agreement on ConfigNum: 8 Index: 34
-079559 INFO SK0 receive clientId: 0, reqNo: 8, index: 30
-079560 INFO G101 S0 update ConfigNum 8 Shards map[3:true 4:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pgloxo1YYh7bNCF0LUXVJm_VL 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf3oM0CVMMVWmCNDtck_3v 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_] ConfigShards [100 100 100 101 101 100 100 101 101 101]
-079560 INFO G101 S0 apply Index 30 clientId: 0 msgReqNo: 8
-079561 INFO G101 S0 make agreement on configNum 8
-079756 INFO SK0 receive clientId: 0, reqNo: 8, index: 34
-079757 INFO G100 S0 update ConfigNum 8 Shards map[0:true 1:true 2:true 5:true 6:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6] ConfigShards [100 100 100 101 101 100 100 101 101 101]
-079757 INFO G100 S0 apply Index 34 clientId: 0 msgReqNo: 8
-079757 INFO G100 S0 make agreement on configNum 8
-079891 INFO G100 S0 Snapshot Index 34, kv.rf.RaftStateSize: 93 ConfigNum 8
-079919 INFO SK2 receive clientId: 0, reqNo: 8, index: 30
-079920 INFO G101 S2 update ConfigNum 8 Shards map[3:true 4:true 7:true 8:true 9:true] KVMap map[0:P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031Ma 1:d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- 5:9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pgloxo1YYh7bNCF0LUXVJm_VL 6:BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf3oM0CVMMVWmCNDtck_3v 9:D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_] ConfigShards [100 100 100 101 101 100 100 101 101 101]
-079920 INFO G101 S2 apply Index 30 clientId: 0 msgReqNo: 8
-079919 INFO SK2 receive clientId: 0, reqNo: 8, index: 34
-079920 INFO G100 S2 update ConfigNum 8 Shards map[0:true 1:true 2:true 5:true 6:true] KVMap map[2:z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb 3:x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj 4:M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op 7:PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 8:iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6] ConfigShards [100 100 100 101 101 100 100 101 101 101]
-079920 INFO G100 S2 apply Index 34 clientId: 0 msgReqNo: 8
-080077 INFO G101 S0 Snapshot Index 30, kv.rf.RaftStateSize: 93 ConfigNum 8
-080468 INFO G100 S2 Snapshot Index 34, kv.rf.RaftStateSize: 93 ConfigNum 8
-080468 INFO G101 S2 Snapshot Index 30, kv.rf.RaftStateSize: 93 ConfigNum 8
-080706 INFO G101 S0 receive Append Request [0, Ou28duYv6QN0NoILToVG] Shard: 8 from C1 ReqNo: 90
-080839 INFO SK0 receive clientId: 1, reqNo: 90, index: 31
-080839 INFO G101 S0 apply Index 31 clientId: 1 msgReqNo: 90
-080840 INFO G101 S0 complete Append Request [0, Ou28duYv6QN0NoILToVG] Shard 8 from C1, ReqNo: 90 index: 31 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-080842 INFO G101 S0 receive Get Request Get 1 Shard: 9, from C1
-080926 INFO SK2 receive clientId: 1, reqNo: 90, index: 31
-080926 INFO G101 S2 apply Index 31 clientId: 1 msgReqNo: 90
-080948 INFO SK0 receive clientId: 1, reqNo: 91, index: 32
-080949 INFO G101 S0 apply Index 32 clientId: 1 msgReqNo: 91
-080949 INFO G101 S0 complete Get Request 1: d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO- Shard: 9 index: 32 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-080950 INFO G101 S0 receive Append Request [1, g3y5ZCvr2bRtDMmNev0j] Shard: 9 from C1 ReqNo: 92
-081037 INFO SK2 receive clientId: 1, reqNo: 91, index: 32
-081038 INFO G101 S2 apply Index 32 clientId: 1 msgReqNo: 91
-081055 INFO SK0 receive clientId: 1, reqNo: 92, index: 33
-081056 INFO G101 S0 apply Index 33 clientId: 1 msgReqNo: 92
-081056 INFO G101 S0 complete Append Request [1, g3y5ZCvr2bRtDMmNev0j] Shard 9 from C1, ReqNo: 92 index: 33 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-081059 INFO G100 S0 receive Get Request Get 2 Shard: 0, from C1
-081081 INFO G101 S0 Snapshot Index 33, kv.rf.RaftStateSize: 93 ConfigNum 8
-081242 INFO SK0 receive clientId: 1, reqNo: 93, index: 35
-081243 INFO G100 S0 apply Index 35 clientId: 1 msgReqNo: 93
-081243 INFO G100 S0 complete Get Request 2: z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSb Shard: 0 index: 35 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-081245 INFO G100 S0 receive Append Request [2, ad_-rw6gswI7D4OuRT7B] Shard: 0 from C1 ReqNo: 94
-081359 INFO SK2 receive clientId: 1, reqNo: 93, index: 35
-081359 INFO G100 S2 apply Index 35 clientId: 1 msgReqNo: 93
-081456 INFO SK0 receive clientId: 1, reqNo: 94, index: 36
-081457 INFO G100 S0 apply Index 36 clientId: 1 msgReqNo: 94
-081458 INFO G100 S0 complete Append Request [2, ad_-rw6gswI7D4OuRT7B] Shard 0 from C1, ReqNo: 94 index: 36 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-081459 INFO G100 S0 receive Get Request Get 3 Shard: 1, from C1
-081473 INFO G101 S2 Snapshot Index 32, kv.rf.RaftStateSize: 808 ConfigNum 8
-081562 INFO SK2 receive clientId: 1, reqNo: 94, index: 36
-081562 INFO G100 S2 apply Index 36 clientId: 1 msgReqNo: 94
-081659 INFO SK0 receive clientId: 1, reqNo: 95, index: 37
-081660 INFO G100 S0 apply Index 37 clientId: 1 msgReqNo: 95
-081660 INFO G100 S0 complete Get Request 3: x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj Shard: 1 index: 37 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-081661 INFO G100 S0 receive Append Request [3, 7cl76U9ZJ3ud4HYUEFjC] Shard: 1 from C1 ReqNo: 96
-081776 INFO SK2 receive clientId: 1, reqNo: 95, index: 37
-081782 INFO G100 S2 apply Index 37 clientId: 1 msgReqNo: 95
-081864 INFO SK0 receive clientId: 1, reqNo: 96, index: 38
-081864 INFO G100 S0 apply Index 38 clientId: 1 msgReqNo: 96
-081864 INFO G100 S0 complete Append Request [3, 7cl76U9ZJ3ud4HYUEFjC] Shard 1 from C1, ReqNo: 96 index: 38 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-081867 INFO G100 S0 receive Get Request Get 4 Shard: 2, from C1
-081916 INFO G100 S0 Snapshot Index 38, kv.rf.RaftStateSize: 775 ConfigNum 8
-081925 INFO SK2 receive clientId: 1, reqNo: 96, index: 38
-081925 INFO G100 S2 apply Index 38 clientId: 1 msgReqNo: 96
-081926 INFO SK2 receive clientId: 1, reqNo: 92, index: 33
-081927 INFO G101 S2 apply Index 33 clientId: 1 msgReqNo: 92
-082082 INFO SK0 receive clientId: 1, reqNo: 97, index: 39
-082083 INFO G100 S0 apply Index 39 clientId: 1 msgReqNo: 97
-082083 INFO G100 S0 complete Get Request 4: M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3Op Shard: 2 index: 39 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-082084 INFO G100 S0 receive Append Request [4, QtP4xvcYuu5jxRB99mrA] Shard: 2 from C1 ReqNo: 98
-082191 INFO SK2 receive clientId: 1, reqNo: 97, index: 39
-082191 INFO G100 S2 apply Index 39 clientId: 1 msgReqNo: 97
-082289 INFO SK0 receive clientId: 1, reqNo: 98, index: 40
-082290 INFO G100 S0 apply Index 40 clientId: 1 msgReqNo: 98
-082290 INFO G100 S0 complete Append Request [4, QtP4xvcYuu5jxRB99mrA] Shard 2 from C1, ReqNo: 98 index: 40 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-082294 INFO G101 S0 receive Get Request Get 5 Shard: 3, from C1
-082451 INFO SK0 receive clientId: 1, reqNo: 99, index: 34
-082452 INFO G101 S0 apply Index 34 clientId: 1 msgReqNo: 99
-082452 INFO G101 S0 complete Get Request 5: 9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pgloxo1YYh7bNCF0LUXVJm_VL Shard: 3 index: 34 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-082455 INFO G101 S0 receive Append Request [5, 8TiqF_8dLmCbDuvwPtuJ] Shard: 3 from C1 ReqNo: 100
-082479 INFO G100 S2 Snapshot Index 39, kv.rf.RaftStateSize: 808 ConfigNum 8
-082506 INFO SK2 receive clientId: 1, reqNo: 99, index: 34
-082506 INFO G101 S2 apply Index 34 clientId: 1 msgReqNo: 99
-082560 INFO SK0 receive clientId: 1, reqNo: 100, index: 35
-082561 INFO G101 S0 apply Index 35 clientId: 1 msgReqNo: 100
-082561 INFO G101 S0 complete Append Request [5, 8TiqF_8dLmCbDuvwPtuJ] Shard 3 from C1, ReqNo: 100 index: 35 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-082566 INFO G101 S0 receive Get Request Get 6 Shard: 4, from C1
-082608 INFO SK2 receive clientId: 1, reqNo: 100, index: 35
-082609 INFO G101 S2 apply Index 35 clientId: 1 msgReqNo: 100
-082671 INFO SK0 receive clientId: 1, reqNo: 101, index: 36
-082672 INFO G101 S0 apply Index 36 clientId: 1 msgReqNo: 101
-082672 INFO G101 S0 complete Get Request 6: BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf3oM0CVMMVWmCNDtck_3v Shard: 4 index: 36 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-082675 INFO G101 S0 receive Append Request [6, 0Ol2NNR8TGxOiUwEn-YN] Shard: 4 from C1 ReqNo: 102
-082714 INFO SK2 receive clientId: 1, reqNo: 101, index: 36
-082715 INFO G101 S2 apply Index 36 clientId: 1 msgReqNo: 101
-082776 INFO SK0 receive clientId: 1, reqNo: 102, index: 37
-082777 INFO G101 S0 apply Index 37 clientId: 1 msgReqNo: 102
-082777 INFO G101 S0 complete Append Request [6, 0Ol2NNR8TGxOiUwEn-YN] Shard 4 from C1, ReqNo: 102 index: 37 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-082779 INFO G100 S0 receive Get Request Get 7 Shard: 5, from C1
-082827 INFO SK2 receive clientId: 1, reqNo: 98, index: 40
-082828 INFO G100 S2 apply Index 40 clientId: 1 msgReqNo: 98
-082921 INFO SK0 receive clientId: 1, reqNo: 103, index: 41
-082921 INFO G100 S0 apply Index 41 clientId: 1 msgReqNo: 103
-082921 INFO G100 S0 complete Get Request 7: PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0 Shard: 5 index: 41 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-082922 INFO G100 S0 receive Append Request [7, XM1u3nICgd-cN2qnat1g] Shard: 5 from C1 ReqNo: 104
-082935 INFO SK2 receive clientId: 1, reqNo: 102, index: 37
-082936 INFO G101 S2 apply Index 37 clientId: 1 msgReqNo: 102
-082935 INFO SK2 receive clientId: 1, reqNo: 103, index: 41
-082936 INFO G100 S2 apply Index 41 clientId: 1 msgReqNo: 103
-083089 INFO G101 S0 Snapshot Index 37, kv.rf.RaftStateSize: 93 ConfigNum 8
-083243 INFO SK0 receive clientId: 1, reqNo: 104, index: 42
-083243 INFO G100 S0 apply Index 42 clientId: 1 msgReqNo: 104
-083243 INFO G100 S0 complete Append Request [7, XM1u3nICgd-cN2qnat1g] Shard 5 from C1, ReqNo: 104 index: 42 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-083244 INFO G100 S0 receive Get Request Get 8 Shard: 6, from C1
-083356 INFO SK2 receive clientId: 1, reqNo: 104, index: 42
-083357 INFO G100 S2 apply Index 42 clientId: 1 msgReqNo: 104
-083452 INFO SK0 receive clientId: 1, reqNo: 105, index: 43
-083453 INFO G100 S0 apply Index 43 clientId: 1 msgReqNo: 105
-083453 INFO G100 S0 complete Get Request 8: iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6 Shard: 6 index: 43 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-083455 INFO G100 S0 receive Append Request [8, mxipE9648QS_PB8o2hVq] Shard: 6 from C1 ReqNo: 106
-083484 INFO G101 S2 Snapshot Index 37, kv.rf.RaftStateSize: 93 ConfigNum 8
-083486 INFO G100 S2 Snapshot Index 42, kv.rf.RaftStateSize: 775 ConfigNum 8
-083559 INFO SK2 receive clientId: 1, reqNo: 105, index: 43
-083560 INFO G100 S2 apply Index 43 clientId: 1 msgReqNo: 105
-083657 INFO SK0 receive clientId: 1, reqNo: 106, index: 44
-083658 INFO G100 S0 apply Index 44 clientId: 1 msgReqNo: 106
-083659 INFO G100 S0 complete Append Request [8, mxipE9648QS_PB8o2hVq] Shard 6 from C1, ReqNo: 106 index: 44 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-083663 INFO G101 S0 receive Get Request Get 9 Shard: 7, from C1
-083829 INFO SK0 receive clientId: 1, reqNo: 107, index: 38
-083830 INFO G101 S0 apply Index 38 clientId: 1 msgReqNo: 107
-083830 INFO G101 S0 complete Get Request 9: D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_ Shard: 7 index: 38 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-083833 INFO G101 S0 receive Append Request [9, 8zkRFxMrG_OFaPfiHet0] Shard: 7 from C1 ReqNo: 108
-083890 INFO SK2 receive clientId: 1, reqNo: 107, index: 38
-083891 INFO G101 S2 apply Index 38 clientId: 1 msgReqNo: 107
-083921 INFO G100 S0 Snapshot Index 44, kv.rf.RaftStateSize: 93 ConfigNum 8
-083933 INFO SK0 receive clientId: 1, reqNo: 108, index: 39
-083933 INFO G101 S0 apply Index 39 clientId: 1 msgReqNo: 108
-083934 INFO G101 S0 complete Append Request [9, 8zkRFxMrG_OFaPfiHet0] Shard 7 from C1, ReqNo: 108 index: 39 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-083934 INFO SK2 receive clientId: 1, reqNo: 108, index: 39
-083935 INFO G101 S2 apply Index 39 clientId: 1 msgReqNo: 108
-083936 INFO G100 S1 ReadSnapshot Index: 31 ConfigNum 5
-083939 INFO SK2 receive clientId: 1, reqNo: 106, index: 44
-083939 INFO G100 S2 apply Index 44 clientId: 1 msgReqNo: 106
-083941 INFO G101 S1 ReadSnapshot Index: 25 ConfigNum 6
-083946 INFO G102 S1 ReadSnapshot Index: 44 ConfigNum 6
-083948 INFO here5
-083950 INFO G101 S0 receive Get Request Get 0 Shard: 8, from C1
-084102 INFO SK0 receive clientId: 1, reqNo: 109, index: 40
-084103 INFO G101 S0 apply Index 40 clientId: 1 msgReqNo: 109
-084103 INFO G101 S0 complete Get Request 0: P2hLEMQN8enP_1i1Omn-x2z1FimD4pQVkzOVGSH7SP2sPLk_EWd2CJwMXCOtYVjuoRy7lAA-CMi031MaOu28duYv6QN0NoILToVG Shard: 8 index: 40 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-084105 INFO G101 S0 receive Get Request Get 1 Shard: 9, from C1
-084185 INFO SK2 receive clientId: 1, reqNo: 109, index: 40
-084185 INFO G101 S2 apply Index 40 clientId: 1 msgReqNo: 109
-084186 INFO G101 S1 ReadSnapshot Index: 37 ConfigNum 8
-084186 INFO SK1 receive clientId: 1, reqNo: 107, index: 38
-084186 INFO G101 S1 apply Index 38 clientId: 1 msgReqNo: 107
-084186 INFO SK1 receive clientId: 1, reqNo: 108, index: 39
-084186 INFO G101 S1 apply Index 39 clientId: 1 msgReqNo: 108
-084186 INFO SK1 receive clientId: 1, reqNo: 109, index: 40
-084186 INFO G101 S1 apply Index 40 clientId: 1 msgReqNo: 109
-084251 INFO SK0 receive clientId: 1, reqNo: 110, index: 41
-084252 INFO G101 S0 apply Index 41 clientId: 1 msgReqNo: 110
-084252 INFO G101 S0 complete Get Request 1: d0zKof9Glhe_0UKPKBNcRCO3qHf987PJzxQ1-JDYBfYjNd5gM0XswLlj3w8WUzlHEsqqV4oHIg9CBAO-g3y5ZCvr2bRtDMmNev0j Shard: 9 index: 41 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-084311 INFO G100 S0 receive Get Request Get 2 Shard: 0, from C1
-084488 INFO G101 S2 Snapshot Index 40, kv.rf.RaftStateSize: 775 ConfigNum 8
-084507 INFO SK0 receive clientId: 1, reqNo: 111, index: 45
-084508 INFO G100 S0 apply Index 45 clientId: 1 msgReqNo: 111
-084509 INFO G100 S0 complete Get Request 2: z2bU0qOYOKLZxIFRZ8nU7cE-7Qgd64OJ17beIPCvz6sdPCbdzoJYmeGmOLlaAe3LGXUcTIKX6SJH_uSbad_-rw6gswI7D4OuRT7B Shard: 0 index: 45 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-084512 INFO G100 S0 receive Get Request Get 3 Shard: 1, from C1
-084525 INFO G100 S1 ReadSnapshot Index: 44 ConfigNum 8
-084526 INFO SK1 receive clientId: 1, reqNo: 111, index: 45
-084526 INFO G100 S1 apply Index 45 clientId: 1 msgReqNo: 111
-084610 INFO SK0 receive clientId: 1, reqNo: 112, index: 46
-084611 INFO G100 S0 apply Index 46 clientId: 1 msgReqNo: 112
-084611 INFO G100 S0 complete Get Request 3: x-Imgbh6VmhDdMs9u-KrTtdmHUDzoGEKw0lkDq_oGQlpyJKoPT8uGpMCRfYAC_kLP0qyoppat7sEnOyj7cl76U9ZJ3ud4HYUEFjC Shard: 1 index: 46 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-084612 INFO G100 S0 receive Get Request Get 4 Shard: 2, from C1
-084618 INFO SK2 receive clientId: 1, reqNo: 111, index: 45
-084619 INFO G100 S2 apply Index 45 clientId: 1 msgReqNo: 111
-084619 INFO SK2 receive clientId: 1, reqNo: 112, index: 46
-084620 INFO G100 S2 apply Index 46 clientId: 1 msgReqNo: 112
-084628 INFO SK1 receive clientId: 1, reqNo: 112, index: 46
-084629 INFO G100 S1 apply Index 46 clientId: 1 msgReqNo: 112
-084715 INFO SK0 receive clientId: 1, reqNo: 113, index: 47
-084716 INFO G100 S0 apply Index 47 clientId: 1 msgReqNo: 113
-084718 INFO G100 S0 complete Get Request 4: M62c55Mbe1jnhNNzaxSFT2_V7tg36i0lBUUxemMmjrw8J1vvOoFNswy4HeHsBCQ6M4tllLAyYVaXJ3OpQtP4xvcYuu5jxRB99mrA Shard: 2 index: 47 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-084722 INFO G101 S0 receive Get Request Get 5 Shard: 3, from C1
-084727 INFO SK2 receive clientId: 1, reqNo: 113, index: 47
-084728 INFO G100 S2 apply Index 47 clientId: 1 msgReqNo: 113
-084832 INFO SK2 receive clientId: 1, reqNo: 110, index: 41
-084833 INFO G101 S2 apply Index 41 clientId: 1 msgReqNo: 110
-084833 INFO SK1 receive clientId: 1, reqNo: 110, index: 41
-084834 INFO G101 S1 apply Index 41 clientId: 1 msgReqNo: 110
-084884 INFO SK0 receive clientId: 1, reqNo: 114, index: 42
-084886 INFO G101 S0 apply Index 42 clientId: 1 msgReqNo: 114
-084886 INFO G101 S0 complete Get Request 5: 9WiA0op_vzDRvfNxTvk5fnSuObD34lQ63mKgIgJw52nqk61rfenu8M2pgloxo1YYh7bNCF0LUXVJm_VL8TiqF_8dLmCbDuvwPtuJ Shard: 3 index: 42 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-084887 INFO G101 S0 receive Get Request Get 6 Shard: 4, from C1
-084929 INFO SK2 receive clientId: 1, reqNo: 114, index: 42
-084930 INFO SK1 receive clientId: 1, reqNo: 114, index: 42
-084930 INFO G101 S1 apply Index 42 clientId: 1 msgReqNo: 114
-084930 INFO G101 S2 apply Index 42 clientId: 1 msgReqNo: 114
-084941 INFO SK1 receive clientId: 1, reqNo: 113, index: 47
-084942 INFO G100 S1 apply Index 47 clientId: 1 msgReqNo: 113
-084952 INFO G101 S1 Snapshot Index 42, kv.rf.RaftStateSize: 775 ConfigNum 8
-084985 INFO SK0 receive clientId: 1, reqNo: 115, index: 43
-084986 INFO G101 S0 apply Index 43 clientId: 1 msgReqNo: 115
-084986 INFO G101 S0 complete Get Request 6: BB2bD6akpcLMbPVGk19vtEPfaEOXYR7DFxGcUxGWrVJRYZiGXbz_CBeNQNDf3oM0CVMMVWmCNDtck_3v0Ol2NNR8TGxOiUwEn-YN Shard: 4 index: 43 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
-084987 INFO G100 S0 receive Get Request Get 7 Shard: 5, from C1
-085139 INFO SK0 receive clientId: 1, reqNo: 116, index: 48
-085140 INFO G100 S0 apply Index 48 clientId: 1 msgReqNo: 116
-085141 INFO G100 S0 complete Get Request 7: PKbQoOexLSMcJUoBgUxlHnRELa7r7r_LTkvry7pZK4sJhzM5zyCWMXoAn2vsYK9WjKIjwDRk3e-lDvL0XM1u3nICgd-cN2qnat1g Shard: 5 index: 48 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-085143 INFO G100 S0 receive Get Request Get 8 Shard: 6, from C1
-085245 INFO G101 S0 Snapshot Index 43, kv.rf.RaftStateSize: 93 ConfigNum 8
-085250 INFO SK1 receive clientId: 1, reqNo: 116, index: 48
-085254 INFO G100 S1 apply Index 48 clientId: 1 msgReqNo: 116
-085253 INFO SK2 receive clientId: 1, reqNo: 116, index: 48
-085254 INFO G100 S2 apply Index 48 clientId: 1 msgReqNo: 116
-085451 INFO SK0 receive clientId: 1, reqNo: 117, index: 49
-085452 INFO G100 S0 apply Index 49 clientId: 1 msgReqNo: 117
-085452 INFO G100 S0 complete Get Request 8: iFZPVwHuJ5c7JeJXu7NQTdgPGN77MOxZO_1ZcctmjLTfoPqLpMTm_SfzGv9kR4CdLMuzv9yxcOrJRLe6mxipE9648QS_PB8o2hVq Shard: 6 index: 49 Err: OK Shards: map[0:true 1:true 2:true 5:true 6:true]
-085454 INFO G101 S0 receive Get Request Get 9 Shard: 7, from C1
-085492 INFO G100 S2 Snapshot Index 48, kv.rf.RaftStateSize: 775 ConfigNum 8
-085563 INFO SK2 receive clientId: 1, reqNo: 115, index: 43
-085564 INFO G101 S2 apply Index 43 clientId: 1 msgReqNo: 115
-085566 INFO SK1 receive clientId: 1, reqNo: 115, index: 43
-085566 INFO G101 S1 apply Index 43 clientId: 1 msgReqNo: 115
-085644 INFO SK0 receive clientId: 1, reqNo: 118, index: 44
-085645 INFO G101 S0 apply Index 44 clientId: 1 msgReqNo: 118
-085645 INFO G101 S0 complete Get Request 9: D14TYAX3NwkbMPoWHWsjbbrxIEzoi2ZV_qE_aefq4TPexUr9zhax9DCtTLCXjvDR_WFDSBuvtnYi-jq_8zkRFxMrG_OFaPfiHet0 Shard: 7 index: 44 Err: OK Shards: map[3:true 4:true 7:true 8:true 9:true]
+004096 VOTE S2 term 1 voted for S1 in term 1
+004098 VOTE S1 got enough votes(2), became leader of term 1
+004285 VOTE S0 term 1 voted for S1 in term 1
+005044 VOTE S1 in term 1 issued a election
+005100 VOTE S0 term 1 voted for S1 in term 1
+005101 VOTE S1 got enough votes(2), became leader of term 1
+005244 VOTE S2 term 1 voted for S1 in term 1
+006056 VOTE S0 in term 1 issued a election
+006166 VOTE S2 term 1 voted for S0 in term 1
+006277 VOTE S1 term 1 voted for S0 in term 1
+006278 VOTE S0 got enough votes(2), became leader of term 1
+006713 INFO G101 S1 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+006962 INFO G101 S1 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+006962 INFO G101 S1 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+006963 INFO G101 S1 apply Config index 1 err 
+007065 INFO G101 S2 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+007065 VOTE S2 in term 1 issued a election
+007066 VOTE S0 in term 1 issued a election
+007107 INFO G101 S0 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+007107 INFO G101 S0 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+007108 INFO G101 S0 apply Config index 1 err 
+007293 INFO G101 S2 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+007294 INFO G101 S2 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+007294 INFO G101 S2 apply Config index 1 err 
+008023 INFO G101 S1 configNum 1 acceptShards skv.Shards map[1:true 4:true 7:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+008024 INFO G101 S1 apply Shards index 2 err 
+008070 INFO G101 S0 Snapshot Index 1, kv.rf.RaftStateSize: 923 ConfigNum 1
+008071 INFO G100 S1 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+008105 INFO G101 S0 configNum 1 acceptShards skv.Shards map[1:true 4:true 7:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+008106 INFO G101 S0 apply Shards index 2 err 
+008282 INFO G100 S1 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+008282 INFO G100 S1 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+008282 INFO G100 S1 apply Config index 1 err 
+008328 INFO G101 S2 configNum 1 acceptShards skv.Shards map[1:true 4:true 7:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+008329 INFO G101 S2 apply Shards index 2 err 
+009074 INFO G100 S2 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+009074 INFO G100 S0 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+009145 INFO G100 S2 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+009146 INFO G100 S2 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+009146 INFO G100 S2 apply Config index 1 err 
+009226 INFO G100 S1 configNum 1 acceptShards skv.Shards map[0:true 3:true 6:true 9:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+009227 INFO G100 S1 apply Shards index 2 err 
+009259 INFO G100 S0 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+009260 INFO G100 S0 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+009260 INFO G100 S0 apply Config index 1 err 
+009330 INFO G100 S0 configNum 1 acceptShards skv.Shards map[0:true 3:true 6:true 9:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+009331 INFO G100 S0 apply Shards index 2 err 
+009722 INFO G101 S1 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+010077 VOTE S1 in term 2 issued a election
+010077 INFO G101 S2 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+010113 VOTE S2 term 2 voted for S1 in term 2
+010114 VOTE S1 got enough votes(2), became leader of term 2
+010272 INFO G100 S2 configNum 1 acceptShards skv.Shards map[0:true 3:true 6:true 9:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+010273 INFO G100 S2 apply Shards index 2 err 
+010332 VOTE S0 term 2 voted for S1 in term 2
+011083 INFO G101 S0 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+011260 INFO G102 S1 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+011479 INFO G102 S1 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+011479 INFO G102 S1 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+011479 INFO G102 S1 apply Config index 1 err 
+011739 INFO G100 S1 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+012084 INFO G100 S2 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+012084 INFO G102 S2 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+012084 INFO G102 S0 Snapshot Index 0, kv.rf.RaftStateSize: 995 ConfigNum 0
+012085 INFO G100 S0 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+012324 INFO G102 S2 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+012325 INFO G102 S2 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+012325 INFO G102 S2 apply Config index 1 err 
+012338 INFO G102 S0 curConfig 0 nextConfig 1 make OutShardsMap: map[]
+012339 INFO G102 S0 update ConfigNum 1 Shards map[] KVMap map[] ConfigShards [100 101 102 100 101 102 100 101 102 100]
+012339 INFO G102 S0 apply Config index 1 err 
+012432 INFO G102 S1 configNum 1 acceptShards skv.Shards map[2:true 5:true 8:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+012433 INFO G102 S1 apply Shards index 2 err 
+013324 INFO G102 S2 configNum 1 acceptShards skv.Shards map[2:true 5:true 8:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+013325 INFO G102 S2 apply Shards index 2 err 
+014269 INFO G102 S1 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+015090 INFO G102 S2 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+015092 INFO G102 S0 Snapshot Index 1, kv.rf.RaftStateSize: 923 ConfigNum 1
+016144 INFO G102 S0 configNum 1 acceptShards skv.Shards map[2:true 5:true 8:true] shiftShards [{1 0 map[]} {1 1 map[]} {1 2 map[]} {1 3 map[]} {1 4 map[]} {1 5 map[]} {1 6 map[]} {1 7 map[]} {1 8 map[]} {1 9 map[]}] clientInfo {map[] map[]}
+016145 INFO G102 S0 apply Shards index 2 err 
+018099 INFO G102 S0 Snapshot Index 2, kv.rf.RaftStateSize: 93 ConfigNum 1
+024168 INFO G102 S1 receive Put Request [0, 100] Shard 8 from C1 ReqNo 1 CompletedReq 0 index 3
+024373 INFO G102 S1 apply Put [0, 100] index 3 err OK
+024373 INFO G102 S1 complete Put Request [0, 100] Result 100 Shard 8 from C1 ReqNo 1 index 3 Err OK Shards map[2:true 5:true 8:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+024568 INFO G102 S2 apply Put [0, 100] index 3 err OK
+024718 INFO G100 S1 receive Put Request [1, 100] Shard 9 from C1 ReqNo 2 CompletedReq 0 index 3
+025137 INFO G102 S0 Snapshot Index 2, kv.rf.RaftStateSize: 873 ConfigNum 1
+025148 INFO G102 S2 Snapshot Index 3, kv.rf.RaftStateSize: 93 ConfigNum 1
+025160 INFO G100 S2 Snapshot Index 2, kv.rf.RaftStateSize: 873 ConfigNum 1
+025161 INFO G100 S0 Snapshot Index 2, kv.rf.RaftStateSize: 873 ConfigNum 1
+025231 INFO G100 S0 apply Put [1, 100] index 3 err OK
+025317 INFO G100 S1 apply Put [1, 100] index 3 err OK
+025318 INFO G100 S1 complete Put Request [1, 100] Result 100 Shard 9 from C1 ReqNo 2 index 3 Err OK Shards map[0:true 3:true 6:true 9:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+025333 INFO G100 S2 apply Put [1, 100] index 3 err OK
+025354 INFO G102 S0 apply Put [0, 100] index 3 err OK
+025424 INFO G100 S1 receive Put Request [2, 100] Shard 0 from C1 ReqNo 3 CompletedReq 2 index 4
+025603 INFO G100 S1 Snapshot Index 3, kv.rf.RaftStateSize: 871 ConfigNum 1
+025637 INFO G100 S1 apply Put [2, 100] index 4 err OK
+025638 INFO G100 S1 complete Put Request [2, 100] Result 100 Shard 0 from C1 ReqNo 3 index 4 Err OK Shards map[0:true 3:true 6:true 9:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+025867 INFO G101 S1 receive Put Request [3, 100] Shard 1 from C1 ReqNo 4 CompletedReq 0 index 3
+026160 INFO G101 S1 apply Put [3, 100] index 3 err OK
+026160 INFO G101 S1 complete Put Request [3, 100] Result 100 Shard 1 from C1 ReqNo 4 index 3 Err OK Shards map[1:true 4:true 7:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+026161 INFO G101 S0 Snapshot Index 2, kv.rf.RaftStateSize: 873 ConfigNum 1
+026259 INFO G100 S0 apply Put [2, 100] index 4 err OK
+026260 INFO G102 S1 Snapshot Index 3, kv.rf.RaftStateSize: 93 ConfigNum 1
+026282 INFO G101 S0 apply Put [3, 100] index 3 err OK
+026283 INFO G100 S2 apply Put [2, 100] index 4 err OK
+026378 INFO G101 S2 apply Put [3, 100] index 3 err OK
+026617 INFO G102 S1 receive Put Request [4, 100] Shard 2 from C1 ReqNo 5 CompletedReq 1 index 4
+026793 INFO G102 S1 apply Put [4, 100] index 4 err OK
+026794 INFO G102 S1 complete Put Request [4, 100] Result 100 Shard 2 from C1 ReqNo 5 index 4 Err OK Shards map[2:true 5:true 8:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+027059 INFO G100 S1 receive Put Request [5, 100] Shard 3 from C1 ReqNo 6 CompletedReq 3 index 5
+027172 INFO G101 S2 Snapshot Index 3, kv.rf.RaftStateSize: 93 ConfigNum 1
+027293 INFO G102 S0 apply Put [4, 100] index 4 err OK
+027316 INFO G100 S1 apply Put [5, 100] index 5 err OK
+027318 INFO G100 S1 complete Put Request [5, 100] Result 100 Shard 3 from C1 ReqNo 6 index 5 Err OK Shards map[0:true 3:true 6:true 9:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+027364 INFO G102 S2 apply Put [4, 100] index 4 err OK
+027526 INFO G100 S2 apply Put [5, 100] index 5 err OK
+028149 INFO G102 S0 Snapshot Index 4, kv.rf.RaftStateSize: 93 ConfigNum 1
+028151 INFO G102 S2 Snapshot Index 4, kv.rf.RaftStateSize: 93 ConfigNum 1
+028163 INFO G100 S2 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+028164 INFO G100 S0 Snapshot Index 4, kv.rf.RaftStateSize: 873 ConfigNum 1
+028389 INFO G100 S0 apply Put [5, 100] index 5 err OK
+028433 INFO G101 S1 Snapshot Index 3, kv.rf.RaftStateSize: 93 ConfigNum 1
+028434 INFO G101 S1 receive Put Request [6, 100] Shard 4 from C1 ReqNo 7 CompletedReq 4 index 4
+028588 INFO G101 S1 apply Put [6, 100] index 4 err OK
+028589 INFO G101 S1 complete Put Request [6, 100] Result 100 Shard 4 from C1 ReqNo 7 index 4 Err OK Shards map[1:true 4:true 7:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+029028 INFO G102 S1 receive Put Request [7, 100] Shard 5 from C1 ReqNo 8 CompletedReq 5 index 5
+029083 INFO G100 S1 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+029172 INFO G101 S0 Snapshot Index 3, kv.rf.RaftStateSize: 873 ConfigNum 1
+029242 INFO G102 S1 apply Put [7, 100] index 5 err OK
+029243 INFO G102 S1 complete Put Request [7, 100] Result 100 Shard 5 from C1 ReqNo 8 index 5 Err OK Shards map[2:true 5:true 8:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+029263 INFO G102 S1 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+029337 INFO G101 S0 apply Put [6, 100] index 4 err OK
+029423 INFO G101 S2 apply Put [6, 100] index 4 err OK
+030179 INFO G101 S2 Snapshot Index 4, kv.rf.RaftStateSize: 93 ConfigNum 1
+030207 INFO G102 S0 apply Put [7, 100] index 5 err OK
+030381 INFO G102 S2 apply Put [7, 100] index 5 err OK
+030744 INFO G102 S1 receive duplicated Put request ReqNo: 8 CompletedReqNo: 8 from C1
+031159 INFO G102 S2 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+031160 INFO G102 S0 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+031167 INFO G100 S0 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+031443 INFO G101 S1 Snapshot Index 4, kv.rf.RaftStateSize: 93 ConfigNum 1
+032186 INFO G101 S0 Snapshot Index 4, kv.rf.RaftStateSize: 93 ConfigNum 1
+033077 INFO G100 S1 receive Put Request [8, 100] Shard 6 from C1 ReqNo 9 CompletedReq 6 index 6
+033285 INFO G100 S1 apply Put [8, 100] index 6 err OK
+033285 INFO G100 S1 complete Put Request [8, 100] Result 100 Shard 6 from C1 ReqNo 9 index 6 Err OK Shards map[0:true 3:true 6:true 9:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+033725 INFO G101 S1 receive Put Request [9, 100] Shard 7 from C1 ReqNo 10 CompletedReq 7 index 5
+033938 INFO G101 S1 apply Put [9, 100] index 5 err OK
+033938 INFO G101 S1 complete Put Request [9, 100] Result 100 Shard 7 from C1 ReqNo 10 index 5 Err OK Shards map[1:true 4:true 7:true] ConfigShard [100 101 102 100 101 102 100 101 102 100]
+034171 INFO G100 S0 Snapshot Index 5, kv.rf.RaftStateSize: 873 ConfigNum 1
+034184 INFO G101 S2 Snapshot Index 4, kv.rf.RaftStateSize: 873 ConfigNum 1
+034184 INFO G100 S2 Snapshot Index 5, kv.rf.RaftStateSize: 873 ConfigNum 1
+034221 INFO G101 S2 apply Put [9, 100] index 5 err OK
+034294 INFO G100 S0 apply Put [8, 100] index 6 err OK
+034420 INFO G101 S0 apply Put [9, 100] index 5 err OK
+034434 INFO G100 S2 apply Put [8, 100] index 6 err OK
+034446 INFO G101 S1 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+034475 INFO G100 S1 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 1
+035190 INFO G101 S0 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+037180 INFO G100 S0 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 1
+037189 INFO G101 S2 Snapshot Index 5, kv.rf.RaftStateSize: 93 ConfigNum 1
+037189 INFO G100 S2 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 1
+037993 INFO G101 S1 receive duplicated Put request ReqNo: 10 CompletedReqNo: 10 from C1
+041473 INFO G102 S1 Snapshot Index 5, kv.rf.RaftStateSize: 909 ConfigNum 1
+041776 INFO G102 S1 curConfig 1 nextConfig 2 make OutShardsMap: map[2:{2 2 map[4:100]} 5:{2 5 map[7:100]} 8:{2 8 map[0:100]}]
+041777 INFO G102 S1 update ConfigNum 2 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 101 101 101 101 101]
+041778 INFO G102 S1 apply Config index 6 err 
+042195 INFO G102 S0 Snapshot Index 5, kv.rf.RaftStateSize: 909 ConfigNum 1
+042196 INFO G102 S2 Snapshot Index 5, kv.rf.RaftStateSize: 909 ConfigNum 1
+042268 INFO G102 S2 curConfig 1 nextConfig 2 make OutShardsMap: map[2:{2 2 map[4:100]} 5:{2 5 map[7:100]} 8:{2 8 map[0:100]}]
+042269 INFO G102 S2 update ConfigNum 2 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 101 101 101 101 101]
+042269 INFO G102 S2 apply Config index 6 err 
+042509 INFO G102 S0 curConfig 1 nextConfig 2 make OutShardsMap: map[2:{2 2 map[4:100]} 5:{2 5 map[7:100]} 8:{2 8 map[0:100]}]
+042509 INFO G102 S0 update ConfigNum 2 Shards map[] KVMap map[] ConfigShards [101 101 101 101 101 101 101 101 101 101]
+042510 INFO G102 S0 apply Config index 6 err 
+043040 INFO G101 S1 Snapshot Index 5, kv.rf.RaftStateSize: 909 ConfigNum 1
+043202 INFO G101 S2 Snapshot Index 5, kv.rf.RaftStateSize: 909 ConfigNum 1
+043226 INFO G101 S0 Snapshot Index 5, kv.rf.RaftStateSize: 909 ConfigNum 1
+043248 INFO G101 S1 curConfig 1 nextConfig 2 make OutShardsMap: map[]
+043248 INFO G101 S1 update ConfigNum 2 Shards map[1:true 4:true 7:true] KVMap map[3:100 6:100 9:100] ConfigShards [101 101 101 101 101 101 101 101 101 101]
+043249 INFO G101 S1 apply Config index 6 err 
+043289 INFO G101 S0 curConfig 1 nextConfig 2 make OutShardsMap: map[]
+043290 INFO G101 S0 update ConfigNum 2 Shards map[1:true 4:true 7:true] KVMap map[3:100 6:100 9:100] ConfigShards [101 101 101 101 101 101 101 101 101 101]
+043290 INFO G101 S0 apply Config index 6 err 
+043373 INFO G101 S2 curConfig 1 nextConfig 2 make OutShardsMap: map[]
+043373 INFO G101 S2 update ConfigNum 2 Shards map[1:true 4:true 7:true] KVMap map[3:100 6:100 9:100] ConfigShards [101 101 101 101 101 101 101 101 101 101]
+043373 INFO G101 S2 apply Config index 6 err 
+044276 INFO G102 S0 ShardDock 2 shard [{2 2 map[4:100]} {2 5 map[7:100]} {2 8 map[0:100]}] clientInfo {map[1:8] map[1:{OK 100}]}
+044404 INFO G101 S1 configNum 2 acceptShards skv.Shards map[1:true 2:true 4:true 5:true 7:true 8:true] shiftShards [{2 2 map[4:100]} {2 5 map[7:100]} {2 8 map[0:100]}] clientInfo {map[1:8] map[1:{OK 100}]}
+044405 INFO G101 S1 apply Shards index 7 err 
+044536 INFO G102 S1 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 2
+044552 INFO G101 S2 configNum 2 acceptShards skv.Shards map[1:true 2:true 4:true 5:true 7:true 8:true] shiftShards [{2 2 map[4:100]} {2 5 map[7:100]} {2 8 map[0:100]}] clientInfo {map[1:8] map[1:{OK 100}]}
+044554 INFO G101 S2 apply Shards index 7 err 
+045206 INFO G102 S2 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 2
+045207 INFO G102 S0 Snapshot Index 6, kv.rf.RaftStateSize: 93 ConfigNum 2
+045521 INFO G101 S0 configNum 2 acceptShards skv.Shards map[1:true 2:true 4:true 5:true 7:true 8:true] shiftShards [{2 2 map[4:100]} {2 5 map[7:100]} {2 8 map[0:100]}] clientInfo {map[1:8] map[1:{OK 100}]}
+045523 INFO G101 S0 apply Shards index 7 err 
+046051 INFO G101 S1 Snapshot Index 7, kv.rf.RaftStateSize: 93 ConfigNum 2
+046211 INFO G101 S2 Snapshot Index 7, kv.rf.RaftStateSize: 93 ConfigNum 2
+046234 INFO G101 S0 Snapshot Index 7, kv.rf.RaftStateSize: 93 ConfigNum 2
+056926 INFO G101 S1 receive Get Request Get 0 Shard: 8, from C1 ReqNo 11 CompletedReqNo 10 index 8
+057077 INFO G101 S1 apply Get index 8 err OK
+057077 INFO G101 S1 complete Get Request 0: 100 Shard: 8 index: 8 Err: OK Shards: map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+057102 INFO G101 S1 Snapshot Index 8, kv.rf.RaftStateSize: 93 ConfigNum 2
+057263 INFO G101 S2 Snapshot Index 7, kv.rf.RaftStateSize: 863 ConfigNum 2
+057310 INFO G101 S0 Snapshot Index 7, kv.rf.RaftStateSize: 863 ConfigNum 2
+057415 INFO G101 S1 receive Put Request [0, 100-2] Shard 8 from C1 ReqNo 12 CompletedReq 11 index 9
+057418 INFO G101 S2 apply Get index 8 err OK
+057497 INFO G101 S1 apply Put [0, 100-2] index 9 err OK
+057497 INFO G101 S1 complete Put Request [0, 100-2] Result 100-2 Shard 8 from C1 ReqNo 12 index 9 Err OK Shards map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+057546 INFO G101 S1 receive Get Request Get 0 Shard: 8, from C1 ReqNo 13 CompletedReqNo 12 index 10
+057558 INFO G101 S0 apply Get index 8 err OK
+057616 INFO G101 S2 apply Put [0, 100-2] index 9 err OK
+057625 INFO G101 S0 apply Put [0, 100-2] index 9 err OK
+057714 INFO G101 S1 apply Get index 10 err OK
+057715 INFO G101 S1 complete Get Request 0: 100-2 Shard: 8 index: 10 Err: OK Shards: map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+057798 INFO G101 S1 receive Get Request Get 4 Shard: 2, from C1 ReqNo 14 CompletedReqNo 13 index 11
+058023 INFO G101 S2 apply Get index 10 err OK
+058044 INFO G101 S1 apply Get index 11 err OK
+058044 INFO G101 S1 complete Get Request 4: 100 Shard: 2 index: 11 Err: OK Shards: map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+058123 INFO G101 S0 apply Get index 10 err OK
+058227 INFO G101 S0 apply Get index 11 err OK
+058364 INFO G101 S1 receive Put Request [4, 100-2] Shard 2 from C1 ReqNo 15 CompletedReq 14 index 12
+058489 INFO G101 S2 apply Get index 11 err OK
+058565 INFO G101 S1 apply Put [4, 100-2] index 12 err OK
+058565 INFO G101 S1 complete Put Request [4, 100-2] Result 100-2 Shard 2 from C1 ReqNo 15 index 12 Err OK Shards map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+058654 INFO G101 S1 receive Get Request Get 4 Shard: 2, from C1 ReqNo 16 CompletedReqNo 15 index 13
+058773 INFO G101 S0 apply Put [4, 100-2] index 12 err OK
+058876 INFO G101 S2 apply Put [4, 100-2] index 12 err OK
+058877 INFO G101 S1 apply Get index 13 err OK
+058877 INFO G101 S1 complete Get Request 4: 100-2 Shard: 2 index: 13 Err: OK Shards: map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+059140 INFO G101 S1 receive Get Request Get 7 Shard: 5, from C1 ReqNo 17 CompletedReqNo 16 index 14
+059203 INFO G101 S2 apply Get index 13 err OK
+059304 INFO G101 S1 apply Get index 14 err OK
+059305 INFO G101 S1 complete Get Request 7: 100 Shard: 5 index: 14 Err: OK Shards: map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+059435 INFO G101 S0 apply Get index 13 err OK
+059460 INFO G101 S0 apply Get index 14 err OK
+059461 INFO G101 S1 receive Put Request [7, 100-2] Shard 5 from C1 ReqNo 18 CompletedReq 17 index 15
+059532 INFO G101 S2 apply Get index 14 err OK
+059730 INFO G101 S1 apply Put [7, 100-2] index 15 err OK
+059732 INFO G101 S1 complete Put Request [7, 100-2] Result 100-2 Shard 5 from C1 ReqNo 18 index 15 Err OK Shards map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
+059791 INFO G101 S1 receive Get Request Get 7 Shard: 5, from C1 ReqNo 19 CompletedReqNo 18 index 16
+059890 INFO G101 S2 apply Put [7, 100-2] index 15 err OK
+059944 INFO G101 S1 apply Get index 16 err OK
+059944 INFO G101 S1 complete Get Request 7: 100-2 Shard: 5 index: 16 Err: OK Shards: map[1:true 2:true 4:true 5:true 7:true 8:true] ConfigShard [101 101 101 101 101 101 101 101 101 101]
   ... Passed
 PASS
-ok  	6.824/shardkv	8.568s
+ok  	6.824/shardkv	5.997s

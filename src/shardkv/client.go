@@ -95,7 +95,7 @@ func (ck *Clerk) Get(key string) string {
 					return reply.Value
 				}
 				if ok && (reply.Err == ErrWrongGroup) {
-					args.ReqNo = atomic.AddInt64(&seq, 1)
+					// args.ReqNo = atomic.AddInt64(&seq, 1)
 					break
 				}
 				// ... not ok, or ErrWrongLeader
@@ -133,7 +133,7 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 					return
 				}
 				if ok && reply.Err == ErrWrongGroup {
-					args.ReqNo = atomic.AddInt64(&seq, 1)
+					// args.ReqNo = atomic.AddInt64(&seq, 1)
 					break
 				}
 				// ... not ok, or ErrWrongLeader

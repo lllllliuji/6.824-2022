@@ -26,7 +26,6 @@
 ### others
 * applychan in critcial zone, cause deadlock 
 * infinite loop result in deadlock
-* 每个方法的开头和结束打上 ping pong日志，如果不配对说明有死锁
 
 lab 3A
 * basic test, client doesn't check reply, need retry put append operation if reply.success == false, fixed
@@ -48,9 +47,14 @@ lab 4A
 
 lab 4B
 * periodly query latest shard config, update config using raft
-* fail & recovery, updateconfig conflict deadlock with bring kvserver back, when fail, raft redo its log iteself, bring kvsever back 
+* fail & recovery, updateconfig conflict deadlock with bring kvserver back, when fail, raft replay its log iteself, bring kvsever back 
 * update config: compute kv state it should be then make agreement using raft,  otherwise fail & recovery may deadlock
 * rpc args should be a copy of original data, if rpc retry, won't suffer from descent modification(better not modify, use another copy)
-* migrate shard to another group's leader, leader fail, unable to get these shards, use poll config rather than push
-* configReqNo should update in group along with make agreement on raft log
+* migrate shard to another group's leader, leader fail, unable to get these shards, use pull config rather than push
 * a server shutdowned as a leader, update config(staled) as soon as stand up, read snapshot and catch up, leader fail, this server elected as leader again, keep update staled config, blocked
+* caculate outshards kv map and shard kv map before arrive at agreement is evil, because server could be shutdowned, but read by next group, server read snapshot and come back, a shard could be servered by two group, which is not allowed
+* using raft make agreement on config, but follower/leader pull shards independently is evil in the presence of leader fail
+* concurrently pull shards speed up reconfiguration
+* put/append operation success on a group, but fail to reply to client before this group migrate this shard out, client try another group, do one operation twice
+* wake up by broadcastall and found not success while in real world it's success, descent request should be treat as duplicate
+* request R try A group shard-a, A group fail, A group restart, new Config, A migrate out shard-a, group B receive shard-a, and successfully complete request R, but because of latency, B pullshards from A more than once, ClientInfo may be overwrited, and make confuse to client, client try more, an operation could be done twice or more, be carefull to merge ClientInfo

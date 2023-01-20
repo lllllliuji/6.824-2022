@@ -14,6 +14,7 @@ const (
 	ErrNoKey       = "ErrNoKey"
 	ErrWrongGroup  = "ErrWrongGroup"
 	ErrWrongLeader = "ErrWrongLeader"
+	ErrNotReady    = "ErrNotReady"
 )
 
 type Err string
@@ -49,15 +50,15 @@ type GetReply struct {
 	Value string
 }
 
-type MigrateShardArgs struct {
+type PullShardsArgs struct {
 	ConfigNum int
-	Gid       int
-	ServerId  int
+	ShardIds  []int
 }
 
-type MigrateShardReply struct {
-	Success bool
-	KVMap   map[string]string
+type PullShardReply struct {
+	Success     bool
+	ShiftShards []ShiftShard
+	ClientInfo  ClientInfo
 }
 
 type HelloArgs struct {
