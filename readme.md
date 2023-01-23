@@ -58,3 +58,7 @@ lab 4B
 * put/append operation success on a group, but fail to reply to client before this group migrate this shard out, client try another group, do one operation twice
 * wake up by broadcastall and found not success while in real world it's success, descent request should be treat as duplicate
 * request R try A group shard-a, A group fail, A group restart, new Config, A migrate out shard-a, group B receive shard-a, and successfully complete request R, but because of latency, B pullshards from A more than once, ClientInfo may be overwrited, and make confuse to client, client try more, an operation could be done twice or more, be carefull to merge ClientInfo
+* when restart and replay raft log, new request may be wake up wrongly, be careful
+* modify raft, if snapshot index == lastSnapshotincludedindex, still snapshot, because of garbage collection
+* when snapshot, save raftstate and snapshotstate atomicly (snapshot 135, fail and start up but readsnapshot 131, because it's non-atomic and lose (132 133 134 135) overwrite by readsnapshot 131 update 1/5000) atomic problem is hard to detect, though I pass lab 2D 2000 times
+* notify applylog goroutine when receive snapshot

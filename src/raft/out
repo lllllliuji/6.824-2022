@@ -1,14 +1,14 @@
 Test (2D): snapshots basic ...
-  ... Passed --   7.2  3  200   73170  223
+  ... Passed --   4.0  3  141   54952  236
 Test (2D): install snapshots (disconnect) ...
-  ... Passed --  72.0  3 1916  769612  364
+  ... Passed --  41.5  3 1587 1071200  316
 Test (2D): install snapshots (disconnect+unreliable) ...
-  ... Passed --  68.0  3 1875  663323  309
+  ... Passed --  46.1  3 1990 1409207  323
 Test (2D): install snapshots (crash) ...
-  ... Passed --  38.2  3  967  439753  307
+  ... Passed --  31.8  3 1206  903769  324
 Test (2D): install snapshots (unreliable+crash) ...
-  ... Passed --  43.4  3 1096  465455  327
+  ... Passed --  35.2  3 1602 1500709  366
 Test (2D): crash and restart all servers ...
-  ... Passed --  16.0  3  406  127797   64
+  ... Passed --   8.1  3  240   74456   52
 PASS
-ok  	6.824/raft	244.738s
+ok  	6.824/raft	166.876s

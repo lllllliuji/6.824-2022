@@ -433,7 +433,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArg, reply *InstallSnapshot
 	}
 	reply.Success = true
 	// receiver a old snapshot, return
-	if rf.SnapshotLastIncludedIndex >= args.LastIncludedIndex {
+	if rf.SnapshotLastIncludedIndex >= args.LastIncludedIndex || rf.snapshotMsg.SnapshotIndex > args.LastIncludedIndex {
 		rf.persist()
 		// if stateChange {
 		// 	rf.persist()
@@ -449,19 +449,27 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArg, reply *InstallSnapshot
 		SnapshotIndex: args.LastIncludedIndex,
 	}
 	rf.snapshotMsg = snapshotMsg
+	rf.applyCond.Broadcast()
 	// rf.applyMsgs = append(rf.applyMsgs, applyMsg)
 	// rf.applyChan <- applyMsg
 	// stateChange = rf.advanceToIndex(args.LastIncludedIndex+1) || stateChange
-	rf.advanceToIndex(args.LastIncludedIndex + 1)
-	rf.CommitIndex = max(rf.CommitIndex, args.LastIncludedIndex)
-	rf.LastApplied = max(rf.LastApplied, args.LastIncludedIndex)
+	// rf.advanceToIndex(args.LastIncludedIndex + 1)
+	// rf.CommitIndex = max(rf.CommitIndex, args.LastIncludedIndex)
+	// rf.LastApplied = max(rf.LastApplied, args.LastIncludedIndex)
+	// rf.SnapshotLastIncludedIndex = args.LastIncludedIndex
+	// rf.SnapshotLastIncludedTerm = args.LastIncludedTerm
+	debug(dInfo, "S%v receive snapshot [%v, %v] from S%v", rf.me, 1, args.LastIncludedIndex, args.LeaderId)
+
+	// rf.persist()
+	// rf.persister.SaveStateAndSnapshot(rf.persister.raftstate, args.Data)
+	raftstate, logs, _, _ := rf.makeRaftState(args.LastIncludedIndex + 1)
+	rf.persister.SaveStateAndSnapshot(raftstate, args.Data)
+	rf.Logs = logs
 	rf.SnapshotLastIncludedIndex = args.LastIncludedIndex
 	rf.SnapshotLastIncludedTerm = args.LastIncludedTerm
-	// debug(dInfo, "S%v receive snapshot [%v, %v] from S%v", rf.me, 1, args.LastIncludedIndex, args.LeaderId)
-
-	rf.persist()
-
-	rf.persister.SaveStateAndSnapshot(rf.persister.raftstate, args.Data)
+	rf.CommitIndex = max(rf.CommitIndex, args.LastIncludedIndex)
+	rf.LastApplied = max(rf.LastApplied, args.LastIncludedIndex)
+	
 	rf.mu.Unlock()
 }
 
@@ -492,6 +500,31 @@ func (rf *Raft) sendInstallSnapshot(server int, args *InstallSnapshotArg, reply 
 	return ok
 }
 
+func (rf *Raft) makeRaftState(upperbound int) ([]byte, []RaftLogEntry, int, int) {
+	logs := rf.Logs
+	snapshotindex, snapshotterm := rf.SnapshotLastIncludedIndex, rf.SnapshotLastIncludedTerm
+	if length := len(logs); length == 0 || upperbound <= logs[0].Index {
+		// do nothing
+	} else {
+		startIndex := upperbound - logs[0].Index
+		if startIndex > 0 {
+			snapshotindex = logs[min(startIndex, length)-1].Index
+			snapshotterm = logs[min(startIndex, length)-1].Term
+		}
+		logs = logs[min(startIndex, length):]
+	}
+	snapshotindex = max(snapshotindex, upperbound-1)
+	w := new(bytes.Buffer)
+	e := labgob.NewEncoder(w)
+	e.Encode(rf.CurrentTerm)
+	e.Encode(logs)
+	e.Encode(rf.VotedFor)
+	e.Encode(snapshotindex)
+	e.Encode(snapshotterm)
+	data := w.Bytes()
+	return data, logs, snapshotindex, snapshotterm
+}
+
 func (rf *Raft) advanceToIndex(index int) {
 	if index <= rf.SnapshotLastIncludedIndex {
 		return
@@ -499,7 +532,7 @@ func (rf *Raft) advanceToIndex(index int) {
 	if len(rf.Logs) == 0 {
 		return
 	}
-	startIndex := index - rf.SnapshotLastIncludedIndex - 1
+	startIndex := index - rf.Logs[0].Index
 	if startIndex > 0 {
 		rf.SnapshotLastIncludedIndex = rf.Logs[min(startIndex, len(rf.Logs))-1].Index
 		rf.SnapshotLastIncludedTerm = rf.Logs[min(startIndex, len(rf.Logs))-1].Term
@@ -515,17 +548,25 @@ func (rf *Raft) Snapshot(index int, snapshot []byte) {
 	// Your code here (2D).
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	if rf.SnapshotLastIncludedIndex >= index {
+	if rf.SnapshotLastIncludedIndex > index {
 		return
 	}
 	// debug(dInfo, "S%v Snapshot %v", rf.me, index)
 	// trim obsolete rf log
-	rf.advanceToIndex(index + 1)
+	raftstate, logs, snapshotindex, snapshotterm := rf.makeRaftState(index + 1)
+	rf.persister.SaveStateAndSnapshot(raftstate, snapshot)
+	rf.Logs = logs
+	rf.SnapshotLastIncludedIndex = snapshotindex
+	rf.SnapshotLastIncludedTerm = snapshotterm
 	rf.CommitIndex = max(rf.CommitIndex, index)
 	rf.LastApplied = max(rf.LastApplied, index)
 	rf.SnapshotLastIncludedIndex = max(rf.SnapshotLastIncludedIndex, index)
-	rf.persist()
-	rf.persister.SaveStateAndSnapshot(rf.persister.raftstate, snapshot)
+	// rf.advanceToIndex(index + 1)
+	// rf.CommitIndex = max(rf.CommitIndex, index)
+	// rf.LastApplied = max(rf.LastApplied, index)
+	// rf.SnapshotLastIncludedIndex = max(rf.SnapshotLastIncludedIndex, index)
+	// rf.persist()
+	// rf.persister.SaveStateAndSnapshot(rf.persister.raftstate, snapshot)
 	// go rf.acceptSnapshot(index, snapshot)
 }
 
@@ -698,17 +739,20 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 func (rf *Raft) applyLog() {
 	for !rf.killed() {
 		rf.mu.Lock()
-		for rf.LastApplied >= rf.CommitIndex {
+		for rf.LastApplied >= rf.CommitIndex && rf.snapshotMsg.SnapshotIndex == 0 {
 			rf.applyCond.Wait()
 		}
-		applyLogs := make([]RaftLogEntry, rf.CommitIndex-rf.LastApplied)
-		copy(applyLogs, rf.Logs[rf.LastApplied-rf.SnapshotLastIncludedIndex:rf.CommitIndex-rf.SnapshotLastIncludedIndex])
+		applyLogs := make([]RaftLogEntry, max(0, rf.CommitIndex-rf.LastApplied))
+		if len(applyLogs) != 0 {
+			copy(applyLogs, rf.Logs[rf.LastApplied-rf.SnapshotLastIncludedIndex:rf.CommitIndex-rf.SnapshotLastIncludedIndex])
+		}
 		// if rf.LastApplied < rf.CommitIndex {
 		// 	applyLogs = rf.Logs[rf.LastApplied-rf.SnapshotLastIncludedIndex : rf.CommitIndex-rf.SnapshotLastIncludedIndex]
 		// }
 		applyMsgs := make([]ApplyMsg, 0)
 		if rf.snapshotMsg.SnapshotIndex != 0 {
 			applyMsgs = append(applyMsgs, rf.snapshotMsg)
+			debug(dInfo, "S%v apply snapshotIndex %v", rf.me, rf.snapshotMsg.SnapshotIndex)
 		}
 		for _, entry := range applyLogs {
 			applyMsg := ApplyMsg{
