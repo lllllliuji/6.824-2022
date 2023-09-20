@@ -62,3 +62,4 @@ lab 4B
 * modify raft, if snapshot index == lastSnapshotincludedindex, still snapshot, because of garbage collection
 * when snapshot, save raftstate and snapshotstate atomicly (snapshot 135, fail and start up but readsnapshot 131, because it's non-atomic and lose (132 133 134 135) overwrite by readsnapshot 131 update 1/5000) atomic problem is hard to detect, though I pass lab 2D 2000 times
 * notify applylog goroutine when receive snapshot
+![](result.jpg)
